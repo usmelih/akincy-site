@@ -10,6 +10,7 @@
     name="description"
     content="Akincy helps local businesses rank higher on Google Maps, outrank nearby competitors, and turn visibility into real leads."
   />
+   CSS 
   <style>
     :root {
       --bg: #0b0b0b;
@@ -480,6 +481,42 @@
   font-size: 13px;
   font-weight: 600;
 }
+    .modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 520px;
+  background: #141414;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.modal-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.modal-card p {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
   </style>
 </head>
 <body>
@@ -849,14 +886,13 @@
         Tell us a bit about your business and we’ll show you what is holding back your Google Maps visibility.
       </p>
 
-      <form action="https://formspree.io/f/mlgpzokq" method="POST" class="lead-form">
+      <form id="leadForm" action="https://formspree.io/f/mlgpzokq" method="POST" class="lead-form">
         <div class="form-grid">
           <input type="text" name="name" placeholder="Your name" required />
           <input type="text" name="business" placeholder="Business name" required />
           <input type="email" name="email" placeholder="Email address" required />
           <input type="text" name="website" placeholder="Website or Google Business Profile URL" />
           <input type="hidden" name="_subject" value="New Akincy Lead">
-          <input type="hidden" name="_next" value="https://akincy.com/thanks.html">
           
         </div>
 
@@ -874,9 +910,65 @@
       <div class="sticky-cta">
   <a href="#contact">Get Free Audit</a>
 </div>
+      <div id="successModal" class="modal hidden">
+  <div class="modal-card">
+    <h3>Request received</h3>
+    <p>
+      Thanks — your audit request is in. We’ll review your details and get back to you shortly.
+    </p>
+    <button id="closeModal" class="btn btn-primary">Close</button>
+  </div>
+</div>
+      <script>
+  const leadForm = document.getElementById('leadForm');
+  const successModal = document.getElementById('successModal');
+  const closeModal = document.getElementById('closeModal');
+
+  if (leadForm) {
+    leadForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(leadForm);
+      const action = leadForm.getAttribute('action');
+
+      try {
+        const response = await fetch(action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          leadForm.reset();
+          successModal.classList.remove('hidden');
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (error) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  }
+
+  if (closeModal) {
+    closeModal.addEventListener('click', function () {
+      successModal.classList.add('hidden');
+    });
+  }
+
+  if (successModal) {
+    successModal.addEventListener('click', function (e) {
+      if (e.target === successModal) {
+        successModal.classList.add('hidden');
+      }
+    });
+  }
+</script>
 </section>
   </main>
-
+BODY ENDS
   <footer>
   <div class="container footer-inner">
     <div>
