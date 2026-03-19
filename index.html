@@ -1,149 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akincy | Local SEO & Google Maps Growth</title>
-
+  <meta
+    name="description"
+    content="Akincy helps local businesses rank higher on Google Maps, outrank nearby competitors, and turn visibility into real leads."
+  />
   <style>
+    :root {
+      --bg: #0b0b0b;
+      --surface: #151515;
+      --surface-2: #1d1d1d;
+      --text: #ffffff;
+      --muted: #c9c9c9;
+      --line: #2a2a2a;
+      --accent: #d4af37;
+      --accent-text: #111111;
+      --max: 1120px;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    section {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: auto;
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    h1, h2 {
-      margin-bottom: 20px;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 11, 11, 0.88);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .hero {
-      text-align: center;
-      padding-top: 120px;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      background: gold;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
     }
 
-    .grid {
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface);
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .hero {
+      padding-top: 96px;
+      padding-bottom: 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(212,175,55,0.08);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 68px);
+      line-height: 1.02;
+      margin: 0 0 18px;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 26px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-metrics {
+      display: grid;
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 44px);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid-3, .grid-4, .grid-2 {
       display: grid;
       gap: 20px;
     }
 
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
     .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stats {
+      padding-top: 24px;
+    }
+
+    .stat {
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 26px 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 34px;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .panel-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list li + li {
+      margin-top: 8px;
+    }
+
+    .pricing-card {
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(212,175,55,0.45);
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.12);
+    }
+
+    .badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(212,175,55,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: 40px;
+      font-weight: 800;
+      margin: 8px 0 12px;
+    }
+
+    .price small {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 14px;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 700;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      padding: 0 6px 0 6px;
+    }
+
+    .cta-box {
+      background: linear-gradient(180deg, #181818, #121212);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 24px;
+      padding: 38px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: clamp(30px, 4vw, 48px);
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .before-after {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      h1 {
+        max-width: 12ch;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
-
 <body>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Own Your City on Google</h1>
-  <p>
-    Akincy helps businesses rank higher on Google Maps,
-    outrank competitors, and get more customers.
-  </p>
-
-  <a href="mailto:audit@akincy.com" class="btn">Get Free Audit</a>
-</section>
-
-<!-- WHY -->
-<section>
-  <h2>Why Akincy</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Results Over Reports</h3>
-      <p>We focus on rankings, not useless reports.</p>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="brand">Akincy</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#results">Results</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-primary">Free Audit</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>Local Domination</h3>
-      <p>We push you above nearby competitors.</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Local SEO for serious growth</span>
+          <h1>Own Your City on Google</h1>
+          <p>
+            Akincy helps local businesses rank higher on Google Maps, outrank nearby
+            competitors, and turn visibility into real calls, bookings, and leads.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get Free Audit</a>
+            <a href="#services" class="btn btn-secondary">See Services</a>
+          </div>
+          <p style="font-size:14px; color:#9f9f9f; margin:0;">
+            Built for clinics, law firms, service businesses, and multi-location brands.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <div>
+            <div class="panel-title">What we help improve</div>
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Top 3</strong>
+                <span>Google Maps visibility where buying intent is highest</span>
+              </div>
+              <div class="metric">
+                <strong>More Calls</strong>
+                <span>Better rankings turn into real inbound demand</span>
+              </div>
+              <div class="metric">
+                <strong>Stronger Trust</strong>
+                <span>Reviews, relevance, and local authority working together</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" id="results">
+      <div class="container">
+        <div class="grid-3">
+          <div class="stat">
+            <strong>+120%</strong>
+            <span>Local visibility growth</span>
+          </div>
+          <div class="stat">
+            <strong>Top 3</strong>
+            <span>Map pack ranking potential</span>
+          </div>
+          <div class="stat">
+            <strong>More Leads</strong>
+            <span>Calls, bookings, and inquiries</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Services built for local domination</h2>
+          <p>
+            We focus on the parts of local SEO that actually move revenue: visibility,
+            ranking strength, trust signals, and conversion intent.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Google Maps Ranking</h3>
+            <p>We improve your ability to show up where local buyers are already searching.</p>
+          </div>
+          <div class="card">
+            <h3>Google Business Profile Optimization</h3>
+            <p>We tighten categories, content, media, relevance, and trust signals.</p>
+          </div>
+          <div class="card">
+            <h3>Review Strategy</h3>
+            <p>We help build stronger review velocity, better trust, and higher conversion.</p>
+          </div>
+          <div class="card">
+            <h3>On-Page Local SEO</h3>
+            <p>We align your site pages with service intent, city relevance, and conversion goals.</p>
+          </div>
+          <div class="card">
+            <h3>Competitor Analysis</h3>
+            <p>We identify what nearby competitors are doing right and where they are vulnerable.</p>
+          </div>
+          <div class="card">
+            <h3>Lead-Focused Strategy</h3>
+            <p>We care about booked calls and new customers, not vanity metrics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Why Akincy</h2>
+          <p>
+            Most agencies hide behind reports. We focus on outcomes that matter in local markets.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Results over reports</h3>
+            <p>Clear execution, clear priorities, and work tied to actual local growth.</p>
+          </div>
+          <div class="card">
+            <h3>Built for competitive cities</h3>
+            <p>We position you to win against nearby businesses already dominating the map.</p>
+          </div>
+          <div class="card">
+            <h3>Strategic and aggressive</h3>
+            <p>Akincy is designed for businesses that want to be first, not merely present.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Before and after the right local strategy</h2>
+          <p>
+            Local SEO usually fails because the fundamentals are disconnected. We fix the system.
+          </p>
+        </div>
+
+        <div class="before-after">
+          <div class="card">
+            <div class="panel-title">Before</div>
+            <ul class="list">
+              <li>Low visibility on Google Maps</li>
+              <li>Inconsistent business profile signals</li>
+              <li>Weak location relevance on site pages</li>
+              <li>Reviews not supporting ranking momentum</li>
+              <li>Competitors taking the highest intent traffic</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="panel-title">After</div>
+            <ul class="list">
+              <li>Better local positioning in key searches</li>
+              <li>Stronger Google Business Profile optimization</li>
+              <li>Cleaner service + city relevance</li>
+              <li>More trust from reviews and reputation signals</li>
+              <li>More calls, bookings, and inbound leads</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <h2>A simple process that scales</h2>
+          <p>We keep the workflow tight so improvements happen fast and in the right order.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <h3>1. Audit</h3>
+            <p>We assess your rankings, profile strength, website structure, and competitors.</p>
+          </div>
+          <div class="card">
+            <h3>2. Strategy</h3>
+            <p>We identify the highest-leverage local opportunities and prioritize execution.</p>
+          </div>
+          <div class="card">
+            <h3>3. Execution</h3>
+            <p>We optimize your assets, improve trust signals, and strengthen ranking relevance.</p>
+          </div>
+          <div class="card">
+            <h3>4. Growth</h3>
+            <p>You gain stronger visibility, more demand capture, and better local lead flow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2>Simple pricing</h2>
+          <p>Start lean, then scale as rankings and lead flow improve.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card pricing-card">
+            <h3>Starter</h3>
+            <div class="price">$500 <small>/ month</small></div>
+            <ul class="list">
+              <li>Local SEO audit</li>
+              <li>Google Business Profile optimization</li>
+              <li>Core on-page fixes</li>
+              <li>Monthly reporting</li>
+            </ul>
+          </div>
+
+          <div class="card pricing-card featured">
+            <span class="badge">Most Popular</span>
+            <h3>Growth</h3>
+            <div class="price">$1,000 <small>/ month</small></div>
+            <ul class="list">
+              <li>Everything in Starter</li>
+              <li>Review strategy</li>
+              <li>Competitor analysis</li>
+              <li>City/service page optimization</li>
+              <li>Priority support</li>
+            </ul>
+          </div>
+
+          <div class="card pricing-card">
+            <h3>Dominate</h3>
+            <div class="price">Custom</div>
+            <ul class="list">
+              <li>Multi-location support</li>
+              <li>Advanced local content strategy</li>
+              <li>Reputation systems</li>
+              <li>Full local growth roadmap</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently asked questions</h2>
+          <p>Clear answers before you book your audit.</p>
+        </div>
+
+        <details class="faq-item">
+          <summary>How long does local SEO take?</summary>
+          <p>It depends on your market, competition, and current setup, but meaningful improvement usually comes from consistent monthly execution.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you only work with one city?</summary>
+          <p>No. We can support single-location businesses and multi-location growth strategies.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you guarantee rankings?</summary>
+          <p>We do not promise unrealistic shortcuts. We focus on the ranking factors and conversion systems that actually improve outcomes.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What do I get in the free audit?</summary>
+          <p>You get a clear breakdown of what is holding back your local visibility and what should be fixed first.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Get your free local SEO audit</h2>
+          <p>
+            We’ll review your current local presence and show you where your biggest growth opportunities are.
+          </p>
+          <a href="mailto:audit@akincy.com" class="btn btn-primary">Request Audit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>Akincy</div>
+      <div>audit@akincy.com</div>
     </div>
-
-    <div class="card">
-      <h3>More Calls & Leads</h3>
-      <p>We turn visibility into real customers.</p>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS -->
-<section>
-  <h2>Proven Results</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>+120%</h3>
-      <p>Visibility increase</p>
-    </div>
-
-    <div class="card">
-      <h3>Top 3</h3>
-      <p>Google Maps rankings</p>
-    </div>
-
-    <div class="card">
-      <h3>More Leads</h3>
-      <p>More calls and bookings</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section>
-  <h2>How It Works</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>1. Audit</h3>
-      <p>We analyze your current rankings.</p>
-    </div>
-
-    <div class="card">
-      <h3>2. Strategy</h3>
-      <p>We create a plan to outrank competitors.</p>
-    </div>
-
-    <div class="card">
-      <h3>3. Execution</h3>
-      <p>We optimize your presence.</p>
-    </div>
-
-    <div class="card">
-      <h3>4. Growth</h3>
-      <p>You get more visibility and customers.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section style="text-align:center;">
-  <h2>Get Your Free Local SEO Audit</h2>
-  <p>Find out why you're not ranking — and how to fix it.</p>
-
-  <a href="mailto:audit@akincy.com" class="btn">Request Audit</a>
-</section>
-
+  </footer>
 </body>
 </html>
