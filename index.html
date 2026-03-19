@@ -484,7 +484,8 @@
     .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -499,12 +500,12 @@
 .modal-card {
   width: 100%;
   max-width: 520px;
-  background: #141414;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 32px;
+  background: linear-gradient(180deg, #161616, #101010);
+  border: 1px solid rgba(201,167,78,0.2);
+  border-radius: 24px;
+  padding: 36px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
 
 .modal-card h3 {
@@ -516,6 +517,30 @@
 .modal-card p {
   margin: 0 0 20px;
   color: var(--muted);
+}
+    .success-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(201,167,78,0.15);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  margin: 0 auto 20px;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
   </style>
 </head>
@@ -912,11 +937,14 @@
 </div>
       <div id="successModal" class="modal hidden">
   <div class="modal-card">
-    <h3>Request received</h3>
+    <div class="success-icon">
+  ✓
+</div>
+    <h3>Your audit request is in</h3>
     <p>
-      Thanks — your audit request is in. We’ll review your details and get back to you shortly.
-    </p>
-    <button id="closeModal" class="btn btn-primary">Close</button>
+  We’ve received your request. Akincy will review your local presence and reach out with the next steps shortly.
+</p>
+    <button id="closeModal" class="btn btn-secondary">Got it</button>
   </div>
 </div>
       <script>
@@ -968,7 +996,7 @@
 </script>
 </section>
   </main>
-BODY ENDS
+  
   <footer>
   <div class="container footer-inner">
     <div>
