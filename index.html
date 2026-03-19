@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akincy | Local SEO & Google Maps Growth</title>
@@ -26,7 +27,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -89,9 +90,10 @@
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: var(--accent-text);
-    }
+  background: var(--accent);
+  color: var(--accent-text);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.15);
+}
 
     .btn-primary:hover {
       transform: translateY(-1px);
@@ -109,8 +111,8 @@
     }
 
     section {
-      padding: 88px 0;
-    }
+  padding: 100px 0;
+}
 
     .hero {
       padding-top: 96px;
@@ -136,19 +138,21 @@
       font-weight: 700;
     }
 
-    h1 {
-      font-size: clamp(40px, 7vw, 68px);
-      line-height: 1.02;
-      margin: 0 0 18px;
-      max-width: 10ch;
-    }
+   h1 {
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1.02;
+  margin: 0 0 18px;
+  max-width: 10ch;
+  letter-spacing: -1px;
+}
 
     .hero p {
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0 0 28px;
-    }
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 18px;
+  margin: 0 0 28px;
+  line-height: 1.7;
+}
 
     .hero-actions {
       display: flex;
@@ -197,9 +201,10 @@
     }
 
     .section-head h2 {
-      margin: 0 0 12px;
-      font-size: clamp(28px, 4vw, 44px);
-    }
+  margin: 0 0 12px;
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -0.5px;
+}
 
     .section-head p {
       margin: 0;
@@ -217,11 +222,17 @@
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
 
     .card {
-      background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212,175,55,0.2);
+}
 
     .card h3 {
       margin: 0 0 10px;
