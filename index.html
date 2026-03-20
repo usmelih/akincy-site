@@ -762,6 +762,176 @@
   color: var(--muted);
   font-size: 15px;
 }
+    .difference-section {
+  padding-top: 70px;
+}
+
+.difference-wrap {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.difference-panel,
+.difference-visual {
+  background: linear-gradient(180deg, #161616, #101010);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 22px;
+}
+
+.difference-tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
+
+.diff-tab {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.diff-tab.active {
+  background: rgba(201,167,78,0.12);
+  color: var(--accent);
+}
+
+.difference-company {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 18px;
+}
+
+.difference-company-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(201,167,78,0.14);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.difference-company p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.difference-metrics {
+  display: none;
+  gap: 12px;
+}
+
+.difference-metrics.active {
+  display: grid;
+}
+
+.difference-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.difference-metric span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.difference-metric strong {
+  min-width: 64px;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.metric-bad {
+  background: rgba(180,50,50,0.18);
+  color: #ff8c8c;
+}
+
+.metric-good {
+  background: rgba(70,150,60,0.18);
+  color: #9cff7c;
+}
+
+.difference-map {
+  display: none;
+}
+
+.difference-map.active {
+  display: block;
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  justify-items: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+.map-grid span {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.dot-red {
+  background: #c92b2b;
+  color: white;
+}
+
+.dot-green {
+  background: #6ddc38;
+  color: #111;
+}
+
+@media (max-width: 900px) {
+  .difference-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .map-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+
+  .map-grid span {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
+  }
+}
     
   </style>
 </head>
@@ -893,25 +1063,134 @@
 
   </div>
 </section>
-    
-    <section class="stats" id="results">
-      <div class="container">
-        <div class="grid-3">
-          <div class="stat">
-            <strong>+120%</strong>
-            <span>Local visibility growth</span>
+    <section class="difference-section reveal" id="difference">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Before & After</span>
+      <h2>The Akincy Difference</h2>
+      <p>
+        A stronger local presence means better rankings, more visibility, and more inbound demand.
+      </p>
+    </div>
+
+    <div class="difference-wrap">
+      <div class="difference-panel">
+        <div class="difference-tabs">
+          <button class="diff-tab active" data-view="before" type="button">Before</button>
+          <button class="diff-tab" data-view="after" type="button">After</button>
+        </div>
+
+        <div class="difference-company">
+          <div class="difference-company-icon">A</div>
+          <div>
+            <strong>Your Business</strong>
+            <p>Local market visibility snapshot</p>
           </div>
-          <div class="stat">
-            <strong>Top 3</strong>
-            <span>Map pack ranking potential</span>
+        </div>
+
+        <div id="beforeMetrics" class="difference-metrics active">
+          <div class="difference-metric">
+            <span>Average Ranking</span>
+            <strong class="metric-bad">18</strong>
           </div>
-          <div class="stat">
-            <strong>More Leads</strong>
-            <span>Calls, bookings, and inquiries</span>
+          <div class="difference-metric">
+            <span>Visibility Share</span>
+            <strong class="metric-bad">12%</strong>
+          </div>
+          <div class="difference-metric">
+            <span>Monthly Calls</span>
+            <strong class="metric-bad">9</strong>
+          </div>
+          <div class="difference-metric">
+            <span>Monthly Leads</span>
+            <strong class="metric-bad">3–5</strong>
+          </div>
+        </div>
+
+        <div id="afterMetrics" class="difference-metrics">
+          <div class="difference-metric">
+            <span>Average Ranking</span>
+            <strong class="metric-good">3</strong>
+          </div>
+          <div class="difference-metric">
+            <span>Visibility Share</span>
+            <strong class="metric-good">68%</strong>
+          </div>
+          <div class="difference-metric">
+            <span>Monthly Calls</span>
+            <strong class="metric-good">37</strong>
+          </div>
+          <div class="difference-metric">
+            <span>Monthly Leads</span>
+            <strong class="metric-good">14+</strong>
           </div>
         </div>
       </div>
-    </section>
+
+      <div class="difference-visual">
+        <div id="beforeVisual" class="difference-map active">
+          <div class="map-grid">
+            <span class="dot-red">18</span>
+            <span class="dot-red">20</span>
+            <span class="dot-red">17</span>
+            <span class="dot-red">19</span>
+            <span class="dot-red">16</span>
+            <span class="dot-red">20</span>
+            <span class="dot-red">18</span>
+            <span class="dot-red">17</span>
+            <span class="dot-red">19</span>
+            <span class="dot-red">20</span>
+            <span class="dot-red">18</span>
+            <span class="dot-red">16</span>
+            <span class="dot-red">17</span>
+            <span class="dot-red">20</span>
+            <span class="dot-red">19</span>
+            <span class="dot-red">18</span>
+            <span class="dot-red">20</span>
+            <span class="dot-red">17</span>
+            <span class="dot-red">16</span>
+            <span class="dot-red">18</span>
+            <span class="dot-red">19</span>
+            <span class="dot-red">20</span>
+            <span class="dot-red">17</span>
+            <span class="dot-red">18</span>
+            <span class="dot-red">16</span>
+          </div>
+        </div>
+
+        <div id="afterVisual" class="difference-map">
+          <div class="map-grid">
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">3</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">3</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">3</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">3</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+            <span class="dot-green">2</span>
+            <span class="dot-green">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="services">
       <section id="services" class="reveal">
@@ -1356,6 +1635,34 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
   });
 
   revealElements.forEach((el) => observer.observe(el));
+</script>
+      <script>
+  const diffTabs = document.querySelectorAll('.diff-tab');
+  const beforeMetrics = document.getElementById('beforeMetrics');
+  const afterMetrics = document.getElementById('afterMetrics');
+  const beforeVisual = document.getElementById('beforeVisual');
+  const afterVisual = document.getElementById('afterVisual');
+
+  diffTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const view = tab.dataset.view;
+
+      diffTabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      if (view === 'before') {
+        beforeMetrics.classList.add('active');
+        beforeVisual.classList.add('active');
+        afterMetrics.classList.remove('active');
+        afterVisual.classList.remove('active');
+      } else {
+        afterMetrics.classList.add('active');
+        afterVisual.classList.add('active');
+        beforeMetrics.classList.remove('active');
+        beforeVisual.classList.remove('active');
+      }
+    });
+  });
 </script>
       
 </section>
