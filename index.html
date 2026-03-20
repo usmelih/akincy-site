@@ -908,11 +908,15 @@
 }
 
 .map-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
+ position: absolute;
+  inset: 0; /* tüm alanı kapla */
+display: grid;
   grid-template-columns: repeat(10, 34px);
   gap: 6px;
+  justify-content: center;   /* yatay ortala */
+  align-content: center;     /* dikey ortala 🔥 */
+  z-index: 1;
+  display: grid;
   justify-content: center;
   align-content: center;
   min-height: 100%;
