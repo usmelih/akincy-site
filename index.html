@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+rootMargin: "0px 0px -80px 0px"<!DOCTYPE html>
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -710,11 +710,10 @@
   display: none;
 }
 
-    .reveal {
+   .reveal {
   opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  will-change: opacity, transform;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.visible {
@@ -1253,15 +1252,25 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
       <script>
   const revealElements = document.querySelectorAll('.reveal');
 
+  let hasScrolled = false;
+
+  window.addEventListener('scroll', () => {
+    hasScrolled = true;
+  });
+
   const observer = new IntersectionObserver((entries) => {
+    if (!hasScrolled) return; // 👈 kritik
+
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('visible'); // 👈 tekrar oynar
       }
     });
   }, {
-    threshold: 0.12
+    threshold: 0.25,
+    rootMargin: "0px 0px -80px 0px"
   });
 
   revealElements.forEach((el) => observer.observe(el));
