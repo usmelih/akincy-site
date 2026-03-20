@@ -710,6 +710,18 @@
   display: none;
 }
 
+    .reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    
   </style>
 </head>
 <body>
@@ -821,6 +833,7 @@
     </section>
 
     <section id="services">
+      <section id="services" class="reveal">
       <div class="container">
         <div class="section-head">
           <h2>Services built for local domination</h2>
@@ -1235,6 +1248,23 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
     if (text) text.textContent = plan;
     if (wrap) wrap.classList.remove('hidden');
   }
+</script>
+
+      <script>
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  revealElements.forEach((el) => observer.observe(el));
 </script>
       
 </section>
