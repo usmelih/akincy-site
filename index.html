@@ -890,48 +890,51 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(9, 34px);
   gap: 8px;
-  justify-items: center;
-  align-items: center;
-  min-height: 100%;
+  justify-content: center;
+  align-content: center;
   padding: 22px;
 }
 
-..map-grid span {
+.map-grid span {
   width: 34px;
   height: 34px;
-  border-radius: 999px;
-  display: flex;
+  min-width: 34px;
+  min-height: 34px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .dot-red {
-  background: #c92b2b;
-  color: white;
+  background: #d83a2e;
+  color: #ffffff;
 }
 
 .dot-green {
-  background: #6ddc38;
-  color: #111;
+  background: #79e34f;
+  color: #111111;
 }
 
 @media (max-width: 900px) {
-  .difference-wrap {
-    grid-template-columns: 1fr;
-  }
-
   .map-grid {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 30px);
     gap: 8px;
   }
 
   .map-grid span {
     width: 30px;
     height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     font-size: 11px;
   }
 }
