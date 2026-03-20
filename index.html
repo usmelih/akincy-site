@@ -678,6 +678,15 @@
     display: flex;
   }
 }
+    .pricing-actions {
+  margin-top: 22px;
+}
+
+.pricing-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+    
   </style>
 </head>
 <body>
@@ -989,6 +998,14 @@
               <li>Core on-page fixes</li>
               <li>Monthly reporting</li>
             </ul>
+            <div class="pricing-actions">
+  <a href="#contact" class="btn btn-primary" onclick="selectPlan('Starter')">
+    Request Starter Plan
+  </a>
+</div>
+            <div class="pricing-actions">
+  <a href="#contact" class="btn btn-primary">Request Starter Plan</a>
+</div>
           </div>
 
           <div class="card pricing-card featured">
@@ -1002,6 +1019,14 @@
               <li>City/service page optimization</li>
               <li>Priority support</li>
             </ul>
+<div class="pricing-actions">
+  <a href="#contact" class="btn btn-primary" onclick="selectPlan('Growth')">
+    Request Growth Plan
+  </a>
+</div>
+            <div class="pricing-actions">
+  <a href="#contact" class="btn btn-primary">Request Growth Plan</a>
+</div>
           </div>
 
           <div class="card pricing-card">
@@ -1013,7 +1038,16 @@
               <li>Reputation systems</li>
               <li>Full local growth roadmap</li>
             </ul>
+            <div class="pricing-actions">
+  <a href="#contact" class="btn btn-primary">Let’s Dominate</a>
+</div>
           </div>
+          <div class="pricing-actions">
+    <a href="#contact" class="btn btn-primary" onclick="selectPlan('Dominate')">
+      Let’s Dominate
+    </a>
+  </div>
+</div>
         </div>
       </div>
     </section>
@@ -1062,7 +1096,7 @@
           <input type="email" name="email" placeholder="Email address" required />
           <input type="text" name="website" placeholder="Website or Google Business Profile URL" />
           <input type="hidden" name="_subject" value="New Akincy Lead">
-          
+          <input type="hidden" name="plan" id="selectedPlan">
         </div>
 
         <textarea
@@ -1138,6 +1172,16 @@
     });
   }
 </script>
+      
+      <script>
+  function selectPlan(plan) {
+    const input = document.getElementById('selectedPlan');
+    if (input) {
+      input.value = plan;
+    }
+  }
+</script>
+      
       <script>
   const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('navLinks');
