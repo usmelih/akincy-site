@@ -95,6 +95,7 @@
 
     .hero {
   position: relative;
+  padding: 72px 0 40px;
 }
 
 .hero::before {
@@ -136,7 +137,7 @@
   font-size: clamp(42px, 7vw, 72px);
   line-height: 1.02;
   margin: 0 0 18px;
-  max-width: 10ch;
+  max-width: 12ch;
   letter-spacing: -1px;
 }
 
@@ -144,23 +145,23 @@
   max-width: 620px;
   color: var(--muted);
   font-size: 18px;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   line-height: 1.7;
 }
 
     .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
+     display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
 
     .hero-card {
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 22px;
       padding: 26px;
-      min-height: 320px;
+      min-height: 260px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -686,6 +687,14 @@
   width: 100%;
   text-align: center;
 }
+    .pricing-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-actions {
+  margin-top: auto;
+}
 
     .selected-plan {
   margin-bottom: 16px;
@@ -700,7 +709,7 @@
 .hidden {
   display: none;
 }
-    
+
   </style>
 </head>
 <body>
@@ -733,7 +742,7 @@
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Local SEO for serious growth</span>
-          <h1>Own Your City on Google</h1>
+          <h1>Own Your City<br>on Google</h1>
           <p>
             Akincy helps local businesses rank higher on Google Maps, outrank nearby
             competitors, and turn visibility into real calls, bookings, and leads.
