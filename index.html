@@ -686,6 +686,20 @@
   width: 100%;
   text-align: center;
 }
+
+    .selected-plan {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.2);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
     
   </style>
 </head>
@@ -1003,6 +1017,7 @@
     Request Starter Plan
   </a>
 </div>
+          </div>
             <div class="pricing-actions">
   <a href="#contact" class="btn btn-primary">Request Starter Plan</a>
 </div>
@@ -1024,9 +1039,6 @@
     Request Growth Plan
   </a>
 </div>
-            <div class="pricing-actions">
-  <a href="#contact" class="btn btn-primary">Request Growth Plan</a>
-</div>
           </div>
 
           <div class="card pricing-card">
@@ -1038,17 +1050,13 @@
               <li>Reputation systems</li>
               <li>Full local growth roadmap</li>
             </ul>
-            <div class="pricing-actions">
-  <a href="#contact" class="btn btn-primary">Let’s Dominate</a>
-</div>
+           
           </div>
           <div class="pricing-actions">
     <a href="#contact" class="btn btn-primary" onclick="selectPlan('Dominate')">
       Let’s Dominate
     </a>
   </div>
-</div>
-        </div>
       </div>
     </section>
 
@@ -1097,6 +1105,11 @@
           <input type="text" name="website" placeholder="Website or Google Business Profile URL" />
           <input type="hidden" name="_subject" value="New Akincy Lead">
           <input type="hidden" name="plan" id="selectedPlan">
+          <div id="selectedPlanWrap" class="selected-plan hidden">
+  Selected plan: <strong id="selectedPlanText">None</strong>
+</div>
+
+<input type="hidden" name="plan" id="selectedPlan">
         </div>
 
         <textarea
@@ -1148,6 +1161,14 @@
 
         if (response.ok) {
           leadForm.reset();
+          const selectedPlanText = document.getElementById('selectedPlanText');
+const selectedPlanWrap = document.getElementById('selectedPlanWrap');
+const selectedPlanInput = document.getElementById('selectedPlan');
+
+if (selectedPlanText) selectedPlanText.textContent = 'None';
+if (selectedPlanInput) selectedPlanInput.value = '';
+if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
+          
           successModal.classList.remove('hidden');
         } else {
           alert('Something went wrong. Please try again.');
@@ -1198,6 +1219,18 @@
         toggle.classList.remove('active');
       });
     });
+  }
+</script>
+
+      <script>
+  function selectPlan(plan) {
+    const input = document.getElementById('selectedPlan');
+    const text = document.getElementById('selectedPlanText');
+    const wrap = document.getElementById('selectedPlanWrap');
+
+    if (input) input.value = plan;
+    if (text) text.textContent = plan;
+    if (wrap) wrap.classList.remove('hidden');
   }
 </script>
       
