@@ -762,7 +762,9 @@
   color: var(--muted);
   font-size: 15px;
 }
-    .difference-section {
+  /* DIFFERENCE SECTION START */
+}
+.difference-section {
   padding-top: 70px;
 }
 
@@ -778,11 +780,7 @@
   background: linear-gradient(180deg, #161616, #101010);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 24px;
-  padding: 18px;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 22px;
 }
 
 .difference-tabs {
@@ -831,6 +829,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 .difference-company p {
@@ -890,7 +889,25 @@
   display: block;
 }
 
-map-grid {
+.map-background {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 520px;
+  border-radius: 20px;
+  background-image: url('/images/map-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.map-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.08);
+}
+
+.map-grid {
   position: relative;
   z-index: 1;
   display: grid;
@@ -898,8 +915,8 @@ map-grid {
   gap: 6px;
   justify-content: center;
   align-content: center;
-  padding: 20px;
   min-height: 100%;
+  padding: 20px;
 }
 
 .map-grid span {
@@ -929,13 +946,21 @@ map-grid {
   color: #111111;
 }
 
+.map-attribution {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  z-index: 1;
+  font-size: 11px;
+  color: rgba(255,255,255,0.72);
+  background: rgba(0,0,0,0.35);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
 @media (max-width: 900px) {
   .difference-wrap {
     grid-template-columns: 1fr;
-  }
-
-  .difference-visual {
-    min-height: 460px;
   }
 
   .map-background {
@@ -955,29 +980,7 @@ map-grid {
     font-size: 11px;
   }
 }
-    
-.map-background::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.08);
-}
-
-  ;
-}
-
-.map-attribution {
-  position: absolute;
-  right: 12px;
-  bottom: 10px;
-  z-index: 1;
-  font-size: 11px;
-  color: rgba(255,255,255,0.7);
-  background: rgba(0,0,0,0.35);
-  padding: 4px 8px;
-  border-radius: 999px;
-}
-    
+/* DIFFERENCE SECTION END */ 
   </style>
 </head>
 <body>
