@@ -778,14 +778,18 @@
   background: linear-gradient(180deg, #161616, #101010);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 24px;
-  padding: 22px;
+  padding: 18px;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .difference-tabs {
   display: inline-flex;
   gap: 8px;
   padding: 6px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.045);
   border-radius: 14px;
   margin-bottom: 22px;
 }
@@ -849,9 +853,9 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.03);
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.035);
   border: 1px solid rgba(255,255,255,0.05);
 }
 
@@ -863,7 +867,7 @@
 .difference-metric strong {
   min-width: 64px;
   text-align: center;
-  padding: 8px 12px;
+  padding: 7px 12px;
   border-radius: 10px;
   font-size: 15px;
 }
@@ -886,15 +890,16 @@
   display: block;
 }
 
-.map-grid {
+map-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(9, 34px);
-  gap: 8px;
+  grid-template-columns: repeat(10, 34px);
+  gap: 6px;
   justify-content: center;
   align-content: center;
-  padding: 22px;
+  padding: 20px;
+  min-height: 100%;
 }
 
 .map-grid span {
@@ -925,9 +930,21 @@
 }
 
 @media (max-width: 900px) {
+  .difference-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .difference-visual {
+    min-height: 460px;
+  }
+
+  .map-background {
+    min-height: 420px;
+  }
+
   .map-grid {
     grid-template-columns: repeat(7, 30px);
-    gap: 8px;
+    gap: 6px;
   }
 
   .map-grid span {
@@ -939,33 +956,14 @@
   }
 }
     
-    .map-background {
-  position: relative;
-  overflow: hidden;
-  min-height: 420px;
-  border-radius: 20px;
-  background-image: url('/images/map-bg.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
 .map-background::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 10, 0.28);
+  background: rgba(255,255,255,0.08);
 }
 
-.map-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  justify-items: center;
-  align-items: center;
-  min-height: 100%;
-  padding: 26px;
+  ;
 }
 
 .map-attribution {
@@ -1175,67 +1173,30 @@
       </div>
 
       <div class="difference-visual">
-  <div id="beforeVisual" class="difference-map active map-background">
-    <div class="map-grid">
-      <span class="dot-red">18</span>
-      <span class="dot-red">20</span>
-      <span class="dot-red">17</span>
-      <span class="dot-red">19</span>
-      <span class="dot-red">16</span>
-      <span class="dot-red">20</span>
-      <span class="dot-red">18</span>
-      <span class="dot-red">17</span>
-      <span class="dot-red">19</span>
-      <span class="dot-red">20</span>
-      <span class="dot-red">18</span>
-      <span class="dot-red">16</span>
-      <span class="dot-red">17</span>
-      <span class="dot-red">20</span>
-      <span class="dot-red">19</span>
-      <span class="dot-red">18</span>
-      <span class="dot-red">20</span>
-      <span class="dot-red">17</span>
-      <span class="dot-red">16</span>
-      <span class="dot-red">18</span>
-      <span class="dot-red">19</span>
-      <span class="dot-red">20</span>
-      <span class="dot-red">17</span>
-      <span class="dot-red">18</span>
-      <span class="dot-red">16</span>
-    </div>
-    <div class="map-attribution">Map background for visual demonstration</div>
+ <div id="beforeVisual" class="difference-map active map-background">
+  <div class="map-grid">
+    <span class="dot-red">20</span><span class="dot-red">20</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">20</span><span class="dot-red">17</span><span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-red">18</span>
+    <span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-red">17</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">20</span><span class="dot-red">17</span><span class="dot-red">18</span><span class="dot-red">16</span>
+    <span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-red">17</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">20</span><span class="dot-red">17</span><span class="dot-red">19</span>
+    <span class="dot-red">18</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">17</span><span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-red">17</span><span class="dot-red">18</span>
+    <span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">17</span><span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-red">17</span><span class="dot-red">18</span>
+    <span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-red">17</span><span class="dot-red">16</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">17</span><span class="dot-red">20</span>
   </div>
+  <div class="map-attribution">Map background for visual demonstration</div>
+</div>
 
   <div id="afterVisual" class="difference-map map-background">
-    <div class="map-grid">
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">3</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">3</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">3</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">3</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-      <span class="dot-green">2</span>
-      <span class="dot-green">1</span>
-    </div>
-    <div class="map-attribution">Map background for visual demonstration</div>
+   <div id="afterVisual" class="difference-map map-background">
+  <div class="map-grid">
+    <span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span>
+    <span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span>
+    <span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span>
+    <span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">2</span><span class="dot-green">1</span>
+    <span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span>
+    <span class="dot-green">3</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">1</span><span class="dot-green">2</span>
   </div>
+  <div class="map-attribution">Map background for visual demonstration</div>
+</div>
 </div>
 
         <div id="afterVisual" class="difference-map">
