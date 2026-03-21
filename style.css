@@ -1065,3 +1065,26 @@ FEATURE ICONS FIRST SECTION
   opacity: 0.5;
   margin-right: 6px;
 }
+
+.process-inline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.process-inline strong {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.process-inline span {
+  opacity: 0.5;
+  margin-right: 4px;
+}
+
+.process-content {
+  padding: 16px 20px;
+}
