@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- HEAD START -->
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="/favicon.svg" />
+
+  <!-- META & SEO START -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akincy | Local SEO & Google Maps Growth</title>
@@ -10,6 +12,15 @@
     name="description"
     content="Akincy helps local businesses rank higher on Google Maps, outrank nearby competitors, and turn visibility into real leads."
   />
+  <!-- META & SEO END -->
+
+  <!-- FONTS START -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FONTS END -->
+
+  <!-- FAVICON START -->
+  <link rel="icon" href="/favicon.svg" />
+  <!-- FAVICON END -->
    
   <style>
     :root {
@@ -592,13 +603,31 @@
   backdrop-filter: blur(10px);
   background: rgba(11, 11, 11, 0.88);
   border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease, border-color 0.25s ease;
+}
+    /* NAV SCROLL EFFECT STARTS */
+.nav.scrolled {
+  background: rgba(11, 11, 11, 0.94);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+    .nav.scrolled .nav-inner {
+  min-height: 64px;
+}
+    .nav.scrolled .brand {
+  transform: scale(0.96);
 }
 
+    .nav.scrolled .nav-links a {
+  opacity: 0.95;
+}
+    /* NAV SCROLL EFFECT ENDS */
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 76px;
+  transition: min-height 0.25s ease;
 }
     .nav-links a.active {
   color: var(--accent);
@@ -625,6 +654,7 @@
 
 .brand .dot {
   color: var(--accent);
+  transition: transform 0.25s ease;
 }
 
 /* DESKTOP NAV */
@@ -1006,8 +1036,11 @@ display: grid;
   }
 }
 /* DIFFERENCE SECTION END */ 
+    
   </style>
 </head>
+  <!-- HEAD END -->
+  
 <body>
   <header class="nav">
     <div class="container nav-inner">
@@ -1560,6 +1593,24 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
     });
   });
 </script>
+
+    <script>
+  const siteNav = document.querySelector('.nav');
+
+  function handleNavScroll() {
+    if (!siteNav) return;
+
+    if (window.scrollY > 20) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleNavScroll);
+  handleNavScroll();
+</script>
+    
   </main>
   
   <footer>
