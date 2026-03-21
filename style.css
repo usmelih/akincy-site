@@ -333,17 +333,21 @@ h1 {
 }
 
 .grid-2,
-.grid-3 {
+#pricing .grid-3 {
   display: grid;
   gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  #pricing .grid-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .grid-2 {
   grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
 }
 
 .card {
@@ -656,8 +660,8 @@ h1 {
   margin-top: 8px;
 }
 
-.pricing-card {
-  position: relative;
+#pricing .pricing-card {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -692,7 +696,7 @@ h1 {
   font-weight: 400;
 }
 
-.pricing-actions {
+#pricing .pricing-actions {
   margin-top: auto;
 }
 
@@ -996,7 +1000,7 @@ FEATURE ICONS FIRST SECTION
        HOW IT WORKS
          SECTION
 ========================= */
-.process-vertical {
+#process .process-vertical {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1015,7 +1019,7 @@ FEATURE ICONS FIRST SECTION
   background: rgba(201,167,78,0.2);
 }
 
-.process-step::before {
+#process .process-step::before {
    content: "";
   position: absolute;
   left: 18px;
@@ -1029,15 +1033,15 @@ FEATURE ICONS FIRST SECTION
   z-index: 1;
 }
 
-.process-step.visible-step::before {
+#process .process-step.visible-step::before {
   transform: translateY(0) scaleY(1);
 }
 
-.process-step:last-child::before {
+#process .process-step:last-child::before {
    display: none;
 }
 
-.process-step {
+#process .process-step {
   display: grid;
   grid-template-columns: 36px 1fr;
   align-items: center;
@@ -1046,7 +1050,7 @@ FEATURE ICONS FIRST SECTION
   width: 100%;
 }
 
-.process-icon {
+#process .process-icon {
   width: 36px;
   height: 36px;
   min-width: 36px;
@@ -1066,14 +1070,14 @@ FEATURE ICONS FIRST SECTION
 }
 
 
-.process-icon svg {
+#process .process-icon svg {
    display: block;
   width: 18px;
   height: 18px;
   flex-shrink: 0;
 }
 
-.process-content {
+#process .process-content {
   width: 100%;
   max-width: none;
   background: linear-gradient(180deg, #151515, #111);
@@ -1096,7 +1100,7 @@ FEATURE ICONS FIRST SECTION
 }
 
 
-.process-inline {
+#process .process-inline {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -1109,7 +1113,7 @@ FEATURE ICONS FIRST SECTION
   white-space: nowrap;
 }
 
-.process-inline strong {
+#process .process-inline strong {
   display: inline-flex;
   align-items: baseline;
   color: var(--text);
@@ -1126,14 +1130,16 @@ FEATURE ICONS FIRST SECTION
   margin-right: 4px;
 }
 
-.process-inline span:first-child {
+#process .process-inline span:first-child {
   opacity: 0.5;
   margin-right: 4px;
 }
 
-.process-content {
+#process .process-content {
   padding: 22px 28px;
   border-radius: 18px;
+  width: 100%;
+  max-width: none;
 }
 
 /* 🔥 hover efekti */
