@@ -655,6 +655,26 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
   window.addEventListener('scroll', handleNavScroll);
   handleNavScroll();
 </script>
+
+    <script>
+  const processSection = document.querySelector('.process-vertical');
+
+  if (processSection) {
+    const processObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          processSection.classList.add('animate-line');
+        } else {
+          processSection.classList.remove('animate-line');
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    processObserver.observe(processSection);
+  }
+</script>
     
   </main>
   
