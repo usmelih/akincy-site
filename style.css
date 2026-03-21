@@ -1311,3 +1311,56 @@ details[open] .faq-icon {
   max-width: 760px;
   margin: 0 auto 36px;
 }
+
+.plan-label {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.plan-meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: -4px;
+  margin-bottom: 18px;
+}
+
+.plan-copy {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+.plan-visibility {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.starter-visibility {
+  background: rgba(201,167,78,0.12);
+  color: #f0d27a;
+}
+
+.growth-visibility {
+  background: rgba(80,170,90,0.16);
+  color: #9fe38b;
+}
+
+.dominate-visibility {
+  background: rgba(120,120,255,0.14);
+  color: #b6b8ff;
+}
+
+.pricing-card .price {
+  margin-top: 0;
+}
