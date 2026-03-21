@@ -1284,3 +1284,30 @@ details[open] .faq-icon {
   font-size: 18px;
   opacity: 0.8;
 }
+
+/* PRICING PILL  */
+
+.pricing-pill-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.pricing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.2);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#pricing .section-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 36px;
+}
