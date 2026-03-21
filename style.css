@@ -1084,15 +1084,6 @@ FEATURE ICONS FIRST SECTION
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-.process-content h3 {
-  margin: 0 0 10px;
-  font-size: 20px;
-}
-
-.process-content h3 span {
-  opacity: 0.5;
-  margin-right: 6px;
-}
 
 .process-inline {
   display: flex;
