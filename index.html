@@ -362,7 +362,7 @@
   </div>
 </section>
 
-      <section id="pricing" class="reveal">
+    <section id="pricing" class="reveal">
   <div class="container">
     <div class="pricing-pill-wrap">
       <div class="pricing-pill">
@@ -379,98 +379,193 @@
       <p>Start lean, then scale as rankings and lead flow improve.</p>
     </div>
 
-    <div class="grid-3">
-      ...
+    <div class="grid-3 pricing-grid">
+      <div class="card pricing-card">
+        <div class="plan-label">Starter</div>
+
+        <div class="price">$500 <small>/ month</small></div>
+        <div class="plan-meta">Month-to-month. Cancel anytime.</div>
+
+        <p class="plan-copy">
+          Ideal for single-location businesses that need a strong local SEO foundation and cleaner visibility.
+        </p>
+
+        <div class="plan-visibility starter-visibility">
+          Visible on foundational local opportunities
+        </div>
+
+        <ul class="list">
+          <li>Local SEO audit</li>
+          <li>Google Business Profile optimization</li>
+          <li>Core on-page fixes</li>
+          <li>Monthly reporting</li>
+          <li>Basic review strategy</li>
+        </ul>
+
+        <div class="pricing-actions">
+          <a href="#contact" class="btn btn-primary" onclick="selectPlan('Starter')">
+            Request Starter Plan
+          </a>
+        </div>
+      </div>
+
+      <div class="card pricing-card featured">
+        <span class="badge">Most Popular</span>
+        <div class="plan-label">Growth</div>
+
+        <div class="price">$1,000 <small>/ month</small></div>
+        <div class="plan-meta">Month-to-month. Cancel anytime.</div>
+
+        <p class="plan-copy">
+          Best for businesses ready to improve rankings faster, capture more demand, and outperform nearby competitors.
+        </p>
+
+        <div class="plan-visibility growth-visibility">
+          Stronger visibility across priority local searches
+        </div>
+
+        <ul class="list">
+          <li>Everything in Starter</li>
+          <li>Review strategy</li>
+          <li>Competitor analysis</li>
+          <li>City/service page optimization</li>
+          <li>Priority support</li>
+        </ul>
+
+        <div class="pricing-actions">
+          <a href="#contact" class="btn btn-primary" onclick="selectPlan('Growth')">
+            Request Growth Plan
+          </a>
+        </div>
+      </div>
+
+      <div class="card pricing-card">
+        <div class="plan-label">Dominate</div>
+
+        <div class="price">Custom</div>
+        <div class="plan-meta">Built around scope, market size, and location count.</div>
+
+        <p class="plan-copy">
+          Designed for aggressive local growth, multi-location campaigns, and brands that want to own their market.
+        </p>
+
+        <div class="plan-visibility dominate-visibility">
+          Maximum visibility potential across target markets
+        </div>
+
+        <ul class="list">
+          <li>Multi-location support</li>
+          <li>Advanced local content strategy</li>
+          <li>Reputation systems</li>
+          <li>Full local growth roadmap</li>
+          <li>Custom execution plan</li>
+        </ul>
+
+        <div class="pricing-actions">
+          <a href="#contact" class="btn btn-primary" onclick="selectPlan('Dominate')">
+            Let’s Dominate
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-        <div class="card pricing-card">
-  <div class="plan-label">Starter</div>
+</section>#pricing .section-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 36px;
+}
 
-  <div class="price">$500 <small>/ month</small></div>
-  <div class="plan-meta">Month-to-month. Cancel anytime.</div>
+.pricing-pill-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
 
-  <p class="plan-copy">
-    Ideal for single-location businesses that need a strong local SEO foundation and cleaner visibility.
-  </p>
+.pricing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.2);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
 
-  <div class="plan-visibility starter-visibility">
-    Visible on foundational local opportunities
-  </div>
+#pricing .pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
 
-  <ul class="list">
-    <li>Local SEO audit</li>
-    <li>Google Business Profile optimization</li>
-    <li>Core on-page fixes</li>
-    <li>Monthly reporting</li>
-    <li>Basic review strategy</li>
-  </ul>
+#pricing .pricing-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
 
-  <div class="pricing-actions">
-    <a href="#contact" class="btn btn-primary" onclick="selectPlan('Starter')">
-      Request Starter Plan
-    </a>
-  </div>
-</div>
+#pricing .pricing-actions {
+  margin-top: auto;
+}
 
-        <div class="card pricing-card featured">
-  <span class="badge">Most Popular</span>
-  <div class="plan-label">Growth</div>
+.plan-label {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
 
-  <div class="price">$1,000 <small>/ month</small></div>
-  <div class="plan-meta">Month-to-month. Cancel anytime.</div>
+.plan-meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: -4px;
+  margin-bottom: 18px;
+}
 
-  <p class="plan-copy">
-    Best for businesses ready to improve rankings faster, capture more demand, and outperform nearby competitors.
-  </p>
+.plan-copy {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
 
-  <div class="plan-visibility growth-visibility">
-    Stronger visibility across priority local searches
-  </div>
+.plan-visibility {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
 
-  <ul class="list">
-    <li>Everything in Starter</li>
-    <li>Review strategy</li>
-    <li>Competitor analysis</li>
-    <li>City/service page optimization</li>
-    <li>Priority support</li>
-  </ul>
+.starter-visibility {
+  background: rgba(201,167,78,0.12);
+  color: #f0d27a;
+}
 
-  <div class="pricing-actions">
-    <a href="#contact" class="btn btn-primary" onclick="selectPlan('Growth')">
-      Request Growth Plan
-    </a>
-  </div>
-</div>
+.growth-visibility {
+  background: rgba(80,170,90,0.16);
+  color: #9fe38b;
+}
 
-        <div class="card pricing-card">
-  <div class="plan-label">Dominate</div>
+.dominate-visibility {
+  background: rgba(120,120,255,0.14);
+  color: #b6b8ff;
+}
 
-  <div class="price">Custom</div>
-  <div class="plan-meta">Built around scope, market size, and location count.</div>
-
-  <p class="plan-copy">
-    Designed for aggressive local growth, multi-location campaigns, and brands that want to own their market.
-  </p>
-
-  <div class="plan-visibility dominate-visibility">
-    Maximum visibility potential across target markets
-  </div>
-
-  <ul class="list">
-    <li>Multi-location support</li>
-    <li>Advanced local content strategy</li>
-    <li>Reputation systems</li>
-    <li>Full local growth roadmap</li>
-    <li>Custom execution plan</li>
-  </ul>
-
-  <div class="pricing-actions">
-    <a href="#contact" class="btn btn-primary" onclick="selectPlan('Dominate')">
-      Let’s Dominate
-    </a>
-  </div>
-</div>
-</section>
+@media (max-width: 900px) {
+  #pricing .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
       <section id="faq" class="reveal">
   <div class="container">
