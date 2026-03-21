@@ -1078,7 +1078,9 @@ FEATURE ICONS FIRST SECTION
   font-size: 16px;
   font-weight: 700;
   margin-right: 6px;
+  transition: 0.25s ease;
 }
+
 
 .process-inline span {
   opacity: 0.5;
@@ -1088,3 +1090,10 @@ FEATURE ICONS FIRST SECTION
 .process-content {
   padding: 16px 20px;
 }
+
+/* 🔥 hover efekti */
+.process-step:hover .process-inline strong {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(201,167,78,0.4);
+}
+
