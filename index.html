@@ -667,24 +667,22 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
   handleNavScroll();
 </script>
 
-    <script>
-  const processSection = document.querySelector('.process-vertical');
+   <script>
+  const processSteps = document.querySelectorAll('.process-step');
 
-  if (processSection) {
-    const processObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          processSection.classList.add('animate-line');
-        } else {
-          processSection.classList.remove('animate-line');
-        }
-      });
-    }, {
-      threshold: 0.3
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible-step');
+      } else {
+        entry.target.classList.remove('visible-step');
+      }
     });
+  }, {
+    threshold: 0.45
+  });
 
-    processObserver.observe(processSection);
-  }
+  processSteps.forEach((step) => stepObserver.observe(step));
 </script>
     
   </main>
