@@ -966,3 +966,26 @@ footer {
     display: flex;
   }
 }
+
+/* =========================
+   FEATURE ICONS
+========================= */
+
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: 0.25s ease;
+}
+
+.positioning-card:hover .feature-icon {
+  transform: translateY(-2px) scale(1.06);
+  background: rgba(201,167,78,0.15);
+  box-shadow: 0 8px 20px rgba(201,167,78,0.15);
+}
