@@ -987,5 +987,16 @@ footer {
 .positioning-card:hover .feature-icon {
   transform: translateY(-2px) scale(1.06);
   background: rgba(201,167,78,0.15);
+  border-color: rgba(201,167,78,0.3);
   box-shadow: 0 8px 20px rgba(201,167,78,0.15);
 }
+
+.feature-icon svg {
+  transition: transform 0.3s ease;
+}
+
+.positioning-card:hover .feature-icon svg {
+  transform: rotate(8deg) scale(1.1);
+}
+
+
