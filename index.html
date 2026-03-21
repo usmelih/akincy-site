@@ -688,6 +688,22 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
 
   processSteps.forEach((step) => stepObserver.observe(step));
 </script>
+
+    <script>
+  const faqs = document.querySelectorAll(".faq-item");
+
+  faqs.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if (item.open) {
+        faqs.forEach((other) => {
+          if (other !== item) {
+            other.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>
     
   </main>
   
