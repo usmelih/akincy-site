@@ -237,4 +237,9 @@ section {
 .dot-red { background: #d83a2e; color: #fff; }
 .dot-green { background: #79e34f; color: #111; }
 /* DIFFERENCE SECTION END */
+
+body {
+  background: red !important;
+}
+
   </style> 
