@@ -905,12 +905,10 @@ footer {
    RESPONSIVE
 ========================= */
 @media (max-width: 900px) {
-  .hero-grid,
-  .grid-4,
-  .grid-3,
-  .grid-2,
-  .before-after,
-  .difference-wrap {
+ .hero-grid,
+.grid-3,
+.grid-2,
+.difference-wrap {
     grid-template-columns: 1fr;
   }
 
@@ -995,38 +993,6 @@ FEATURE ICONS FIRST SECTION
 }
 
 /* =========================
-FEATURE ICONS HOW IT WORKS
-         SECTION
-========================= */
-
-.process-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(201,167,78,0.08);
-  border: 1px solid rgba(201,167,78,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.25s ease;
-}
-
-.card:hover .process-icon {
-  transform: rotate(6deg) scale(1.08);
-  background: rgba(201,167,78,0.15);
-  box-shadow: 0 8px 20px rgba(201,167,78,0.2);
-}
-.process-title h3 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.process-title h3 span {
-  opacity: 0.5;
-  margin-right: 4px;
-}
-
-/* =========================
        HOW IT WORKS
          SECTION
 ========================= */
@@ -1034,7 +1000,7 @@ FEATURE ICONS HOW IT WORKS
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
   margin-top: 40px;
 }
 
@@ -1058,6 +1024,7 @@ FEATURE ICONS HOW IT WORKS
 .process-icon {
   width: 36px;
   height: 36px;
+  min-width: 36px;
   border-radius: 10px;
   background: #0b0b0b;
   border: 1px solid rgba(201,167,78,0.3);
@@ -1074,11 +1041,14 @@ FEATURE ICONS HOW IT WORKS
   border-radius: 16px;
   padding: 20px;
   transition: 0.25s ease;
+  width: 100%;
+  max-width: 640px;
 }
 
 .process-step:hover .process-icon {
   transform: scale(1.1);
   background: rgba(201,167,78,0.1);
+  box-shadow: 0 8px 20px rgba(201,167,78,0.2);
 }
 
 .process-step:hover .process-content {
@@ -1086,8 +1056,12 @@ FEATURE ICONS HOW IT WORKS
   border-color: rgba(201,167,78,0.2);
 }
 
+.process-content h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
 .process-content h3 span {
   opacity: 0.5;
   margin-right: 6px;
 }
-
