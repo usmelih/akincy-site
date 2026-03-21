@@ -968,7 +968,7 @@ footer {
 }
 
 /* =========================
-   FEATURE ICONS
+FEATURE ICONS FIRST SECTION
 ========================= */
 
 .feature-icon {
@@ -999,4 +999,41 @@ footer {
   transform: rotate(8deg) scale(1.1);
 }
 
+.process-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
 
+/* =========================
+FEATURE ICONS HOW IT WORKS
+         SECTION
+========================= */
+
+.process-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.card:hover .process-icon {
+  transform: rotate(6deg) scale(1.08);
+  background: rgba(201,167,78,0.15);
+  box-shadow: 0 8px 20px rgba(201,167,78,0.2);
+}
+.process-title h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.process-title h3 span {
+  opacity: 0.5;
+  margin-right: 4px;
+}
