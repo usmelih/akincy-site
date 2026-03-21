@@ -1332,8 +1332,7 @@ display: grid;
       </div>
     </section>
 
-    <section id="contact">
-      <section id="contact" class="reveal">
+ <section id="contact" class="reveal">
   <div class="container">
     <div class="cta-box">
       <h2>Get your free local SEO audit</h2>
@@ -1342,18 +1341,18 @@ display: grid;
       </p>
 
       <form id="leadForm" action="https://formspree.io/f/mlgpzokq" method="POST" class="lead-form">
+        <input type="hidden" name="_subject" value="New Akincy Lead">
+        <input type="hidden" name="plan" id="selectedPlan">
+
+        <div id="selectedPlanWrap" class="selected-plan hidden">
+          Selected plan: <strong id="selectedPlanText">None</strong>
+        </div>
+
         <div class="form-grid">
           <input type="text" name="name" placeholder="Your name" required />
           <input type="text" name="business" placeholder="Business name" required />
           <input type="email" name="email" placeholder="Email address" required />
           <input type="text" name="website" placeholder="Website or Google Business Profile URL" />
-          <input type="hidden" name="_subject" value="New Akincy Lead">
-          <input type="hidden" name="plan" id="selectedPlan">
-          <div id="selectedPlanWrap" class="selected-plan hidden">
-  Selected plan: <strong id="selectedPlanText">None</strong>
-</div>
-
-<input type="hidden" name="plan" id="selectedPlan">
         </div>
 
         <textarea
@@ -1367,20 +1366,19 @@ display: grid;
       </form>
     </div>
   </div>
-      
-      <div id="successModal" class="modal hidden">
-  <div class="modal-card">
-    <div class="success-icon">
-  ✓
-</div>
-    <h3>Your audit request is in</h3>
-    <p>
-  We’ve received your request. Akincy will review your local presence and reach out with the next steps shortly.
-</p>
-    <button id="closeModal" class="btn btn-secondary">Got it</button>
+
+  <div id="successModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="success-icon">✓</div>
+      <h3>Your audit request is in</h3>
+      <p>
+        We’ve received your request. Akincy will review your local presence and reach out with the next steps shortly.
+      </p>
+      <button id="closeModal" class="btn btn-secondary">Got it</button>
+    </div>
   </div>
-</div>
-      </section>
+</section>
+      
       <script>
   const leadForm = document.getElementById('leadForm');
   const successModal = document.getElementById('successModal');
@@ -1437,12 +1435,15 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
   }
 </script>
       
-      <script>
+     <script>
   function selectPlan(plan) {
     const input = document.getElementById('selectedPlan');
-    if (input) {
-      input.value = plan;
-    }
+    const text = document.getElementById('selectedPlanText');
+    const wrap = document.getElementById('selectedPlanWrap');
+
+    if (input) input.value = plan;
+    if (text) text.textContent = plan;
+    if (wrap) wrap.classList.remove('hidden');
   }
 </script>
       
@@ -1462,18 +1463,6 @@ if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
         toggle.classList.remove('active');
       });
     });
-  }
-</script>
-
-      <script>
-  function selectPlan(plan) {
-    const input = document.getElementById('selectedPlan');
-    const text = document.getElementById('selectedPlanText');
-    const wrap = document.getElementById('selectedPlanWrap');
-
-    if (input) input.value = plan;
-    if (text) text.textContent = plan;
-    if (wrap) wrap.classList.remove('hidden');
   }
 </script>
 
