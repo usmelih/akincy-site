@@ -1,5 +1,5 @@
 // =========================
-// FORM SUBMIT
+// FORM SUBMIT (INDEX PAGE)
 // =========================
 const leadForm = document.getElementById('leadForm');
 const successModal = document.getElementById('successModal');
@@ -57,7 +57,7 @@ if (closeModal && successModal) {
 }
 
 // =========================
-// PLAN SELECT
+// PLAN SELECT (INDEX PAGE)
 // =========================
 function selectPlan(plan) {
   const input = document.getElementById('selectedPlan');
@@ -215,7 +215,7 @@ const stepObserver = new IntersectionObserver((entries) => {
 processSteps.forEach((step) => stepObserver.observe(step));
 
 // =========================
-// FAQ ACCORDION (ONE OPEN AT A TIME)
+// FAQ ACCORDION
 // =========================
 const faqs = document.querySelectorAll('.faq-item');
 
@@ -232,9 +232,8 @@ faqs.forEach((item) => {
 });
 
 // =========================
-// USER IP LINK
+// USER LOCATION
 // =========================
-
 async function getUserLocation() {
   try {
     const res = await fetch('https://ipapi.co/json/');
@@ -242,7 +241,6 @@ async function getUserLocation() {
 
     const city = data.city;
     const country = data.country_name;
-
     const locationEl = document.getElementById('userLocation');
 
     if (locationEl && city && country) {
@@ -256,30 +254,9 @@ async function getUserLocation() {
 getUserLocation();
 
 // =========================
-// APPLY FORM
+// APPLY FORM SUBMIT
 // =========================
-
-const params = new URLSearchParams(window.location.search);
-const plan = params.get("plan");
-
-if (plan) {
-  document.getElementById("planName").innerText = plan;
-
-  if (plan === "Growth") {
-    document.getElementById("planPrice").innerText = "$400 / month";
-  }
-
-  if (plan === "Dominate") {
-    document.getElementById("planPrice").innerText = "$597 / month";
-  }
-
-  if (plan === "Conqueror") {
-    document.getElementById("planPrice").innerText = "$1,499 / 3 months";
-  }
-}
-
-
- const applyForm = document.getElementById('applyForm');
+const applyForm = document.getElementById('applyForm');
 
 if (applyForm) {
   applyForm.addEventListener('submit', async function (e) {
@@ -306,79 +283,6 @@ if (applyForm) {
       alert('Something went wrong. Please try again.');
     }
   });
-}
-
-// =========================
-// APPLY PAGE PLAN SWITCHER
-// =========================
-const planNameEl = document.getElementById('planName');
-const planPriceEl = document.getElementById('planPrice');
-const planDescEl = document.getElementById('planDesc');
-const planBadgeEl = document.getElementById('planBadge');
-const planFeaturesEl = document.getElementById('planFeatures');
-
-if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
-  const params = new URLSearchParams(window.location.search);
-  const selectedPlan = params.get('plan');
-
-  const plans = {
-    Growth: {
-      name: 'Growth',
-      price: '$400 / month',
-      desc: 'First page on Google within 90 days.<br>No money-back guarantee.',
-      badge: 'Visible on 30% of search results',
-      features: [
-        "Full Competitor Analysis",
-        "Updates Every Two Weeks",
-        "No Money-Back Guarantee",
-        "Ranking for Main Search Term",
-        "Limited Website Optimization",
-        "High-Quality Backlinks"
-      ]
-    },
-    Dominate: {
-      name: 'Dominate',
-      price: '$597 / month',
-      desc: "Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.",
-      badge: 'Visible on 75%+ of search results',
-      features: [
-        "Full Competitor Analysis",
-        "Updates Every Two Weeks",
-        "Money-Back Guarantee",
-        "Ranking for Main Search Term",
-        "Full Website Optimization",
-        "High-Quality Backlinks"
-      ]
-    },
-    Conqueror: {
-      name: 'Conqueror',
-      price: '$1,499 / 3 months',
-      desc: "Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.",
-      badge: 'Visible on 75%+ of search results',
-      features: [
-        "Full Competitor Analysis",
-        "Updates Every Two Weeks",
-        "Money-Back Guarantee",
-        "Ranking for Main Search Term",
-        "Full Website Optimization",
-        "High-Quality Backlinks"
-      ]
-    }
-  };
-
-  const plan = plans[selectedPlan] || plans.Dominate;
-
-  planNameEl.textContent = plan.name;
-  planPriceEl.textContent = plan.price;
-  planDescEl.innerHTML = plan.desc;
-  planBadgeEl.textContent = plan.badge;
-  planFeaturesEl.innerHTML = plan.features.map(item => `<li>${item}</li>`).join('');
-}
-
-const selectedPlanInputEl = document.getElementById('selectedPlanInput');
-...
-if (selectedPlanInputEl) {
-  selectedPlanInputEl.value = plan.name;
 }
 
 // =========================
@@ -440,15 +344,15 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
     }
   };
 
-  const plan = plans[selectedPlan] || plans.Dominate;
+  const selected = plans[selectedPlan] || plans.Dominate;
 
-  planNameEl.textContent = plan.name;
-  planPriceEl.textContent = plan.price;
-  planDescEl.innerHTML = plan.desc;
-  planBadgeEl.textContent = plan.badge;
-  planFeaturesEl.innerHTML = plan.features.map(item => `<li>${item}</li>`).join('');
+  planNameEl.textContent = selected.name;
+  planPriceEl.textContent = selected.price;
+  planDescEl.innerHTML = selected.desc;
+  planBadgeEl.textContent = selected.badge;
+  planFeaturesEl.innerHTML = selected.features.map(item => `<li>${item}</li>`).join('');
 
   if (selectedPlanInputEl) {
-    selectedPlanInputEl.value = plan.name;
+    selectedPlanInputEl.value = selected.name;
   }
 }
