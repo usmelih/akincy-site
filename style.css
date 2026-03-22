@@ -1757,13 +1757,15 @@ footer {
 }
 
 .thankyou-loading {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin: 0 0 18px;
+  width: 100%;
+  margin: 0 0 20px;
   color: #9d9d9d;
   font-size: 14px;
+  text-align: center;
 }
 
 .thankyou-loading span {
@@ -1788,6 +1790,7 @@ footer {
   max-width: 340px;
   margin: 0 auto;
   justify-content: center;
+  display: inline-flex;
 }
 
 .thankyou-footer {
