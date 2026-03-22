@@ -230,3 +230,27 @@ faqs.forEach((item) => {
     }
   });
 });
+
+// =========================
+// USER IP LINK
+// =========================
+
+async function getUserLocation() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+
+    const city = data.city;
+    const country = data.country_name;
+
+    const locationEl = document.getElementById('userLocation');
+
+    if (locationEl && city && country) {
+      locationEl.textContent = `${city}, ${country}`;
+    }
+  } catch (err) {
+    console.log('Location fetch failed');
+  }
+}
+
+getUserLocation();
