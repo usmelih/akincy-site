@@ -2,84 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request Received | Akincy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apply | Akincy</title>
 
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
+
 <header class="nav">
   <div class="container nav-inner">
-    <a href="./index.html" class="brand">
-      AKINCY<span class="dot">.</span>
-    </a>
+    <a href="/" class="brand">AKINCY<span class="dot">.</span></a>
 
-    <nav class="nav-links thankyou-nav-links">
-      <a href="./index.html">Back to Homepage</a>
+    <nav class="nav-links">
+      <a href="/#pricing">Pricing</a>
+      <a href="/" class="btn btn-primary">Back</a>
     </nav>
   </div>
 </header>
-  <div class="thankyou-page">
-    <div class="container">
-      <div class="thankyou-card">
 
-  <div class="thankyou-check-wrap">
-    <div class="thankyou-check-ring"></div>
-    <div class="thankyou-check">
-      <svg class="thankyou-check-svg" viewBox="0 0 52 52" aria-hidden="true">
-        <circle class="thankyou-check-circle" cx="26" cy="26" r="25" fill="none"></circle>
-        <path class="thankyou-check-path" fill="none" d="M14 27.5l7.5 7.5L38 18.5"></path>
-      </svg>
+<main class="apply-page">
+  <div class="container apply-grid">
+
+    <!-- FORM -->
+    <div class="apply-form">
+
+      <h2 class="apply-title">
+        Get started <strong>within 2 minutes</strong>
+      </h2>
+
+      <p class="apply-sub">
+        If your business qualifies, you'll be onboarded immediately.<br>
+        <strong>We only work with one business per city & industry.</strong>
+      </p>
+
+      <form id="applyForm" action="https://formspree.io/f/mlgpzokq" method="POST">
+
+        <input type="text" name="name" placeholder="John Carter" required />
+        <input type="text" name="phone" placeholder="+1 555 000 0000" required />
+        <input type="text" name="city" placeholder="City & Area (optional)" />
+        <input type="text" name="industry" placeholder="Plumber, Clinic, Lawyer..." required />
+
+        <button type="submit" class="btn btn-primary full-btn">
+          Submit Request →
+        </button>
+
+        <p class="form-note">
+          Takes less than 2 minutes • No spam • Reviewed manually
+        </p>
+
+      </form>
     </div>
-  </div>
 
-  <p class="thankyou-eyebrow">Application Confirmed</p>
+    <!-- PLAN -->
+    <div class="apply-plan">
 
-  <h1 class="thankyou-title">
-    Request
-    <span class="thankyou-title-script">Received</span>
-  </h1>
+      <div class="plan-card">
+        <div class="plan-label">Selected Plan</div>
 
-  <p class="thankyou-text">
-    We’ve received your request and will review your business shortly.
-  </p>
+        <h3 id="planName">Dominate</h3>
+        <div class="price" id="planPrice">$597 / month</div>
 
-  <p class="thankyou-accent">
-    You’ll hear from us within 24 hours.
-  </p>
+        <p class="plan-desc">
+          Top 3 on Google within 90 days.<br>
+          Guaranteed or you don’t pay.
+        </p>
 
-  <div class="thankyou-loading">
-    Reviewing your submission
-    <span></span><span></span><span></span>
-  </div>
-
-  <a href="./index.html" class="btn btn-primary thankyou-btn">
-    Continue to Homepage →
-  </a>
-
-</div>
-    </div>
-  </div>
-
-  <footer class="thankyou-footer">
-    <div class="container footer-inner">
-      <div>
-        <div style="font-weight:800; color:white; margin-bottom:6px; letter-spacing:1px;">
-          AKINCY<span style="color:#c9a74e;">.</span>
+        <div class="plan-badge">
+          Visible on 75%+ of search results
         </div>
-        <div>Local SEO & Google Maps Growth for ambitious businesses.</div>
-        <div style="margin-top:10px; font-size:13px; color:#7f7f7f;">
-          © 2025 Akincy. All rights reserved.
-        </div>
+
+        <ul>
+          <li>Full Competitor’s Analysis</li>
+          <li>Updates Every Two Weeks</li>
+          <li>Money-Back Guarantee</li>
+          <li>Ranking For Main Search-Term</li>
+          <li>Full Website Optimization</li>
+          <li>High Quality Backlinks</li>
+        </ul>
+
       </div>
 
-      <div style="text-align:right;">
-        <div><a href="mailto:audit@akincy.com">audit@akincy.com</a></div>
-        <div style="margin-top:6px;">Own Your City on Google</div>
-      </div>
     </div>
-  </footer>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div style="font-weight:800;">AKINCY<span style="color:#c9a74e;">.</span></div>
+      <div>Local SEO & Google Maps Growth</div>
+    </div>
+
+    <div>
+      <a href="mailto:audit@akincy.com">audit@akincy.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/script.js"></script>
 
 </body>
 </html>
