@@ -1460,7 +1460,7 @@ footer {
 .apply-grid {
   display: grid;
   grid-template-columns: 1fr 380px;
-  gap: 40px;
+  gap: 60px; /* artırdık */
   align-items: start;
 }
 
@@ -1494,4 +1494,28 @@ footer {
   .apply-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.apply-form {
+  max-width: 520px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  color: #9a9a9a;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #0d0d0d;
+  color: white;
 }
