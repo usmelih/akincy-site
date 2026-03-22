@@ -1464,6 +1464,10 @@ footer {
   align-items: start;
 }
 
+.apply-page {
+  padding-top: 40px;
+}
+
 .apply-form input {
   width: 100%;
   padding: 14px;
@@ -1630,4 +1634,11 @@ footer {
 .apply-title-icon {
   color: var(--accent);
   margin-right: 8px;
+}
+
+.full-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 15px;
 }
