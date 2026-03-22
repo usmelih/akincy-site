@@ -349,6 +349,47 @@ h1 {
   border-radius: 50%;
   display: inline-block;
 }
+
+.metric-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+}
+
+.metric-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: 0.25s ease;
+}
+
+.metric-copy strong {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.metric-copy span {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.hero-card .metric:hover .metric-icon {
+  transform: translateY(-2px) scale(1.04);
+  background: rgba(201,167,78,0.14);
+  border-color: rgba(201,167,78,0.3);
+  box-shadow: 0 8px 20px rgba(201,167,78,0.12);
+}
+
 /* =========================
    COMMON SECTIONS
 ========================= */
