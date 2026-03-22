@@ -314,6 +314,23 @@ h1 {
   font-size: 14px;
 }
 
+.user-location {
+  font-size: 13px;
+  color: #9f9f9f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.user-location::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  display: inline-block;
+}
 /* =========================
    COMMON SECTIONS
 ========================= */
