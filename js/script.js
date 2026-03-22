@@ -298,7 +298,7 @@ if (applyForm) {
       });
 
       if (response.ok) {
-        window.location.href = './thank-you.html';
+        window.location.href = '/success';
       } else {
         alert('Something went wrong. Please try again.');
       }
