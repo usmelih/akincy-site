@@ -277,3 +277,33 @@ if (plan) {
     document.getElementById("planPrice").innerText = "$1,499 / 3 months";
   }
 }
+
+
+ const applyForm = document.getElementById('applyForm');
+
+if (applyForm) {
+  applyForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(applyForm);
+    const action = applyForm.getAttribute('action');
+
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        window.location.href = './thank-you.html';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    }
+  });
+}
