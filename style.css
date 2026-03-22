@@ -1666,9 +1666,9 @@ footer {
 
 .thankyou-check-wrap {
   position: relative;
-  width: 88px;
-  height: 88px;
-  margin: 0 auto 22px;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 24px;
 }
 
 .thankyou-check-ring {
@@ -1676,7 +1676,7 @@ footer {
   inset: 0;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(201,167,78,0.18), rgba(201,167,78,0.04));
-  border: 1px solid rgba(201,167,78,0.18);
+  border: 1px solid rgba(201,167,78,0.16);
   animation: thankyouPulse 2.2s ease-in-out infinite;
 }
 
@@ -1684,16 +1684,35 @@ footer {
   position: absolute;
   inset: 10px;
   border-radius: 50%;
-  background: rgba(201,167,78,0.12);
+  background: rgba(201,167,78,0.1);
   border: 1px solid rgba(201,167,78,0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
-  font-size: 38px;
-  font-weight: 700;
   box-shadow: 0 0 24px rgba(201,167,78,0.08);
-  animation: thankyouPop 0.5s ease;
+}
+
+.thankyou-check-svg {
+  width: 52px;
+  height: 52px;
+  transform: rotate(-90deg);
+}
+
+.thankyou-check-circle {
+  stroke: rgba(201,167,78,0.24);
+  stroke-width: 1.5;
+}
+
+.thankyou-check-path {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: drawCheck 0.7s ease forwards 0.2s;
+  transform: rotate(90deg);
+  transform-origin: center;
 }
 
 .thankyou-eyebrow {
@@ -1705,10 +1724,20 @@ footer {
 }
 
 .thankyou-title {
-  margin: 0 0 14px;
-  font-size: clamp(40px, 6vw, 64px);
+  margin: 0 0 16px;
+  font-size: clamp(42px, 6vw, 70px);
   line-height: 0.95;
   letter-spacing: -1px;
+  text-align: center;
+}
+
+.thankyou-title-script {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  color: var(--accent);
+  font-weight: 400;
+  line-height: 0.95;
+  margin-top: 6px;
 }
 
 .thankyou-text {
@@ -1716,6 +1745,7 @@ footer {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.6;
+  text-align: center;
 }
 
 .thankyou-accent {
@@ -1723,6 +1753,7 @@ footer {
   color: var(--accent);
   font-weight: 700;
   font-size: 16px;
+  text-align: center;
 }
 
 .thankyou-loading {
@@ -1730,7 +1761,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-bottom: 24px;
+  margin: 0 0 18px;
   color: #9d9d9d;
   font-size: 14px;
 }
@@ -1763,14 +1794,9 @@ footer {
   padding: 0 0 24px;
 }
 
-@keyframes thankyouPop {
-  0% {
-    transform: scale(0.72);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
