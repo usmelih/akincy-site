@@ -1443,8 +1443,6 @@ footer {
 }
 
 .highlight::after {
-  content: "";
-  position: absolute;
   left: 0;
   bottom: 2px;
   width: 100%;
@@ -1838,4 +1836,14 @@ footer {
   .thankyou-title {
     line-height: 1;
   }
+}
+/* =========================
+   Google font
+========================= */
+
+..google-font {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  opacity: 0.95;
 }
