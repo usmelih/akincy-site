@@ -358,17 +358,27 @@ h1 {
 }
 
 .metric-icon {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   border-radius: 12px;
   background: rgba(201,167,78,0.08);
   border: 1px solid rgba(201,167,78,0.2);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 0;
-  transition: 0.25s ease;
+
+  position: relative; /* EKLENDİ */
+}
+
+.metric-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+
+  position: relative;
+  top: 0.5px; /* micro optical fix */
 }
 
 .metric-copy strong {
