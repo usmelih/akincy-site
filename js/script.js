@@ -374,3 +374,9 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
   planBadgeEl.textContent = plan.badge;
   planFeaturesEl.innerHTML = plan.features.map(item => `<li>${item}</li>`).join('');
 }
+
+const selectedPlanInputEl = document.getElementById('selectedPlanInput');
+...
+if (selectedPlanInputEl) {
+  selectedPlanInputEl.value = plan.name;
+}
