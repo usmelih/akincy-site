@@ -307,3 +307,70 @@ if (applyForm) {
     }
   });
 }
+
+// =========================
+// APPLY PAGE PLAN SWITCHER
+// =========================
+const planNameEl = document.getElementById('planName');
+const planPriceEl = document.getElementById('planPrice');
+const planDescEl = document.getElementById('planDesc');
+const planBadgeEl = document.getElementById('planBadge');
+const planFeaturesEl = document.getElementById('planFeatures');
+
+if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
+  const params = new URLSearchParams(window.location.search);
+  const selectedPlan = params.get('plan');
+
+  const plans = {
+    Growth: {
+      name: 'Growth',
+      price: '$400 / month',
+      desc: 'First page on Google within 90 days.<br>No money-back guarantee.',
+      badge: 'Visible on 30% of search results',
+      features: [
+        "Full Competitor Analysis",
+        "Updates Every Two Weeks",
+        "No Money-Back Guarantee",
+        "Ranking for Main Search Term",
+        "Limited Website Optimization",
+        "High-Quality Backlinks"
+      ]
+    },
+    Dominate: {
+      name: 'Dominate',
+      price: '$597 / month',
+      desc: "Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.",
+      badge: 'Visible on 75%+ of search results',
+      features: [
+        "Full Competitor Analysis",
+        "Updates Every Two Weeks",
+        "Money-Back Guarantee",
+        "Ranking for Main Search Term",
+        "Full Website Optimization",
+        "High-Quality Backlinks"
+      ]
+    },
+    Conqueror: {
+      name: 'Conqueror',
+      price: '$1,499 / 3 months',
+      desc: "Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.",
+      badge: 'Visible on 75%+ of search results',
+      features: [
+        "Full Competitor Analysis",
+        "Updates Every Two Weeks",
+        "Money-Back Guarantee",
+        "Ranking for Main Search Term",
+        "Full Website Optimization",
+        "High-Quality Backlinks"
+      ]
+    }
+  };
+
+  const plan = plans[selectedPlan] || plans.Dominate;
+
+  planNameEl.textContent = plan.name;
+  planPriceEl.textContent = plan.price;
+  planDescEl.innerHTML = plan.desc;
+  planBadgeEl.textContent = plan.badge;
+  planFeaturesEl.innerHTML = plan.features.map(item => `<li>${item}</li>`).join('');
+}
