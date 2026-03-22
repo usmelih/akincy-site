@@ -254,3 +254,26 @@ async function getUserLocation() {
 }
 
 getUserLocation();
+
+// =========================
+// APPLY FORM
+// =========================
+
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+
+if (plan) {
+  document.getElementById("planName").innerText = plan;
+
+  if (plan === "Growth") {
+    document.getElementById("planPrice").innerText = "$400 / month";
+  }
+
+  if (plan === "Dominate") {
+    document.getElementById("planPrice").innerText = "$597 / month";
+  }
+
+  if (plan === "Conqueror") {
+    document.getElementById("planPrice").innerText = "$1,499 / 3 months";
+  }
+}
