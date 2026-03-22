@@ -3,7 +3,6 @@
 
 <!-- HEAD START -->
 <head>
-<div class="card pricing-card">
   <div class="plan-label">Starter</div>
 
   <div class="price">$500 <small>/ month</small></div>
@@ -469,106 +468,14 @@
       </div>
     </div>
   </div>
-</section>#pricing .section-head {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 36px;
-}
+</section>
 
-.pricing-pill-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 18px;
-}
-
-.pricing-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(201,167,78,0.08);
-  border: 1px solid rgba(201,167,78,0.2);
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-#pricing .pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  align-items: stretch;
-}
-
-#pricing .pricing-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-#pricing .pricing-actions {
-  margin-top: auto;
-}
-
-.plan-label {
-  display: inline-flex;
-  width: fit-content;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.05);
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
-.plan-meta {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: -4px;
-  margin-bottom: 18px;
-}
-
-.plan-copy {
-  color: var(--text);
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0 0 18px;
-}
-
-.plan-visibility {
-  padding: 12px 14px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
-.starter-visibility {
-  background: rgba(201,167,78,0.12);
-  color: #f0d27a;
-}
-
-.growth-visibility {
-  background: rgba(80,170,90,0.16);
-  color: #9fe38b;
-}
-
-.dominate-visibility {
-  background: rgba(120,120,255,0.14);
-  color: #b6b8ff;
-}
-
-@media (max-width: 900px) {
-  #pricing .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-      <section id="faq" class="reveal">
+<section id="faq" class="reveal">
   <div class="container">
+    <div class="faq-pill-wrap">
+      <div class="trust-pill">No contracts. No guesswork.</div>
+    </div>
+
     <div class="section-head">
       <h2>Frequently asked questions</h2>
       <p>Clear answers before you book your audit.</p>
@@ -608,7 +515,7 @@
   </div>
 </section>
 
- <section id="contact" class="reveal">
+<section id="contact" class="reveal">
   <div class="container">
     <div class="cta-box">
       <h2>Get your free local SEO audit</h2>
@@ -654,15 +561,14 @@
     </div>
   </div>
 </section>
-     <script src="js/script.js" defer></script>
-  </main>
-  
-  <footer>
+</main>
+
+<footer>
   <div class="container footer-inner">
     <div>
       <div style="font-weight:800; color:white; margin-bottom:6px; letter-spacing:1px;">
-  AKINCY<span style="color:#c9a74e;">.</span>
-</div>
+        AKINCY<span style="color:#c9a74e;">.</span>
+      </div>
       <div>Local SEO & Google Maps Growth for ambitious businesses.</div>
     </div>
 
@@ -672,3 +578,7 @@
     </div>
   </div>
 </footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
