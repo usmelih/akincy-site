@@ -1074,6 +1074,26 @@ h1 {
   text-align: center;
 }
 
+.plan-trust {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(201,167,78,0.08);
+  border: 1px solid rgba(201,167,78,0.18);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.plan-anchor {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 /* =========================
    FAQ
 ========================= */
