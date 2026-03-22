@@ -1318,11 +1318,11 @@ footer {
 ========================= */
 
 .highlight {
-  font-family: 'Playfair Display', serif;
+  ont-family: 'Bonheur Royale', cursive;
   color: var(--accent);
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  text-shadow: 0 0 12px rgba(201,167,78,0.25);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(201,167,78,0.35);
   position: relative;
 }
 
