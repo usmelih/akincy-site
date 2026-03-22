@@ -214,6 +214,12 @@ section {
   padding: 72px 0 40px;
 }
 
+.hero-strong {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+}
+
 .hero::before {
   content: "";
   position: absolute;
