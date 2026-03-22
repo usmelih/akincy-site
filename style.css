@@ -1459,8 +1459,8 @@ footer {
 ========================= */
 .apply-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 60px; /* artırdık */
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 44px;
   align-items: start;
 }
 
@@ -1476,9 +1476,56 @@ footer {
 
 .apply-plan .plan-card {
   background: #111;
-  padding: 24px;
+  padding: 22px;
   border-radius: 16px;
   border: 1px solid #2a2a2a;
+}
+
+.apply-plan .price {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 0 0 18px;
+}
+
+.apply-plan ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.apply-plan li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+  .apply-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .apply-form,
+  .apply-plan {
+    max-width: 100%;
+  }
+}
+
+.apply-plan .plan-badge {
+  background: rgba(80,170,90,0.2);
+  color: #9fe38b;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.apply-plan .plan-desc {
+  margin: 0 0 16px;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.apply-plan .plan-card h3 {
+  margin: 16px 0 10px;
+  font-size: 18px;
 }
 
 .plan-badge {
@@ -1497,11 +1544,37 @@ footer {
 }
 
 .apply-form {
-  max-width: 520px;
+  max-width: 560px;
+}
+
+.apply-title {
+  margin: 0 0 18px;
+  line-height: 1.1;
+  letter-spacing: -0.4px;
+}
+
+.apply-title-light {
+  font-weight: 600;
+}
+
+.apply-title-strong {
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.apply-sub {
+  color: var(--text);
+  letter-spacing: 0.2px;
+  line-height: 1.55;
+  margin: 0 0 22px;
+}
+
+.apply-sub strong {
+  letter-spacing: 0.25px;
 }
 
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .input-group label {
@@ -1509,13 +1582,52 @@ footer {
   font-size: 13px;
   color: #9a9a9a;
   margin-bottom: 6px;
+  letter-spacing: 0.2px;
 }
+
 
 .input-group input {
   width: 100%;
-  padding: 14px;
+  padding: 13px 14px;
   border-radius: 10px;
   border: 1px solid #2a2a2a;
   background: #0d0d0d;
   color: white;
+}
+
+.apply-form .btn {
+  margin-top: 8px;
+}
+
+.apply-plan {
+  width: 100%;
+  max-width: 360px;
+}
+
+.apply-back-wrap {
+  margin-bottom: 14px;
+}
+
+.apply-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-size: 15px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.apply-back:hover {
+  color: var(--accent);
+}
+
+.apply-back-arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.apply-title-icon {
+  color: var(--accent);
+  margin-right: 8px;
 }
