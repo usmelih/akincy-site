@@ -1320,10 +1320,7 @@ footer {
 .highlight {
   font-family: 'Great Vibes', cursive;
   color: var(--accent);
-  font-size: 1.2em;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 12px rgba(201,167,78,0.35);
-  transform: translateY(2px);
+  font-weight: 400;
   display: inline-block;
 }
 
