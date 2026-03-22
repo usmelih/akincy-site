@@ -1453,3 +1453,45 @@ footer {
   z-index: -1;
   border-radius: 4px;
 }
+
+/* =========================
+   APPLY FORM
+========================= */
+.apply-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+.apply-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #0d0d0d;
+  color: white;
+}
+
+.apply-plan .plan-card {
+  background: #111;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+}
+
+.plan-badge {
+  background: rgba(80,170,90,0.2);
+  color: #9fe38b;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 16px 0;
+}
+
+@media (max-width: 900px) {
+  .apply-grid {
+    grid-template-columns: 1fr;
+  }
+}
