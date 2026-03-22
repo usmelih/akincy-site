@@ -216,8 +216,10 @@ section {
 
 .hero-strong {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 19px;
+  line-height: 1.6;
   color: var(--text);
+  max-width: 620px;
 }
 
 .hero::before {
