@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uygula | Akincy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="brand">AKINCY<span class="dot">.</span></a>
+
+      <nav class="nav-links">
+        <a href="/#pricing">Paketler</a>
+        <a href="/" class="btn btn-primary">Geri</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="apply-page">
+    <div class="container apply-grid">
+
+      <!-- LEFT -->
+      <div class="apply-form">
+        <h2 class="apply-title">
+  <span class="apply-title-icon">⚡</span>
+  <span class="apply-title-strong">2 Dakikada</span>
+  <span class="apply-title-light">Başvur</span>
+</h2>
+
+        <p class="apply-sub">
+          İşletmen uygunsa hemen onboarding sürecine alınır.<br>
+          <strong>Her şehir ve sektörde yalnızca bir işletmeyle çalışıyoruz.</strong>
+        </p>
+
+        <form id="applyForm" action="https://formspree.io/f/mlgpzokq" method="POST">
+          <input type="hidden" name="selected_plan" id="selectedPlanInput" value="Dominate" />
+
+          <div class="input-group">
+            <label>Ad Soyad</label>
+            <input type="text" name="name" placeholder="Ahmet Yılmaz" required />
+          </div>
+
+          <div class="input-group">
+            <label>Telefon Numarası</label>
+            <input type="text" name="phone" placeholder="+90 5xx xxx xx xx" required />
+          </div>
+
+          <div class="input-group">
+            <label>Şehir & Bölge (varsa)</label>
+            <input type="text" name="city" placeholder="örn. İstanbul, Kadıköy" />
+          </div>
+
+          <div class="input-group">
+            <label>Sektör</label>
+            <input type="text" name="industry" placeholder="Diş kliniği, avukat, çilingir..." required />
+          </div>
+
+          <button type="submit" class="btn btn-primary full-btn">
+            Başvuruyu Gönder →
+          </button>
+        </form>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="apply-plan">
+        <div class="apply-back-wrap">
+          <a href="/#pricing" class="apply-back">
+            <span class="apply-back-arrow">←</span>
+            Farklı bir paket seç
+          </a>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-label">Seçilen plan</div>
+
+          <h3 id="planName">Dominate</h3>
+          <div class="price" id="planPrice">$597 / ay</div>
+
+          <p class="plan-desc" id="planDesc">
+            Google’da 90 gün içinde ilk sayfa.<br>
+            Garantili, aksi halde ödeme yok.
+          </p>
+
+          <div class="plan-badge" id="planBadge">
+            Aramaların %75+’inde görünürlük.
+          </div>
+
+          <ul id="planFeatures">
+            <li>Kapsamlı Rakip Analizi</li>
+            <li>İki Haftada Bir Güncelleme</li>
+            <li>Para İade Garantisi</li>
+            <li>Ana Arama Teriminde Sıralama</li>
+            <li>Tam Website Optimizasyonu</li>
+            <li>Yüksek Kaliteli Backlinkler</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight:800; color:white; margin-bottom:6px; letter-spacing:1px;">
+          AKINCY<span style="color:#c9a74e;">.</span>
+        </div>
+        <div>Local SEO & Google Maps Growth for ambitious businesses.</div>
+        <div style="margin-top:10px; font-size:13px; color:#7f7f7f;">
+          © 2025 Akincy. Tüm hakları saklıdır.
+        </div>
+      </div>
+
+      <div style="text-align:right;">
+        <div><a href="mailto:audit@akincy.com">audit@akincy.com</a></div>
+        <div style="margin-top:6px;">Kendi Şehrinde Google'da öne çık</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
