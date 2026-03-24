@@ -362,15 +362,6 @@ h1 {
   box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
 }
 
-.user-location::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: #4ade80;
-  border-radius: 50%;
-  display: inline-block;
-}
-
 .metric-feature {
   display: flex;
   align-items: flex-start;
