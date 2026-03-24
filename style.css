@@ -170,6 +170,16 @@ section {
   border-radius: 2px;
 }
 
+.lang-switch {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lang-switch:hover {
+  color: var(--accent);
+}
+
 /* =========================
    MOBILE MENU
 ========================= */
