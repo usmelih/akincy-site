@@ -343,12 +343,23 @@ h1 {
 }
 
 .user-location {
-  font-size: 13px;
-  color: #9f9f9f;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
+
+  font-size: 14px;
+  color: #9a9a9a;
+
+  margin-bottom: 16px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
 }
 
 .user-location::before {
