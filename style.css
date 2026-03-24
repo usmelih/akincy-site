@@ -594,6 +594,18 @@ h1 {
   background: linear-gradient(180deg, #161616, #101010);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: 0.25s ease;
+  text-align: center;
+}
+
+.positioning-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.positioning-card:hover .icon-shell {
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(201,167,78,0.15);
 }
 
 .positioning-card:hover {
