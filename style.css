@@ -180,6 +180,12 @@ section {
   color: var(--accent);
 }
 
+.logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
 /* =========================
    MOBILE MENU
 ========================= */
