@@ -56,16 +56,16 @@ section {
   font-weight: 800;
   letter-spacing: 1px;
   transition: transform 0.25s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   letter-spacing: -0.5px;
-  gap: 6px; /* 🔥 bunu düşürdük */
+  gap: 8px; /* 🔥 bunu düşürdük */
 }
 
-.brand img {
-  margin-right: -2px;
-  height: 20px; /* 18–22 ideal */
+.brand-logo {
+  height: 22px;
   width: auto;
+  display: block;
 }
 
 .brand .dot {
