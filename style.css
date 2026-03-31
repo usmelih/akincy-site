@@ -59,12 +59,13 @@ section {
   display: inline-flex;
   align-items: center;
   letter-spacing: -0.5px;
-  gap: 8px; /* 🔥 bunu düşürdük */
+  gap: 10px; /* 🔥 bunu düşürdük */
 }
 
 .brand-logo {
-  height: 22px;
-  width: auto;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
   display: block;
 }
 
