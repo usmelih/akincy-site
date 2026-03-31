@@ -63,10 +63,11 @@ section {
 }
 
 .brand-logo {
-  width: 26px;
-  height: 26px;
+  height: 28px !important;
+  width: auto !important;
   object-fit: contain;
   display: block;
+  transform: translateY(1px);
 }
 
 .brand .dot {
