@@ -1451,7 +1451,35 @@ footer {
   margin-top: 0;
 }
 
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
+.footer-left,
+.footer-right {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-right {
+    text-align: left !important;
+  }
+
+  .footer-right div[style*="justify-content:flex-end"] {
+    justify-content: flex-start !important;
+  }
+}
+      
 .footer-brand {
   display: flex;
   align-items: center;
@@ -1492,22 +1520,6 @@ footer {
   #pricing .grid-3 {
     grid-template-columns: 1fr;
   }
-
-  .footer-inner {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-   @media (max-width: 768px) {
-  .footer-inner {
-    flex-direction: column;
-    gap: 24px;
-  }
-}
    
   .form-grid {
     grid-template-columns: 1fr;
