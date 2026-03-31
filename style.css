@@ -1451,13 +1451,28 @@ footer {
   margin-top: 0;
 }
 
-.footer-inner {
+.footer-brand {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  color: var(--muted);
-  font-size: 14px;
+  align-items: center;
+  gap: 8px; /* yakın ama yapışık değil */
+  margin-bottom: 6px;
+}
+
+.footer-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-title {
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.footer-title .dot {
+  color: #c9a74e;
 }
 
 /* =========================
