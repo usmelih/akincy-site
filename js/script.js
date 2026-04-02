@@ -356,3 +356,64 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
     selectedPlanInputEl.value = selected.name;
   }
 }
+
+// =========================
+// SMART COUNTER (OLD → NEW)
+// =========================
+function animateCounter(el, newValue) {
+  const isPercent = el.classList.contains('percent');
+
+  const startValue = parseInt(el.textContent.replace('%', '')) || 0;
+  const endValue = newValue;
+
+  const duration = 800;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+
+    // easeOutCubic (çok smooth)
+    const eased = 1 - Math.pow(1 - progress, 3);
+
+    const current = Math.round(
+      startValue + (endValue - startValue) * eased
+    );
+
+    el.textContent = isPercent ? `${current}%` : current;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+function animateMetricsTransition(fromContainer, toContainer) {
+  const fromCounters = fromContainer.querySelectorAll('.counter');
+  const toCounters = toContainer.querySelectorAll('.counter');
+
+  fromCounters.forEach((el, index) => {
+    const targetEl = toCounters[index];
+    const newValue = Number(targetEl.dataset.value);
+
+    animateCounter(el, newValue);
+  });
+  
+  if (view === 'before') {
+  beforeMetrics.classList.add('active');
+  beforeVisual.classList.add('active');
+  afterMetrics.classList.remove('active');
+  afterVisual.classList.remove('active');
+
+  animateMetricsTransition(afterMetrics, beforeMetrics);
+
+} else {
+  afterMetrics.classList.add('active');
+  afterVisual.classList.add('active');
+  beforeMetrics.classList.remove('active');
+  beforeVisual.classList.remove('active');
+
+  animateMetricsTransition(beforeMetrics, afterMetrics);
+}
+}
