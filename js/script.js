@@ -275,7 +275,8 @@ if (applyForm) {
       });
 
       if (response.ok) {
-        window.location.href = '/success';
+        const isTurkishPage = window.location.pathname.startsWith('/tr/');
+        window.location.href = isTurkishPage ? '/tr/success' : '/success';
       } else {
         alert('Something went wrong. Please try again.');
       }
