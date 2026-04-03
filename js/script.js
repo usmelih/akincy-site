@@ -289,6 +289,9 @@ if (applyForm) {
 // =========================
 // APPLY PAGE PLAN SWITCHER
 // =========================
+// =========================
+// APPLY PAGE PLAN SWITCHER
+// =========================
 const planNameEl = document.getElementById('planName');
 const planPriceEl = document.getElementById('planPrice');
 const planDescEl = document.getElementById('planDesc');
@@ -299,53 +302,100 @@ const selectedPlanInputEl = document.getElementById('selectedPlanInput');
 if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
   const params = new URLSearchParams(window.location.search);
   const selectedPlan = params.get('plan');
+  const isTurkishPage = window.location.pathname.startsWith('/tr/');
 
-  const plans = {
-    Growth: {
-      name: 'Growth',
-      price: '$400 / month',
-      desc: 'First page on Google within 90 days.<br>No money-back guarantee.',
-      badge: 'Visible on 30% of search results',
-      features: [
-        'Full Competitor Analysis',
-        'Updates Every Two Weeks',
-        'No Money-Back Guarantee',
-        'Ranking for Main Search Term',
-        'Limited Website Optimization',
-        'High-Quality Backlinks'
-      ]
-    },
-    Dominate: {
-      name: 'Dominate',
-      price: '$597 / month',
-      desc: 'Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.',
-      badge: 'Visible on 75%+ of search results',
-      features: [
-        'Full Competitor Analysis',
-        'Updates Every Two Weeks',
-        'Money-Back Guarantee',
-        'Ranking for Main Search Term',
-        'Full Website Optimization',
-        'High-Quality Backlinks'
-      ]
-    },
-    Conqueror: {
-      name: 'Conqueror',
-      price: '$1,499 / 3 months',
-      desc: 'Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.',
-      badge: 'Visible on 75%+ of search results',
-      features: [
-        'Full Competitor Analysis',
-        'Updates Every Two Weeks',
-        'Money-Back Guarantee',
-        'Ranking for Main Search Term',
-        'Full Website Optimization',
-        'High-Quality Backlinks'
-      ]
-    }
-  };
+  const plans = isTurkishPage
+    ? {
+        Hakimiyet: {
+          name: 'Hakimiyet',
+          price: '₺12.900 / ay',
+          desc: 'Google’da 90 gün içinde ilk sayfa.<br>Garanti yok.',
+          badge: 'Aramaların %30’unda görünürlük',
+          features: [
+            'Kapsamlı Rakip Analizi',
+            'İki Haftada Bir Güncelleme',
+            'Para İade Garantisi Yok',
+            'Ana Arama Teriminde Sıralama',
+            'Sınırlı Website Optimizasyonu',
+            'Yüksek Kaliteli Backlinkler'
+          ]
+        },
+        Zirve: {
+          name: 'Zirve',
+          price: '₺18.900 / ay',
+          desc: 'Google’da 90 gün içinde ilk 3.<br>Garantili, aksi halde ödeme yok.',
+          badge: 'Aramaların %75+’inde görünürlük',
+          features: [
+            'Kapsamlı Rakip Analizi',
+            'İki Haftada Bir Güncelleme',
+            'Para İade Garantisi',
+            'Ana Arama Teriminde Sıralama',
+            'Tam Website Optimizasyonu',
+            'Yüksek Kaliteli Backlinkler'
+          ]
+        },
+        Fetih: {
+          name: 'Akıncı Fethi',
+          price: '₺44.900 / 3 ay',
+          desc: 'Google’da 90 gün içinde ilk 3.<br>Garantili, aksi halde ödeme yok.',
+          badge: 'Aramaların %75+’inde görünürlük',
+          features: [
+            'Kapsamlı Rakip Analizi',
+            'İki Haftada Bir Güncelleme',
+            'Para İade Garantisi',
+            'Ana Arama Teriminde Sıralama',
+            'Tam Website Optimizasyonu',
+            'Yüksek Kaliteli Backlinkler'
+          ]
+        }
+      }
+    : {
+        Growth: {
+          name: 'Growth',
+          price: '$400 / month',
+          desc: 'First page on Google within 90 days.<br>No money-back guarantee.',
+          badge: 'Visible on 30% of search results',
+          features: [
+            'Full Competitor Analysis',
+            'Updates Every Two Weeks',
+            'No Money-Back Guarantee',
+            'Ranking for Main Search Term',
+            'Limited Website Optimization',
+            'High-Quality Backlinks'
+          ]
+        },
+        Dominate: {
+          name: 'Dominate',
+          price: '$597 / month',
+          desc: 'Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.',
+          badge: 'Visible on 75%+ of search results',
+          features: [
+            'Full Competitor Analysis',
+            'Updates Every Two Weeks',
+            'Money-Back Guarantee',
+            'Ranking for Main Search Term',
+            'Full Website Optimization',
+            'High-Quality Backlinks'
+          ]
+        },
+        Conqueror: {
+          name: 'Conqueror',
+          price: '$1,499 / 3 months',
+          desc: 'Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.',
+          badge: 'Visible on 75%+ of search results',
+          features: [
+            'Full Competitor Analysis',
+            'Updates Every Two Weeks',
+            'Money-Back Guarantee',
+            'Ranking for Main Search Term',
+            'Full Website Optimization',
+            'High-Quality Backlinks'
+          ]
+        }
+      };
 
-  const selected = plans[selectedPlan] || plans.Dominate;
+  const fallbackKey = isTurkishPage ? 'sefer' : 'Dominate';
+  const selected = plans[selectedPlan] || plans[fallbackKey];
 
   planNameEl.textContent = selected.name;
   planPriceEl.textContent = selected.price;
@@ -357,7 +407,6 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
     selectedPlanInputEl.value = selected.name;
   }
 }
-
 // =========================
 // SMART COUNTER (OLD → NEW)
 // =========================
