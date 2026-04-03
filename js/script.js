@@ -335,7 +335,7 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
           ]
         },
         Fetih: {
-          name: 'Akıncı Fethi',
+          name: 'Fetih',
           price: '₺44.900 / 3 ay',
           desc: 'Google’da 90 gün içinde ilk 3.<br>Garantili, aksi halde ödeme yok.',
           badge: 'Aramaların %75+’inde görünürlük',
