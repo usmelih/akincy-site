@@ -95,6 +95,8 @@ if (toggle && nav) {
 // REVEAL ANIMATION
 // =========================
 
+const revealElements = document.querySelectorAll('.reveal');
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -104,12 +106,11 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.15,
-  rootMargin: '0px 0px -60px 0px'
+  threshold: 0.02,
+  rootMargin: '0px 0px -20px 0px'
 });
 
 revealElements.forEach((el) => revealObserver.observe(el));
-
 // =========================
 // BEFORE / AFTER TOGGLE
 // =========================
