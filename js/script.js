@@ -1,10 +1,10 @@
 // =========================
 // FORM SUBMIT (INDEX PAGE)
 // =========================
+document.documentElement.classList.add('js');
 const leadForm = document.getElementById('leadForm');
 const successModal = document.getElementById('successModal');
 const closeModal = document.getElementById('closeModal');
-document.documentElement.classList.add('js');
 
 if (leadForm) {
   leadForm.addEventListener('submit', async function (e) {
