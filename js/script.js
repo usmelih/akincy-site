@@ -4,6 +4,7 @@
 const leadForm = document.getElementById('leadForm');
 const successModal = document.getElementById('successModal');
 const closeModal = document.getElementById('closeModal');
+document.documentElement.classList.add('js');
 
 if (leadForm) {
   leadForm.addEventListener('submit', async function (e) {
@@ -106,8 +107,8 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.02,
-  rootMargin: '0px 0px -20px 0px'
+  threshold: 0.08,
+  rootMargin: '0px 0px -40px 0px'
 });
 
 revealElements.forEach((el) => revealObserver.observe(el));
