@@ -1,7 +1,8 @@
+document.documentElement.classList.add('js');
+
 // =========================
 // FORM SUBMIT (INDEX PAGE)
 // =========================
-document.documentElement.classList.add('js');
 const leadForm = document.getElementById('leadForm');
 const successModal = document.getElementById('successModal');
 const closeModal = document.getElementById('closeModal');
@@ -95,7 +96,6 @@ if (toggle && nav) {
 // =========================
 // REVEAL ANIMATION
 // =========================
-
 const revealElements = document.querySelectorAll('.reveal');
 
 if (revealElements.length > 0) {
@@ -115,7 +115,48 @@ if (revealElements.length > 0) {
   revealElements.forEach((el) => revealObserver.observe(el));
 }
 
-revealElements.forEach((el) => revealObserver.observe(el));
+// =========================
+// SMART COUNTER
+// =========================
+function animateCounter(el, newValue) {
+  const isPercent = el.classList.contains('percent');
+  const startValue = parseInt(el.textContent.replace('%', ''), 10) || 0;
+  const endValue = newValue;
+  const duration = 800;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(startValue + (endValue - startValue) * eased);
+
+    el.textContent = isPercent ? `${current}%` : `${current}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+function animateMetricsTransition(fromContainer, toContainer) {
+  if (!fromContainer || !toContainer) return;
+
+  const fromCounters = fromContainer.querySelectorAll('.counter');
+  const toCounters = toContainer.querySelectorAll('.counter');
+
+  fromCounters.forEach((el, index) => {
+    const targetEl = toCounters[index];
+    if (!targetEl) return;
+
+    const newValue = Number(targetEl.dataset.value);
+    if (!Number.isNaN(newValue)) {
+      animateCounter(el, newValue);
+    }
+  });
+}
+
 // =========================
 // BEFORE / AFTER TOGGLE
 // =========================
@@ -138,11 +179,15 @@ if (diffTabs.length && beforeMetrics && afterMetrics && beforeVisual && afterVis
         beforeVisual.classList.add('active');
         afterMetrics.classList.remove('active');
         afterVisual.classList.remove('active');
+
+        animateMetricsTransition(afterMetrics, beforeMetrics);
       } else {
         afterMetrics.classList.add('active');
         afterVisual.classList.add('active');
         beforeMetrics.classList.remove('active');
         beforeVisual.classList.remove('active');
+
+        animateMetricsTransition(beforeMetrics, afterMetrics);
       }
     });
   });
@@ -198,19 +243,21 @@ handleNavScroll();
 // =========================
 const processSteps = document.querySelectorAll('.process-step');
 
-const stepObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible-step');
-    } else {
-      entry.target.classList.remove('visible-step');
-    }
+if (processSteps.length > 0) {
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible-step');
+      } else {
+        entry.target.classList.remove('visible-step');
+      }
+    });
+  }, {
+    threshold: 0.45
   });
-}, {
-  threshold: 0.45
-});
 
-processSteps.forEach((step) => stepObserver.observe(step));
+  processSteps.forEach((step) => stepObserver.observe(step));
+}
 
 // =========================
 // FAQ ACCORDION
@@ -228,15 +275,6 @@ faqs.forEach((item) => {
     }
   });
 });
-
-.faq-item[open] p {
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
 // =========================
 // USER LOCATION
@@ -293,9 +331,6 @@ if (applyForm) {
   });
 }
 
-// =========================
-// APPLY PAGE PLAN SWITCHER
-// =========================
 // =========================
 // APPLY PAGE PLAN SWITCHER
 // =========================
@@ -401,7 +436,7 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
         }
       };
 
-  const fallbackKey = isTurkishPage ? 'sefer' : 'Dominate';
+  const fallbackKey = isTurkishPage ? 'Zirve' : 'Dominate';
   const selected = plans[selectedPlan] || plans[fallbackKey];
 
   planNameEl.textContent = selected.name;
@@ -413,64 +448,4 @@ if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
   if (selectedPlanInputEl) {
     selectedPlanInputEl.value = selected.name;
   }
-}
-// =========================
-// SMART COUNTER (OLD → NEW)
-// =========================
-function animateCounter(el, newValue) {
-  const isPercent = el.classList.contains('percent');
-
-  const startValue = parseInt(el.textContent.replace('%', '')) || 0;
-  const endValue = newValue;
-
-  const duration = 800;
-  const startTime = performance.now();
-
-  function update(currentTime) {
-    const progress = Math.min((currentTime - startTime) / duration, 1);
-
-    // easeOutCubic (çok smooth)
-    const eased = 1 - Math.pow(1 - progress, 3);
-
-    const current = Math.round(
-      startValue + (endValue - startValue) * eased
-    );
-
-    el.textContent = isPercent ? `${current}%` : current;
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    }
-  }
-
-  requestAnimationFrame(update);
-}
-
-function animateMetricsTransition(fromContainer, toContainer) {
-  const fromCounters = fromContainer.querySelectorAll('.counter');
-  const toCounters = toContainer.querySelectorAll('.counter');
-
-  fromCounters.forEach((el, index) => {
-    const targetEl = toCounters[index];
-    const newValue = Number(targetEl.dataset.value);
-
-    animateCounter(el, newValue);
-  });
-  
-  if (view === 'before') {
-  beforeMetrics.classList.add('active');
-  beforeVisual.classList.add('active');
-  afterMetrics.classList.remove('active');
-  afterVisual.classList.remove('active');
-
-  animateMetricsTransition(afterMetrics, beforeMetrics);
-
-} else {
-  afterMetrics.classList.add('active');
-  afterVisual.classList.add('active');
-  beforeMetrics.classList.remove('active');
-  beforeVisual.classList.remove('active');
-
-  animateMetricsTransition(beforeMetrics, afterMetrics);
-}
 }
