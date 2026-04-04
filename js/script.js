@@ -94,16 +94,8 @@ if (toggle && nav) {
 // =========================
 // REVEAL ANIMATION
 // =========================
-const revealElements = document.querySelectorAll('.reveal');
-let hasScrolled = false;
-
-window.addEventListener('scroll', () => {
-  hasScrolled = true;
-});
 
 const revealObserver = new IntersectionObserver((entries) => {
-  if (!hasScrolled) return;
-
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
@@ -112,8 +104,8 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.25,
-  rootMargin: '0px 0px -80px 0px'
+  threshold: 0.15,
+  rootMargin: '0px 0px -60px 0px'
 });
 
 revealElements.forEach((el) => revealObserver.observe(el));
