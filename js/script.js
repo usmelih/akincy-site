@@ -98,18 +98,22 @@ if (toggle && nav) {
 
 const revealElements = document.querySelectorAll('.reveal');
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
+if (revealElements.length > 0) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
   });
-}, {
-  threshold: 0.08,
-  rootMargin: '0px 0px -40px 0px'
-});
+
+  revealElements.forEach((el) => revealObserver.observe(el));
+}
 
 revealElements.forEach((el) => revealObserver.observe(el));
 // =========================
