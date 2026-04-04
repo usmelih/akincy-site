@@ -1434,25 +1434,17 @@ h1 {
 .reveal {
   opacity: 1;
   transform: none;
-  transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 html.js .reveal {
   opacity: 0;
-  transform: translateY(60px) scale(0.98);
-  transition: 
-    opacity 1s ease,
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html.js .reveal.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 .delay-1 { transition-delay: 0.1s; }
@@ -1461,7 +1453,6 @@ html.js .reveal.visible {
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 .delay-6 { transition-delay: 0.6s; }
-
 /* =========================
    FOOTER
 ========================= */
