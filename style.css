@@ -1432,12 +1432,23 @@ h1 {
    REVEAL ANIMATION
 ========================= */
 .reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.visible {
+html.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
