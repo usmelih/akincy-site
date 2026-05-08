@@ -513,6 +513,65 @@ h1 {
   will-change: transform;
 }
 }
+
+.hero-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-phone-image {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  display: block;
+
+  filter:
+    drop-shadow(0 60px 120px rgba(0,0,0,0.45));
+
+  transform:
+    perspective(1400px)
+    rotateY(-8deg)
+    rotateX(2deg);
+
+  will-change: transform;
+}
+.hero-right::before {
+  content: "";
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59,130,246,0.18),
+      transparent 70%
+    );
+
+  filter: blur(50px);
+
+  z-index: 0;
+}
+
+.hero-phone-image {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-phone-image {
+    max-width: 360px;
+
+    transform:
+      perspective(1200px)
+      rotateY(0deg)
+      rotateX(0deg);
+  }
+}
+
 /* =========================
    COMMON SECTIONS
 ========================= */
