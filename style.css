@@ -490,25 +490,22 @@ h1 {
    HERO CARD RIGHT
 ========================= */
 .hero-right {
-  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-   overflow: hidden;
+  align-items: center;
+  overflow: visible;
+
 }
 
 .hero-phone-image {
-  width: auto;
-  height: 620px;
+  width: 420px;
+  height: auto;
   display: block;
-  object-fit: contain;
-  transform:
-    perspective(1800px)
-    rotateY(-8deg)
-    rotateX(2deg)
-    translateX(80px);
+  position: relative;
+  z-index: 2;
+  transform: translateX(40px);
   filter:
-  drop-shadow(0 30px 60px rgba(0,0,0,0.35));
+    drop-shadow(0 40px 80px rgba(0,0,0,0.45));
 
 }
 
