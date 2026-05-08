@@ -494,43 +494,24 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+   overflow: hidden;
 }
 
 .hero-phone-image {
-   position: relative;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  overflow: visible;
-}
-
-.hero-right {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-phone-image {
-  max-width: 680px;
-  height: auto;
+  width: auto;
+  height: 560px;
   display: block;
-
+  object-fit: contain;
+  transform:
+    perspective(1800px)
+    rotateY(-8deg)
+    rotateX(2deg)
+    translateX(80px);
   filter:
     drop-shadow(0 60px 120px rgba(0,0,0,0.45));
 
-  transform:
-    perspective(1400px)
-    rotateY(-8deg)
-    rotateX(2deg);
-
-  will-change: transform;
 }
+
 .hero-right::before {
   content: "";
   position: absolute;
@@ -548,11 +529,6 @@ h1 {
   filter: blur(50px);
 
   z-index: 0;
-}
-
-.hero-phone-image {
-  position: relative;
-  z-index: 2;
 }
 
 @media (max-width: 768px) {
