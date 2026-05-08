@@ -496,7 +496,8 @@ h1 {
 
 .hero-benefit-card {
   position: absolute;
-  right: -70px;
+  z-index: 10;
+  right: -160px;
   top: 50%;
   transform: translateY(-50%);
 
@@ -563,7 +564,7 @@ h1 {
   opacity: 1 !important;
   visibility: visible !important;
   position: relative !important;
-  z-index: 20 !important;
+  z-index: 3 !important;
 
 }
 
