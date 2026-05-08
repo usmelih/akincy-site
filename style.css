@@ -490,22 +490,23 @@ h1 {
    HERO CARD RIGHT
 ========================= */
 .hero-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  min-height: 520px;
 
 }
 
 .hero-phone-image {
-  width: 420px;
-  height: auto;
-  display: block;
-  position: relative;
-  z-index: 2;
-  transform: translateX(40px);
-  filter:
-    drop-shadow(0 40px 80px rgba(0,0,0,0.45));
+  width: 460px !important;
+  max-width: none !important;
+  height: auto !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 20 !important;
 
 }
 
