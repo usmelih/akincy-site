@@ -490,7 +490,57 @@ h1 {
     0 12px 32px rgba(0,0,0,0.28),
     0 0 0 1px rgba(201,167,78,0.08);
 }
+/* =========================
+   HERO CARD RIGHT BENEFIT
+========================= */
 
+.hero-benefit-card {
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 230px;
+  padding: 26px 24px;
+  border-radius: 28px;
+
+  background: rgba(18, 18, 18, 0.78);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+
+  z-index: 5;
+}
+
+.hero-benefit-card div {
+  margin-bottom: 22px;
+}
+
+.hero-benefit-card div:last-child {
+  margin-bottom: 0;
+}
+
+.hero-benefit-card strong {
+  display: block;
+  color: #d4af37;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.hero-benefit-card span {
+  display: block;
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .hero-benefit-card {
+    display: none;
+  }
+}
 /* =========================
    HERO CARD RIGHT
 ========================= */
@@ -500,6 +550,7 @@ h1 {
   justify-content: center !important;
   overflow: visible !important;
   min-height: 520px;
+   position: relative;
    padding-top: 20px;
 
 }
