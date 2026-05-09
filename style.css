@@ -648,6 +648,12 @@ h1 {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-phone-card {
+    display: none;
+  }
+}
+
 /* =========================
    COMMON SECTIONS
 ========================= */
