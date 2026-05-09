@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" fill="none">
+
+  <!-- Shield -->
+  <path
+    d="M450 40
+       C470 60 500 70 545 70
+       L545 170
+       C545 230 500 270 450 310
+       C400 270 355 230 355 170
+       L355 70
+       C400 70 430 60 450 40Z"
+    stroke="#ffffff"
+    stroke-width="14"
+    fill="none"
+  />
+
+  <!-- Inner Circle -->
+  <circle
+    cx="450"
+    cy="155"
+    r="58"
+    stroke="#ffffff"
+    stroke-width="18"
+    fill="none"
+  />
+
+  <!-- Otorapor Inner Mark -->
+  <path
+    d="M450 125
+       C470 125 485 140 485 160
+       C485 176 475 188 460 194
+       L482 218
+       L458 240
+       L425 205
+       L425 160
+       C425 140 435 125 450 125Z"
+    fill="#ffffff"
+  />
+
+  <!-- OTORAPOR -->
+  <text
+    x="450"
+    y="345"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="92"
+    font-weight="900"
+    letter-spacing="2"
+    fill="#ffffff">
+    OTORAPOR
+  </text>
+
+</svg>
