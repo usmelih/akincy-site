@@ -495,8 +495,8 @@ h1 {
        CLIENT STRIP
 ========================= */
 .client-logo-marquee {
-  width: 520px;
-  max-width: 100%;
+ width: 100%;
+  max-width: 680px;
   overflow: hidden;
   position: relative;
 }
@@ -512,6 +512,8 @@ h1 {
 .client-logo-track img {
   height: 18px;
   width: auto;
+   display: block;
+  flex-shrink: 0;
   flex: 0 0 auto;
   opacity: 0.82;
   filter: none;
