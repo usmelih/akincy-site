@@ -494,53 +494,58 @@ h1 {
 /* =========================
        CLIENT STRIP
 ========================= */
-.client-strip {
-  margin-top: 42px;
+.client-logo-marquee {
+  width: 520px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-.client-strip-title {
-  font-size: 13px;
-  color: rgba(255,255,255,0.48);
-
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  margin-bottom: 18px;
-}
-
-.client-logos {
+.client-logo-track {
   display: flex;
   align-items: center;
-  gap: 34px;
-  flex-wrap: wrap;
+  gap: 42px;
+  width: max-content;
+  animation: logoScroll 22s linear infinite;
 }
 
-.client-logos img {
-  height: 26px;
+.client-logo-track img {
+  height: 24px;
   width: auto;
-
+  flex: 0 0 auto;
   opacity: 0.72;
-
-  filter:
-    grayscale(1)
-    brightness(1.4);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    filter 0.25s ease;
+  filter: grayscale(1) brightness(1.5);
 }
 
-.client-logos img:hover {
-  opacity: 1;
-
-  transform: translateY(-2px);
-
-  filter:
-    grayscale(0)
-    brightness(1);
+@keyframes logoScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
+.client-logo-marquee::before,
+.client-logo-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 70px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.client-logo-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #050505, transparent);
+}
+
+.client-logo-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #050505, transparent);
+}
 /* =========================
    HERO CARD RIGHT BENEFIT
 ========================= */
