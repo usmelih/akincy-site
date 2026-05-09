@@ -639,8 +639,10 @@ h1 {
 
 @media (max-width: 768px) {
   .hero-right {
-    display: none;
+    display: none !important;
   }
+
+}
 
   .hero-left {
     width: 100%;
