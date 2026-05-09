@@ -640,6 +640,7 @@ h1 {
 @media (max-width: 768px) {
   .hero-phone-image {
     max-width: 360px;
+    display: none;
 
     transform:
       perspective(1200px)
