@@ -495,8 +495,8 @@ h1 {
        CLIENT STRIP
 ========================= */
 .client-logo-marquee {
- width: 100%;
-  max-width: 680px;
+ width: 720px;
+  max-width: 100%;
   overflow: hidden;
   position: relative;
 }
