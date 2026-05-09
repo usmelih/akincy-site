@@ -638,22 +638,16 @@ h1 {
 }
 
 @media (max-width: 768px) {
-  .hero-phone-image {
-    max-width: 360px;
+  .hero-right {
     display: none;
+  }
 
-    transform:
-      perspective(1200px)
-      rotateY(0deg)
-      rotateX(0deg);
+  .hero-left {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
-@media (max-width: 768px) {
-  .hero-phone-card {
-    display: none;
-  }
-}
 
 /* =========================
    COMMON SECTIONS
