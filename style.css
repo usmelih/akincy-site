@@ -521,7 +521,7 @@ h1 {
   flex: 0 0 auto;
   object-fit: contain;
   opacity: 1;
-  filter: none;
+  filter: none !important;
 }
 
 @keyframes logoScroll {
