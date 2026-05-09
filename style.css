@@ -512,13 +512,17 @@ h1 {
   gap: 34px;
   width: max-content;
   animation: logoScroll 24s linear infinite;
+  will-change: transform;
 }
 
 .client-logo-track img {
   height: 58px;
   width: auto;
+  max-width: 180px;
+
   display: block;
   flex: 0 0 auto;
+
   object-fit: contain;
   opacity: 1;
   filter: none !important;
@@ -530,16 +534,13 @@ h1 {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 17px));
   }
 }
-
-/* fade edges */
 
 .client-logo-marquee::before,
 .client-logo-marquee::after {
   content: "";
-
   position: absolute;
   top: 0;
   width: 50px;
@@ -550,22 +551,12 @@ h1 {
 
 .client-logo-marquee::before {
   left: 0;
-  background:
-    linear-gradient(
-      to right,
-      #050505,
-      transparent
-    );
+  background: linear-gradient(to right, #050505, transparent);
 }
 
 .client-logo-marquee::after {
   right: 0;
-  background:
-    linear-gradient(
-      to left,
-      #050505,
-      transparent
-    );
+  background: linear-gradient(to left, #050505, transparent);
 }
 /* =========================
    HERO CARD RIGHT BENEFIT
