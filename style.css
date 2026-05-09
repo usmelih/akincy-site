@@ -498,7 +498,7 @@ h1 {
 .client-logo-marquee {
   width: 100%;
   max-width: 560px;
-  height: 42px;
+  height: 90px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -515,15 +515,13 @@ h1 {
 }
 
 .client-logo-track img {
-  height: 24px;
+  height: 58px;
   width: auto;
   display: block;
   flex: 0 0 auto;
   object-fit: contain;
-  opacity: 0.9;
-  filter:
-    grayscale(1)
-    brightness(1.4);
+  opacity: 1;
+  filter: none;
 }
 
 @keyframes logoScroll {
