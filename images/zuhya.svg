@@ -1,34 +1,41 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g fill="#06B6D4">
-    <!-- central sun -->
-    <path d="M178 300c0-43 35-78 78-78s78 35 78 78H178Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none" style="color:#22d3ee" role="img" aria-label="Zuhya">
+  <!-- rays + sun + ornament: solid fill -->
+  <g fill="currentColor" stroke="none">
+    <!-- sun (filled half-disk on the horizon) -->
+    <path d="M96 120 A24 24 0 0 1 144 120 Z"/>
 
-    <!-- horizon/waves -->
-    <path d="M104 322c54-8 251-8 304 0-50 9-254 9-304 0Z"/>
-    <path d="M146 348c41-7 179-7 220 0-39 8-181 8-220 0Z"/>
-    <path d="M196 373c22-5 98-5 120 0-21 6-99 6-120 0Z"/>
+    <!-- central ornamental spire: leaf + diamond + 4-point sparkle -->
+    <path d="M120 90 Q125 66 120 42 Q115 66 120 90 Z"/>
+    <path d="M120 29 L123 34 L120 39 L117 34 Z"/>
+    <path d="M120 11 L122.121 18.879 L130 21 L122.121 23.121 L120 31 L117.879 23.121 L110 21 L117.879 18.879 Z"/>
 
-    <!-- rays -->
-    <path d="M256 74l13 38-13 38-13-38 13-38Z"/>
-    <path d="M256 143l11 34-11 34-11-34 11-34Z"/>
+    <!-- inner side rays (near top): needle + diamond tip -->
+    <g transform="rotate(20 120 120)"><path d="M117.6 90 L120 60 L122.4 90 Z"/><path d="M120 47 L123 52 L120 57 L117 52 Z"/></g>
+    <g transform="rotate(-20 120 120)"><path d="M117.6 90 L120 60 L122.4 90 Z"/><path d="M120 47 L123 52 L120 57 L117 52 Z"/></g>
 
-    <path d="M210 155l-8 72-24-67 32-5Z"/>
-    <path d="M302 155l8 72 24-67-32-5Z"/>
+    <!-- leaf rays -->
+    <g transform="rotate(36 120 120)"><path d="M120 90 Q126.5 64 120 38 Q113.5 64 120 90 Z"/></g>
+    <g transform="rotate(-36 120 120)"><path d="M120 90 Q126.5 64 120 38 Q113.5 64 120 90 Z"/></g>
 
-    <path d="M162 187l18 62-45-48 27-14Z"/>
-    <path d="M350 187l-18 62 45-48-27-14Z"/>
+    <!-- long needle rays -->
+    <g transform="rotate(52 120 120)"><path d="M117.4 90 L120 32 L122.6 90 Z"/></g>
+    <g transform="rotate(-52 120 120)"><path d="M117.4 90 L120 32 L122.6 90 Z"/></g>
 
-    <path d="M124 232l38 43-58-21 20-22Z"/>
-    <path d="M388 232l-38 43 58-21-20-22Z"/>
+    <!-- leaf rays -->
+    <g transform="rotate(68 120 120)"><path d="M120 90 Q126 65 120 40 Q114 65 120 90 Z"/></g>
+    <g transform="rotate(-68 120 120)"><path d="M120 90 Q126 65 120 40 Q114 65 120 90 Z"/></g>
 
-    <!-- diamond tips -->
-    <path d="M256 42l13 21-13 21-13-21 13-21Z"/>
-    <path d="M256 117l8 14-8 14-8-14 8-14Z"/>
-    <path d="M200 133l18 9-9 18-18-9 9-18Z"/>
-    <path d="M312 133l-18 9 9 18 18-9-9-18Z"/>
-    <path d="M147 173l20 4-4 20-20-4 4-20Z"/>
-    <path d="M365 173l-20 4 4 20 20-4-4-20Z"/>
-    <path d="M100 221l20-2 2 20-20 2-2-20Z"/>
-    <path d="M412 221l-20-2-2 20 20 2 2-20Z"/>
+    <!-- outer side rays (near horizon): needle + diamond tip -->
+    <g transform="rotate(82 120 120)"><path d="M117.8 90 L120 62 L122.2 90 Z"/><path d="M120 46.5 L123.2 52 L120 57.5 L116.8 52 Z"/></g>
+    <g transform="rotate(-82 120 120)"><path d="M117.8 90 L120 62 L122.2 90 Z"/><path d="M120 46.5 L123.2 52 L120 57.5 L116.8 52 Z"/></g>
+  </g>
+
+  <!-- horizon + water ripples: stroked lines -->
+  <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round">
+    <path d="M52 120 L95 120"/>
+    <path d="M145 120 L188 120"/>
+    <path d="M70 128 Q120 124 170 128"/>
+    <path d="M84 135 Q120 131 156 135"/>
+    <path d="M98 141 Q120 138.5 142 141"/>
   </g>
 </svg>
