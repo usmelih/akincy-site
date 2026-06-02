@@ -5,37 +5,37 @@
     <path d="M96 120 A24 24 0 0 1 144 120 Z"/>
 
     <!-- central ornamental spire: leaf + diamond + 4-point sparkle -->
-    <path d="M120 90 Q125 66 120 42 Q115 66 120 90 Z"/>
-    <path d="M120 29 L123 34 L120 39 L117 34 Z"/>
-    <path d="M120 11 L122.121 18.879 L130 21 L122.121 23.121 L120 31 L117.879 23.121 L110 21 L117.879 18.879 Z"/>
+    <path d="M120 90 Q125 69 120 48 Q115 69 120 90 Z"/>
+    <path d="M120 35 L123 40 L120 45 L117 40 Z"/>
+    <path d="M120 16 L122.121 23.879 L130 26 L122.121 28.121 L120 36 L117.879 28.121 L110 26 L117.879 23.879 Z"/>
 
     <!-- inner side rays (near top): needle + diamond tip -->
-    <g transform="rotate(20 120 120)"><path d="M117.6 90 L120 60 L122.4 90 Z"/><path d="M120 47 L123 52 L120 57 L117 52 Z"/></g>
-    <g transform="rotate(-20 120 120)"><path d="M117.6 90 L120 60 L122.4 90 Z"/><path d="M120 47 L123 52 L120 57 L117 52 Z"/></g>
+    <g transform="rotate(24 120 120)"><path d="M117.6 90 L120 54 L122.4 90 Z"/><path d="M120 42 L123 47 L120 52 L117 47 Z"/></g>
+    <g transform="rotate(-24 120 120)"><path d="M117.6 90 L120 54 L122.4 90 Z"/><path d="M120 42 L123 47 L120 52 L117 47 Z"/></g>
 
     <!-- leaf rays -->
-    <g transform="rotate(36 120 120)"><path d="M120 90 Q126.5 64 120 38 Q113.5 64 120 90 Z"/></g>
-    <g transform="rotate(-36 120 120)"><path d="M120 90 Q126.5 64 120 38 Q113.5 64 120 90 Z"/></g>
+    <g transform="rotate(42 120 120)"><path d="M120 90 Q126.5 62 120 34 Q113.5 62 120 90 Z"/></g>
+    <g transform="rotate(-42 120 120)"><path d="M120 90 Q126.5 62 120 34 Q113.5 62 120 90 Z"/></g>
 
-    <!-- long needle rays -->
-    <g transform="rotate(52 120 120)"><path d="M117.4 90 L120 32 L122.6 90 Z"/></g>
-    <g transform="rotate(-52 120 120)"><path d="M117.4 90 L120 32 L122.6 90 Z"/></g>
+    <!-- long needle rays (most prominent, near-diagonal) -->
+    <g transform="rotate(58 120 120)"><path d="M117.4 90 L120 28 L122.6 90 Z"/></g>
+    <g transform="rotate(-58 120 120)"><path d="M117.4 90 L120 28 L122.6 90 Z"/></g>
 
     <!-- leaf rays -->
-    <g transform="rotate(68 120 120)"><path d="M120 90 Q126 65 120 40 Q114 65 120 90 Z"/></g>
-    <g transform="rotate(-68 120 120)"><path d="M120 90 Q126 65 120 40 Q114 65 120 90 Z"/></g>
+    <g transform="rotate(72 120 120)"><path d="M120 90 Q126 63 120 36 Q114 63 120 90 Z"/></g>
+    <g transform="rotate(-72 120 120)"><path d="M120 90 Q126 63 120 36 Q114 63 120 90 Z"/></g>
 
     <!-- outer side rays (near horizon): needle + diamond tip -->
-    <g transform="rotate(82 120 120)"><path d="M117.8 90 L120 62 L122.2 90 Z"/><path d="M120 46.5 L123.2 52 L120 57.5 L116.8 52 Z"/></g>
-    <g transform="rotate(-82 120 120)"><path d="M117.8 90 L120 62 L122.2 90 Z"/><path d="M120 46.5 L123.2 52 L120 57.5 L116.8 52 Z"/></g>
+    <g transform="rotate(84 120 120)"><path d="M117.8 90 L120 50 L122.2 90 Z"/><path d="M120 36.5 L123.2 42 L120 47.5 L116.8 42 Z"/></g>
+    <g transform="rotate(-84 120 120)"><path d="M117.8 90 L120 50 L122.2 90 Z"/><path d="M120 36.5 L123.2 42 L120 47.5 L116.8 42 Z"/></g>
   </g>
 
   <!-- horizon + water ripples: stroked lines -->
   <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round">
-    <path d="M52 120 L95 120"/>
-    <path d="M145 120 L188 120"/>
-    <path d="M70 128 Q120 124 170 128"/>
-    <path d="M84 135 Q120 131 156 135"/>
-    <path d="M98 141 Q120 138.5 142 141"/>
+    <path d="M48 120 L95 120"/>
+    <path d="M145 120 L192 120"/>
+    <path d="M68 128 Q120 124 172 128"/>
+    <path d="M82 135 Q120 131 158 135"/>
+    <path d="M97 141 Q120 138.5 143 141"/>
   </g>
 </svg>
