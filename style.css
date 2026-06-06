@@ -1295,24 +1295,12 @@ footer {
   font-family: 'Great Vibes', cursive;
   color: var(--accent);
   font-weight: 400;
+  /* el yazısı fontun x-yüksekliği düşük — her yerde aynı oranda büyüt */
+  font-size: 1.35em;
+  line-height: 1;
   display: inline-block;
   position: relative;
-}
-
-.section-head h2 .highlight {
-  font-size: 1.3em;
-}
-
-.highlight::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 6px;
-  background: rgba(217,119,87,0.22);
-  z-index: -1;
-  border-radius: 4px;
+  padding-right: 0.08em; /* italik kuyruklar kesilmesin */
 }
 
 /* =========================
