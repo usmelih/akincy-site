@@ -1,6 +1,13 @@
 document.documentElement.classList.add('js');
 
 // =========================
+// FOOTER YEAR
+// =========================
+document.querySelectorAll('.js-year').forEach((el) => {
+  el.textContent = new Date().getFullYear();
+});
+
+// =========================
 // FORM SUBMIT (INDEX PAGE)
 // =========================
 const leadForm = document.getElementById('leadForm');

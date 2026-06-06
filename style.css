@@ -551,12 +551,12 @@ h1 {
 
 .client-logo-marquee::before {
   left: 0;
-  background: linear-gradient(to right, #050505, transparent);
+  background: linear-gradient(to right, var(--bg), transparent);
 }
 
 .client-logo-marquee::after {
   right: 0;
-  background: linear-gradient(to left, #050505, transparent);
+  background: linear-gradient(to left, var(--bg), transparent);
 }
 /* =========================
    HERO CARD RIGHT BENEFIT
@@ -564,7 +564,6 @@ h1 {
 
 .hero-benefit-card {
   position: absolute;
-  z-index: 10;
   right: -160px;
   top: 50%;
   transform: translateY(-50%);
@@ -580,6 +579,13 @@ h1 {
   box-shadow: 0 30px 90px rgba(0,0,0,0.45);
 
   z-index: 5;
+}
+
+/* container dışına taşıp yatay scroll yaratmasın */
+@media (max-width: 1439px) {
+  .hero-benefit-card {
+    right: -10px;
+  }
 }
 
 .hero-benefit-card div {
@@ -641,8 +647,6 @@ h1 {
   .hero-right {
     display: none !important;
   }
-
-}
 
   .hero-left {
     width: 100%;
@@ -1758,6 +1762,7 @@ footer {
   color: var(--accent);
   font-weight: 400;
   display: inline-block;
+  position: relative;
 }
 
 .section-head h2 .highlight {
@@ -1765,6 +1770,8 @@ footer {
 }
 
 .highlight::after {
+  content: "";
+  position: absolute;
   left: 0;
   bottom: 2px;
   width: 100%;
@@ -2163,7 +2170,7 @@ footer {
    Google font
 ========================= */
 
-..google-font {
+.google-font {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   letter-spacing: -0.5px;
