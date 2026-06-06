@@ -741,6 +741,7 @@ h1 {
   text-align: center;
   padding: 7px 12px;
   border-radius: 10px;
+  transition: transform 0.25s ease;
   font-size: 15px;
 }
 
@@ -760,6 +761,65 @@ h1 {
 
 .difference-map.active {
   display: block;
+}
+
+/* =========================
+   BEFORE / AFTER GEÇİŞ EFEKTLERİ
+========================= */
+/* display:none → grid/block geçişi transition'ı öldürür;
+   keyframe animasyonları ise her açılışta yeniden tetiklenir */
+.difference-metrics.active .difference-metric {
+  animation: metricIn 0.45s ease backwards;
+}
+
+.difference-metrics.active .difference-metric:nth-child(2) { animation-delay: 0.09s; }
+.difference-metrics.active .difference-metric:nth-child(3) { animation-delay: 0.18s; }
+.difference-metrics.active .difference-metric:nth-child(4) { animation-delay: 0.27s; }
+
+@keyframes metricIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* JS sayarken rozeti hafifçe büyüt */
+.counter.counting {
+  transform: scale(1.12);
+}
+
+.difference-map.active {
+  animation: mapIn 0.5s ease;
+}
+
+@keyframes mapIn {
+  from { opacity: 0; transform: scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* harita noktaları sahte-rastgele sırayla pop'lasın */
+.difference-map.active .map-grid span {
+  animation: dotPop 0.4s ease backwards;
+}
+
+.difference-map.active .map-grid span:nth-child(2n) { animation-delay: 0.07s; }
+.difference-map.active .map-grid span:nth-child(3n) { animation-delay: 0.15s; }
+.difference-map.active .map-grid span:nth-child(5n) { animation-delay: 0.23s; }
+.difference-map.active .map-grid span:nth-child(7n) { animation-delay: 0.31s; }
+
+@keyframes dotPop {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .difference-metrics.active .difference-metric,
+  .difference-map.active,
+  .difference-map.active .map-grid span {
+    animation: none;
+  }
+
+  .counter.counting {
+    transform: none;
+  }
 }
 
 .map-background {

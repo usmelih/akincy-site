@@ -13,16 +13,4 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://akincy.com/"/>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://akincy.com/apply</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://akincy.com/apply"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://akincy.com/tr/apply"/>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://akincy.com/tr/apply</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://akincy.com/tr/apply"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://akincy.com/apply"/>
-    <priority>0.8</priority>
-  </url>
 </urlset>

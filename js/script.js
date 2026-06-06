@@ -56,12 +56,12 @@ if (revealElements.length > 0) {
 // =========================
 // SMART COUNTER
 // =========================
-function animateCounter(el, newValue) {
+function animateCounter(el, startValue, endValue) {
   const isPercent = el.classList.contains('percent');
-  const startValue = parseInt(el.textContent.replace('%', ''), 10) || 0;
-  const endValue = newValue;
   const duration = 800;
   const startTime = performance.now();
+
+  el.classList.add('counting');
 
   function update(currentTime) {
     const progress = Math.min((currentTime - startTime) / duration, 1);
@@ -72,6 +72,8 @@ function animateCounter(el, newValue) {
 
     if (progress < 1) {
       requestAnimationFrame(update);
+    } else {
+      el.classList.remove('counting');
     }
   }
 
@@ -81,17 +83,25 @@ function animateCounter(el, newValue) {
 function animateMetricsTransition(fromContainer, toContainer) {
   if (!fromContainer || !toContainer) return;
 
+  // Görünen (yeni) paneldeki sayaçları, gizlenen panelin değerlerinden
+  // başlatıp kendi hedef değerlerine doğru say — eski kod bunu gizlenen
+  // panelde çalıştırdığı için animasyon hiç görünmüyordu.
   const fromCounters = fromContainer.querySelectorAll('.counter');
   const toCounters = toContainer.querySelectorAll('.counter');
 
-  fromCounters.forEach((el, index) => {
-    const targetEl = toCounters[index];
-    if (!targetEl) return;
+  toCounters.forEach((el, index) => {
+    const sourceEl = fromCounters[index];
+    const endValue = Number(el.dataset.value);
+    if (Number.isNaN(endValue)) return;
 
-    const newValue = Number(targetEl.dataset.value);
-    if (!Number.isNaN(newValue)) {
-      animateCounter(el, newValue);
-    }
+    let startValue = sourceEl ? Number(sourceEl.dataset.value) : 0;
+    if (Number.isNaN(startValue)) startValue = 0;
+
+    // Stagger gecikmesi sırasında hedef değer görünmesin
+    const isPercent = el.classList.contains('percent');
+    el.textContent = isPercent ? `${startValue}%` : `${startValue}`;
+
+    setTimeout(() => animateCounter(el, startValue, endValue), index * 90);
   });
 }
 
