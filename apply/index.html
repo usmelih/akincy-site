@@ -35,28 +35,54 @@
           <strong>We only work with one business per city & industry.</strong>
         </p>
 
-        <form id="applyForm" action="https://formspree.io/f/mlgpzokq" method="POST">
-          <div class="input-group">
-            <label>Full Name</label>
-            <input type="text" name="name" placeholder="John Doe" required />
+        <form id="applyForm" class="audit-form" action="https://formspree.io/f/mlgpzokq" method="POST">
+          <div class="audit-field">
+            <label for="auditName">Full Name *</label>
+            <input type="text" id="auditName" name="name" required>
           </div>
 
-          <div class="input-group">
-            <label>Phone Number</label>
-            <input type="text" name="phone" placeholder="+1 234 567 89" required />
+          <div class="audit-field">
+            <label for="auditEmail">Business Email *</label>
+            <input type="email" id="auditEmail" name="email" required>
           </div>
 
-          <div class="input-group">
-            <label>City & Area (if applicable)</label>
-            <input type="text" name="city" placeholder="e.g. New York, Brooklyn" />
+          <div class="audit-field">
+            <label for="auditPhone">Phone Number *</label>
+            <input type="tel" id="auditPhone" name="phone" required>
           </div>
 
-          <div class="input-group">
-            <label>Industry</label>
-            <input type="text" name="industry" placeholder="Plumber, Clinic, Lawyer..." required />
+          <div class="form-row">
+            <div class="audit-field">
+              <label for="auditCompany">Company Name *</label>
+              <input type="text" id="auditCompany" name="company" required>
+            </div>
+
+            <div class="audit-field">
+              <label for="auditCity">City *</label>
+              <input type="text" id="auditCity" name="city" required>
+            </div>
           </div>
 
-          <button type="submit" class="btn btn-primary full-btn">
+          <div class="audit-field">
+            <label for="auditMaps">Your Google Maps URL</label>
+            <input type="url" id="auditMaps" name="maps_url" placeholder="https://maps.app.goo.gl/...">
+          </div>
+
+          <div class="audit-urgency">
+            <span class="audit-urgency-label">By when do you want to solve this problem? *</span>
+            <div class="urgency-options">
+              <input type="radio" id="urgToday" name="urgency" value="Today" required>
+              <label for="urgToday">Today</label>
+
+              <input type="radio" id="urgTomorrow" name="urgency" value="Tomorrow">
+              <label for="urgTomorrow">Tomorrow</label>
+
+              <input type="radio" id="urgWeeks" name="urgency" value="In a few weeks">
+              <label for="urgWeeks">In a few weeks</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
             Get My Free Audit →
           </button>
         </form>

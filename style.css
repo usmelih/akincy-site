@@ -1905,6 +1905,152 @@ footer {
   margin-bottom: 0;
 }
 
+/* =========================
+   AUDIT FORM (free analysis)
+========================= */
+.audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.audit-intro .trust-pill {
+  margin-bottom: 18px;
+}
+
+.audit-intro h2 {
+  margin: 0 0 16px;
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+}
+
+.audit-intro p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0 0 14px;
+  max-width: 460px;
+}
+
+.audit-note {
+  font-weight: 600;
+  color: var(--text) !important;
+}
+
+.audit-form {
+  text-align: left;
+  padding-top: 8px;
+}
+
+.audit-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.audit-field {
+  margin-bottom: 24px;
+}
+
+.audit-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+
+.audit-form input[type="text"],
+.audit-form input[type="email"],
+.audit-form input[type="tel"],
+.audit-form input[type="url"] {
+  width: 100%;
+  padding: 10px 2px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(31, 30, 29, 0.25);
+  border-radius: 0;
+  color: var(--text);
+  font: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.audit-form input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 0 var(--accent);
+}
+
+.audit-form input::placeholder {
+  color: #A8A498;
+}
+
+.audit-urgency {
+  margin: 4px 0 28px;
+}
+
+.audit-urgency-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.urgency-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.urgency-options input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.urgency-options label {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 30, 29, 0.22);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.urgency-options label:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.urgency-options input:checked + label {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+}
+
+.audit-form .btn {
+  width: 100%;
+  border-radius: 999px;
+  padding: 16px 22px;
+}
+
+@media (max-width: 900px) {
+  .audit-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .audit-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
 .apply-title {
   margin: 0 0 18px;
   line-height: 1.1;
