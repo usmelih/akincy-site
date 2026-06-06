@@ -101,8 +101,8 @@
 
   <main>
     
-   <section class="hero">
-     
+   <section class="hero" id="contact">
+
   <div class="container hero-grid">
 
     <!-- LEFT -->
@@ -126,11 +126,6 @@
         If you're not in the top results, you're losing customers every day.
       </p>
 
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Get Your Free Audit →</a>
-        <a href="#process" class="btn btn-secondary">See How It Works</a>
-      </div>
-
         <div class="client-strip">
 
   <p class="client-strip-title">
@@ -151,36 +146,63 @@
 </div>
 </div>
     
-    <!-- RIGHT -->
+    <!-- RIGHT: AUDIT FORM -->
    <div class="hero-right">
-  <img
-    src="/images/hero-phone.webp"
-    alt="Google Maps Top 3 Rankings"
-    class="hero-phone-image"
-    width="920" height="1814"
-    fetchpriority="high"
-  />
+  <div class="hero-form-card">
+    <h3>Get Your <span class="highlight">Free Audit</span></h3>
+    <p>Personalized analysis of your Google profile within 24 hours. No costs, no obligations, no sales pitch.</p>
 
-  <div class="hero-benefit-card">
-    <div>
-      <strong>More Visibility</strong>
-      <span>Top 3 in Google Maps</span>
-    </div>
+    <form id="applyForm" class="audit-form" action="https://formspree.io/f/mlgpzokq" method="POST">
+      <div class="audit-field">
+        <label for="auditName">Full Name *</label>
+        <input type="text" id="auditName" name="name" required>
+      </div>
 
-    <div>
-      <strong>More Calls</strong>
-      <span>High-intent customers call you</span>
-    </div>
+      <div class="audit-field">
+        <label for="auditEmail">Business Email *</label>
+        <input type="email" id="auditEmail" name="email" required>
+      </div>
 
-    <div>
-      <strong>More Directions</strong>
-      <span>People find and visit your location</span>
-    </div>
+      <div class="audit-field">
+        <label for="auditPhone">Phone Number *</label>
+        <input type="tel" id="auditPhone" name="phone" required>
+      </div>
 
-    <div>
-      <strong>More Revenue</strong>
-      <span>Better rankings. Bigger growth.</span>
-    </div>
+      <div class="form-row">
+        <div class="audit-field">
+          <label for="auditCompany">Company Name *</label>
+          <input type="text" id="auditCompany" name="company" required>
+        </div>
+
+        <div class="audit-field">
+          <label for="auditCity">City *</label>
+          <input type="text" id="auditCity" name="city" required>
+        </div>
+      </div>
+
+      <div class="audit-field">
+        <label for="auditMaps">Your Google Maps URL</label>
+        <input type="url" id="auditMaps" name="maps_url" placeholder="https://maps.app.goo.gl/...">
+      </div>
+
+      <div class="audit-urgency">
+        <span class="audit-urgency-label">By when do you want to solve this problem? *</span>
+        <div class="urgency-options">
+          <input type="radio" id="urgToday" name="urgency" value="Today" required>
+          <label for="urgToday">Today</label>
+
+          <input type="radio" id="urgTomorrow" name="urgency" value="Tomorrow">
+          <label for="urgTomorrow">Tomorrow</label>
+
+          <input type="radio" id="urgWeeks" name="urgency" value="In a few weeks">
+          <label for="urgWeeks">In a few weeks</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%; border-radius:999px;">Get My Free Audit →</button>
+    </form>
+
+    <p class="hero-form-note">We only work with one business per city &amp; industry.</p>
   </div>
 </div>
 </section>
@@ -472,75 +494,22 @@
   </div>
 </section>
 
-<section id="contact" class="reveal">
-  <div class="container audit-grid">
-
-    <div class="audit-intro">
-      <span class="trust-pill">Free Audit</span>
-      <h2>Get Your Profile <span class="highlight">Analyzed</span></h2>
-      <p>
-        Fill out the form and we'll prepare your personalized analysis with the
-        exact things that need to happen so you can rank in the Top 3 in your area.
-      </p>
-      <p class="audit-note">No costs, no obligations, no annoying sales pitch. Guaranteed.</p>
-
-      <ul class="audit-steps">
-        <li><span>1</span> We review your Google Business Profile &amp; competitors</li>
-        <li><span>2</span> Your personalized analysis lands in your inbox within 24 hours</li>
-        <li><span>3</span> You decide — work with us, or keep the roadmap for free</li>
-      </ul>
+<section class="cta-mini reveal">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Ready to own your <span class="highlight">City</span>?</h2>
+      <p>Get your free audit — here's what happens next:</p>
     </div>
 
-    <form id="applyForm" class="audit-form" action="https://formspree.io/f/mlgpzokq" method="POST">
-      <div class="audit-field">
-        <label for="auditName">Full Name *</label>
-        <input type="text" id="auditName" name="name" required>
-      </div>
+    <ul class="audit-steps">
+      <li><span>1</span> We review your Google Business Profile &amp; competitors</li>
+      <li><span>2</span> Your personalized analysis lands in your inbox within 24 hours</li>
+      <li><span>3</span> You decide — work with us, or keep the roadmap for free</li>
+    </ul>
 
-      <div class="audit-field">
-        <label for="auditEmail">Business Email *</label>
-        <input type="email" id="auditEmail" name="email" required>
-      </div>
-
-      <div class="audit-field">
-        <label for="auditPhone">Phone Number *</label>
-        <input type="tel" id="auditPhone" name="phone" required>
-      </div>
-
-      <div class="form-row">
-        <div class="audit-field">
-          <label for="auditCompany">Company Name *</label>
-          <input type="text" id="auditCompany" name="company" required>
-        </div>
-
-        <div class="audit-field">
-          <label for="auditCity">City *</label>
-          <input type="text" id="auditCity" name="city" required>
-        </div>
-      </div>
-
-      <div class="audit-field">
-        <label for="auditMaps">Your Google Maps URL</label>
-        <input type="url" id="auditMaps" name="maps_url" placeholder="https://maps.app.goo.gl/...">
-      </div>
-
-      <div class="audit-urgency">
-        <span class="audit-urgency-label">By when do you want to solve this problem? *</span>
-        <div class="urgency-options">
-          <input type="radio" id="urgToday" name="urgency" value="Today" required>
-          <label for="urgToday">Today</label>
-
-          <input type="radio" id="urgTomorrow" name="urgency" value="Tomorrow">
-          <label for="urgTomorrow">Tomorrow</label>
-
-          <input type="radio" id="urgWeeks" name="urgency" value="In a few weeks">
-          <label for="urgWeeks">In a few weeks</label>
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Get My Free Audit →</button>
-    </form>
-
+    <div>
+      <a href="#contact" class="btn btn-primary">Get My Free Audit →</a>
+    </div>
   </div>
 </section>
 
