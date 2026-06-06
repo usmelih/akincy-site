@@ -436,17 +436,13 @@ h1 {
   justify-content: center;
   align-items: flex-start;
   position: relative;
-  padding-top: 34px;
+  padding-top: 62px;
 }
 
+/* kart kabuğu yok — form doğrudan fildişi zeminde */
 .hero-form-card {
   width: 100%;
   max-width: 440px;
-  background: #FFFFFF;
-  border: 1px solid var(--ink-border);
-  border-radius: 24px;
-  padding: 28px 26px 24px;
-  box-shadow: 0 24px 60px rgba(31, 30, 29, 0.10);
 }
 
 .hero-form-card h3 {
@@ -1185,6 +1181,10 @@ footer {
   .difference-wrap,
   .positioning .grid-3 {
     grid-template-columns: 1fr;
+  }
+
+  .hero-right {
+    padding-top: 24px;
   }
 
   .map-background {
