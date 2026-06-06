@@ -1878,6 +1878,16 @@ footer {
   max-width: 560px;
 }
 
+/* plan kartı kaldırıldı — tek kolon form ortalanır */
+.apply-form.solo {
+  margin: 0 auto;
+}
+
+/* ana sayfa lead formu (cta-box içinde) */
+.cta-box .lead-form {
+  margin-bottom: 0;
+}
+
 .apply-title {
   margin: 0 0 18px;
   line-height: 1.1;

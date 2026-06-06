@@ -8,79 +8,6 @@ document.querySelectorAll('.js-year').forEach((el) => {
 });
 
 // =========================
-// FORM SUBMIT (INDEX PAGE)
-// =========================
-const leadForm = document.getElementById('leadForm');
-const successModal = document.getElementById('successModal');
-const closeModal = document.getElementById('closeModal');
-
-if (leadForm) {
-  leadForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(leadForm);
-    const action = leadForm.getAttribute('action');
-
-    try {
-      const response = await fetch(action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        leadForm.reset();
-
-        const selectedPlanText = document.getElementById('selectedPlanText');
-        const selectedPlanWrap = document.getElementById('selectedPlanWrap');
-        const selectedPlanInput = document.getElementById('selectedPlan');
-
-        if (selectedPlanText) selectedPlanText.textContent = 'None';
-        if (selectedPlanInput) selectedPlanInput.value = '';
-        if (selectedPlanWrap) selectedPlanWrap.classList.add('hidden');
-
-        if (successModal) {
-          successModal.classList.remove('hidden');
-        }
-      } else {
-        alert('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      alert('Something went wrong. Please try again.');
-    }
-  });
-}
-
-if (closeModal && successModal) {
-  closeModal.addEventListener('click', function () {
-    successModal.classList.add('hidden');
-  });
-
-  successModal.addEventListener('click', function (e) {
-    if (e.target === successModal) {
-      successModal.classList.add('hidden');
-    }
-  });
-}
-
-// =========================
-// PLAN SELECT (INDEX PAGE)
-// =========================
-function selectPlan(plan) {
-  const input = document.getElementById('selectedPlan');
-  const text = document.getElementById('selectedPlanText');
-  const wrap = document.getElementById('selectedPlanWrap');
-
-  if (input) input.value = plan;
-  if (text) text.textContent = plan;
-  if (wrap) wrap.classList.remove('hidden');
-}
-
-window.selectPlan = selectPlan;
-
-// =========================
 // MOBILE MENU
 // =========================
 const toggle = document.getElementById('menuToggle');
@@ -306,7 +233,7 @@ async function getUserLocation() {
 getUserLocation();
 
 // =========================
-// APPLY FORM SUBMIT
+// LEAD FORM SUBMIT (FREE AUDIT)
 // =========================
 const applyForm = document.getElementById('applyForm');
 
@@ -316,6 +243,13 @@ if (applyForm) {
 
     const formData = new FormData(applyForm);
     const action = applyForm.getAttribute('action');
+    const submitBtn = applyForm.querySelector('button[type="submit"]');
+    const isTurkishPage = window.location.pathname.startsWith('/tr');
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = isTurkishPage ? 'Gönderiliyor...' : 'Sending...';
+    }
 
     try {
       const response = await fetch(action, {
@@ -327,132 +261,18 @@ if (applyForm) {
       });
 
       if (response.ok) {
-        const isTurkishPage = window.location.pathname.startsWith('/tr/');
         window.location.href = isTurkishPage ? '/tr/success' : '/success';
       } else {
-        alert('Something went wrong. Please try again.');
+        alert(isTurkishPage ? 'Bir şeyler ters gitti. Lütfen tekrar deneyin.' : 'Something went wrong. Please try again.');
       }
     } catch (error) {
-      alert('Something went wrong. Please try again.');
+      alert(isTurkishPage ? 'Bir şeyler ters gitti. Lütfen tekrar deneyin.' : 'Something went wrong. Please try again.');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = isTurkishPage ? 'Ücretsiz Analizimi Al →' : 'Get My Free Audit →';
+      }
     }
   });
 }
 
-// =========================
-// APPLY PAGE PLAN SWITCHER
-// =========================
-const planNameEl = document.getElementById('planName');
-const planPriceEl = document.getElementById('planPrice');
-const planDescEl = document.getElementById('planDesc');
-const planBadgeEl = document.getElementById('planBadge');
-const planFeaturesEl = document.getElementById('planFeatures');
-const selectedPlanInputEl = document.getElementById('selectedPlanInput');
-
-if (planNameEl && planPriceEl && planDescEl && planBadgeEl && planFeaturesEl) {
-  const params = new URLSearchParams(window.location.search);
-  const selectedPlan = params.get('plan');
-  const isTurkishPage = window.location.pathname.startsWith('/tr/');
-
-  const plans = isTurkishPage
-    ? {
-        Hakimiyet: {
-          name: 'Hakimiyet',
-          price: '₺12.900 / ay',
-          desc: 'Google’da 90 gün içinde ilk sayfa.<br>Garanti yok.',
-          badge: 'Aramaların %30’unda görünürlük',
-          features: [
-            'Kapsamlı Rakip Analizi',
-            'İki Haftada Bir Güncelleme',
-            'Para İade Garantisi Yok',
-            'Ana Arama Teriminde Sıralama',
-            'Sınırlı Website Optimizasyonu',
-            'Yüksek Kaliteli Backlinkler'
-          ]
-        },
-        Zirve: {
-          name: 'Zirve',
-          price: '₺18.900 / ay',
-          desc: 'Google’da 90 gün içinde ilk 3.<br>Garantili, aksi halde ödeme yok.',
-          badge: 'Aramaların %75+’inde görünürlük',
-          features: [
-            'Kapsamlı Rakip Analizi',
-            'İki Haftada Bir Güncelleme',
-            'Para İade Garantisi',
-            'Ana Arama Teriminde Sıralama',
-            'Tam Website Optimizasyonu',
-            'Yüksek Kaliteli Backlinkler'
-          ]
-        },
-        Fetih: {
-          name: 'Fetih',
-          price: '₺44.900 / 3 ay',
-          desc: 'Google’da 90 gün içinde ilk 3.<br>Garantili, aksi halde ödeme yok.',
-          badge: 'Aramaların %75+’inde görünürlük',
-          features: [
-            'Kapsamlı Rakip Analizi',
-            'İki Haftada Bir Güncelleme',
-            'Para İade Garantisi',
-            'Ana Arama Teriminde Sıralama',
-            'Tam Website Optimizasyonu',
-            'Yüksek Kaliteli Backlinkler'
-          ]
-        }
-      }
-    : {
-        Growth: {
-          name: 'Growth',
-          price: '$400 / month',
-          desc: 'First page on Google within 90 days.<br>No money-back guarantee.',
-          badge: 'Visible on 30% of search results',
-          features: [
-            'Full Competitor Analysis',
-            'Updates Every Two Weeks',
-            'No Money-Back Guarantee',
-            'Ranking for Main Search Term',
-            'Limited Website Optimization',
-            'High-Quality Backlinks'
-          ]
-        },
-        Dominate: {
-          name: 'Dominate',
-          price: '$597 / month',
-          desc: 'Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.',
-          badge: 'Visible on 75%+ of search results',
-          features: [
-            'Full Competitor Analysis',
-            'Updates Every Two Weeks',
-            'Money-Back Guarantee',
-            'Ranking for Main Search Term',
-            'Full Website Optimization',
-            'High-Quality Backlinks'
-          ]
-        },
-        Conqueror: {
-          name: 'Conqueror',
-          price: '$1,499 / 3 months',
-          desc: 'Top 3 on Google within 90 days.<br>Guaranteed or you don’t pay.',
-          badge: 'Visible on 75%+ of search results',
-          features: [
-            'Full Competitor Analysis',
-            'Updates Every Two Weeks',
-            'Money-Back Guarantee',
-            'Ranking for Main Search Term',
-            'Full Website Optimization',
-            'High-Quality Backlinks'
-          ]
-        }
-      };
-
-  const fallbackKey = isTurkishPage ? 'Zirve' : 'Dominate';
-  const selected = plans[selectedPlan] || plans[fallbackKey];
-
-  planNameEl.textContent = selected.name;
-  planPriceEl.textContent = selected.price;
-  planDescEl.innerHTML = selected.desc;
-  planBadgeEl.textContent = selected.badge;
-  planFeaturesEl.innerHTML = selected.features.map(item => `<li>${item}</li>`).join('');
-
-  if (selectedPlanInputEl) {
-    selectedPlanInputEl.value = selected.name;
-  }
-}

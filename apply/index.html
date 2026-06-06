@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Apply | Akincy</title>
+  <title>Free Audit | Akincy</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
@@ -15,17 +15,15 @@
       <a href="/" class="brand">AKINCY<span class="dot">.</span></a>
 
       <nav class="nav-links">
-        <a href="/#pricing">Pricing</a>
         <a href="/" class="btn btn-primary">Back</a>
       </nav>
     </div>
   </header>
 
   <main class="apply-page">
-    <div class="container apply-grid">
+    <div class="container">
 
-      <!-- LEFT -->
-      <div class="apply-form">
+      <div class="apply-form solo">
         <h2 class="apply-title">
   <span class="apply-title-icon">⚡</span>
   <span class="apply-title-light">Get Started</span>
@@ -38,8 +36,6 @@
         </p>
 
         <form id="applyForm" action="https://formspree.io/f/mlgpzokq" method="POST">
-          <input type="hidden" name="selected_plan" id="selectedPlanInput" value="Dominate" />
-
           <div class="input-group">
             <label>Full Name</label>
             <input type="text" name="name" placeholder="John Doe" required />
@@ -61,44 +57,9 @@
           </div>
 
           <button type="submit" class="btn btn-primary full-btn">
-            Submit Request →
+            Get My Free Audit →
           </button>
         </form>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="apply-plan">
-        <div class="apply-back-wrap">
-          <a href="/#pricing" class="apply-back">
-            <span class="apply-back-arrow">←</span>
-            Choose a different package
-          </a>
-        </div>
-
-        <div class="plan-card">
-          <div class="plan-label">Selected Plan</div>
-
-          <h3 id="planName">Dominate</h3>
-          <div class="price" id="planPrice">$597 / month</div>
-
-          <p class="plan-desc" id="planDesc">
-            Top 3 on Google within 90 days.<br>
-            Guaranteed or you don’t pay.
-          </p>
-
-          <div class="plan-badge" id="planBadge">
-            Visible on 75%+ of search results
-          </div>
-
-          <ul id="planFeatures">
-            <li>Full Competitor Analysis</li>
-            <li>Updates Every Two Weeks</li>
-            <li>Money-Back Guarantee</li>
-            <li>Ranking for Main Search Term</li>
-            <li>Full Website Optimization</li>
-            <li>High-Quality Backlinks</li>
-          </ul>
-        </div>
       </div>
 
     </div>
