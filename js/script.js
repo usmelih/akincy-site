@@ -14,15 +14,19 @@ const toggle = document.getElementById('menuToggle');
 const nav = document.getElementById('navLinks');
 
 if (toggle && nav) {
+  toggle.setAttribute('aria-expanded', 'false');
+
   toggle.addEventListener('click', () => {
     nav.classList.toggle('active');
     toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', nav.classList.contains('active') ? 'true' : 'false');
   });
 
   document.querySelectorAll('#navLinks a').forEach((link) => {
     link.addEventListener('click', () => {
       nav.classList.remove('active');
       toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   });
 }
@@ -214,19 +218,24 @@ faqs.forEach((item) => {
 // USER LOCATION
 // =========================
 async function getUserLocation() {
+  const locationEl = document.getElementById('userLocation');
+  const locationWrap = document.querySelector('.user-location');
+  if (!locationEl) return;
+
   try {
     const res = await fetch('https://ipapi.co/json/');
     const data = await res.json();
 
-    const city = data.city;
-    const country = data.country_name;
-    const locationEl = document.getElementById('userLocation');
-
-    if (locationEl && city && country) {
-      locationEl.textContent = `${city}, ${country}`;
+    if (data.city && data.country_name) {
+      locationEl.textContent = `${data.city}, ${data.country_name}`;
+    } else if (locationWrap) {
+      // API cevap verdi ama veri yok — "Loading..." asılı kalmasın
+      locationWrap.style.display = 'none';
     }
   } catch (err) {
-    console.log('Location fetch failed');
+    if (locationWrap) {
+      locationWrap.style.display = 'none';
+    }
   }
 }
 

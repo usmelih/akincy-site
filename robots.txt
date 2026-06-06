@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /success
+Disallow: /tr/success
+
+Sitemap: https://akincy.com/sitemap.xml
