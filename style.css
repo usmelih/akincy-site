@@ -826,57 +826,90 @@ h1 {
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 520px;
+  min-height: 540px;
   border-radius: 20px;
   background-image: url('/images/map-bg.jpg');
   background-size: cover;
   background-position: center;
 }
 
+/* Şehir bazlı harita arka planları (EN: Chicago, TR: İstanbul) */
+.map--chicago { background-image: url('/images/map-chicago.jpg'); }
+.map--istanbul { background-image: url('/images/map-istanbul.jpg'); }
+
 .map-background::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.10);
 }
 
+/* zuhya tarzı kare ızgara: 7×7 = 49 nokta, haritada ortalanmış */
 .map-grid {
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: repeat(10, 34px);
-  gap: 6px;
+  grid-template-columns: repeat(7, 44px);
+  gap: 12px 14px;
   justify-content: center;
   align-content: center;
   z-index: 1;
-  padding: 20px;
+  padding: 24px;
 }
 
 .map-grid span {
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
-  min-height: 34px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   padding: 0;
   box-sizing: border-box;
-}
-
-.dot-red {
-  background: #d83a2e;
   color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.30), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.22);
 }
 
-.dot-green {
-  background: #79e34f;
-  color: #111111;
+/* Sıralama renk katmanları (Local Falcon / zuhya skalası) */
+.dot-green { background: #16a34a; }              /* 1-3  : ilk sıra */
+.dot-orange { background: #f5912b; }             /* 11-15: orta */
+.dot-red { background: #e23a2c; }                /* 16-20: kötü */
+.dot-dred { background: #9d1c12; }               /* 20+  : sıralama dışı */
+
+/* Harita üzeri tarama bilgisi rozeti (zuhya'daki "49 pts · 7×7 grid") */
+.map-chip {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 7px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.map-chip::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.22);
 }
 
 .map-attribution {
@@ -1252,16 +1285,25 @@ footer {
   }
 
   .map-grid {
-    grid-template-columns: repeat(7, 30px);
-    gap: 6px;
+    grid-template-columns: repeat(7, 34px);
+    gap: 7px 8px;
+    padding: 16px;
   }
 
   .map-grid span {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-    min-height: 30px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    font-size: 12px;
+    border-width: 1.5px;
+  }
+
+  .map-chip {
     font-size: 11px;
+    padding: 6px 10px;
+    top: 10px;
+    left: 10px;
   }
 
   .menu-toggle {
