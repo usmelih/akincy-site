@@ -263,11 +263,33 @@ if (applyForm) {
     const formData = new FormData(applyForm);
     const action = applyForm.getAttribute('action');
     const submitBtn = applyForm.querySelector('button[type="submit"]');
-    const isTurkishPage = window.location.pathname.startsWith('/tr');
+    const path = window.location.pathname;
+    const lang = path.startsWith('/tr') ? 'tr' : path.startsWith('/de') ? 'de' : 'en';
+
+    const t = {
+      tr: {
+        base: '/tr',
+        sending: 'Gönderiliyor...',
+        error: 'Bir şeyler ters gitti. Lütfen tekrar deneyin.',
+        submit: 'Ücretsiz Analizimi Al →'
+      },
+      de: {
+        base: '/de',
+        sending: 'Wird gesendet...',
+        error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
+        submit: 'Kostenlose Analyse anfordern →'
+      },
+      en: {
+        base: '',
+        sending: 'Sending...',
+        error: 'Something went wrong. Please try again.',
+        submit: 'Get My Free Audit →'
+      }
+    }[lang];
 
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = isTurkishPage ? 'Gönderiliyor...' : 'Sending...';
+      submitBtn.textContent = t.sending;
     }
 
     try {
@@ -280,16 +302,16 @@ if (applyForm) {
       });
 
       if (response.ok) {
-        window.location.href = isTurkishPage ? '/tr/success' : '/success';
+        window.location.href = t.base + '/success';
       } else {
-        alert(isTurkishPage ? 'Bir şeyler ters gitti. Lütfen tekrar deneyin.' : 'Something went wrong. Please try again.');
+        alert(t.error);
       }
     } catch (error) {
-      alert(isTurkishPage ? 'Bir şeyler ters gitti. Lütfen tekrar deneyin.' : 'Something went wrong. Please try again.');
+      alert(t.error);
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = isTurkishPage ? 'Ücretsiz Analizimi Al →' : 'Get My Free Audit →';
+        submitBtn.textContent = t.submit;
       }
     }
   });

@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /success
 Disallow: /tr/success
+Disallow: /de/success
 
 Sitemap: https://akincy.com/sitemap.xml
