@@ -242,7 +242,7 @@ section {
 ========================= */
 .hero {
   position: relative;
-  padding: 72px 0 40px;
+  padding: 40px 0 40px;
   overflow-x: clip; /* ::before süs dairesi mobilde yatay scroll yaratmasın */
 }
 
