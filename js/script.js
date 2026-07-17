@@ -317,3 +317,96 @@ if (applyForm) {
   });
 }
 
+// =========================
+// NEWSLETTER SIGNUP (KIT / CONVERTKIT)
+// =========================
+const newsletterForm = document.getElementById('newsletterForm');
+
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(newsletterForm);
+    const action = newsletterForm.getAttribute('action');
+    const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+    const statusEl = newsletterForm.querySelector('.newsletter-status');
+    const emailInput = newsletterForm.querySelector('input[type="email"]');
+    const path = window.location.pathname;
+    const lang = path.startsWith('/tr') ? 'tr' : path.startsWith('/de') ? 'de' : 'en';
+
+    const t = {
+      tr: {
+        subscribing: 'Gönderiliyor...',
+        submit: 'Abone Ol',
+        success: 'Neredeyse tamam — aboneliğinizi onaylamak için e-postanızı kontrol edin.',
+        error: 'Bir şeyler ters gitti. Lütfen tekrar deneyin.'
+      },
+      de: {
+        subscribing: 'Wird gesendet...',
+        submit: 'Abonnieren',
+        success: 'Fast geschafft — bitte bestätigen Sie Ihr Abo in Ihrem Postfach.',
+        error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.'
+      },
+      en: {
+        subscribing: 'Subscribing...',
+        submit: 'Subscribe',
+        success: 'Almost there — check your inbox to confirm your subscription.',
+        error: 'Something went wrong. Please try again.'
+      }
+    }[lang];
+
+    if (statusEl) {
+      statusEl.textContent = '';
+      statusEl.classList.remove('is-success', 'is-error');
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = t.subscribing;
+    }
+
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        if (statusEl) {
+          statusEl.textContent = t.success;
+          statusEl.classList.add('is-success');
+        }
+        newsletterForm.reset();
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = t.submit;
+        }
+        return;
+      }
+
+      if (statusEl) {
+        statusEl.textContent = t.error;
+        statusEl.classList.add('is-error');
+      }
+    } catch (error) {
+      if (statusEl) {
+        statusEl.textContent = t.error;
+        statusEl.classList.add('is-error');
+      }
+    } finally {
+      // On success the button is intentionally left disabled; only re-enable on error.
+      const succeeded = statusEl && statusEl.classList.contains('is-success');
+      if (submitBtn && !succeeded) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = t.submit;
+      }
+      if (emailInput && !succeeded) {
+        emailInput.focus();
+      }
+    }
+  });
+}
+

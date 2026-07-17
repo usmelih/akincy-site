@@ -1514,6 +1514,116 @@ footer {
 }
 
 /* =========================
+   HERO NEWSLETTER
+========================= */
+.hero-newsletter {
+  margin-top: 22px;
+  max-width: 460px;
+}
+
+.hero-newsletter-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.hero-newsletter-title strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.newsletter-form {
+  text-align: left;
+}
+
+.newsletter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 12px 4px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(31, 30, 29, 0.25);
+  border-radius: 0;
+  color: var(--text);
+  font: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.newsletter-form input[type="email"]:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 0 var(--accent);
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: #A8A498;
+}
+
+.newsletter-form .btn {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 12px 24px;
+  white-space: nowrap;
+}
+
+.newsletter-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.newsletter-consent input[type="checkbox"] {
+  margin-top: 2px;
+  width: 14px;
+  height: 14px;
+  accent-color: var(--accent);
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.newsletter-status {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.newsletter-status:empty {
+  display: none;
+}
+
+.newsletter-status.is-success {
+  color: #2F855A;
+}
+
+.newsletter-status.is-error {
+  color: #C0392B;
+}
+
+@media (max-width: 900px) {
+  .newsletter-row {
+    flex-wrap: wrap;
+  }
+
+  .newsletter-form input[type="email"],
+  .newsletter-form .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* =========================
    MINI CLOSING CTA
 ========================= */
 .cta-mini {
