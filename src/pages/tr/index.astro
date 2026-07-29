@@ -1,109 +1,24 @@
-<!DOCTYPE html>
-<html lang="tr">
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { orgSchema } from '../../lib/schema';
 
-<!-- HEAD START -->
-<head>
-  <!-- META & SEO START -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#F0EEE6" />
-  <title>Akincy | Yerel SEO & Google Maps Optimizasyonu</title>
-  <meta
-    name="description"
-    content="Akincy, yerel işletmelerin Google Haritalar'da üst sıralara çıkmasına, rakiplerini geçmesine ve görünürlüğü gerçek müşterilere dönüştürmesine yardımcı olur."
+const locale = 'tr' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  route="home"
+  title="Akincy | Yerel SEO & Google Maps Optimizasyonu"
+  description="Akincy, yerel işletmelerin Google Haritalar'da üst sıralara çıkmasına, rakiplerini geçmesine ve görünürlüğü gerçek müşterilere dönüştürmesine yardımcı olur."
+  ogImage="/images/og-image-tr.png"
+>
+  <script
+    slot="schema"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(orgSchema(locale))}
   />
-  <link rel="canonical" href="https://akincy.com/tr">
 
-  <!-- OPEN GRAPH / TWITTER -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://akincy.com/tr">
-  <meta property="og:title" content="Akincy | Yerel SEO & Google Maps Optimizasyonu">
-  <meta property="og:description" content="Google Maps'te 90 gün içinde ilk 3'te sıralanman için tasarlanmış bir yerel SEO sistemi. Garantili.">
-  <meta property="og:image" content="https://akincy.com/images/og-image-tr.png">
-  <meta property="og:locale" content="tr_TR">
-  <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:locale:alternate" content="de_DE">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Akincy | Yerel SEO & Google Maps Optimizasyonu">
-  <meta name="twitter:description" content="Google Maps'te 90 gün içinde ilk 3'te sıralanman için tasarlanmış bir yerel SEO sistemi. Garantili.">
-  <meta name="twitter:image" content="https://akincy.com/images/og-image-tr.png">
-
-  <!-- STRUCTURED DATA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Akincy",
-    "url": "https://akincy.com/tr",
-    "logo": "https://akincy.com/images/logo.png",
-    "image": "https://akincy.com/images/og-image-tr.png",
-    "email": "melih@akincy.com",
-    "description": "Akincy, yerel işletmelerin Google Haritalar'da üst sıralara çıkmasına, rakiplerini geçmesine ve görünürlüğü gerçek müşterilere dönüştürmesine yardımcı olur.",
-    "serviceType": "Yerel SEO & Google Maps Optimizasyonu",
-    "knowsLanguage": ["tr", "en", "de"],
-    "sameAs": []
-  }
-  </script>
-  <!-- META & SEO END -->
-
-  <!-- FAVICONS START -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png">
-    <!-- FAVICONS END -->
-  
-<!-- LANGUAGES START -->
-  <link rel="alternate" hreflang="tr" href="https://akincy.com/tr">
-<link rel="alternate" hreflang="en" href="https://akincy.com/">
-<link rel="alternate" hreflang="de" href="https://akincy.com/de">
-<link rel="alternate" hreflang="x-default" href="https://akincy.com/">
-  <!-- LANGUAGES END -->
-  
-  <!-- FONTS START -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <!-- FONTS END -->
-
-  <!-- FAVICON START -->
-  <link rel="icon" href="/favicon.svg" />
-  <!-- FAVICON END -->
-
-  <!-- STYLES -->
-  <link rel="stylesheet" href="/style.css">
-  
-</head>
-  <!-- HEAD END -->
-  
-<body>
-  <header class="nav">
-    <div class="container nav-inner">
-  <a href="/tr" class="brand">
-  <img src="/images/logo.svg" alt="Akincy logo" class="brand-logo">
-  <span>AKINCY<span class="dot">.</span></span>
-</a>
-
-  <!-- hamburger -->
-  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
-
-  <nav class="nav-links" id="navLinks">
-    <a href="#difference-section">Öncesi / Sonrası</a>
-    <a href="#process">Nasıl Çalışıyor</a>
-    <a href="#faq">SSS</a>
-    <a href="#contact">Ücretsiz Analiz</a>
-    <a href="/" class="lang-switch">EN</a>
-    <a href="/de" class="lang-switch">DE</a>
-  </nav>
-</div>
-  </header>
-
-  <main>
     
    <section class="hero" id="contact">
   <div class="container hero-grid">
@@ -537,40 +452,4 @@
     </div>
   </div>
 </section>
-
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div class="footer-left">
-      <div class="footer-brand">
-        <img src="/images/logo.svg" alt="Akincy" class="footer-logo">
-        <div class="footer-title">
-          AKINCY<span class="dot">.</span>
-        </div>
-      </div>
-      <div>Hedefi olan işletmeler için Local SEO & Google Maps büyümesi.</div>
-      <div style="margin-top:10px; font-size:13px; color:#6F6C64;">
-  Gerçek sıralama artışı isteyen yerel işletmeler için.
-</div>
-      <div style="margin-top:10px; font-size:13px; color:#85827A;">
-        © <span class="js-year">2026</span> Akincy. Tüm hakları saklıdır.
-      </div>
-    </div>
-
-    <div style="text-align:right;">
-      <div><a href="mailto:melih@akincy.com">melih@akincy.com</a></div>
-      <div style="margin-top:6px; color:#6F6C64;">Google’da kendi Şehrinde ilk 3 - Garantili</div>
-
-      <div style="margin-top:14px; display:flex; gap:14px; justify-content:flex-end; flex-wrap:wrap; font-size:13px; color:#6F6C64;">
-        <a href="#difference-section">Önce / Sonra</a>
-        <a href="#contact">Ücretsiz Analiz</a>
-        <a href="#faq">SSS</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="/js/script.js" defer></script>
-</body>
-</html>
+</BaseLayout>

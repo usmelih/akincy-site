@@ -1,0 +1,33 @@
+import type { Locale } from './config';
+import { localePrefix } from './config';
+
+/**
+ * Central route map: one stable key per page, with the slug each locale uses.
+ *
+ * Two rules this enforces, which are the whole reason it exists:
+ *  1. Slugs are localized (`/services/local-seo` vs `/tr/hizmetler/yerel-seo`),
+ *     because a Turkish page ranking for Turkish queries needs a Turkish URL.
+ *  2. A locale that is *absent* from an entry has no translation, so it gets no
+ *     hreflang. Market-specific pages (TR-only city pages) simply omit `en`/`de`
+ *     instead of pointing Google at a page that does not exist.
+ */
+export const ROUTES = {
+  home: { en: '/', tr: '/', de: '/' },
+} as const satisfies Record<string, Partial<Record<Locale, string>>>;
+
+export type RouteKey = keyof typeof ROUTES;
+
+/** Locales a route actually has a page for. */
+export function routeLocales(key: RouteKey): Locale[] {
+  return Object.keys(ROUTES[key]) as Locale[];
+}
+
+/** Full path for a route in one locale, including the locale prefix. */
+export function routePath(locale: Locale, key: RouteKey): string {
+  const slug = (ROUTES[key] as Partial<Record<Locale, string>>)[locale];
+  if (slug === undefined) {
+    throw new Error(`Route "${key}" has no ${locale} translation — omit it from hreflang instead.`);
+  }
+  const clean = slug === '/' ? '' : `/${slug.replace(/^\/+|\/+$/g, '')}`;
+  return `${localePrefix(locale)}${clean}` || '/';
+}
