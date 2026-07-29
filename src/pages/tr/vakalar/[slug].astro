@@ -50,7 +50,9 @@ const toc = [
   locale={locale}
   route="cases"
   slug={study.slug}
-  title={`${study.subject} | Vaka Çalışması | Akincy`}
+  {/* "Vaka Çalışması" yerine "Vaka": en uzun konu adıyla birlikte
+      title 72 karaktere çıkıyor ve sonuçlarda kesiliyordu. */}
+  title={`${study.subject} | Vaka | Akincy`}
   description={study.summary}
   eyebrow={`${study.sector} · ${study.city}`}
   h1={study.subject}
