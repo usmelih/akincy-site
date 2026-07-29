@@ -1,0 +1,225 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'warum', label: 'Warum das Profil im Zentrum steht' },
+  { id: 'kategorie', label: 'Kategorie: das wirkungsvollste Feld' },
+  { id: 'leistungen', label: 'Leistungen und Produkte' },
+  { id: 'bewertungen', label: 'Bewertungsmanagement' },
+  { id: 'aktualitaet', label: 'Beiträge, Fotos und Aktualitätssignale' },
+  { id: 'einzugsgebiet', label: 'Profile ohne Adresse (Einzugsgebiet)' },
+  { id: 'ablauf', label: 'Unser Ablauf' },
+];
+
+const faq = [
+  {
+    q: 'Ist die Profiloptimierung eine einmalige Sache?',
+    a: 'Die Einrichtung ist einmalig, die Pflege laufend. Kategorie- und Leistungsstruktur werden einmal richtig aufgesetzt; ohne regelmäßige Beiträge, Fotos, Bewertungsantworten und Q&A fällt das Profil aber mit der Zeit hinter den Wettbewerb zurück.',
+  },
+  {
+    q: 'Schadet ein Kategoriewechsel meinem Ranking?',
+    a: 'Der Wechsel von einer falschen zur richtigen Kategorie hilft in der Regel. Experimentelle Wechsel bei bereits korrekter Kategorie sind riskant — Google wertet die Hauptkategorie als starkes Relevanzsignal, und nach einer Änderung braucht das Ranking einige Wochen, bis es sich wieder einpendelt.',
+  },
+  {
+    q: 'Lassen sich gefälschte Bewertungen entfernen?',
+    a: 'Von Wettbewerbern stammende Fake-Bewertungen können über eine Richtlinienmeldung entfernt werden, garantiert ist das aber nicht und es dauert oft Wochen. Nachhaltig hilft nur, das Volumen echter Bewertungen zu erhöhen, damit eine einzelne Bewertung weniger Gewicht hat.',
+  },
+  {
+    q: 'Muss ich Ihnen Zugriff auf mein Profil geben?',
+    a: 'Zugriff als Administrator ja. Die Inhaberschaft bleibt bei Ihnen; wir werden als Verwalter hinzugefügt und der Zugang kann jederzeit wieder entzogen werden. Eine Übertragung der Inhaberschaft verlangen wir nie.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/gbp"
+  title="Google Unternehmensprofil Verwaltung | Akincy"
+  description="Kategorien, Leistungsliste, Bewertungen, Beiträge und Fotos. Alle Profilsignale, die über Ihr Google-Maps-Ranking entscheiden, aus einer Hand."
+  eyebrow="Leistung"
+  h1="Google Unternehmensprofil"
+  lede="Der Unterschied zwischen Unternehmen in den Maps-Top-3 und allen anderen liegt größtenteils im Profil, nicht auf der Website. Wir verwalten Kategorie, Leistungsstruktur, Bewertungen und Aktualitätssignale gemeinsam."
+  serviceName="Google Unternehmensprofil Verwaltung"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Lokale SEO', href: p('services/local-seo') },
+    { label: 'Maps-Ranking-Tracking', href: p('services/rank-tracking') },
+    { label: 'Content-Erstellung', href: p('services/content') },
+  ]}
+  ctaLabel="Profil kostenlos analysieren →"
+  ctaHref="/de#contact"
+>
+  <h2 id="warum">Warum das Profil im Zentrum steht</h2>
+
+  <p>
+    Google sortiert lokale Ergebnisse mit einem anderen System als organische Treffer. Dieses
+    System hat drei Haupteingaben: <strong>Relevanz</strong> (macht das Unternehmen wirklich
+    das Gesuchte), <strong>Entfernung</strong> (wie nah ist es am Suchenden) und
+    <strong>Bekanntheit</strong>. Die Entfernung können Sie nicht ändern. Der Großteil der
+    beiden anderen wird direkt aus dem Google Unternehmensprofil gelesen.
+  </p>
+
+  <p>
+    Praktisch heißt das: unabhängig davon, was auf Ihrer Website steht, ist die Kategorie im
+    Profil das stärkste Einzelsignal dafür, dass Google versteht "dieses Unternehmen macht
+    das". Anzahl und Inhalt Ihrer Bewertungen sind die messbarste Quelle für das
+    Bekanntheitssignal. Stimmen diese beiden nicht, bringt Sie keine Maßnahme auf der Website
+    in die Top 3.
+  </p>
+
+  <h2 id="kategorie">Kategorie: das wirkungsvollste Feld</h2>
+
+  <p>
+    Die Hauptkategorie ist die größte Veränderung, die Sie über ein einzelnes Feld erreichen
+    können. Weil Googles Kategorieliste viele nah beieinander liegende Bezeichnungen enthält,
+    landet ein erheblicher Teil der Unternehmen in einer benachbarten, aber falschen Kategorie.
+  </p>
+
+  <p>
+    Ein typisches Beispiel: eine Anwältin, die auch als Mediatorin arbeitet, setzt "Mediator"
+    als Hauptkategorie. Diese Wahl beschädigt die Sichtbarkeit bei Suchanfragen nach
+    "Rechtsanwalt" erheblich, weil die Hauptkategorie das schwerste Relevanzsignal ist. Richtig
+    ist, die Hauptkategorie auf die Leistung mit dem tatsächlichen Suchvolumen zu setzen und
+    Mediation als Nebenkategorie zu ergänzen.
+  </p>
+
+  <p>Was zur Kategorie-Arbeit gehört:</p>
+
+  <ul class="checklist">
+    <li>Haupt- und Nebenkategorien aller Wettbewerber in den Top 3 auslesen</li>
+    <li>Diese Kategorien gegen Ihre Zielsuchanfragen abgleichen</li>
+    <li>Die Hauptkategorie auf Ihre volumenstärkste Kernleistung festlegen</li>
+    <li>Nebenkategorien so knapp halten, dass die Relevanz nicht verwässert</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Mehr Nebenkategorien sind nicht besser.</strong> Unpassende Nebenkategorien
+      verwischen, welchem Suchanfragen-Cluster Google Sie zuordnet, und können Sie in Ihrer
+      Hauptsuchanfrage schwächen.
+    </p>
+  </div>
+
+  <h2 id="leistungen">Leistungen und Produkte</h2>
+
+  <p>
+    Die Kategorie beantwortet "welche Art Unternehmen sind Sie", die Leistungsliste beantwortet
+    "was genau tun Sie". In den meisten Profilen ist dieses Feld entweder leer oder mit den
+    generischen Vorschlägen von Google gefüllt — also identisch mit dem Ihrer Wettbewerber.
+  </p>
+
+  <p>
+    Wir formulieren die Leistungspositionen in den Worten, die Menschen tatsächlich suchen, und
+    ergänzen jede um eine Beschreibung. Diese Beschreibungen erzeugen textliche Relevanz im
+    Profil und klären den Leistungsumfang, was die Konversion von Suche zu Anfrage erhöht. Die
+    Benennung halten wir identisch zu den
+    <a href={p('services/content')}>Leistungsseiten der Website</a>; diese Konsistenz hilft
+    Google, beide Entitäten als dasselbe Unternehmen zu verknüpfen.
+  </p>
+
+  <h2 id="bewertungen">Bewertungsmanagement</h2>
+
+  <p>
+    Bewertungen erfüllen im lokalen Ranking zwei getrennte Funktionen. Die erste ist Volumen
+    und Durchschnittsnote. Die zweite, weniger bekannte, ist der <strong>Inhalt</strong>: die
+    in Bewertungen genannten Leistungen und Ortsnamen werden zu Relevanzsignalen.
+  </p>
+
+  <p>
+    "Geben Sie uns bitte fünf Sterne" reicht deshalb nicht. Der Anfrageprozess, den wir
+    aufsetzen, führt zufriedene Kunden dazu, die erhaltene Leistung und ihren Ort in eigenen
+    Worten zu beschreiben — ohne ihnen den Text vorzugeben, denn kopierte Bewertungen laufen
+    sowohl in Googles Filter als auch beim Leser ins Leere.
+  </p>
+
+  <ul class="checklist">
+    <li>Bewertungsanfrage zum richtigen Zeitpunkt nach der Leistungserbringung</li>
+    <li>Kurzlinks und QR-Codes für einen reibungslosen Ablauf</li>
+    <li>Antworten auf alle Bewertungen, die den Leistungsnamen natürlich enthalten</li>
+    <li>Bei negativen Bewertungen: erst persönliche Klärung, dann öffentliche Antwort</li>
+    <li>Meldung von Wettbewerber-Bewertungen, die gegen Richtlinien verstoßen</li>
+  </ul>
+
+  <h2 id="aktualitaet">Beiträge, Fotos und Aktualitätssignale</h2>
+
+  <p>
+    Google unterscheidet aktiv gepflegte Profile von verwaisten. Regelmäßige Beiträge, neue
+    Fotos und beantwortete Fragen sind die Eingaben dieser Bewertung. Beiträge allein bringen
+    Sie nicht in die Top 3; bei sonst gleichen Voraussetzungen schlägt das aktive Profil aber
+    das inaktive.
+  </p>
+
+  <p>
+    Wir binden Beiträge an einen Redaktionsplan und verlinken jeden mit UTM-Parametern auf eine
+    Leistungs- oder Fallseite. So lässt sich der Traffic aus dem Profil separat messen und
+    erkennen, welche Leistung tatsächlich Interesse weckt.
+  </p>
+
+  <h2 id="einzugsgebiet">Profile ohne Adresse (Einzugsgebiet)</h2>
+
+  <p>
+    Unternehmen ohne Kundenverkehr am Standort können ihr Profil ohne Adresse führen und
+    stattdessen ein Einzugsgebiet definieren. Hier hält sich ein verbreiteter Irrtum: das
+    Hinzufügen von Einzugsgebieten erweitert den Ranking-Radius nicht.
+  </p>
+
+  <p>
+    Google berechnet das Ranking auch bei Profilen ohne Adresse anhand der Nähe zur
+    <strong>hinterlegten, nicht sichtbaren Adresse</strong>. Die Gebietsliste zeigt Nutzern
+    "wir bedienen diese Orte"; sie ändert nichts am Radius, in dem Sie ranken. Zwanzig Regionen
+    einzutragen bedeutet nicht, in diesen zwanzig Regionen auf der Karte zu erscheinen.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Die richtige Strategie trennt die Ziele.</strong> Spielen Sie das Profil auf die
+      Top 3 in der Stadt, in der Sie tatsächlich sitzen, und bauen Sie überregionale
+      Sichtbarkeit über die organische Arbeit in
+      <a href={p('services/local-seo')}>lokaler SEO</a> und
+      <a href={p('services/content')}>Content</a> auf. Bundesweit zu ranken ist möglich — bei
+      Suchanfragen ohne Näherungssignal. Das ist aber Aufgabe der Website, nicht des Profils.
+    </p>
+  </div>
+
+  <h2 id="ablauf">Unser Ablauf</h2>
+
+  <ol>
+    <li>
+      <strong>Analyse.</strong> Ist-Zustand des Profils, Kategorie- und Leistungsstruktur der
+      Top-3-Wettbewerber, Bewertungsrückstand und Ihre
+      <a href={p('services/rank-tracking')}>aktuelle Position im Raster</a>.
+    </li>
+    <li>
+      <strong>Einrichtung.</strong> Kategorie, Leistungsliste, Beschreibung, Attribute und
+      Fotoset werden korrigiert. Einmalig — und meist der größte Sprung.
+    </li>
+    <li>
+      <strong>Pflege.</strong> Beitragsplan, Bewertungsprozess und Q&amp;A-Management, im
+      monatlichen Rhythmus.
+    </li>
+    <li>
+      <strong>Messung.</strong> Rasterranking, Profilinteraktionen und Website-Traffic werden
+      gemeinsam berichtet. Vergleichbare Daten statt Screenshots.
+    </li>
+  </ol>
+
+  <p>
+    Erste Bewegung zeigt sich typischerweise nach vier bis acht Wochen — schneller bei Profilen
+    mit einer einzelnen Grundursache wie einem Kategoriefehler, langsamer in dichten
+    Innenstadtlagen.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Bei welchem Signal ist Ihr Profil <span class="highlight">schwach</span>?</h2>
+    <p>Die kostenlose Analyse zeigt Kategorie, Leistungsstruktur, Bewertungsrückstand und Rasterranking.</p>
+  </Fragment>
+</ContentLayout>

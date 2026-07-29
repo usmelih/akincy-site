@@ -1,0 +1,213 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'why', label: 'Why technical SEO comes first' },
+  { id: 'indexing', label: 'Crawlability and indexing' },
+  { id: 'speed', label: 'Page speed and Core Web Vitals' },
+  { id: 'schema', label: 'Structured data' },
+  { id: 'hreflang', label: 'hreflang on multilingual sites' },
+  { id: 'audit', label: 'What the audit covers' },
+];
+
+const faq = [
+  {
+    q: 'My site is on WordPress — can technical SEO still be done?',
+    a: 'Yes. The issues we see most often on WordPress are plugin bloat, unnecessary archive pages getting indexed, and theme-driven speed problems. Most of these are fixable without rebuilding the site.',
+  },
+  {
+    q: 'Does page speed really affect my ranking?',
+    a: 'Its direct effect is smaller than most people assume in most sectors. The real effect is indirect: a slow page gets abandoned, conversion drops and user behaviour signals degrade. Speed is less about ranking than about getting value from the traffic you already have.',
+  },
+  {
+    q: 'Will adding structured data raise my ranking?',
+    a: 'It is not a ranking factor by itself. What it does is help Google understand the page and the business correctly, and earn rich presentation (stars, FAQs, prices) in results. The effect shows up in click-through rate.',
+  },
+  {
+    q: 'Is technical SEO a one-off job?',
+    a: 'The audit and the fixes are one-off, but every change to the site can introduce new problems. The checks should be repeated when pages are added, the theme is updated or a plugin is installed.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/technical-seo"
+  title="Technical SEO Service | Akincy"
+  description="Crawlability, indexing, page speed, structured data and multilingual setup. The layer that has to work before any content can rank."
+  eyebrow="Service"
+  h1="Technical SEO"
+  lede="However good the content is, a page that cannot be crawled or indexed will not rank. Technical SEO firms up the ground every other piece of work is built on."
+  serviceName="Technical SEO"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'On-Page SEO', href: p('services/on-page-seo') },
+    { label: 'Content Production', href: p('services/content') },
+    { label: 'Local SEO', href: p('services/local-seo') },
+  ]}
+  ctaLabel="Audit My Site Free →"
+  ctaHref="/#contact"
+>
+  <h2 id="why">Why technical SEO comes first</h2>
+
+  <p>
+    For a page to appear in search results it has to clear three stages: Google has to
+    <strong>find</strong> it, be able to <strong>crawl</strong> it, and consider it
+    <strong>worth indexing</strong>. A page blocked at any of those stages does not rank, no
+    matter how well it is written.
+  </p>
+
+  <p>
+    The most expensive mistakes we find live here. It is not unusual to discover that half
+    the pages a business spent months producing were never indexed, or that a site redesign
+    dropped every old URL without redirects and threw away all the accumulated authority.
+    That is why every programme starts with a technical audit.
+  </p>
+
+  <h2 id="indexing">Crawlability and indexing</h2>
+
+  <p>What we check under this heading:</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>robots.txt and meta robots.</strong> Sections blocked unintentionally, or the
+      reverse — pages that should not be indexed (thank-you pages, filter combinations) left
+      open
+    </li>
+    <li>
+      <strong>Canonical tags.</strong> The same content reachable from several addresses
+      (www/non-www, http/https, trailing slash) with no declaration of which one is canonical
+    </li>
+    <li>
+      <strong>Sitemap.</strong> Does it exist, is it current, does it contain pages that
+      shouldn't be indexed, is it referenced from robots.txt
+    </li>
+    <li>
+      <strong>Redirects.</strong> Broken internal links, redirect chains, URLs orphaned by a
+      site migration
+    </li>
+    <li>
+      <strong>Search Console coverage report.</strong> Which pages are excluded from the index
+      and why — the most direct diagnostic source there is
+    </li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>The critical step in any redesign is the redirect map.</strong> Every migration
+      that does not map old URLs to new ones with 301s resets the rankings those URLs had
+      accumulated. Most "traffic dropped after the relaunch" complaints trace back to this.
+    </p>
+  </div>
+
+  <h2 id="speed">Page speed and Core Web Vitals</h2>
+
+  <p>
+    Google's user experience metrics measure three things: how fast the main content appears
+    (LCP), how quickly the page responds to interaction (INP), and how much the content shifts
+    while loading (CLS).
+  </p>
+
+  <p>
+    Their direct effect on ranking is usually overstated. The real importance is elsewhere: on
+    a slow, jumping page the visitor leaves before filling in the form. Visitors arriving from
+    local search are already at the decision stage, so every one lost here is a lost customer
+    directly.
+  </p>
+
+  <p>
+    We focus on the practical fixes: serving images in the right format and size, deferring
+    render-blocking scripts, removing unused CSS and JS, and setting a sane font-loading
+    strategy. Scoring 100 is not the goal; the user seeing the first screen quickly is.
+  </p>
+
+  <h2 id="schema">Structured data</h2>
+
+  <p>
+    Structured data (schema.org) lets Google read the information on a page in a
+    machine-readable form. The types that matter for local businesses:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>What it does</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>LocalBusiness</code> and its subtypes</td>
+          <td>Defines the business entity; strengthens the match between profile and site</td>
+        </tr>
+        <tr>
+          <td><code>Service</code></td>
+          <td>Clarifies which service a page describes and who provides it</td>
+        </tr>
+        <tr>
+          <td><code>FAQPage</code></td>
+          <td>Can earn expandable question-and-answer display in results</td>
+        </tr>
+        <tr>
+          <td><code>BreadcrumbList</code></td>
+          <td>Shows site hierarchy instead of a raw URL, lifting click-through rate</td>
+        </tr>
+        <tr>
+          <td><code>Organization</code> + <code>sameAs</code></td>
+          <td>Binds site, business profile and social accounts into one entity</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The detail we care about in setup: every schema block ties back to the same business
+    entity through a fixed <code>@id</code>. Writing disconnected schema page by page leads
+    Google to see several unrelated entities instead of one business.
+  </p>
+
+  <h2 id="hreflang">hreflang on multilingual sites</h2>
+
+  <p>
+    On sites publishing in more than one language, the most common error we find is every page
+    declaring hreflang for every language — including pages that have no translation. When
+    Google follows the link and finds no counterpart, it can discard the whole hreflang cluster.
+  </p>
+
+  <p>
+    The correct setup is to declare hreflang only between pages that genuinely correspond, and
+    to leave market-specific pages out of the cluster entirely. Each page also needs to
+    reference itself, and <code>x-default</code> has to be defined.
+  </p>
+
+  <h2 id="audit">What the audit covers</h2>
+
+  <p>
+    On the technical side the free audit reports: pages excluded from the index and why,
+    broken links and redirect chains, canonical conflicts, missing or malformed structured
+    data, mobile usability errors and first-screen load time. Findings are ordered by impact —
+    you do not need to fix everything at once, and usually one or two of them are what is
+    holding the rankings down.
+  </p>
+
+  <p>
+    Technical fixes alone are rarely enough. Once the ground is solid,
+    <a href={p('services/on-page-seo')}>on-page</a> and
+    <a href={p('services/content')}>content</a> take over.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Are your pages actually being <span class="highlight">indexed</span>?</h2>
+    <p>The free audit reports your indexing, speed and schema status in order of impact.</p>
+  </Fragment>
+</ContentLayout>

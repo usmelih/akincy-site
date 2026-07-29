@@ -14,15 +14,39 @@ import { localePrefix } from './config';
 export const ROUTES = {
   home: { en: '/', tr: '/', de: '/' },
 
-  // Services. Turkish first — the EN/DE slugs land when those translations are
-  // written; until then these pages carry a tr-only hreflang set on purpose.
-  services: { tr: '/hizmetler' },
-  'services/gbp': { tr: '/hizmetler/google-isletme-profili-yonetimi' },
-  'services/local-seo': { tr: '/hizmetler/yerel-seo' },
-  'services/rank-tracking': { tr: '/hizmetler/harita-siralama-takibi' },
-  'services/technical-seo': { tr: '/hizmetler/teknik-seo' },
-  'services/on-page-seo': { tr: '/hizmetler/on-page-seo' },
-  'services/content': { tr: '/hizmetler/icerik-uretimi' },
+  // Services are the global layer: the same offer in every market, so all three
+  // locales exist and hreflang links them.
+  services: { en: '/services', tr: '/hizmetler', de: '/leistungen' },
+  'services/gbp': {
+    en: '/services/google-business-profile',
+    tr: '/hizmetler/google-isletme-profili-yonetimi',
+    de: '/leistungen/google-unternehmensprofil',
+  },
+  'services/local-seo': {
+    en: '/services/local-seo',
+    tr: '/hizmetler/yerel-seo',
+    de: '/leistungen/lokale-seo',
+  },
+  'services/rank-tracking': {
+    en: '/services/map-rank-tracking',
+    tr: '/hizmetler/harita-siralama-takibi',
+    de: '/leistungen/google-maps-ranking-tracking',
+  },
+  'services/technical-seo': {
+    en: '/services/technical-seo',
+    tr: '/hizmetler/teknik-seo',
+    de: '/leistungen/technisches-seo',
+  },
+  'services/on-page-seo': {
+    en: '/services/on-page-seo',
+    tr: '/hizmetler/on-page-seo',
+    de: '/leistungen/onpage-seo',
+  },
+  'services/content': {
+    en: '/services/content-production',
+    tr: '/hizmetler/icerik-uretimi',
+    de: '/leistungen/content-erstellung',
+  },
 
   // Industries. These target queries with no proximity signal ("avukatlar için
   // SEO"), which is the only layer that can rank nationwide.

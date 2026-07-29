@@ -1,0 +1,233 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'was', label: 'Was lokale SEO genau ist' },
+  { id: 'unterschied', label: 'Unterschied zu klassischer SEO' },
+  { id: 'nap', label: 'NAP-Konsistenz und Verzeichnisse' },
+  { id: 'website', label: 'Die Rolle der Website' },
+  { id: 'mehrere', label: 'Mehrere Städte und Standorte' },
+  { id: 'programm', label: 'Das 90-Tage-Programm' },
+  { id: 'messung', label: 'Was wir messen' },
+];
+
+const faq = [
+  {
+    q: 'Was ist der Unterschied zwischen lokaler und normaler SEO?',
+    a: 'Normale SEO zielt auf eine Ergebnisliste. In der lokalen Suche gibt es zwei Rennen: das Kartenpaket mit drei Unternehmen und die organischen Treffer darunter. Beide ranken nach unterschiedlichen Signalen — im Kartenpaket dominieren Unternehmensprofil und Entfernung.',
+  },
+  {
+    q: 'Wie lange dauert es bis zu Ergebnissen?',
+    a: 'Die meisten Unternehmen sehen nach vier bis acht Wochen erste Bewegung, die Wirkung verstärkt sich über drei bis sechs Monate. Wird eine Grundursache im Profil behoben, kann der Sprung schneller kommen; in dichten Innenstädten dauert es länger.',
+  },
+  {
+    q: 'Garantieren Sie Rankings?',
+    a: 'Wir garantieren Top 3 bei Google innerhalb von 90 Tagen. Die Garantie gilt für die gemeinsam festgelegten Zielsuchanfragen und das vereinbarte Gebiet — sie ist kein pauschales Versprechen für jede Suchanfrage in jeder Stadt.',
+  },
+  {
+    q: 'Könnte ich das selbst machen?',
+    a: 'Die grundlegenden Profilkorrekturen ja. Schwierig werden Kontinuität und Messung: den Bewertungsfluss am Laufen halten, sehen was im Raster tatsächlich passiert und auf Wettbewerbsbewegungen reagieren. Die meisten scheitern nicht an der Strategie, sondern am Rhythmus.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/local-seo"
+  title="Lokale SEO | Akincy"
+  description="Ein lokales SEO-Programm, das Profil, Website und externe Vertrauenssignale verbindet, um in Google Maps und der lokalen Suche in die Top 3 zu kommen."
+  eyebrow="Leistung"
+  h1="Lokale SEO"
+  lede="Lokale SEO ist nicht der Name einer einzelnen Aufgabe, sondern ein Programm, das Profil, Website und externe Vertrauenssignale auf dasselbe Ziel ausrichtet. Diese Seite erklärt, wie wir es aufbauen und was wir messen."
+  serviceName="Lokale SEO"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Google Unternehmensprofil', href: p('services/gbp') },
+    { label: 'Maps-Ranking-Tracking', href: p('services/rank-tracking') },
+    { label: 'Technisches SEO', href: p('services/technical-seo') },
+  ]}
+  ctaLabel="Kostenlose Analyse anfordern →"
+  ctaHref="/de#contact"
+>
+  <h2 id="was">Was lokale SEO genau ist</h2>
+
+  <p>
+    Sucht jemand nach "Zahnarzt in der Nähe", erzeugt Google zwei getrennte Listen: oben eine
+    Karte mit drei Unternehmen, darunter die klassischen organischen Treffer. Beide Listen
+    folgen unterschiedlichen Regeln, und die meisten Klicks gehen an die obere.
+  </p>
+
+  <p>
+    Lokale SEO ist die gesamte Arbeit, um in beiden sichtbar zu sein. Im Kartenpaket ist das
+    <a href={p('services/gbp')}>Unternehmensprofil</a> entscheidend, in der organischen Liste
+    Inhalt und technische Gesundheit Ihrer Website. Beides getrennt zu betreiben ist ein
+    häufiger Fehler, denn Google bewertet in beiden Fällen dieselbe Unternehmensentität und die
+    Signale verstärken sich gegenseitig.
+  </p>
+
+  <h2 id="unterschied">Unterschied zu klassischer SEO</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Klassische SEO</th>
+          <th>Lokale SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Wettbewerbsfeld</strong></td>
+          <td>Eine organische Liste</td>
+          <td>Kartenpaket plus organische Liste</td>
+        </tr>
+        <tr>
+          <td><strong>Einfluss des Standorts</strong></td>
+          <td>Gering</td>
+          <td>Entscheidend — die Position des Suchenden verändert das Ranking</td>
+        </tr>
+        <tr>
+          <td><strong>Zentrale Ressource</strong></td>
+          <td>Die Website</td>
+          <td>Unternehmensprofil und Website</td>
+        </tr>
+        <tr>
+          <td><strong>Messgröße</strong></td>
+          <td>Eine Ranking-Zahl</td>
+          <td>Eine Ranking-Verteilung über ein Raster</td>
+        </tr>
+        <tr>
+          <td><strong>Form der Konversion</strong></td>
+          <td>Websitebesuch</td>
+          <td>Anruf, Route, Nachricht — oft ganz ohne Websitebesuch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Die letzte Zeile übersehen die meisten Unternehmen. Ein großer Teil der lokalen Nachfrage
+    kommt als direkter Anruf oder Routenanfrage an, ohne dass die Website je geöffnet wird. Wer
+    nur auf Website-Analytics schaut, unterschätzt den Ertrag lokaler SEO systematisch.
+  </p>
+
+  <h2 id="nap">NAP-Konsistenz und Verzeichnisse</h2>
+
+  <p>
+    NAP steht für Name, Adresse und Telefonnummer. Jedes Mal, wenn Google dasselbe Unternehmen
+    in einer weiteren Quelle findet, wächst das Vertrauen in seine Existenz. Widersprüche
+    zwischen diesen Quellen — hier eine andere Schreibweise, dort eine alte Telefonnummer —
+    schwächen dieses Vertrauen.
+  </p>
+
+  <p>
+    Die Arbeit besteht darin, jede Quelle zu finden und auf eine einheitliche Form
+    festzulegen: Branchenverzeichnisse, Kartendienste, Social-Profile und Reste einer alten
+    Website. Bei Unternehmen ohne sichtbare Adresse bleibt das Adressfeld leer — umso
+    kritischer ist, dass Name und Telefonnummer überall exakt identisch sind.
+  </p>
+
+  <h2 id="website">Die Rolle der Website</h2>
+
+  <p>
+    So gut das Profil auch ist: In umkämpften Städten wird die Top 3 schwierig, wenn die
+    Website nicht mitzieht. Google bezieht die verlinkte Website in die Relevanzbewertung ein —
+    welche Leistungen sie nennt, welche Ortsnamen vorkommen und ob die Seiten diese Leistungen
+    wirklich erklären.
+  </p>
+
+  <p>
+    Die Website-Seite des Programms läuft deshalb auf drei Spuren:
+    <a href={p('services/technical-seo')}>technisches SEO</a> stellt sicher, dass die Website
+    gecrawlt und indexiert werden kann, <a href={p('services/on-page-seo')}>OnPage-SEO</a>
+    verankert jede Seite an genau einer Suchintention, und
+    <a href={p('services/content')}>Content-Erstellung</a> macht aus nicht abgedeckten
+    Leistungen und Suchanfragen eigene Seiten.
+  </p>
+
+  <h2 id="mehrere">Mehrere Städte und Standorte</h2>
+
+  <p>
+    Lokale SEO für ein Einzelunternehmen ist nicht dieselbe Aufgabe wie für ein Unternehmen mit
+    drei Filialen. Filialstrukturen brauchen pro Standort ein eigenes Profil, einen eigenen
+    Bewertungsbestand und eine eigene Standortseite. Dass diese Seiten Kopien voneinander sind,
+    ist der häufigste und teuerste Fehler, den wir sehen.
+  </p>
+
+  <p>
+    Bei Unternehmen ohne Filialen, die dennoch mehrere Städte bedienen, ist die Lage anders:
+    zusätzliche Profile zu eröffnen verstößt gegen die Richtlinien. Der richtige Weg führt über
+    die Website — vorausgesetzt, jede Stadtseite trägt echte Informationen über diese Stadt.
+    Vorlagenseiten mit ausgetauschtem Städtenamen gelten als Doorway-Seiten und schaden der
+    gesamten Website.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Die Schwelle für eine Stadtseite:</strong> Wenn Sie über diese Stadt nichts
+      Echtes zu sagen haben (lokale Wettbewerbsanalyse, ein Fall von dort, regionsspezifische
+      Daten), legen Sie die Seite nicht an. Zehn gute Stadtseiten schlagen fünfzig Vorlagen.
+    </p>
+  </div>
+
+  <h2 id="programm">Das 90-Tage-Programm</h2>
+
+  <ol>
+    <li>
+      <strong>Woche 0–2 — Messen und diagnostizieren.</strong> Ausgangsranking im Raster,
+      Profilanalyse, Kategorie- und Bewertungsrückstand gegenüber Wettbewerbern, technischer
+      Zustand der Website, NAP-Prüfung.
+    </li>
+    <li>
+      <strong>Woche 2–4 — Grundursachen beheben.</strong> Kategorie- und Leistungsstruktur,
+      Indexierungsblocker, fehlende strukturierte Daten, Inkonsistenzen in Verzeichnissen. Der
+      größte Sprung kommt meist aus dieser Phase.
+    </li>
+    <li>
+      <strong>Woche 4–8 — Content und Signale aufbauen.</strong> Fehlende Leistungsseiten,
+      Beitragsplan im Profil, Aktivierung des Bewertungsprozesses.
+    </li>
+    <li>
+      <strong>Woche 8–12 — Konsolidierung.</strong> Gezielte Korrekturen für die im Raster noch
+      schwachen Bereiche, Verdichtung der internen Verlinkung, Reaktion auf Wettbewerber.
+    </li>
+  </ol>
+
+  <h2 id="messung">Was wir messen</h2>
+
+  <p>
+    Wir verschicken keinen einzelnen Ranking-Screenshot, weil sich lokale Rankings mit dem
+    Standort des Suchenden ändern und eine Messung von einem Punkt die Realität nicht abbildet.
+    Stattdessen berichten wir drei Quellen gemeinsam:
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <a href={p('services/rank-tracking')}>Rasterranking</a> — Ihre Position an 49 über die
+      Stadt verteilten Punkten, im Zeitverlauf
+    </li>
+    <li>Profilinteraktionen — Suchanfragen, Routenanfragen, Anrufe und Nachrichten</li>
+    <li>Search Console — für welche Suchanfragen Sie erscheinen, Klicks und Durchschnittsposition</li>
+  </ul>
+
+  <p>
+    Gemeinsam gelesen zeigen diese Quellen früh Situationen wie "Ranking gestiegen, aber das
+    Telefon klingelt nicht" oder "mehr Traffic, aber aus der falschen Stadt" — und das Programm
+    kann entsprechend korrigiert werden.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Wo stehen Sie in Ihrer Stadt <span class="highlight">wirklich</span>?</h2>
+    <p>Die kostenlose Analyse zeigt Rasterranking, Profillücken und den Abstand zu Ihren Wettbewerbern.</p>
+  </Fragment>
+</ContentLayout>

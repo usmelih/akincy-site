@@ -1,0 +1,212 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'what', label: 'What we produce' },
+  { id: 'industry', label: 'Industry pages' },
+  { id: 'city', label: 'City pages and the doorway line' },
+  { id: 'regulated', label: 'Regulated industries' },
+  { id: 'process', label: 'Production process' },
+  { id: 'ai', label: 'How we use AI' },
+];
+
+const faq = [
+  {
+    q: 'Who writes the content?',
+    a: 'Research and drafting are ours, technical accuracy review is yours. In fields like law and healthcare we get sign-off from the relevant professional before publishing — for accuracy and for liability.',
+  },
+  {
+    q: 'How many pieces per month do I need?',
+    a: 'We do not quote a fixed number. Most local businesses first need their missing service and industry pages completed; starting a blog before that is a common sequencing error. Once the core pages exist, two to four pieces a month is enough rhythm for most sectors.',
+  },
+  {
+    q: 'Does blogging actually help a local business?',
+    a: 'Its direct contribution to map rankings is limited. What it does is carry internal links to service pages, catch users earlier in their decision, and produce expertise signals. Blogging works as a supporting layer, not on its own.',
+  },
+  {
+    q: 'What happens to my existing content?',
+    a: 'We assess it first. Pieces that get impressions but no clicks, or that are stuck on page two, are usually worth rewriting — and that is the fastest available win. New production starts after those gaps are closed.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/content"
+  title="SEO Content Production | Akincy"
+  description="Service, industry and location pages that answer the search intent, sit correctly in the internal link structure and are ready to publish."
+  eyebrow="Service"
+  h1="Content Production"
+  lede="Ranking requires pages that answer the search. We identify which pages are missing using data, produce them, and wire them into the internal link structure."
+  serviceName="SEO Content Production"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'On-Page SEO', href: p('services/on-page-seo') },
+    { label: 'Local SEO', href: p('services/local-seo') },
+    { label: 'Technical SEO', href: p('services/technical-seo') },
+  ]}
+  ctaLabel="Find My Content Gaps →"
+  ctaHref="/#contact"
+>
+  <h2 id="what">What we produce</h2>
+
+  <p>
+    We do not treat content production as a synonym for blogging. The content a local business
+    needs in order to rank is mostly not blog posts but missing <strong>service</strong>,
+    <strong>industry</strong> and <strong>location</strong> pages.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Page type</th>
+          <th>Search it targets</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Service page</td>
+          <td>"divorce lawyer", "vehicle inspection"</td>
+          <td>Direct demand — the main source of conversion</td>
+        </tr>
+        <tr>
+          <td>Industry page</td>
+          <td>"seo for lawyers"</td>
+          <td>National visibility; requires no proximity signal</td>
+        </tr>
+        <tr>
+          <td>City page</td>
+          <td>"local seo antalya"</td>
+          <td>Regional visibility — only with real local data</td>
+        </tr>
+        <tr>
+          <td>Case study</td>
+          <td>Brand and comparison searches</td>
+          <td>Proof of trust and expertise</td>
+        </tr>
+        <tr>
+          <td>Guide content</td>
+          <td>"how long does a divorce take"</td>
+          <td>Early-stage users; carries internal links to service pages</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Sequence matters. Producing guide content before the service pages exist means bringing
+    visitors to a site with nowhere for them to go.
+  </p>
+
+  <h2 id="industry">Industry pages</h2>
+
+  <p>
+    This is the most valuable and most frequently skipped page type for a local service
+    business. The reason: industry queries carry no proximity signal. Someone searching "SEO
+    for lawyers" is not tied to a location, so it is possible to rank for that query nationwide.
+  </p>
+
+  <p>
+    That makes industry pages the real gateway to national visibility for businesses whose
+    profile is geographically constrained. For the page to work it has to speak the language of
+    that industry — not generic SEO advice with the industry name inserted, but text written by
+    someone who knows that industry's specific constraints and customer behaviour.
+  </p>
+
+  <h2 id="city">City pages and the doorway line</h2>
+
+  <p>
+    City pages cut both ways. Done properly they open regional visibility; done badly they
+    damage the whole site.
+  </p>
+
+  <p>
+    Google's definition of a doorway page is one produced purely to appear in different searches
+    without offering the user real value. Template pages with the city name swapped fit that
+    definition exactly, and they are not hard to detect.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>The bar we apply:</strong> a city page gets created only if it carries real data
+      about that city — a <a href={p('services/rank-tracking')}>competition density grid</a> for
+      the area, a case from there, or local competitor analysis. If we cannot produce the data,
+      we do not create the page. Ten solid city pages outperform fifty templates.
+    </p>
+  </div>
+
+  <h2 id="regulated">Regulated industries</h2>
+
+  <p>
+    In fields such as law, healthcare and finance, content production is not only an SEO
+    question. Professional advertising rules limit which claims can be made at all — success
+    claims, client numbers, comparative superiority and promotional incentives are typically
+    off-limits, and the specific rules differ by country and profession.
+  </p>
+
+  <p>
+    Every piece we produce in these fields goes through the relevant rule set before publishing,
+    and we get sign-off from the professional. It looks like a constraint but works out as an
+    advantage: text written to be compliant, informative and free of claims carries no
+    enforcement risk and tends to do well in Google's expertise assessment.
+  </p>
+
+  <h2 id="process">Production process</h2>
+
+  <ol>
+    <li>
+      <strong>Gap analysis.</strong> Queries getting impressions with no page behind them, pages
+      competitors have that you don't, and which intent each existing page serves.
+    </li>
+    <li>
+      <strong>Prioritisation.</strong> Pages ranked by demand volume and proximity to
+      conversion. Service pages come before guide content.
+    </li>
+    <li>
+      <strong>Brief.</strong> Target query, subheadings to cover, internal link plan and schema
+      type defined per page.
+    </li>
+    <li>
+      <strong>Writing and expert review.</strong> Draft produced, submitted to you for technical
+      accuracy, checked against the applicable rules in regulated fields.
+    </li>
+    <li>
+      <strong>Publish and wire.</strong> Page goes live, joins the internal link structure, gets
+      its structured data and enters the sitemap.
+    </li>
+    <li>
+      <strong>Follow-up.</strong> Impression and position data read after four to eight weeks;
+      the page is deepened if needed. Published does not mean finished.
+    </li>
+  </ol>
+
+  <h2 id="ai">How we use AI</h2>
+
+  <p>
+    Let's be direct about this: we use AI in research, drafting and data processing. Where we do
+    not use it is publishing the output as-is.
+  </p>
+
+  <p>
+    The reason is practical, not ideological. Raw generated text does not know the real
+    constraints of your profession, your actual processes, or the actual state of competition in
+    your city. Content published without that knowledge does not differentiate from the hundreds
+    of similar pages targeting the same query. Content that does not differentiate does not rank.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Which pages are <span class="highlight">missing</span>?</h2>
+    <p>The free audit surfaces queries you appear for without a matching page, plus the content gap against competitors.</p>
+  </Fragment>
+</ContentLayout>
