@@ -99,7 +99,7 @@ const relatedHeading = {
   <section style="padding-top:0;">
     <div class="container">
       {/* On desktop the TOC becomes a sticky side rail; below 1000px it stacks above. */}
-      <div class="content-layout">
+      <div class:list={['content-layout', toc.length > 0 && 'has-toc']}>
         {/* TOC first in the DOM so it stacks above the article on mobile and
             reaches screen readers before the body; the grid places it right. */}
         {toc.length > 0 && (

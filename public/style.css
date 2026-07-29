@@ -1972,17 +1972,19 @@ footer {
   display: block;
 }
 @media (min-width: 1000px) {
-  .content-layout {
+  /* Only pages that actually have a TOC get the side rail; otherwise the
+     second column would just be empty space. */
+  .content-layout.has-toc {
     display: grid;
     grid-template-columns: minmax(0, 760px) 244px;
     gap: 56px;
     align-items: start;
   }
-  .content-layout > .prose {
+  .content-layout.has-toc > .prose {
     grid-column: 1;
     grid-row: 1;
   }
-  .content-layout > .toc {
+  .content-layout.has-toc > .toc {
     grid-column: 2;
     grid-row: 1;
     position: sticky;

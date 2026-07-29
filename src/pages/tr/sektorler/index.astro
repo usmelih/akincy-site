@@ -46,6 +46,13 @@ const otherSectors = [
   'Spor salonları',
 ];
 
+const toc = [
+  { id: 'neden-sektor', label: 'Sektör sayfası neden ayrı bir katman?' },
+  { id: 'ne-degisir', label: 'Sektörden sektöre ne değişiyor?' },
+  { id: 'dikeyler', label: 'Deneyim biriktirdiğimiz dikeyler' },
+  { id: 'diger', label: 'Çalıştığımız diğer sektörler' },
+];
+
 const faq = [
   {
     q: 'Sektörüm listede yok, çalışabilir miyiz?',
@@ -76,6 +83,7 @@ const faq = [
   lede="Yerel SEO'nun mekaniği her sektörde aynı; değişen şey rekabetin nerede yoğunlaştığı, mevzuatın neye izin verdiği ve müşterinin nasıl aradığı. Bu üçünü bilmeden yapılan çalışma boşa gidiyor."
   serviceName="Sektöre Özel Yerel SEO"
   breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
+  toc={toc}
   faq={faq}
   related={[
     { label: 'Yerel SEO', href: p('services/local-seo') },
