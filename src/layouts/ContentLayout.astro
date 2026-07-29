@@ -98,20 +98,25 @@ const relatedHeading = {
 
   <section style="padding-top:0;">
     <div class="container">
-      {toc.length > 0 && (
-        <nav class="toc prose" aria-label={tocHeading}>
-          <h2>{tocHeading}</h2>
-          <ol>
-            {toc.map((item) => (
-              <li><a href={`#${item.id}`}>{item.label}</a></li>
-            ))}
-          </ol>
-        </nav>
-      )}
+      {/* On desktop the TOC becomes a sticky side rail; below 1000px it stacks above. */}
+      <div class="content-layout">
+        {/* TOC first in the DOM so it stacks above the article on mobile and
+            reaches screen readers before the body; the grid places it right. */}
+        {toc.length > 0 && (
+          <nav class="toc" aria-label={tocHeading}>
+            <h2>{tocHeading}</h2>
+            <ol>
+              {toc.map((item) => (
+                <li><a href={`#${item.id}`}>{item.label}</a></li>
+              ))}
+            </ol>
+          </nav>
+        )}
 
-      <article class="prose">
-        <slot />
-      </article>
+        <article class="prose">
+          <slot />
+        </article>
+      </div>
 
       {/* Full-width blocks (card grids, tables) that shouldn't be capped at prose width. */}
       <slot name="wide" />
