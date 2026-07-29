@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import CardGrid from '../../components/CardGrid.astro';
 import { routePath } from '../../i18n/routes';
 
 const locale = 'en' as const;
@@ -7,31 +8,37 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const services = [
   {
+    icon: 'profile',
     href: p('services/gbp'),
     title: 'Google Business Profile Management',
     text: 'Categories, services, photos, posts and reviews. Most of what decides your Maps ranking sits inside the profile, not the website.',
   },
   {
+    icon: 'map',
     href: p('services/local-seo'),
     title: 'Local SEO',
     text: 'The umbrella programme that points your profile, your site and your external trust signals at the same target.',
   },
   {
+    icon: 'grid',
     href: p('services/rank-tracking'),
     title: 'Map Rank Tracking',
     text: 'Not one average number — a 7×7 grid laid over your city, showing where you actually rank block by block.',
   },
   {
+    icon: 'wrench',
     href: p('services/technical-seo'),
     title: 'Technical SEO',
     text: 'Crawlability, indexing, speed and structured data. However good the content is, none of it ranks if these are broken.',
   },
   {
+    icon: 'document',
     href: p('services/on-page-seo'),
     title: 'On-Page SEO',
     text: 'Titles, content depth, internal links and search intent. Makes it unambiguous which query each page answers.',
   },
   {
+    icon: 'pen',
     href: p('services/content'),
     title: 'Content Production',
     text: 'Service, industry and location pages that actually answer the search — researched, reviewed and ready to publish.',
@@ -69,6 +76,7 @@ const faq = [
   serviceName="Local SEO and Google Maps Optimization"
   breadcrumb={[{ label: 'Home', href: '/' }]}
   faq={faq}
+  wideFirst
   ctaLabel="Get My Free Audit →"
   ctaHref="/#contact"
 >
@@ -135,17 +143,13 @@ const faq = [
     </p>
   </div>
 
-  <h2 id="services">Services</h2>
-
-  <div slot="wide" class="grid-3" style="margin-top:20px;">
-    {services.map((service) => (
-      <a class="card service-card" href={service.href}>
-        <h3>{service.title}</h3>
-        <p>{service.text}</p>
-        <span class="service-card-more">Read more →</span>
-      </a>
-    ))}
-  </div>
+  <Fragment slot="wide">
+    <h2 id="services" class="section-lead">Services</h2>
+    <p class="section-lead-sub">
+      Each one addresses one of the three layers that decide local ranking.
+    </p>
+    <CardGrid items={services} cta="Read more" />
+  </Fragment>
 
   <Fragment slot="cta">
     <h2>Not sure which one you <span class="highlight">need</span>?</h2>

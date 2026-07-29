@@ -18,6 +18,11 @@ interface Props {
   /** Name used in the Service schema. Omit on pages that aren't a service. */
   serviceName?: string;
   toc?: { id: string; label: string }[];
+  /**
+   * Render the `wide` slot above the article instead of below it. Hub pages use
+   * this so visitors see the actual offer before the explanatory copy.
+   */
+  wideFirst?: boolean;
   faq?: FaqEntry[];
   related?: { label: string; href: string }[];
   ctaLabel: string;
@@ -35,6 +40,7 @@ const {
   breadcrumb = [],
   serviceName,
   toc = [],
+  wideFirst = false,
   faq = [],
   related = [],
   ctaLabel,
@@ -98,6 +104,13 @@ const relatedHeading = {
 
   <section style="padding-top:0;">
     <div class="container">
+      {/* Hub pages lead with the offer, so the wide slot goes above the copy. */}
+      {wideFirst && (
+        <div class="wide-block wide-block--lead">
+          <slot name="wide" />
+        </div>
+      )}
+
       {/* On desktop the TOC becomes a sticky side rail; below 1000px it stacks above. */}
       <div class:list={['content-layout', toc.length > 0 && 'has-toc']}>
         {/* TOC first in the DOM so it stacks above the article on mobile and
@@ -119,7 +132,7 @@ const relatedHeading = {
       </div>
 
       {/* Full-width blocks (card grids, tables) that shouldn't be capped at prose width. */}
-      <slot name="wide" />
+      {!wideFirst && <div class="wide-block"><slot name="wide" /></div>}
 
       {faq.length > 0 && (
         <div class="prose" style="margin-top:56px;">
