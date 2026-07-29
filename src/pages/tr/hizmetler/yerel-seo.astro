@@ -1,0 +1,234 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'nedir', label: 'Yerel SEO tam olarak nedir?' },
+  { id: 'fark', label: 'Klasik SEO’dan farkı' },
+  { id: 'nap', label: 'NAP tutarlılığı ve dizinler' },
+  { id: 'site', label: 'Sitenin yerel sıralamadaki rolü' },
+  { id: 'coklu', label: 'Çok şehirli ve çok lokasyonlu yapılar' },
+  { id: 'program', label: '90 günlük program' },
+  { id: 'olcum', label: 'Neyi ölçüyoruz' },
+];
+
+const faq = [
+  {
+    q: 'Yerel SEO ile normal SEO arasındaki fark ne?',
+    a: 'Normal SEO tek bir sonuç listesinde sıralanmayı hedefler. Yerel SEO’da iki ayrı yarış vardır: harita paketi (ilk üç işletme) ve altındaki organik sonuçlar. İkisi farklı sinyallerle sıralanır; harita paketinde işletme profili ve yakınlık belirleyicidir.',
+  },
+  {
+    q: 'Kaç ayda sonuç alınır?',
+    a: 'Çoğu işletmede ilk hareket 4–8 hafta içinde görülür, sonuçlar 3–6 ayda birikir. Profil tarafındaki kök hatalar (yanlış kategori gibi) düzeltildiğinde daha hızlı sıçrama olabilir; büyük şehir merkezlerinde rekabet nedeniyle süre uzar.',
+  },
+  {
+    q: 'Sıralama garantisi veriyor musunuz?',
+    a: 'Google’da 90 gün içinde ilk 3 garantisi veriyoruz. Garantinin kapsamı, üzerinde anlaştığımız hedef sorgu ve hizmet bölgesi için geçerlidir; her sorgu ve her şehir için blanket bir taahhüt anlamına gelmez.',
+  },
+  {
+    q: 'Kendi başıma yapabilir miyim?',
+    a: 'Profil tarafındaki temel düzeltmeleri evet. Zorlaşan kısım süreklilik ve ölçüm: değerlendirme akışını canlı tutmak, grid üzerinde ne olduğunu görmek ve rakip hareketlerine tepki vermek. Çoğu işletmenin takıldığı yer strateji değil, ritim.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/local-seo"
+  title="Yerel SEO Hizmeti | Akincy"
+  description="Google Haritalar ve yerel aramalarda ilk üçe girmek için profil, site ve dış sinyalleri tek programda birleştiren yerel SEO çalışması."
+  eyebrow="Hizmet"
+  h1="Yerel SEO"
+  lede="Yerel SEO, tek bir işin adı değil; profil, site ve dış güven sinyallerini aynı hedefe yönelten bir program. Bu sayfada programın nasıl kurulduğunu ve neyi ölçtüğümüzü anlatıyoruz."
+  serviceName="Yerel SEO"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
+    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking') },
+    { label: 'Teknik SEO', href: p('services/technical-seo') },
+  ]}
+  ctaLabel="Ücretsiz Analizimi Al →"
+  ctaHref="/tr#contact"
+>
+  <h2 id="nedir">Yerel SEO tam olarak nedir?</h2>
+
+  <p>
+    Bir kullanıcı "yakınımdaki diş hekimi" yazdığında Google iki ayrı liste üretiyor: üstte
+    harita ve üç işletme, altında klasik organik sonuçlar. Bu iki liste farklı kurallarla
+    sıralanıyor ve çoğu tıklama üsttekine gidiyor.
+  </p>
+
+  <p>
+    Yerel SEO, bu iki listede aynı anda görünür olmak için yapılan çalışmanın bütünü. Harita
+    paketinde <a href={p('services/gbp')}>işletme profili</a> belirleyici; organik listede ise
+    sitenizin içeriği ve teknik sağlığı. İkisini ayrı ayrı yürütmek yaygın bir hata, çünkü
+    Google her ikisinde de aynı işletme varlığını değerlendiriyor ve sinyaller birbirini
+    besliyor.
+  </p>
+
+  <h2 id="fark">Klasik SEO’dan farkı</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Klasik SEO</th>
+          <th>Yerel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Yarışılan alan</strong></td>
+          <td>Tek organik liste</td>
+          <td>Harita paketi + organik liste</td>
+        </tr>
+        <tr>
+          <td><strong>Konumun etkisi</strong></td>
+          <td>Düşük</td>
+          <td>Belirleyici — arayanın noktası sıralamayı değiştirir</td>
+        </tr>
+        <tr>
+          <td><strong>Ana varlık</strong></td>
+          <td>Site</td>
+          <td>İşletme profili + site</td>
+        </tr>
+        <tr>
+          <td><strong>Ölçüm birimi</strong></td>
+          <td>Tek sıralama değeri</td>
+          <td>Şehre yayılmış grid üzerinde sıralama dağılımı</td>
+        </tr>
+        <tr>
+          <td><strong>Dönüşüm biçimi</strong></td>
+          <td>Site ziyareti</td>
+          <td>Telefon, yol tarifi, mesaj — çoğu zaman siteye hiç girmeden</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Son satır, çoğu işletmenin gözünden kaçan kısım. Yerel aramada gelen talebin önemli bölümü
+    siteyi hiç açmadan doğrudan telefon ya da yol tarifi olarak geliyor. Bu yüzden yalnızca site
+    analitiğine bakan bir işletme, yerel SEO’nun getirisini olduğundan düşük görüyor.
+  </p>
+
+  <h2 id="nap">NAP tutarlılığı ve dizinler</h2>
+
+  <p>
+    NAP, işletmenin adı, adresi ve telefonu anlamına geliyor. Google, aynı işletmeyi farklı
+    kaynaklarda gördükçe o işletmenin gerçekliğine dair güven biriktiriyor. Kaynaklar arasında
+    tutarsızlık varsa — bir yerde "Akıncı Hukuk", başka yerde "Akinci Hukuk Bürosu", telefon
+    numarasının eski hali — bu güven zayıflıyor.
+  </p>
+
+  <p>
+    Yaptığımız iş, işletmenin geçtiği tüm kaynakları çıkarıp tek bir yazıma sabitlemek. Sektörel
+    dizinler, harita servisleri, sosyal profiller ve varsa eski web sitesi kayıtları dahil.
+    Adressiz çalışan işletmelerde adres alanı boş kalır ama isim ve telefonun her yerde birebir
+    aynı olması bu durumda daha da kritik hale gelir.
+  </p>
+
+  <h2 id="site">Sitenin yerel sıralamadaki rolü</h2>
+
+  <p>
+    Profil ne kadar iyi olursa olsun, rekabetin yüksek olduğu şehirlerde site desteklemediğinde
+    ilk üç zorlaşıyor. Google, profilin bağlandığı siteyi de alaka hesabına katıyor: sitenin
+    hangi hizmetlerden bahsettiği, hangi şehir adlarının geçtiği, sayfaların o hizmetleri gerçekten
+    açıklayıp açıklamadığı.
+  </p>
+
+  <p>
+    Bu yüzden yerel SEO programının site ayağında üç iş yürüyor:
+    <a href={p('services/technical-seo')}>teknik SEO</a> ile sitenin taranıp indekslenebildiğinden
+    emin oluyoruz, <a href={p('services/on-page-seo')}>on-page SEO</a> ile her sayfayı tek bir
+    arama niyetine oturtuyoruz, <a href={p('services/content')}>içerik üretimi</a> ile de
+    kapsanmayan hizmet ve sorguları sayfaya dönüştürüyoruz.
+  </p>
+
+  <h2 id="coklu">Çok şehirli ve çok lokasyonlu yapılar</h2>
+
+  <p>
+    Tek lokasyonlu bir işletmeyle üç şubeli bir işletmenin yerel SEO’su aynı değil. Şubeli
+    yapılarda her lokasyon için ayrı profil, ayrı değerlendirme havuzu ve sitede ayrı bir
+    lokasyon sayfası gerekiyor. Bu sayfaların birbirinin kopyası olması, en sık rastladığımız
+    ve en pahalıya patlayan hata.
+  </p>
+
+  <p>
+    Şubesi olmayan ama birden fazla şehre hizmet veren işletmelerde ise durum farklı: ek profil
+    açmak politika ihlali. Burada doğru yol, şehir bazlı görünürlüğü site tarafından kurmak —
+    her şehir sayfasının o şehre özgü gerçek bilgi taşıması şartıyla. Şehir adı değiştirilmiş
+    şablon sayfalar Google tarafından doorway olarak değerlendiriliyor ve site geneline zarar
+    veriyor.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Şehir sayfası açmanın eşiği:</strong> o şehir için söyleyecek gerçek bir şeyiniz
+      yoksa (yerel rakip analizi, o şehirden bir vaka, bölgeye özgü veri), sayfayı açmayın.
+      On iyi şehir sayfası, elli şablon sayfadan fazla iş görür.
+    </p>
+  </div>
+
+  <h2 id="program">90 günlük program</h2>
+
+  <ol>
+    <li>
+      <strong>0–2. hafta — Ölçüm ve teşhis.</strong> Grid üzerinde başlangıç sıralaması, profil
+      denetimi, rakip kategori/değerlendirme farkı, sitenin teknik durumu ve NAP taraması.
+    </li>
+    <li>
+      <strong>2–4. hafta — Kök düzeltmeler.</strong> Kategori ve hizmet yapısı, indeksleme
+      engelleri, eksik yapılandırılmış veri, dizinlerdeki tutarsızlıklar. Sıçramanın büyük
+      bölümü genelde bu aşamadan gelir.
+    </li>
+    <li>
+      <strong>4–8. hafta — İçerik ve sinyal üretimi.</strong> Eksik hizmet sayfaları, profil
+      post takvimi, değerlendirme akışının devreye alınması.
+    </li>
+    <li>
+      <strong>8–12. hafta — Konsolidasyon.</strong> Grid’de geride kalan bölgelere odaklı
+      düzeltmeler, iç link yapısının sıkılaştırılması, rakip hareketlerine tepki.
+    </li>
+  </ol>
+
+  <h2 id="olcum">Neyi ölçüyoruz</h2>
+
+  <p>
+    Tek bir sıralama ekran görüntüsü göndermiyoruz, çünkü yerel sıralama arayanın konumuna göre
+    değişiyor ve tek noktadan alınan bir ölçüm gerçeği göstermiyor. Bunun yerine üç kaynağı
+    birlikte raporluyoruz:
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <a href={p('services/rank-tracking')}>Grid sıralaması</a> — şehir üstüne serilmiş 49 noktada
+      kaçıncı olduğunuz, zaman içindeki değişimiyle
+    </li>
+    <li>
+      Profil etkileşimleri — arama sayısı, yol tarifi talebi, telefon ve mesaj sayısı
+    </li>
+    <li>
+      Search Console — hangi sorgularda gösterildiğiniz, tıklama ve ortalama pozisyon
+    </li>
+  </ul>
+
+  <p>
+    Bu üçü birlikte okunduğunda, "sıralama yükseldi ama telefon gelmiyor" ya da "trafik arttı ama
+    yanlış şehirden" gibi durumlar erken fark ediliyor ve program buna göre düzeltiliyor.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Şehrinizde şu an <span class="highlight">kaçıncısınız</span>?</h2>
+    <p>Ücretsiz analizde grid sıralamanızı, profil eksiklerinizi ve rakip farkını çıkarıyoruz.</p>
+  </Fragment>
+</ContentLayout>

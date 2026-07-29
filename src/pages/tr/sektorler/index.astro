@@ -1,0 +1,209 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const verticals = [
+  {
+    href: p('industries/law'),
+    title: 'Avukatlar',
+    text: 'TBB Reklam Yasağı Yönetmeliği çerçevesinde yürüyen görünürlük çalışması. Beş hukuk bürosuyla çalıştık.',
+  },
+  {
+    href: p('industries/dental'),
+    title: 'Diş Hekimleri',
+    text: 'Yüksek rekabetli, Sağlık Bakanlığı tanıtım kısıtları altındaki bir dikey. Sıralamayı yorum yönetimi ve tedavi sayfaları belirliyor.',
+  },
+  {
+    href: p('industries/aesthetics'),
+    title: 'Estetik Klinikleri',
+    text: 'Mevzuatın en sıkı olduğu alan. Kategori seçimi tek başına görünürlüğü ikiye katlayabiliyor.',
+  },
+  {
+    href: p('industries/physio'),
+    title: 'Fizyoterapistler',
+    text: 'Klinik ve evde hizmet ayrımının doğru kurulması, sıralamada en belirleyici teknik karar.',
+  },
+  {
+    href: p('industries/vehicle-inspection'),
+    title: 'Oto Ekspertiz',
+    text: 'Mahalle ölçeğinde yakınlık savaşı. Yorum hacmi ve tesis fotoğrafları belirleyici.',
+  },
+];
+
+const otherSectors = [
+  'Emlak ofisleri',
+  'Veteriner klinikleri',
+  'Kuaför ve güzellik salonları',
+  'Mali müşavirler',
+  'Psikologlar ve danışmanlık merkezleri',
+  'Nakliyat ve lojistik',
+  'Tesisat, elektrik ve tadilat',
+  'Anaokulları ve kurslar',
+  'Restoran ve kafeler',
+  'Spor salonları',
+];
+
+const toc = [
+  { id: 'neden-sektor', label: 'Sektör sayfası neden ayrı bir katman?' },
+  { id: 'ne-degisir', label: 'Sektörden sektöre ne değişiyor?' },
+  { id: 'dikeyler', label: 'Deneyim biriktirdiğimiz dikeyler' },
+  { id: 'diger', label: 'Çalıştığımız diğer sektörler' },
+];
+
+const faq = [
+  {
+    q: 'Sektörüm listede yok, çalışabilir miyiz?',
+    a: 'Evet. Yöntem sektörden bağımsız; değişen şey rekabetin yapısı, mevzuat kısıtları ve müşterinin arama biçimi. Listedeki sayfalar sadece en çok deneyim biriktirdiğimiz dikeyler. Ücretsiz analizde sizin sektörünüz için de aynı çıktıyı üretiyoruz.',
+  },
+  {
+    q: 'Sektörümde deneyiminiz yoksa dezavantaj olmaz mı?',
+    a: 'Sektör bilgisi içeriğin doğruluğu ve mevzuat uyumu için gerekli, sıralama mekaniği için değil. Deneyimimiz olmayan bir alanda çalışırken içeriğin teknik doğruluğunu sizden onaylatarak ilerliyoruz — zaten hukuk ve sağlıkta da böyle yapıyoruz.',
+  },
+  {
+    q: 'Aynı şehirde rakibimle de çalışır mısınız?',
+    a: 'Hayır. Her şehir ve sektörde tek bir işletmeyle çalışıyoruz. İki rakibi aynı anda ilk üçe taşımak mümkün değil.',
+  },
+  {
+    q: 'Regülasyonlu sektörlerde risk alıyor muyuz?',
+    a: 'Hayır, tersine. Avukatlıkta TBB, sağlıkta Sağlık Bakanlığı tanıtım mevzuatı içeriğin sınırını çiziyor ve biz bu sınırın içinde kalıyoruz. Yaptırım riski taşıyan bir ifadeyi sıralama uğruna kullanmıyoruz.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries"
+  title="Sektörlere Göre Yerel SEO | Akincy"
+  description="Avukat, diş hekimi, estetik kliniği, fizyoterapist ve oto ekspertiz gibi dikeylerde yerel SEO. Mevzuat kısıtlarına ve sektörün arama davranışına göre kurulan program."
+  eyebrow="Sektörler"
+  h1="Sektörlere Göre Yerel SEO"
+  lede="Yerel SEO'nun mekaniği her sektörde aynı; değişen şey rekabetin nerede yoğunlaştığı, mevzuatın neye izin verdiği ve müşterinin nasıl aradığı. Bu üçünü bilmeden yapılan çalışma boşa gidiyor."
+  serviceName="Sektöre Özel Yerel SEO"
+  breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Yerel SEO', href: p('services/local-seo') },
+    { label: 'İçerik Üretimi', href: p('services/content') },
+    { label: 'Tüm hizmetler', href: p('services') },
+  ]}
+  ctaLabel="Sektörüm İçin Analiz İste →"
+  ctaHref="/tr#contact"
+>
+  <p>
+    Her sektörle çalışıyoruz. Aşağıdaki sayfalar, en çok deneyim biriktirdiğimiz ve
+    sektöre özgü söyleyecek somut şeyimiz olan dikeyler — sektörünüz listede yoksa bu
+    çalışamayacağımız anlamına gelmiyor.
+  </p>
+
+  <h2 id="neden-sektor">Sektör sayfası neden ayrı bir katman?</h2>
+
+  <p>
+    Bir işletme "Antalya avukat" diye aratıldığında Google, arayanın konumunu hesaba katar.
+    Ama "avukatlar için SEO" ya da "diş kliniği nasıl üst sıraya çıkar" diye aratıldığında
+    böyle bir sinyal yoktur. Bu ikinci grup sorgu, coğrafyadan bağımsız olarak Türkiye
+    genelinde sıralanabilir.
+  </p>
+
+  <p>
+    Merkezi Antalya'da olan bir ajansın ülke geneline ulaşmasının yolu bu yüzden harita
+    paketinden değil, sektör içeriğinden geçiyor. Aynı mantık müşterilerimiz için de
+    geçerli: bir hukuk bürosunun "boşanma davası ne kadar sürer" sorgusunda ülke genelinde
+    görünmesi, "boşanma avukatı" sorgusunda kendi şehrinde ilk üçe girmesinden farklı bir
+    iş ve ikisi birlikte yürüyor.
+  </p>
+
+  <h2 id="ne-degisir">Sektörden sektöre ne değişiyor?</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Değişken</th>
+          <th>Neden önemli</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Rekabet yarıçapı</strong></td>
+          <td>
+            Oto ekspertiz için 3 km, hukuk bürosu için tüm şehir. Bu, grid ölçeğini ve
+            hangi sorgulara oynanacağını değiştiriyor.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mevzuat</strong></td>
+          <td>
+            Avukatlıkta TBB, sağlıkta Sağlık Bakanlığı tanıtım kuralları içeriğin sınırını
+            çiziyor. Diğer sektörlerde işe yarayan pek çok taktik burada kullanılamıyor.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Kategori haritası</strong></td>
+          <td>
+            "Medikal estetik" ile "güzellik salonu" Google için iki farklı işletme türü.
+            Yanlış seçim, doğru sorguda hiç görünmemek demek.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Karar süresi</strong></td>
+          <td>
+            Oto ekspertizde karar dakikalar içinde veriliyor; implant tedavisinde haftalar.
+            Uzun kararlarda bilgilendirici içerik, kısa kararlarda profil ve yorum belirleyici.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Yorum davranışı</strong></td>
+          <td>
+            Bazı sektörlerde müşteri yorum yazmaya isteklidir, bazılarında mahremiyet nedeniyle
+            yazmaz. Yorum hacmi hedefi buna göre gerçekçi belirlenmeli.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>Sektör bilgisi olmadan yazılan içerik sıralanmıyor.</strong> Aynı sorguyu
+      hedefleyen yüzlerce genel metin var; ayrışan tek şey, o sektörde gerçekten çalışmış
+      birinin bildiği detay. Bu yüzden deneyimimiz olmayan alanlarda içeriğin teknik
+      doğruluğunu müşteriye onaylatıyoruz.
+    </p>
+  </div>
+
+  <h2 id="dikeyler">Deneyim biriktirdiğimiz dikeyler</h2>
+
+  <div slot="wide">
+    <div class="grid-3" style="margin-top:20px;">
+      {verticals.map((v) => (
+        <a class="card service-card" href={v.href}>
+          <h3>{v.title}</h3>
+          <p>{v.text}</p>
+          <span class="service-card-more">İncele →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="prose" style="margin-top:56px;">
+      <h2 id="diger">Çalıştığımız diğer sektörler</h2>
+      <p>
+        Bu alanlarda henüz ayrı bir sayfamız yok, ama program aynı şekilde kuruluyor.
+        Sektörünüz burada da yoksa yine yazın — yöntem sektörden bağımsız.
+      </p>
+      <ul class="related-links" style="margin-top:18px;">
+        {otherSectors.map((s) => (
+          <li><span>{s}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="cta">
+    <h2>Sektörünüzde rekabet <span class="highlight">nerede yoğunlaşıyor</span>?</h2>
+    <p>Ücretsiz analizde sektörünüze özgü rakip yapısını ve içerik boşluğunu çıkarıyoruz.</p>
+  </Fragment>
+</ContentLayout>

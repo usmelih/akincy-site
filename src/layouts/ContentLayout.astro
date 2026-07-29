@@ -1,0 +1,162 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Locale } from '../i18n/config';
+import { routePath, type RouteKey } from '../i18n/routes';
+import { servicePageSchema, type Crumb, type FaqEntry } from '../lib/schema';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  /** <title> and meta description — written per page, not derived from the H1. */
+  title: string;
+  description: string;
+  eyebrow?: string;
+  h1: string;
+  lede: string;
+  /** Ancestors only; the current page is appended automatically. */
+  breadcrumb?: Crumb[];
+  /** Name used in the Service schema. Omit on pages that aren't a service. */
+  serviceName?: string;
+  toc?: { id: string; label: string }[];
+  faq?: FaqEntry[];
+  related?: { label: string; href: string }[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const {
+  locale,
+  route,
+  title,
+  description,
+  eyebrow,
+  h1,
+  lede,
+  breadcrumb = [],
+  serviceName,
+  toc = [],
+  faq = [],
+  related = [],
+  ctaLabel,
+  ctaHref,
+} = Astro.props;
+
+const url = routePath(locale, route);
+const trail: Crumb[] = [...breadcrumb, { label: h1, href: url }];
+
+const schema = servicePageSchema({
+  locale,
+  url,
+  name: serviceName ?? h1,
+  description,
+  faq,
+  breadcrumb: trail,
+});
+
+const faqHeading = { tr: 'Sık sorulanlar', en: 'Frequently asked', de: 'Häufige Fragen' }[locale];
+const tocHeading = { tr: 'Bu sayfada', en: 'On this page', de: 'Auf dieser Seite' }[locale];
+const relatedHeading = {
+  tr: 'İlgili hizmetler',
+  en: 'Related services',
+  de: 'Verwandte Leistungen',
+}[locale];
+---
+
+<BaseLayout locale={locale} route={route} title={title} description={description}>
+  <script
+    slot="schema"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(schema)}
+  />
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          {trail.map((crumb, i) => (
+            <li>
+              {i === trail.length - 1 ? (
+                <span aria-current="page">{crumb.label}</span>
+              ) : (
+                <a href={crumb.href}>{crumb.label}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1>{h1}</h1>
+      <p class="lede">{lede}</p>
+
+      <div class="page-hero-actions">
+        <a href={ctaHref} class="btn btn-primary">{ctaLabel}</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      {/* On desktop the TOC becomes a sticky side rail; below 1000px it stacks above. */}
+      <div class:list={['content-layout', toc.length > 0 && 'has-toc']}>
+        {/* TOC first in the DOM so it stacks above the article on mobile and
+            reaches screen readers before the body; the grid places it right. */}
+        {toc.length > 0 && (
+          <nav class="toc" aria-label={tocHeading}>
+            <h2>{tocHeading}</h2>
+            <ol>
+              {toc.map((item) => (
+                <li><a href={`#${item.id}`}>{item.label}</a></li>
+              ))}
+            </ol>
+          </nav>
+        )}
+
+        <article class="prose">
+          <slot />
+        </article>
+      </div>
+
+      {/* Full-width blocks (card grids, tables) that shouldn't be capped at prose width. */}
+      <slot name="wide" />
+
+      {faq.length > 0 && (
+        <div class="prose" style="margin-top:56px;">
+          <h2 id="sss">{faqHeading}</h2>
+          {faq.map((item) => (
+            <details class="faq-item">
+              <summary>
+                <span>{item.q}</span>
+                <div class="faq-icon">+</div>
+              </summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      )}
+
+      {related.length > 0 && (
+        <div class="prose" style="margin-top:56px;">
+          <h2>{relatedHeading}</h2>
+          <ul class="related-links">
+            {related.map((item) => (
+              <li><a href={item.href}>{item.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="cta-mini reveal">
+    <div class="container">
+      <div class="section-head center">
+        <slot name="cta" />
+      </div>
+      <div style="text-align:center;">
+        <a href={ctaHref} class="btn btn-primary">{ctaLabel}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,191 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'mevzuat', label: 'Sağlık tanıtım mevzuatı ne diyor?' },
+  { id: 'kategori', label: 'Kategori ve hizmet kurulumu' },
+  { id: 'tedavi', label: 'Tedavi sayfaları' },
+  { id: 'yorum', label: 'Yorum yönetimi' },
+  { id: 'turizm', label: 'Sağlık turizmi ayrı bir dünya' },
+  { id: 'olcum', label: 'Neyi ölçüyoruz' },
+];
+
+const faq = [
+  {
+    q: 'Öncesi/sonrası fotoğrafı paylaşamıyorsak nasıl ikna edeceğiz?',
+    a: 'Tedavi sürecini anlatan bilgilendirici içerikle. Hasta, sonucu gösteren bir fotoğraftan çok "kaç seans sürer, acır mı, ne kadar dayanır, ne zaman çalışmaya dönerim" sorularının cevabını arıyor. Bu soruları gerçekten cevaplayan sayfalar hem mevzuata uygun hem de dönüşümü yüksek.',
+  },
+  {
+    q: 'Fiyat yazmak yasak mı?',
+    a: 'Sağlık hizmetlerinde fiyat ve indirim üzerinden tanıtım yapmak kısıtlı. Bu yüzden fiyat sayfası yerine, maliyeti neyin belirlediğini açıklayan bilgilendirici içerik kuruyoruz — hasta zaten bunu arıyor ve bu içerik sıralanabiliyor.',
+  },
+  {
+    q: 'Birden fazla şubem var, tek profil mi açayım?',
+    a: 'Her fiziksel şube için ayrı profil açılmalı ve her birinin kendi değerlendirme havuzu, kendi lokasyon sayfası olmalı. En sık yapılan hata, şube sayfalarının birbirinin kopyası olması — bu hem sıralamayı düşürüyor hem de şubeler birbirini yiyor.',
+  },
+  {
+    q: 'Ne kadar sürede sonuç alırım?',
+    a: 'Diş hekimliği yerel SEO\'nun en rekabetçi dikeylerinden biri, özellikle büyük şehir merkezlerinde. Profil tarafında kök hata varsa 4–8 haftada belirgin hareket görülüyor; doygun bölgelerde ilk üçe yerleşmek 4–6 ayı bulabiliyor.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/dental"
+  title="Diş Hekimleri ve Diş Klinikleri İçin SEO | Akincy"
+  description="Diş klinikleri için sağlık tanıtım mevzuatına uygun yerel SEO. Kategori kurulumu, tedavi sayfaları, yorum yönetimi ve çok şubeli yapılar."
+  eyebrow="Sektör"
+  h1="Diş Hekimleri İçin SEO"
+  lede="Diş hekimliği, yerel aramada en doygun dikeylerden biri. Aynı ilçede onlarca klinik aynı sorguya oynuyor ve hepsinin profili benzer görünüyor. Ayrışma, mevzuatın izin verdiği dar alanda kuruluyor."
+  serviceName="Diş Klinikleri İçin Yerel SEO"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Sektörler', href: p('industries') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
+    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking') },
+    { label: 'İçerik Üretimi', href: p('services/content') },
+  ]}
+  ctaLabel="Kliniğimi Ücretsiz Analiz Et →"
+  ctaHref="/tr#contact"
+>
+  <h2 id="mevzuat">Sağlık tanıtım mevzuatı ne diyor?</h2>
+
+  <p>
+    Sağlık hizmeti sunucularının tanıtımı, Sağlık Bakanlığı düzenlemeleriyle sınırlandırılmış
+    durumda. Diğer sektörlerde standart olan pek çok pazarlama hamlesi burada kullanılamıyor:
+  </p>
+
+  <ul>
+    <li>Talep yaratmaya yönelik, sonuç vaat eden ifadeler</li>
+    <li>Öncesi/sonrası görselleriyle yapılan tanıtım</li>
+    <li>İndirim, kampanya, paket fiyat gibi teşvikler</li>
+    <li>Hasta deneyimini övgü aracı olarak kullanan içerik</li>
+    <li>Karşılaştırmalı üstünlük iddiaları</li>
+  </ul>
+
+  <p>
+    Serbest olan alan ise <strong>bilgilendirme</strong>: tedavinin ne olduğu, nasıl
+    uygulandığı, hangi durumlarda gerektiği, ne kadar sürdüğü ve hastanın neyle
+    karşılaşacağı. Sıralama açısından iyi haber şu — hastanın gerçekten aradığı da tam
+    olarak bu bilgi.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Bu sayfa hukuki görüş değildir.</strong> Mevzuatın yorumu ve güncel hali
+      için bağlı olduğunuz il sağlık müdürlüğü ve oda düzenlemeleri esastır. Ürettiğimiz
+      metinleri yayına almadan önce onayınıza sunuyoruz.
+    </p>
+  </div>
+
+  <h2 id="kategori">Kategori ve hizmet kurulumu</h2>
+
+  <p>
+    Google'ın kategori listesinde "Diş hekimi", "Diş kliniği", "Ortodontist", "Ağız ve çene
+    cerrahı", "Estetik diş hekimi" gibi ayrımlar var ve bunlar farklı sorgu kümelerine
+    karşılık geliyor.
+  </p>
+
+  <p>
+    Doğru kurulum, birincil kategoriyi ana hacme ("Diş hekimi" ya da "Diş kliniği") vermek
+    ve gerçekten ağırlık verdiğiniz uzmanlıkları ikincil olarak eklemek. Sık gördüğümüz
+    hata, implant ya da ortodonti ağırlıklı çalışan bir kliniğin birincil kategoriyi bu dar
+    alana vermesi — dar alanda güç kazanıp ana hacmi kaybetmek anlamına geliyor.
+  </p>
+
+  <p>
+    Hizmet listesini de tedavi adlarıyla, hastanın kullandığı dille yazıyoruz: "20 yaş dişi
+    çekimi", "zirkonyum kaplama", "şeffaf plak tedavisi". Bu isimlendirmeyi sitedeki tedavi
+    sayfalarıyla birebir aynı tutuyoruz.
+  </p>
+
+  <h2 id="tedavi">Tedavi sayfaları</h2>
+
+  <p>
+    Diş kliniği sitelerinin çoğunda tedaviler tek bir "hizmetlerimiz" sayfasında, her biri
+    iki paragrafla anlatılıyor. Bu yapı hiçbir tedavi sorgusunda sıralanmıyor.
+  </p>
+
+  <p>
+    Her ağırlıklı tedavi kendi sayfasını hak ediyor ve o sayfanın hastanın sorduğu soruları
+    kapsaması gerekiyor. İmplant sayfası örneği üzerinden kapsanması gerekenler:
+  </p>
+
+  <ul class="checklist">
+    <li>İşlem nasıl uygulanıyor, kaç aşamada tamamlanıyor</li>
+    <li>Toplam süre ve iyileşme dönemi</li>
+    <li>Ağrı ve anestezi konusunda gerçekçi beklenti</li>
+    <li>Kimlere uygun değil, hangi ön koşullar aranıyor</li>
+    <li>Maliyeti neyin belirlediği (fiyat değil, değişkenler)</li>
+    <li>Alternatif tedavilerle karşılaştırma — iddiasız, bilgilendirici</li>
+    <li>Sık sorulanlar ve <code>FAQPage</code> yapılandırılmış verisi</li>
+  </ul>
+
+  <p>
+    Bu derinlik hem sıralamayı hem de randevu dönüşümünü artırıyor: soruları cevaplanmış
+    hasta, telefonu daha kararlı açıyor.
+  </p>
+
+  <h2 id="yorum">Yorum yönetimi</h2>
+
+  <p>
+    Doygun bir ilçede profiller birbirine çok benzediğinde, sıralamayı ve tıklamayı ayıran
+    şey büyük ölçüde yorumlar oluyor. Ama sağlıkta yorum yönetimi iki nedenle hassas.
+  </p>
+
+  <p>
+    Birincisi, yorumların tanıtım aracına dönüşmemesi gerekiyor — hasta deneyimini övgü
+    malzemesi yapan kurgular mevzuat açısından riskli. İkincisi, yanıtlarda hasta mahremiyeti:
+    bir yoruma "implant tedavinizden memnun kalmanıza sevindik" diye cevap vermek, o kişinin
+    aldığı tedaviyi kamuya açıklamak demek.
+  </p>
+
+  <p>
+    Yanıtlarımızı bu yüzden tedavi detayına girmeden, kısa ve nötr kuruyoruz. Olumsuz
+    yorumlarda ise önce telefonla telafi, sonra kamuya açık ve savunmacı olmayan kısa bir
+    yanıt izliyoruz.
+  </p>
+
+  <h2 id="turizm">Sağlık turizmi ayrı bir dünya</h2>
+
+  <p>
+    Yurt dışından hasta kabul eden klinikler için oyun tamamen değişiyor. Bu alanda
+    faaliyet, Sağlık Bakanlığı'ndan alınan <strong>sağlık turizmi yetki belgesine</strong>
+    tabi ve tanıtım kuralları da farklı işliyor.
+  </p>
+
+  <p>
+    SEO açısından da ayrı bir yapı gerekiyor: farklı dilde içerik, farklı arama davranışı
+    (fiyat ve paket odaklı), farklı rekabet (ülke geneli, yakınlık sinyali yok) ve genelde
+    ayrı bir alan adı ya da alt dizin. Yerel SEO programının içine sıkıştırılamayacak kadar
+    farklı bir iş — birlikte planlıyorsak baştan ayrı kurguluyoruz.
+  </p>
+
+  <h2 id="olcum">Neyi ölçüyoruz</h2>
+
+  <p>
+    Diş kliniklerinde en yanıltıcı metrik site trafiği. Randevuların büyük bölümü profilden
+    doğrudan telefonla geliyor ve siteye hiç uğramıyor. Bu yüzden raporlamayı üç kaynak
+    üzerinden kuruyoruz: <a href={p('services/rank-tracking')}>grid sıralaması</a>, profil
+    üzerinden gelen arama ve yol tarifi sayısı, ve tedavi sayfalarının Search Console verisi.
+  </p>
+
+  <p>
+    Üçünü birlikte okumak, "sıralama yükseldi ama randevu artmadı" durumunu erken yakalamayı
+    sağlıyor — genelde sebep, sıralamanın hacmi düşük bir tedavi sorgusunda yükselmiş olması.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>İlçenizde kaç klinik <span class="highlight">sizden önde</span>?</h2>
+    <p>Ücretsiz analizde grid sıralamanızı, rakip yorum farkını ve eksik tedavi sayfalarını çıkarıyoruz.</p>
+  </Fragment>
+</ContentLayout>

@@ -1,0 +1,159 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const services = [
+  {
+    href: p('services/gbp'),
+    title: 'Google İşletme Profili Yönetimi',
+    text: 'Kategori, hizmet, foto, post ve değerlendirme yönetimi. Haritalarda sıralamanızı belirleyen sinyallerin çoğu profilin içinde.',
+  },
+  {
+    href: p('services/local-seo'),
+    title: 'Yerel SEO',
+    text: 'Profil, site ve dış kaynakları tek bir yerel görünürlük stratejisi altında birleştiren ana hizmet.',
+  },
+  {
+    href: p('services/rank-tracking'),
+    title: 'Harita Sıralama Takibi',
+    text: 'Tek bir ortalama değil, şehir üstüne serilmiş 7×7 grid. Hangi mahallede kaçıncı olduğunuzu nokta nokta görürsünüz.',
+  },
+  {
+    href: p('services/technical-seo'),
+    title: 'Teknik SEO',
+    text: 'Taranabilirlik, indeksleme, hız ve yapılandırılmış veri. İçerik ne kadar iyi olursa olsun bunlar bozuksa sıralama gelmez.',
+  },
+  {
+    href: p('services/on-page-seo'),
+    title: 'On-Page SEO',
+    text: 'Başlık, içerik derinliği, iç link ve arama niyeti eşleşmesi. Sayfanın hangi sorguya cevap verdiğini netleştirir.',
+  },
+  {
+    href: p('services/content'),
+    title: 'İçerik Üretimi',
+    text: 'Hizmet, sektör ve şehir sayfaları. Aramanın karşılığını veren, ölçülebilir ve yayına hazır içerik.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Hizmetleri tek tek mi almak gerekiyor?',
+    a: 'Hayır. Çoğu işletme yerel SEO altında birleşik bir program yürütür; tekil hizmetler ise belirli bir darboğaz varsa anlamlıdır. Ücretsiz analiz, hangisinin gerektiğini söyler.',
+  },
+  {
+    q: 'Türkiye’nin her yerinden işletmeyle çalışıyor musunuz?',
+    a: 'Evet. Yerel SEO çalışması uzaktan yürütülür; sizin bulunduğunuz şehirde fiziksel olarak bulunmamız gerekmez. Merkezimiz Antalya, müşterilerimiz Mersin’den Bursa’ya kadar farklı şehirlerde.',
+  },
+  {
+    q: 'Aynı şehirde rakibimle de çalışır mısınız?',
+    a: 'Hayır. Her şehir ve sektörde tek bir işletmeyle çalışıyoruz. İki rakibi aynı anda yukarı taşımak matematiksel olarak mümkün değil.',
+  },
+  {
+    q: 'Sonuçları nasıl ölçüyorsunuz?',
+    a: 'Grid tabanlı harita sıralaması, Google İşletme Profili etkileşimleri (arama, yol tarifi, telefon) ve Search Console verisi. Üçü birlikte raporlanır; tek başına sıralama ekran görüntüsü göndermiyoruz.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services"
+  title="Yerel SEO Hizmetleri | Akincy"
+  description="Google İşletme Profili yönetimi, yerel SEO, harita sıralama takibi, teknik SEO, on-page SEO ve içerik üretimi. Türkiye genelinde yerel işletmeler için."
+  eyebrow="Hizmetler"
+  h1="Yerel SEO Hizmetleri"
+  lede="Haritalarda sıralamayı belirleyen üç şey var: profilin gücü, sitenin gücü ve dışarıdan gelen güven sinyalleri. Aşağıdaki hizmetler bu üçünü ayrı ayrı ele alıyor."
+  serviceName="Yerel SEO ve Google Haritalar Optimizasyonu"
+  breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
+  faq={faq}
+  related={[
+    { label: 'Sektörlere göre yerel SEO', href: p('industries') },
+    { label: 'Avukatlar için SEO', href: p('industries/law') },
+    { label: 'Oto ekspertiz için SEO', href: p('industries/vehicle-inspection') },
+  ]}
+  ctaLabel="Ücretsiz Analizimi Al →"
+  ctaHref="/tr#contact"
+>
+  <p>
+    Yerel aramada rekabet, çoğu işletmenin sandığından dar bir alanda geçiyor. Bir kullanıcı
+    telefonunu açıp <strong>"yakınımdaki avukat"</strong> ya da <strong>"oto ekspertiz Bursa"</strong>
+    yazdığında Google, o kişinin bulunduğu noktadan itibaren birkaç kilometrelik bir alanı tarar ve
+    üç işletme gösterir. Dördüncü sıradaki işletme, teknik olarak "birinci sayfada" olsa bile
+    pratikte görünmez.
+  </p>
+
+  <p>
+    Bu üç sıraya girmek tek bir müdahaleyle olmuyor. Google’ın yerel sıralamada baktığı sinyaller
+    kabaca üç grupta toplanıyor ve hizmetlerimiz de bu üç gruba karşılık geliyor.
+  </p>
+
+  <h2 id="uc-katman">Sıralamayı belirleyen üç katman</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Katman</th>
+          <th>Google neye bakıyor?</th>
+          <th>İlgili hizmet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Profil</strong></td>
+          <td>Kategori doğruluğu, hizmet listesi, foto/post tazeliği, değerlendirme hacmi ve içeriği</td>
+          <td><a href={p('services/gbp')}>Google İşletme Profili Yönetimi</a></td>
+        </tr>
+        <tr>
+          <td><strong>Site</strong></td>
+          <td>Taranabilirlik, sayfa hızı, yapılandırılmış veri, sayfa–sorgu eşleşmesi, içerik derinliği</td>
+          <td>
+            <a href={p('services/technical-seo')}>Teknik SEO</a>,
+            <a href={p('services/on-page-seo')}>On-Page SEO</a>,
+            <a href={p('services/content')}>İçerik Üretimi</a>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Dış sinyaller</strong></td>
+          <td>Dizin kayıtlarındaki isim/telefon tutarlılığı, bahsedilmeler, bağlantılar</td>
+          <td><a href={p('services/local-seo')}>Yerel SEO</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Bu katmanlardan biri bozukken diğerine yatırım yapmak, en sık gördüğümüz para kaybı.
+    Sitesi hızlı ve içeriği iyi olan bir işletme, profilinde yanlış kategori seçtiği için
+    aylarca sıralanamayabiliyor. Tersi de doğru: profili kusursuz ama sitesi indekslenmeyen
+    bir işletme, rekabetin yüksek olduğu şehirlerde üç sıraya giremiyor.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Nereden başlanacağını tahmin etmeyin.</strong> Ücretsiz analizde üç katmanı da
+      ölçüyoruz ve hangisinin sizi geride tuttuğunu gösteriyoruz. Analiz sonrası bizimle
+      çalışma zorunluluğu yok.
+    </p>
+  </div>
+
+  <h2 id="hizmetler">Hizmetler</h2>
+
+  <div slot="wide" class="grid-3" style="margin-top:20px;">
+    {services.map((service) => (
+      <a class="card service-card" href={service.href}>
+        <h3>{service.title}</h3>
+        <p>{service.text}</p>
+        <span class="service-card-more">İncele →</span>
+      </a>
+    ))}
+  </div>
+
+  <Fragment slot="cta">
+    <h2>Hangisine ihtiyacınız olduğunu <span class="highlight">bilmiyorsanız</span></h2>
+    <p>Ücretsiz analizde profilinizi, sitenizi ve rakiplerinizi inceleyip size söyleriz.</p>
+  </Fragment>
+</ContentLayout>
