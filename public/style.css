@@ -1915,11 +1915,14 @@ footer {
    CONTENT PAGES
    Long-form service / industry / case pages. The homepage does not use these.
 ========================= */
+/* Content-page hero is centred as a block. The homepage hero stays as it is,
+   because it is a two-column layout with the audit form beside it. */
 .page-hero {
-  padding: 56px 0 32px;
+  padding: 56px 0 40px;
+  text-align: center;
 }
 .page-hero h1 {
-  margin: 0 0 16px;
+  margin: 0 auto 16px;
   font-size: clamp(34px, 4.6vw, 52px);
   letter-spacing: -0.5px;
   line-height: 1.15;
@@ -1928,14 +1931,15 @@ footer {
   max-width: 20ch;
 }
 .page-hero .lede {
-  margin: 0;
-  max-width: 720px;
+  margin: 0 auto;
+  max-width: 680px;
   font-size: 19px;
   color: var(--muted);
 }
 .page-hero .page-hero-actions {
-  margin-top: 26px;
+  margin-top: 28px;
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -1953,6 +1957,10 @@ footer {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+}
+/* Inside the centred hero the trail centres with everything else. */
+.page-hero .breadcrumb ol {
+  justify-content: center;
 }
 .breadcrumb li + li::before {
   content: "/";
@@ -2272,9 +2280,6 @@ footer {
   margin-top: 0;
   margin-bottom: 56px;
 }
-.wide-block--lead .section-lead {
-  margin: 0 0 20px;
-}
 .section-lead {
   font-size: clamp(24px, 2.6vw, 30px);
   letter-spacing: -0.3px;
@@ -2283,4 +2288,18 @@ footer {
   margin: -12px 0 22px;
   color: var(--muted);
   max-width: 720px;
+}
+/* The lead block sits directly under the centred hero and above a symmetric
+   card grid, so it centres too. */
+.wide-block--lead {
+  text-align: center;
+}
+.wide-block--lead .section-lead {
+  margin: 0 0 8px;
+}
+.wide-block--lead .section-lead + .section-lead-sub {
+  margin: 0 auto 26px;
+}
+.wide-block--lead .service-grid {
+  text-align: left;
 }
