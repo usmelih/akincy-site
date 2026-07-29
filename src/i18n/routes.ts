@@ -23,6 +23,15 @@ export const ROUTES = {
   'services/technical-seo': { tr: '/hizmetler/teknik-seo' },
   'services/on-page-seo': { tr: '/hizmetler/on-page-seo' },
   'services/content': { tr: '/hizmetler/icerik-uretimi' },
+
+  // Industries. These target queries with no proximity signal ("avukatlar için
+  // SEO"), which is the only layer that can rank nationwide.
+  industries: { tr: '/sektorler' },
+  'industries/law': { tr: '/sektorler/avukatlar-icin-seo' },
+  'industries/dental': { tr: '/sektorler/dis-hekimleri-icin-seo' },
+  'industries/aesthetics': { tr: '/sektorler/estetik-klinikleri-icin-seo' },
+  'industries/physio': { tr: '/sektorler/fizyoterapistler-icin-seo' },
+  'industries/vehicle-inspection': { tr: '/sektorler/oto-ekspertiz-icin-seo' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;
 
 export type RouteKey = keyof typeof ROUTES;

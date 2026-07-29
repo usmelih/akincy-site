@@ -50,8 +50,11 @@ const isHome = route === 'home';
 /** On sub-pages the homepage anchors need an absolute target. */
 const anchor = (hash: string) => (isHome ? hash : `${home}${hash}`);
 const otherLocales = LOCALES.filter((l) => l !== locale);
-/** The services hub only appears in nav for locales whose pages are written. */
+/** Hubs only appear in nav for locales whose pages are actually written. */
 const servicesHref = routeLocales('services').includes(locale) ? routePath(locale, 'services') : null;
+const industriesHref = routeLocales('industries').includes(locale)
+  ? routePath(locale, 'industries')
+  : null;
 const year = new Date().getFullYear();
 ---
 
@@ -123,6 +126,7 @@ const year = new Date().getFullYear();
 
       <nav class="nav-links" id="navLinks">
         {servicesHref && <a href={servicesHref}>{strings.nav.services}</a>}
+        {industriesHref && <a href={industriesHref}>{strings.nav.industries}</a>}
         <a href={anchor('#difference-section')}>{strings.nav.beforeAfter}</a>
         <a href={anchor('#process')}>{strings.nav.process}</a>
         <a href={anchor('#faq')}>{strings.nav.faq}</a>
