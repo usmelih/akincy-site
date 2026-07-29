@@ -1,0 +1,177 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'intent', label: 'One page answers one intent' },
+  { id: 'title', label: 'Titles and descriptions' },
+  { id: 'structure', label: 'Heading hierarchy and structure' },
+  { id: 'internal-links', label: 'Internal link architecture' },
+  { id: 'cannibalisation', label: 'Keyword cannibalisation' },
+  { id: 'local', label: 'Local signals' },
+];
+
+const faq = [
+  {
+    q: 'How many times should I use the keyword?',
+    a: 'There is no target ratio, and chasing density hurts. The real measure is whether you have genuinely covered the topic. Text that explains a service properly already contains the phrases around it naturally.',
+  },
+  {
+    q: 'Google rewrites my title anyway — is it worth writing one?',
+    a: 'Google does sometimes generate its own, but usually when the title is missing, too long, or inconsistent with the page. A well-written title that matches the content is preserved in the large majority of cases.',
+  },
+  {
+    q: 'Does longer content always rank better?',
+    a: 'No. Length is an outcome, not a target. A page that answers the question in 400 words can outrank one that stretches the same answer to 2,000. What hurts is leaving the topic incomplete.',
+  },
+  {
+    q: 'Should I fix existing pages or write new ones?',
+    a: 'Almost always fix the existing ones first. Pages that already get impressions but no clicks, or that are stuck on page two, are the fastest available win. New content makes sense once those gaps are closed.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/on-page-seo"
+  title="On-Page SEO Service | Akincy"
+  description="Titles, content depth, heading structure and internal link architecture — the work that makes it clear to Google which search each page answers."
+  eyebrow="Service"
+  h1="On-Page SEO"
+  lede="For a page to rank, Google has to understand clearly which query it is the answer to. On-page work is exactly what establishes that clarity."
+  serviceName="On-Page SEO"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Technical SEO', href: p('services/technical-seo') },
+    { label: 'Content Production', href: p('services/content') },
+    { label: 'Local SEO', href: p('services/local-seo') },
+  ]}
+  ctaLabel="Analyse My Pages →"
+  ctaHref="/#contact"
+>
+  <h2 id="intent">One page answers one intent</h2>
+
+  <p>
+    That is on-page SEO in a sentence. People searching want different things: some want
+    information ("how long does a divorce take"), some are comparing options ("uncontested vs
+    contested"), some are ready to hire ("divorce lawyer in Mersin"). Those are three separate
+    intents, and trying to serve all three on one page usually ends in ranking for none of them.
+  </p>
+
+  <p>
+    The first thing we do is map existing pages against the intent each one targets. That map
+    typically exposes two kinds of gap: intents with no page at all, and several pages chasing
+    the same intent. The second is more insidious and gets its own section below.
+  </p>
+
+  <h2 id="title">Titles and descriptions</h2>
+
+  <p>
+    The title tag is still the strongest single on-page signal for what a page is about. What
+    we watch when writing them:
+  </p>
+
+  <ul class="checklist">
+    <li>The target query appears near the front, without forcing it</li>
+    <li>For local services, the city or region is included</li>
+    <li>The brand name sits at the end and stays short</li>
+    <li>The length does not get truncated in results</li>
+    <li>Every page on the site has its own, non-repeating title</li>
+  </ul>
+
+  <p>
+    The meta description is not a ranking factor, but it decides click-through rate. A page in
+    second position with a well-written description can out-earn the first over time. We write
+    it as an honest summary of what the page actually delivers, not as ad copy — a description
+    that oversells sends users straight back, and that bounce is read as a signal.
+  </p>
+
+  <h2 id="structure">Heading hierarchy and structure</h2>
+
+  <p>
+    A page should have one H1, and that H1 should explain on its own what the page is about.
+    Subheadings (H2, H3) should break the topic into logical parts — used for structure, not
+    for visual formatting.
+  </p>
+
+  <p>
+    The practical benefit of structure is that it makes coverage visible. If a page describing
+    a service is missing the subheadings users actually ask about — how the process works, how
+    long it takes, what determines the price, when it isn't necessary — the page is a weak
+    answer for that service. We derive those subheadings from search data and real customer
+    questions, not from guesswork.
+  </p>
+
+  <h2 id="internal-links">Internal link architecture</h2>
+
+  <p>
+    Internal links do two jobs: they teach Google the hierarchy of the site, and they move
+    authority between pages. On local business sites the gap we see most often is service pages
+    that link neither to each other nor up to a hub — every page sitting there like an island.
+  </p>
+
+  <p>
+    The structure we build is simple: the <a href={p('services')}>services hub</a> links to
+    every service page, each service page links back to the hub and across to the two or three
+    services closest to it. Case studies link to the relevant service page, and service pages
+    link back to relevant cases. The "related services" block at the bottom of this page is that
+    same logic in practice.
+  </p>
+
+  <p>
+    On link text, we avoid meaningless phrases like "click here" in favour of wording that
+    contains the topic of the destination — without linking to the same target with byte-identical
+    text every single time.
+  </p>
+
+  <h2 id="cannibalisation">Keyword cannibalisation</h2>
+
+  <p>
+    If several of your pages target the same query, Google cannot decide which to show and
+    usually holds both lower than either deserves. This is cannibalisation, and it shows up on
+    almost every site that started producing content early.
+  </p>
+
+  <p>
+    We diagnose it through Search Console: seeing different URLs alternate for the same query is
+    signal enough. The fix depends on the case — merge the pages and redirect to the stronger
+    one, or genuinely separate what each is targeting. Merging often raises total traffic,
+    because it consolidates signals that were split.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Before creating a new page, ask:</strong> do I already have a page that answers
+      this query? If yes, the right move is not a new page but a deeper version of the existing one.
+    </p>
+  </div>
+
+  <h2 id="local">Local signals</h2>
+
+  <p>
+    For businesses serving a local area, on-page work has a geographic dimension too. The region
+    you serve should appear naturally in the text, contact details should be written exactly as
+    they are on the business profile, and
+    <a href={p('services/technical-seo')}>structured data</a> should be bound to the business entity.
+  </p>
+
+  <p>
+    The line here runs between sprinkling city names through the text and genuinely making the
+    page specific to that area. The first does not work and is noticeable; the second requires
+    the page to say something real about the place. That is why we handle city-level page
+    production under <a href={p('services/content')}>content production</a>, tied to real data.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Which query are your pages <span class="highlight">fighting over</span>?</h2>
+    <p>The free audit maps your intents, title gaps and cannibalisation cases.</p>
+  </Fragment>
+</ContentLayout>

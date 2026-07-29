@@ -1,0 +1,186 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'intention', label: 'Eine Seite beantwortet eine Intention' },
+  { id: 'title', label: 'Titel und Beschreibung' },
+  { id: 'struktur', label: 'Überschriftenhierarchie und Struktur' },
+  { id: 'interne-links', label: 'Interne Verlinkung' },
+  { id: 'kannibalisierung', label: 'Keyword-Kannibalisierung' },
+  { id: 'lokal', label: 'Lokale Signale' },
+];
+
+const faq = [
+  {
+    q: 'Wie oft muss das Keyword vorkommen?',
+    a: 'Es gibt keine Zielquote, und Dichte zu verfolgen schadet. Der eigentliche Maßstab ist, ob Sie das Thema wirklich abgedeckt haben. Ein Text, der eine Leistung sauber erklärt, enthält die zugehörigen Formulierungen ohnehin.',
+  },
+  {
+    q: 'Google schreibt meinen Titel sowieso um — lohnt es sich?',
+    a: 'Google erzeugt manchmal einen eigenen Titel, meist aber dann, wenn der vorhandene fehlt, zu lang ist oder nicht zum Inhalt passt. Ein gut geschriebener, inhaltlich stimmiger Titel bleibt in der großen Mehrheit der Fälle erhalten.',
+  },
+  {
+    q: 'Rankt längerer Inhalt immer besser?',
+    a: 'Nein. Länge ist ein Ergebnis, kein Ziel. Eine Seite, die die Frage in 400 Wörtern beantwortet, kann eine schlagen, die dasselbe auf 2.000 Wörter streckt. Schädlich ist, das Thema unvollständig zu lassen.',
+  },
+  {
+    q: 'Bestehende Seiten überarbeiten oder neue schreiben?',
+    a: 'Fast immer zuerst die bestehenden. Seiten, die bereits Impressionen bekommen aber keine Klicks, oder die auf Seite zwei feststecken, sind der schnellste verfügbare Gewinn. Neuer Content ergibt Sinn, wenn diese Lücken geschlossen sind.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/on-page-seo"
+  title="OnPage-SEO | Akincy"
+  description="Titel, inhaltliche Tiefe, Überschriftenstruktur und interne Verlinkung — die Arbeit, die Google klarmacht, welche Suchanfrage eine Seite beantwortet."
+  eyebrow="Leistung"
+  h1="OnPage-SEO"
+  lede="Damit eine Seite ranken kann, muss Google eindeutig verstehen, auf welche Suchanfrage sie die Antwort ist. Genau diese Eindeutigkeit stellt OnPage-Arbeit her."
+  serviceName="OnPage-SEO"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Technisches SEO', href: p('services/technical-seo') },
+    { label: 'Content-Erstellung', href: p('services/content') },
+    { label: 'Lokale SEO', href: p('services/local-seo') },
+  ]}
+  ctaLabel="Seiten analysieren lassen →"
+  ctaHref="/de#contact"
+>
+  <h2 id="intention">Eine Seite beantwortet eine Intention</h2>
+
+  <p>
+    Das ist OnPage-SEO in einem Satz. Suchende wollen Unterschiedliches: die einen Information
+    ("wie lange dauert eine Scheidung"), die anderen einen Vergleich ("einvernehmlich oder
+    streitig"), wieder andere wollen direkt beauftragen ("Scheidungsanwalt Hamburg"). Das sind
+    drei Intentionen, und der Versuch, alle drei auf einer Seite zu bedienen, endet meist
+    damit, für keine zu ranken.
+  </p>
+
+  <p>
+    Als Erstes ordnen wir die bestehenden Seiten der jeweils angepeilten Intention zu. Diese
+    Karte legt üblicherweise zwei Lücken offen: Intentionen ohne passende Seite und mehrere
+    Seiten, die dieselbe Intention verfolgen. Letzteres ist tückischer und bekommt unten einen
+    eigenen Abschnitt.
+  </p>
+
+  <h2 id="title">Titel und Beschreibung</h2>
+
+  <p>
+    Das Title-Tag ist nach wie vor das stärkste einzelne OnPage-Signal dafür, worum es auf
+    einer Seite geht. Worauf wir beim Schreiben achten:
+  </p>
+
+  <ul class="checklist">
+    <li>Die Zielsuchanfrage steht weit vorne, ohne erzwungen zu wirken</li>
+    <li>Bei lokalen Leistungen ist Stadt oder Region enthalten</li>
+    <li>Der Markenname steht hinten und bleibt kurz</li>
+    <li>Die Länge wird in den Ergebnissen nicht abgeschnitten</li>
+    <li>Jede Seite hat einen eigenen, nicht wiederholten Titel</li>
+  </ul>
+
+  <p>
+    Die Meta-Description ist kein Rankingfaktor, entscheidet aber über die Klickrate. Eine
+    Seite auf Platz zwei mit guter Beschreibung kann die erste mit der Zeit überholen. Wir
+    schreiben sie als ehrliche Zusammenfassung dessen, was die Seite liefert, nicht als
+    Werbetext — eine Beschreibung, die zu viel verspricht, schickt Nutzer sofort zurück, und
+    dieser Rücksprung wird als Signal gelesen.
+  </p>
+
+  <h2 id="struktur">Überschriftenhierarchie und Struktur</h2>
+
+  <p>
+    Eine Seite sollte eine H1 haben, und diese H1 sollte allein erklären, worum es geht.
+    Zwischenüberschriften (H2, H3) sollten das Thema logisch gliedern — als Struktur, nicht als
+    optische Gestaltung.
+  </p>
+
+  <p>
+    Der praktische Nutzen von Struktur ist, dass sie Abdeckung sichtbar macht. Fehlen auf einer
+    Leistungsseite die Zwischenüberschriften, die Nutzer tatsächlich beschäftigen — wie der
+    Ablauf ist, wie lange es dauert, wonach sich der Preis richtet, wann es nicht nötig ist —,
+    dann ist die Seite eine schwache Antwort. Diese Überschriften leiten wir aus Suchdaten und
+    echten Kundenfragen ab, nicht aus Vermutungen.
+  </p>
+
+  <h2 id="interne-links">Interne Verlinkung</h2>
+
+  <p>
+    Interne Links leisten zweierlei: Sie vermitteln Google die Hierarchie der Website und
+    transportieren Autorität zwischen Seiten. Auf Websites lokaler Unternehmen fehlt am
+    häufigsten die Verlinkung der Leistungsseiten untereinander und nach oben zum Hub — jede
+    Seite steht wie eine Insel da.
+  </p>
+
+  <p>
+    Die Struktur, die wir aufbauen, ist einfach: Der
+    <a href={p('services')}>Leistungs-Hub</a> verlinkt auf alle Leistungsseiten, jede
+    Leistungsseite zurück auf den Hub und quer auf die zwei bis drei thematisch nächsten
+    Leistungen. Fallstudien verlinken auf die passende Leistungsseite und umgekehrt. Der Block
+    "Verwandte Leistungen" am Ende dieser Seite ist genau diese Logik in der Anwendung.
+  </p>
+
+  <p>
+    Beim Linktext vermeiden wir nichtssagende Formulierungen wie "hier klicken" zugunsten von
+    Text, der das Thema des Ziels enthält — ohne dasselbe Ziel jedes Mal mit identischem Wortlaut
+    zu verlinken.
+  </p>
+
+  <h2 id="kannibalisierung">Keyword-Kannibalisierung</h2>
+
+  <p>
+    Zielen mehrere Ihrer Seiten auf dieselbe Suchanfrage, kann Google sich nicht entscheiden,
+    welche es zeigen soll, und hält meist beide niedriger, als jede für sich verdient hätte.
+    Das ist Kannibalisierung, und sie tritt auf fast jeder Website auf, die früh mit Content
+    begonnen hat.
+  </p>
+
+  <p>
+    Diagnostiziert wird sie über die Search Console: Wechseln bei derselben Suchanfrage
+    verschiedene URLs, ist das Hinweis genug. Die Lösung hängt vom Fall ab — Seiten
+    zusammenführen und auf die stärkere weiterleiten, oder ihre Ziele wirklich voneinander
+    trennen. Zusammenführen erhöht häufig den Gesamttraffic, weil zuvor geteilte Signale
+    gebündelt werden.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Fragen Sie sich vor jeder neuen Seite:</strong> Habe ich bereits eine Seite, die
+      diese Suchanfrage beantwortet? Wenn ja, ist der richtige Schritt keine neue Seite, sondern
+      eine tiefere Version der bestehenden.
+    </p>
+  </div>
+
+  <h2 id="lokal">Lokale Signale</h2>
+
+  <p>
+    Bei lokal tätigen Unternehmen hat OnPage-Arbeit zusätzlich eine geografische Dimension. Die
+    bediente Region sollte im Text natürlich vorkommen, Kontaktdaten exakt so geschrieben sein
+    wie im Unternehmensprofil, und die
+    <a href={p('services/technical-seo')}>strukturierten Daten</a> an die Unternehmensentität
+    gebunden sein.
+  </p>
+
+  <p>
+    Die Grenze verläuft zwischen dem Einstreuen von Ortsnamen und dem tatsächlichen
+    Regionalisieren der Seite. Ersteres funktioniert nicht und fällt auf; Letzteres verlangt,
+    dass die Seite etwas Echtes über den Ort sagt. Deshalb behandeln wir die Erstellung
+    stadtbezogener Seiten unter
+    <a href={p('services/content')}>Content-Erstellung</a> und binden sie an echte Daten.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Bei welcher Suchanfrage <span class="highlight">konkurrieren</span> Ihre eigenen Seiten?</h2>
+    <p>Die kostenlose Analyse zeigt Ihre Intentionskarte, Titel-Lücken und Kannibalisierungsfälle.</p>
+  </Fragment>
+</ContentLayout>

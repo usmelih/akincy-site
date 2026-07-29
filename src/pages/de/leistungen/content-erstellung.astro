@@ -1,0 +1,220 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'was', label: 'Was wir produzieren' },
+  { id: 'branche', label: 'Branchenseiten' },
+  { id: 'stadt', label: 'Stadtseiten und die Doorway-Grenze' },
+  { id: 'reguliert', label: 'Regulierte Branchen' },
+  { id: 'ablauf', label: 'Produktionsablauf' },
+  { id: 'ki', label: 'Wie wir KI einsetzen' },
+];
+
+const faq = [
+  {
+    q: 'Wer schreibt die Inhalte?',
+    a: 'Recherche und Entwurf liegen bei uns, die fachliche Prüfung bei Ihnen. In Bereichen wie Recht und Gesundheit holen wir vor der Veröffentlichung die Freigabe der zuständigen Fachperson ein — für Richtigkeit und für Haftung.',
+  },
+  {
+    q: 'Wie viele Beiträge pro Monat brauche ich?',
+    a: 'Wir nennen keine feste Zahl. Die meisten lokalen Unternehmen müssen zuerst ihre fehlenden Leistungs- und Branchenseiten vervollständigen; vorher mit einem Blog zu starten ist ein verbreiteter Reihenfolgefehler. Sind die Kernseiten da, reichen zwei bis vier Beiträge im Monat für die meisten Branchen.',
+  },
+  {
+    q: 'Bringt ein Blog einem lokalen Unternehmen überhaupt etwas?',
+    a: 'Der direkte Beitrag zum Maps-Ranking ist begrenzt. Was er leistet: interne Links auf Leistungsseiten transportieren, Nutzer früher in der Entscheidung abholen und Expertise-Signale erzeugen. Ein Blog wirkt als unterstützende Ebene, nicht allein.',
+  },
+  {
+    q: 'Was passiert mit meinen bestehenden Inhalten?',
+    a: 'Die bewerten wir zuerst. Beiträge mit Impressionen aber ohne Klicks, oder solche, die auf Seite zwei feststecken, lohnen meist eine Überarbeitung — und das ist der schnellste verfügbare Gewinn. Neue Produktion beginnt danach.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/content"
+  title="SEO Content-Erstellung | Akincy"
+  description="Leistungs-, Branchen- und Standortseiten, die die Suchintention beantworten, in der internen Verlinkung verankert und veröffentlichungsreif sind."
+  eyebrow="Leistung"
+  h1="Content-Erstellung"
+  lede="Zum Ranken braucht es Seiten, die die Suchanfrage beantworten. Wir ermitteln datenbasiert, welche Seiten fehlen, erstellen sie und verankern sie in der internen Verlinkung."
+  serviceName="SEO Content-Erstellung"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'OnPage-SEO', href: p('services/on-page-seo') },
+    { label: 'Lokale SEO', href: p('services/local-seo') },
+    { label: 'Technisches SEO', href: p('services/technical-seo') },
+  ]}
+  ctaLabel="Content-Lücken finden →"
+  ctaHref="/de#contact"
+>
+  <h2 id="was">Was wir produzieren</h2>
+
+  <p>
+    Content-Erstellung ist für uns nicht gleichbedeutend mit Bloggen. Die Inhalte, die ein
+    lokales Unternehmen zum Ranken braucht, sind meist keine Blogbeiträge, sondern fehlende
+    <strong>Leistungs-</strong>, <strong>Branchen-</strong> und <strong>Standortseiten</strong>.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Seitentyp</th>
+          <th>Angepeilte Suche</th>
+          <th>Funktion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Leistungsseite</td>
+          <td>"Scheidungsanwalt", "Kfz-Gutachten"</td>
+          <td>Direkte Nachfrage — Hauptquelle der Konversion</td>
+        </tr>
+        <tr>
+          <td>Branchenseite</td>
+          <td>"SEO für Anwälte"</td>
+          <td>Überregionale Sichtbarkeit; braucht kein Näherungssignal</td>
+        </tr>
+        <tr>
+          <td>Stadtseite</td>
+          <td>"lokale SEO München"</td>
+          <td>Regionale Sichtbarkeit — nur mit echten lokalen Daten</td>
+        </tr>
+        <tr>
+          <td>Fallstudie</td>
+          <td>Marken- und Vergleichssuchen</td>
+          <td>Nachweis von Vertrauen und Kompetenz</td>
+        </tr>
+        <tr>
+          <td>Ratgeberinhalt</td>
+          <td>"wie lange dauert eine Scheidung"</td>
+          <td>Nutzer in früher Phase; transportiert interne Links</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Die Reihenfolge zählt. Ratgeberinhalte zu produzieren, bevor die Leistungsseiten existieren,
+    heißt Besucher auf eine Website zu holen, auf der sie nicht weiterkommen.
+  </p>
+
+  <h2 id="branche">Branchenseiten</h2>
+
+  <p>
+    Für lokale Dienstleister ist das der wertvollste und am häufigsten ausgelassene Seitentyp.
+    Der Grund: Branchensuchanfragen tragen kein Näherungssignal. Wer "SEO für Anwälte" sucht,
+    ist an keinen Ort gebunden — für diese Suchanfrage ist überregionales Ranking möglich.
+  </p>
+
+  <p>
+    Damit sind Branchenseiten das eigentliche Tor zu überregionaler Sichtbarkeit für
+    Unternehmen mit geografisch begrenztem Profil. Damit eine solche Seite funktioniert, muss
+    sie die Sprache der Branche sprechen — kein allgemeiner SEO-Ratgeber mit eingefügtem
+    Branchennamen, sondern ein Text von jemandem, der die spezifischen Einschränkungen und das
+    Kundenverhalten dieser Branche kennt.
+  </p>
+
+  <h2 id="stadt">Stadtseiten und die Doorway-Grenze</h2>
+
+  <p>
+    Stadtseiten sind zweischneidig. Richtig gemacht öffnen sie regionale Sichtbarkeit, falsch
+    gemacht schaden sie der gesamten Website.
+  </p>
+
+  <p>
+    Googles Definition einer Doorway-Seite ist eine Seite, die nur erstellt wurde, um in
+    verschiedenen Suchen zu erscheinen, ohne dem Nutzer echten Wert zu bieten. Vorlagenseiten
+    mit ausgetauschtem Städtenamen erfüllen diese Definition genau — und sind nicht schwer zu
+    erkennen.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Unsere Schwelle:</strong> Eine Stadtseite entsteht nur, wenn sie echte Daten über
+      diese Stadt trägt — ein
+      <a href={p('services/rank-tracking')}>Wettbewerbsdichte-Raster</a> für das Gebiet, einen
+      Fall von dort oder eine lokale Wettbewerbsanalyse. Können wir die Daten nicht erzeugen,
+      legen wir die Seite nicht an. Zehn solide Stadtseiten schlagen fünfzig Vorlagen.
+    </p>
+  </div>
+
+  <h2 id="reguliert">Regulierte Branchen</h2>
+
+  <p>
+    In Bereichen wie Recht, Gesundheit und Finanzen ist Content-Erstellung nicht nur eine
+    SEO-Frage. Berufsrechtliche Werbebeschränkungen begrenzen, welche Aussagen überhaupt
+    zulässig sind — Erfolgsversprechen, Mandanten- oder Patientenzahlen, vergleichende
+    Überlegenheit und anreizende Angebote sind typischerweise ausgeschlossen, und die konkreten
+    Regeln unterscheiden sich je nach Land und Berufsstand.
+  </p>
+
+  <p>
+    Jeder Text, den wir in diesen Bereichen erstellen, läuft vor der Veröffentlichung durch das
+    jeweils geltende Regelwerk, und wir holen die Freigabe der Fachperson ein. Das wirkt wie
+    eine Einschränkung, erweist sich aber als Vorteil: regelkonform, informativ und ohne
+    Behauptungen geschriebene Texte tragen kein Sanktionsrisiko und schneiden in Googles
+    Kompetenzbewertung gut ab.
+  </p>
+
+  <h2 id="ablauf">Produktionsablauf</h2>
+
+  <ol>
+    <li>
+      <strong>Lückenanalyse.</strong> Suchanfragen mit Impressionen aber ohne passende Seite,
+      Seiten die Wettbewerber haben und Sie nicht, und welche Intention jede bestehende Seite
+      bedient.
+    </li>
+    <li>
+      <strong>Priorisierung.</strong> Seiten nach Nachfragevolumen und Konversionsnähe sortiert.
+      Leistungsseiten kommen vor Ratgeberinhalten.
+    </li>
+    <li>
+      <strong>Briefing.</strong> Zielsuchanfrage, abzudeckende Zwischenüberschriften,
+      Verlinkungsplan und Schema-Typ je Seite festgelegt.
+    </li>
+    <li>
+      <strong>Text und Fachprüfung.</strong> Entwurf erstellt, Ihnen zur fachlichen Prüfung
+      vorgelegt, in regulierten Bereichen gegen das geltende Regelwerk geprüft.
+    </li>
+    <li>
+      <strong>Veröffentlichung und Verankerung.</strong> Seite geht live, wird in die interne
+      Verlinkung eingebunden, erhält strukturierte Daten und kommt in die Sitemap.
+    </li>
+    <li>
+      <strong>Nachverfolgung.</strong> Nach vier bis acht Wochen werden Impressions- und
+      Positionsdaten gelesen; bei Bedarf wird die Seite vertieft. Veröffentlicht heißt nicht
+      fertig.
+    </li>
+  </ol>
+
+  <h2 id="ki">Wie wir KI einsetzen</h2>
+
+  <p>
+    Dazu offen: Wir setzen KI in Recherche, Entwurf und Datenverarbeitung ein. Wo wir sie nicht
+    einsetzen, ist die unveränderte Veröffentlichung des Ergebnisses.
+  </p>
+
+  <p>
+    Der Grund ist praktisch, nicht ideologisch. Roh erzeugter Text kennt weder die tatsächlichen
+    Vorgaben Ihres Berufsstands noch Ihre realen Abläufe oder den echten Wettbewerbsstand in
+    Ihrer Stadt. Ohne dieses Wissen veröffentlichter Inhalt hebt sich nicht von den Hunderten
+    ähnlichen Seiten ab, die dieselbe Suchanfrage anpeilen. Und was sich nicht abhebt, rankt
+    nicht.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Welche Seiten <span class="highlight">fehlen</span>?</h2>
+    <p>Die kostenlose Analyse zeigt Suchanfragen ohne passende Seite und den Content-Rückstand zum Wettbewerb.</p>
+  </Fragment>
+</ContentLayout>

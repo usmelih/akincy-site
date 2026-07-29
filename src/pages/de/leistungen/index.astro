@@ -1,0 +1,156 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const services = [
+  {
+    href: p('services/gbp'),
+    title: 'Google Unternehmensprofil',
+    text: 'Kategorien, Leistungen, Fotos, Beiträge und Bewertungen. Das meiste, was über Ihr Maps-Ranking entscheidet, steckt im Profil — nicht auf der Website.',
+  },
+  {
+    href: p('services/local-seo'),
+    title: 'Lokale SEO',
+    text: 'Das Gesamtprogramm, das Profil, Website und externe Vertrauenssignale auf dasselbe Ziel ausrichtet.',
+  },
+  {
+    href: p('services/rank-tracking'),
+    title: 'Maps-Ranking-Tracking',
+    text: 'Keine einzelne Durchschnittszahl, sondern ein 7×7-Raster über Ihrer Stadt — Position für Position gemessen.',
+  },
+  {
+    href: p('services/technical-seo'),
+    title: 'Technisches SEO',
+    text: 'Crawlbarkeit, Indexierung, Ladezeit und strukturierte Daten. Ohne diese Basis rankt auch der beste Inhalt nicht.',
+  },
+  {
+    href: p('services/on-page-seo'),
+    title: 'OnPage-SEO',
+    text: 'Titel, inhaltliche Tiefe, interne Verlinkung und Suchintention. Macht eindeutig, welche Suchanfrage eine Seite beantwortet.',
+  },
+  {
+    href: p('services/content'),
+    title: 'Content-Erstellung',
+    text: 'Leistungs-, Branchen- und Standortseiten, die die Suchanfrage wirklich beantworten — recherchiert, geprüft, veröffentlichungsreif.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Muss ich die Leistungen einzeln buchen?',
+    a: 'Nein. Die meisten Unternehmen fahren ein gemeinsames Programm unter lokaler SEO; einzelne Leistungen sind sinnvoll, wenn es einen konkreten Engpass gibt. Die kostenlose Analyse zeigt, was auf Sie zutrifft.',
+  },
+  {
+    q: 'Arbeiten Sie auch mit Unternehmen außerhalb der Türkei?',
+    a: 'Ja. Lokale SEO wird remote umgesetzt — wir müssen nicht vor Ort sein. Unser Sitz ist Antalya, Türkei, und wir arbeiten auf Deutsch, Englisch und Türkisch.',
+  },
+  {
+    q: 'Arbeiten Sie auch mit meinem Wettbewerber?',
+    a: 'Nein. Wir arbeiten pro Stadt und Branche nur mit einem Unternehmen. Zwei direkte Wettbewerber gleichzeitig nach oben zu bringen ist rechnerisch nicht möglich.',
+  },
+  {
+    q: 'Wie messen Sie Ergebnisse?',
+    a: 'Rasterbasierte Maps-Rankings, Interaktionen im Unternehmensprofil (Suchanfragen, Routenanfragen, Anrufe) und Search-Console-Daten. Alle drei werden gemeinsam berichtet — Ranking-Screenshots allein verschicken wir nicht.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services"
+  title="Lokale SEO Leistungen | Akincy"
+  description="Google Unternehmensprofil, lokale SEO, Maps-Ranking-Tracking, technisches SEO, OnPage-SEO und Content-Erstellung für lokale Unternehmen."
+  eyebrow="Leistungen"
+  h1="Lokale SEO Leistungen"
+  lede="Drei Dinge entscheiden über Ihr Maps-Ranking: die Stärke Ihres Profils, die Stärke Ihrer Website und die Vertrauenssignale von außen. Jede Leistung unten adressiert eines davon."
+  serviceName="Lokale SEO und Google Maps Optimierung"
+  breadcrumb={[{ label: 'Startseite', href: '/de' }]}
+  faq={faq}
+  ctaLabel="Kostenlose Analyse anfordern →"
+  ctaHref="/de#contact"
+>
+  <p>
+    Der lokale Wettbewerb spielt sich in einem viel engeren Raum ab, als die meisten Unternehmen
+    annehmen. Wenn jemand das Handy zückt und <strong>"Rechtsanwalt in der Nähe"</strong> oder
+    <strong>"Zahnarzt Köln"</strong> eingibt, durchsucht Google einen Radius von wenigen
+    Kilometern und zeigt drei Unternehmen. Das vierte Ergebnis steht technisch "auf Seite eins"
+    und ist praktisch unsichtbar.
+  </p>
+
+  <p>
+    In diese drei Plätze zu kommen gelingt nicht mit einer einzelnen Maßnahme. Die Signale, die
+    Google im lokalen Ranking gewichtet, lassen sich grob in drei Gruppen einteilen — und unsere
+    Leistungen bilden genau diese Gruppen ab.
+  </p>
+
+  <h2 id="drei-ebenen">Die drei Ebenen, die über das Ranking entscheiden</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Ebene</th>
+          <th>Worauf Google schaut</th>
+          <th>Passende Leistung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Profil</strong></td>
+          <td>Kategoriegenauigkeit, Leistungsliste, Aktualität von Fotos und Beiträgen, Bewertungsvolumen und -inhalt</td>
+          <td><a href={p('services/gbp')}>Google Unternehmensprofil</a></td>
+        </tr>
+        <tr>
+          <td><strong>Website</strong></td>
+          <td>Crawlbarkeit, Ladezeit, strukturierte Daten, Übereinstimmung von Seite und Suchanfrage, inhaltliche Tiefe</td>
+          <td>
+            <a href={p('services/technical-seo')}>Technisches SEO</a>,
+            <a href={p('services/on-page-seo')}>OnPage-SEO</a>,
+            <a href={p('services/content')}>Content-Erstellung</a>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Externe Signale</strong></td>
+          <td>Konsistenz von Name und Telefonnummer in Verzeichnissen, Erwähnungen, Verlinkungen</td>
+          <td><a href={p('services/local-seo')}>Lokale SEO</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    In eine Ebene zu investieren, während eine andere defekt ist, ist der häufigste Weg,
+    Budget zu verbrennen. Ein Unternehmen mit schneller Website und gutem Inhalt bleibt
+    monatelang unsichtbar, weil im Profil die falsche Kategorie gesetzt ist. Umgekehrt gilt
+    dasselbe: ein perfektes Profil an einer Website, die Google nicht indexieren kann, erreicht
+    in umkämpften Städten die Top 3 nicht.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Raten Sie nicht, wo Sie anfangen sollen.</strong> In der kostenlosen Analyse
+      messen wir alle drei Ebenen und zeigen, welche Sie zurückhält. Danach besteht keine
+      Verpflichtung zur Zusammenarbeit.
+    </p>
+  </div>
+
+  <h2 id="leistungen">Leistungen</h2>
+
+  <div slot="wide" class="grid-3" style="margin-top:20px;">
+    {services.map((service) => (
+      <a class="card service-card" href={service.href}>
+        <h3>{service.title}</h3>
+        <p>{service.text}</p>
+        <span class="service-card-more">Mehr erfahren →</span>
+      </a>
+    ))}
+  </div>
+
+  <Fragment slot="cta">
+    <h2>Unsicher, was Sie <span class="highlight">brauchen</span>?</h2>
+    <p>Die kostenlose Analyse prüft Profil, Website und Wettbewerber — und sagt es Ihnen.</p>
+  </Fragment>
+</ContentLayout>

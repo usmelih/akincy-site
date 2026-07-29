@@ -1,0 +1,213 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'problem', label: 'Warum eine einzelne Ranking-Zahl täuscht' },
+  { id: 'raster', label: 'Wie die Rastermessung funktioniert' },
+  { id: 'lesen', label: 'Das Raster lesen' },
+  { id: 'wettbewerb', label: 'Wettbewerbsvergleich' },
+  { id: 'grenzen', label: 'Grenzen der Messung' },
+  { id: 'reporting', label: 'Reporting-Rhythmus' },
+];
+
+const faq = [
+  {
+    q: 'Warum kann ich nicht einfach selbst vom Handy suchen?',
+    a: 'Können Sie, aber das Ergebnis gilt nur für den Punkt, an dem Sie stehen. Zusätzlich personalisiert Google die Treffer anhand Ihrer Suchhistorie und Ihres eigenen Unternehmens — Sie sehen sich selbst überdurchschnittlich häufig. Die Rastermessung schaltet das aus und scannt die ganze Stadt.',
+  },
+  {
+    q: 'Wie oft wird gemessen?',
+    a: 'Während eines laufenden Programms mindestens monatlich, zusätzlich vor und nach kritischen Eingriffen wie einem Kategoriewechsel. So lässt sich die Wirkung einzelner Maßnahmen isolieren.',
+  },
+  {
+    q: 'Wie viele Suchanfragen werden getrackt?',
+    a: 'In der Regel drei bis acht Kernsuchanfragen. Wenige Suchanfragen, die echte Nachfrage bringen, sind deutlich nützlicher als der Durchschnitt einer langen Liste. Die Auswahl treffen wir anhand von Search-Console-Daten und Wettbewerbsanalyse.',
+  },
+  {
+    q: 'Kann ich das Tracking einzeln buchen?',
+    a: 'Ja. Für Unternehmen mit eigenem Team oder anderer Agentur ist eine unabhängige Messung eine sinnvolle Kontrolle. In dem Fall liefern wir Messung und Interpretation, die Umsetzung bleibt bei Ihnen.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/rank-tracking"
+  title="Google Maps Ranking Tracking | Akincy"
+  description="Ein 7×7-Raster über Ihrer Stadt misst Ihr Maps-Ranking Punkt für Punkt. Keine Durchschnittszahl, sondern eine Karte Ihrer Sichtbarkeit."
+  eyebrow="Leistung"
+  h1="Maps-Ranking-Tracking"
+  lede="Lokale Rankings ändern sich mit dem Standort des Suchenden — eine einzelne Ranking-Zahl führt deshalb in die Irre. Wir legen ein 7×7-Raster über die Stadt und messen Ihre tatsächliche Position an 49 Punkten."
+  serviceName="Google Maps Ranking Tracking"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Lokale SEO', href: p('services/local-seo') },
+    { label: 'Google Unternehmensprofil', href: p('services/gbp') },
+  ]}
+  ctaLabel="Rasterauswertung anfordern →"
+  ctaHref="/de#contact"
+>
+  <h2 id="problem">Warum eine einzelne Ranking-Zahl täuscht</h2>
+
+  <p>
+    In der klassischen SEO ist Ihre Position zu einer Suchanfrage eine einzelne Zahl. In der
+    lokalen Suche gibt es diese Zahl nicht. Dieselbe Suchanfrage kann Sie im Norden der Stadt
+    auf Platz 2, im Zentrum auf Platz 5 und im Süden auf Platz 20 setzen — weil Google das
+    Ranking vom Standort des Suchenden aus berechnet.
+  </p>
+
+  <p>
+    Die praktische Folge: Wer vom eigenen Büro aus sucht, sieht meist ein gutes Ranking. Der
+    Punkt am Standort ist naturgemäß der Punkt, an dem Sie am stärksten sind. Nur suchen die
+    meisten Kunden nicht von dort. Der Widerspruch zwischen "wir sind doch Erster" und "es ruft
+    niemand an" beginnt fast immer hier.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Eine Suche vom eigenen Standort ist keine Messung.</strong> Google personalisiert
+      Ergebnisse anhand Ihrer Historie und Position — die Wahrscheinlichkeit, das eigene
+      Unternehmen zu sehen, ist künstlich erhöht.
+    </p>
+  </div>
+
+  <h2 id="raster">Wie die Rastermessung funktioniert</h2>
+
+  <p>
+    Wir legen ein gleichmäßiges Koordinatenraster über das Zielgebiet — Standard ist 7×7, also
+    49 Punkte. An jedem Punkt fragen wir die Ergebnisse ab, die ein dort stehender Nutzer sehen
+    würde, und erfassen Ihre Position. Das Ergebnis ist keine Zahl, sondern eine
+    Sichtbarkeitskarte der Stadt.
+  </p>
+
+  <p>
+    Die Ausdehnung des Rasters richtet sich nach der Art des Unternehmens. Ein Betrieb, der auf
+    Stadtteilebene arbeitet, braucht ein enges Raster von 3–5 km, eine stadtweit tätige Kanzlei
+    eher 15–20 km. Ein falsch skaliertes Raster kommt entweder überall grün oder überall rot
+    zurück und sagt nichts aus.
+  </p>
+
+  <h2 id="lesen">Das Raster lesen</h2>
+
+  <p>
+    Der eigentliche Wert liegt im <strong>Muster</strong>, nicht im Durchschnitt. Zwei Raster
+    mit identischem Durchschnitt können auf völlig verschiedene Probleme hinweisen:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Muster</th>
+          <th>Bedeutung</th>
+          <th>Maßnahme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stark im Zentrum, schneller Abfall zum Rand</td>
+          <td>Außer Nähe haben Sie kein starkes Signal; Profil und Bekanntheit sind schwach</td>
+          <td>Bewertungsvolumen, Profilaktualität, externe Signale</td>
+        </tr>
+        <tr>
+          <td>Überall Mittelfeld, nirgends Top 3</td>
+          <td>Relevanzproblem — Google sieht Sie nicht als Antwort auf diese Suchanfrage</td>
+          <td>Kategorie- und Leistungsstruktur, Seite-zu-Suchanfrage-Abgleich</td>
+        </tr>
+        <tr>
+          <td>Auf einer Seite stark, auf der gegenüberliegenden sehr schwach</td>
+          <td>Dort sitzt ein dominanter Wettbewerber</td>
+          <td>Wettbewerbsvergleich, gebietsspezifischer Content und Signale</td>
+        </tr>
+        <tr>
+          <td>Verstreut, große Unterschiede zwischen Nachbarpunkten</td>
+          <td>Signale sind instabil; Profil ist neu oder wurde kürzlich geändert</td>
+          <td>Einpendeln abwarten, in dieser Zeit keine großen Änderungen</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Der Übergang von Rot zu Grün in der Vorher/Nachher-Grafik auf unserer Startseite ist genau
+    das Ergebnis dieser Messung. Rote Punkte stehen für Platz 20+, orange für 11–15, grün für
+    die Top 3.
+  </p>
+
+  <h2 id="wettbewerb">Wettbewerbsvergleich</h2>
+
+  <p>
+    Dasselbe Raster fahren wir auch für die Unternehmen in den Top 3. Damit wird aus "warum
+    sind die vorne" eine Datenfrage statt einer Vermutung. Verglichen werden: Anzahl und
+    Durchschnitt der Bewertungen, Hauptkategorie, Breite der Leistungsliste, Fotoanzahl,
+    Profilalter und die Suchanfragen, für die deren Website rankt.
+  </p>
+
+  <p>
+    In den meisten Fällen ist der Unterschied simpler als erwartet — dreimal so viele
+    Bewertungen oder eine gut gewählte Hauptkategorie. Diesen Abstand zu sehen macht auch die
+    Budgetentscheidung eindeutig.
+  </p>
+
+  <h2 id="grenzen">Grenzen der Messung</h2>
+
+  <p>Wir wollen nicht überverkaufen, was Rastertracking leistet. Die Grenzen:</p>
+
+  <ul>
+    <li>
+      <strong>Rasterposition ist kein Umsatz.</strong> An allen 49 Punkten Erster zu sein
+      bedeutet nichts, wenn hinter dieser Suchanfrage keine Nachfrage steht. Deshalb lesen wir
+      das Raster zusammen mit Profilinteraktionen und tatsächlichem Anrufaufkommen.
+    </li>
+    <li>
+      <strong>Eine Messung ist eine Momentaufnahme.</strong> Google kann lokale Ergebnisse im
+      Tagesverlauf und pro Nutzer verändern. Zwei bis drei Plätze Bewegung in einer Messung
+      sind Rauschen; relevant ist der Trend über gleich erhobene Messungen.
+    </li>
+    <li>
+      <strong>Das Raster erklärt keine Wettbewerbsbewegung.</strong> Ein Abfall in einem Gebiet
+      kann an Ihnen liegen oder daran, dass ein Wettbewerber dort stärker geworden ist. Zum
+      Unterscheiden braucht es die Wettbewerbsmessung.
+    </li>
+    <li>
+      <strong>Frühe Messungen bei neuen Profilen täuschen.</strong> In den ersten Wochen nach
+      Anlage eines Profils hat sich das Ranking noch nicht eingependelt. Auf Basis solcher
+      Messungen einzugreifen kann kaputt machen, was sich gerade selbst sortiert.
+    </li>
+  </ul>
+
+  <p>
+    Ein Messaufbau, der diese Grenzen berücksichtigt, macht den Satz "unser Ranking ist
+    gestiegen" überprüfbar. Ziel ist keine schön aussehende Grafik, sondern zu erkennen, welche
+    Maßnahme tatsächlich gewirkt hat.
+  </p>
+
+  <h2 id="reporting">Reporting-Rhythmus</h2>
+
+  <p>
+    Wir messen zu Monatsbeginn und berichten die Werte überlagert mit dem Vormonat. Der Bericht
+    beantwortet drei Fragen: wo haben wir zugelegt, wo verloren, und welche Maßnahme dieses
+    Monats hat gewirkt.
+  </p>
+
+  <p>
+    Das Rastertracking läuft innerhalb des
+    <a href={p('services/local-seo')}>lokalen SEO-Programms</a>, ist aber auch einzeln
+    buchbar — für Unternehmen mit eigenem Team der direkteste Weg, zu prüfen, ob die bezahlte
+    Arbeit etwas bewirkt.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Erstellen wir die <span class="highlight">Sichtbarkeitskarte</span> Ihrer Stadt</h2>
+    <p>Die kostenlose Analyse enthält Ihre 49-Punkte-Messung und den Abstand zu den aktuellen Top 3.</p>
+  </Fragment>
+</ContentLayout>

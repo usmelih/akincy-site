@@ -1,0 +1,215 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'warum', label: 'Warum technisches SEO zuerst kommt' },
+  { id: 'indexierung', label: 'Crawlbarkeit und Indexierung' },
+  { id: 'ladezeit', label: 'Ladezeit und Core Web Vitals' },
+  { id: 'schema', label: 'Strukturierte Daten' },
+  { id: 'hreflang', label: 'hreflang bei mehrsprachigen Websites' },
+  { id: 'analyse', label: 'Was die Analyse abdeckt' },
+];
+
+const faq = [
+  {
+    q: 'Meine Website läuft auf WordPress — geht technisches SEO trotzdem?',
+    a: 'Ja. Die häufigsten Probleme auf WordPress sind Plugin-Ballast, unnötig indexierte Archivseiten und Ladezeitprobleme durch das Theme. Das meiste davon lässt sich ohne Neubau lösen.',
+  },
+  {
+    q: 'Beeinflusst die Ladezeit mein Ranking wirklich?',
+    a: 'Der direkte Effekt ist in den meisten Branchen kleiner als angenommen. Der eigentliche Effekt ist indirekt: eine langsame Seite wird verlassen, die Konversion sinkt und Nutzersignale verschlechtern sich. Bei Ladezeit geht es weniger um Ranking als darum, aus vorhandenem Traffic Ertrag zu ziehen.',
+  },
+  {
+    q: 'Verbessern strukturierte Daten mein Ranking?',
+    a: 'Sie sind für sich genommen kein Rankingfaktor. Sie sorgen dafür, dass Google Seite und Unternehmen korrekt versteht, und ermöglichen erweiterte Darstellungen (Sterne, FAQ, Preise) in den Ergebnissen. Der Effekt zeigt sich in der Klickrate.',
+  },
+  {
+    q: 'Ist technisches SEO einmalig?',
+    a: 'Analyse und Behebung ja, aber jede Änderung an der Website kann neue Probleme erzeugen. Die Prüfung sollte wiederholt werden, wenn Seiten hinzukommen, das Theme aktualisiert oder ein Plugin installiert wird.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/technical-seo"
+  title="Technisches SEO | Akincy"
+  description="Crawlbarkeit, Indexierung, Ladezeit, strukturierte Daten und mehrsprachige Struktur — die Ebene, die funktionieren muss, bevor Inhalte ranken können."
+  eyebrow="Leistung"
+  h1="Technisches SEO"
+  lede="So gut der Inhalt auch ist: Eine Seite, die nicht gecrawlt oder indexiert werden kann, rankt nicht. Technisches SEO festigt den Boden, auf dem alle anderen Maßnahmen stehen."
+  serviceName="Technisches SEO"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'OnPage-SEO', href: p('services/on-page-seo') },
+    { label: 'Content-Erstellung', href: p('services/content') },
+    { label: 'Lokale SEO', href: p('services/local-seo') },
+  ]}
+  ctaLabel="Website kostenlos prüfen →"
+  ctaHref="/de#contact"
+>
+  <h2 id="warum">Warum technisches SEO zuerst kommt</h2>
+
+  <p>
+    Damit eine Seite in den Suchergebnissen erscheint, muss sie drei Stufen passieren: Google
+    muss sie <strong>finden</strong>, <strong>crawlen</strong> können und für
+    <strong>indexierungswürdig</strong> halten. Eine Seite, die an einer dieser Stufen hängen
+    bleibt, rankt nicht — egal wie gut sie geschrieben ist.
+  </p>
+
+  <p>
+    Die teuersten Fehler finden wir genau hier. Es ist nicht selten, dass die Hälfte der über
+    Monate produzierten Seiten nie indexiert wurde, oder dass bei einem Relaunch keine
+    Weiterleitungen von den alten Adressen gesetzt wurden und damit die gesamte aufgebaute
+    Autorität verloren ging. Deshalb beginnt jedes Programm mit einer technischen Analyse.
+  </p>
+
+  <h2 id="indexierung">Crawlbarkeit und Indexierung</h2>
+
+  <p>Was wir dabei prüfen:</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>robots.txt und Meta-Robots.</strong> Ungewollt blockierte Bereiche — oder
+      umgekehrt Seiten, die nicht indexiert werden sollten (Dankesseiten,
+      Filterkombinationen), aber offen stehen
+    </li>
+    <li>
+      <strong>Canonical-Tags.</strong> Derselbe Inhalt über mehrere Adressen erreichbar
+      (www/non-www, http/https, abschließender Slash), ohne Angabe, welche die maßgebliche ist
+    </li>
+    <li>
+      <strong>Sitemap.</strong> Existiert sie, ist sie aktuell, enthält sie Seiten, die nicht
+      hineingehören, wird sie aus der robots.txt referenziert
+    </li>
+    <li>
+      <strong>Weiterleitungen.</strong> Defekte interne Links, Weiterleitungsketten, durch
+      Umzüge verwaiste Adressen
+    </li>
+    <li>
+      <strong>Search-Console-Abdeckungsbericht.</strong> Welche Seiten aus welchem Grund nicht
+      im Index sind — die direkteste Diagnosequelle
+    </li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Der kritische Schritt bei jedem Relaunch ist die Weiterleitungskarte.</strong>
+      Jeder Umzug ohne 301-Zuordnung von alten auf neue Adressen setzt die dort aufgebauten
+      Rankings zurück. Die meisten "Traffic nach dem Relaunch eingebrochen"-Fälle gehen darauf
+      zurück.
+    </p>
+  </div>
+
+  <h2 id="ladezeit">Ladezeit und Core Web Vitals</h2>
+
+  <p>
+    Googles Nutzererlebnis-Metriken messen drei Dinge: wie schnell der Hauptinhalt sichtbar
+    wird (LCP), wie schnell die Seite auf Interaktion reagiert (INP) und wie stark der Inhalt
+    beim Laden springt (CLS).
+  </p>
+
+  <p>
+    Ihr direkter Ranking-Effekt wird meist überschätzt. Die eigentliche Bedeutung liegt
+    woanders: Auf einer langsamen, springenden Seite bricht der Besucher das Formular ab. Wer
+    aus der lokalen Suche kommt, ist bereits in der Entscheidungsphase — jeder hier verlorene
+    Besucher ist unmittelbar ein verlorener Kunde.
+  </p>
+
+  <p>
+    Wir konzentrieren uns auf die praktischen Punkte: Bilder im richtigen Format und in
+    passender Größe ausliefern, renderblockierende Skripte verzögern, ungenutztes CSS und JS
+    entfernen und eine sinnvolle Strategie für das Laden von Schriften. Ziel ist nicht der
+    Wert 100, sondern dass der Nutzer den ersten Bildschirm schnell sieht.
+  </p>
+
+  <h2 id="schema">Strukturierte Daten</h2>
+
+  <p>
+    Strukturierte Daten (schema.org) machen die Informationen einer Seite für Google
+    maschinenlesbar. Die für lokale Unternehmen relevanten Typen:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Typ</th>
+          <th>Funktion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>LocalBusiness</code> und Untertypen</td>
+          <td>Definiert die Unternehmensentität; stärkt die Verknüpfung von Profil und Website</td>
+        </tr>
+        <tr>
+          <td><code>Service</code></td>
+          <td>Klärt, welche Leistung eine Seite beschreibt und wer sie erbringt</td>
+        </tr>
+        <tr>
+          <td><code>FAQPage</code></td>
+          <td>Kann aufklappbare Frage-Antwort-Darstellung in den Ergebnissen bringen</td>
+        </tr>
+        <tr>
+          <td><code>BreadcrumbList</code></td>
+          <td>Zeigt die Seitenhierarchie statt der rohen URL und hebt die Klickrate</td>
+        </tr>
+        <tr>
+          <td><code>Organization</code> + <code>sameAs</code></td>
+          <td>Verbindet Website, Unternehmensprofil und Social-Konten zu einer Entität</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Worauf wir bei der Einrichtung achten: Alle Schema-Blöcke verweisen über eine feste
+    <code>@id</code> auf dieselbe Unternehmensentität. Seitenweise unverbundenes Schema führt
+    dazu, dass Google statt eines Unternehmens mehrere unzusammenhängende Entitäten sieht.
+  </p>
+
+  <h2 id="hreflang">hreflang bei mehrsprachigen Websites</h2>
+
+  <p>
+    Auf mehrsprachigen Websites ist der häufigste Fehler, dass jede Seite hreflang für jede
+    Sprache ausgibt — auch für Seiten ohne Übersetzung. Findet Google unter der angegebenen
+    Adresse keine Entsprechung, kann es den gesamten hreflang-Verbund verwerfen.
+  </p>
+
+  <p>
+    Richtig ist, hreflang nur zwischen tatsächlich einander entsprechenden Seiten zu setzen und
+    marktspezifische Seiten ganz aus dem Verbund zu lassen. Zusätzlich muss jede Seite auch auf
+    sich selbst verweisen und <code>x-default</code> definiert sein.
+  </p>
+
+  <h2 id="analyse">Was die Analyse abdeckt</h2>
+
+  <p>
+    Auf der technischen Seite berichtet die kostenlose Analyse: nicht indexierte Seiten samt
+    Begründung, defekte Links und Weiterleitungsketten, Canonical-Konflikte, fehlende oder
+    fehlerhafte strukturierte Daten, Mobile-Usability-Fehler und die Ladezeit des ersten
+    Bildschirms. Die Befunde sind nach Wirkung sortiert — Sie müssen nicht alles auf einmal
+    beheben, meist sind ein oder zwei Punkte für die Blockade verantwortlich.
+  </p>
+
+  <p>
+    Technische Korrekturen allein reichen selten. Steht der Boden, übernehmen
+    <a href={p('services/on-page-seo')}>OnPage</a> und
+    <a href={p('services/content')}>Content</a>.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Werden Ihre Seiten überhaupt <span class="highlight">indexiert</span>?</h2>
+    <p>Die kostenlose Analyse berichtet Indexierung, Ladezeit und Schema-Status nach Wirkung sortiert.</p>
+  </Fragment>
+</ContentLayout>
