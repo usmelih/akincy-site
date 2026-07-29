@@ -1,0 +1,214 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'ne-uretiyoruz', label: 'Ne üretiyoruz' },
+  { id: 'sektor', label: 'Sektör sayfaları' },
+  { id: 'sehir', label: 'Şehir sayfaları ve doorway sınırı' },
+  { id: 'regule', label: 'Regülasyonlu sektörler' },
+  { id: 'sureç', label: 'Üretim süreci' },
+  { id: 'yapay-zeka', label: 'Yapay zekâ kullanımı' },
+];
+
+const faq = [
+  {
+    q: 'İçerikleri kim yazıyor?',
+    a: 'Taslak ve araştırma bizde, teknik doğruluk kontrolü sizde. Hukuk, sağlık gibi alanlarda yayına almadan önce ilgili uzmanın onayını alıyoruz — hem doğruluk hem de sorumluluk açısından bu adım atlanmıyor.',
+  },
+  {
+    q: 'Ayda kaç içerik gerekiyor?',
+    a: 'Sabit bir sayı vermiyoruz. Çoğu yerel işletmede önce eksik hizmet ve sektör sayfalarının tamamlanması gerekiyor; bu bitmeden blog üretmeye başlamak yaygın bir sıra hatası. Temel sayfalar tamamlandıktan sonra ayda 2–4 içerik çoğu sektör için yeterli ritim.',
+  },
+  {
+    q: 'Blog yazmak yerel işletmeye gerçekten katkı sağlıyor mu?',
+    a: 'Doğrudan harita sıralamasına katkısı sınırlı. Katkısı, hizmet sayfalarına iç link taşıması, bilgi arayan kullanıcıyı erken yakalaması ve alanda uzmanlık sinyali üretmesi. Yani blog tek başına değil, hizmet sayfalarını destekleyen bir katman olarak anlamlı.',
+  },
+  {
+    q: 'Mevcut içeriklerim ne olacak?',
+    a: 'Önce onları değerlendiriyoruz. Gösterim alan ama tıklanmayan ya da ikinci sayfada takılmış içerikler genelde yeniden yazmaya değer; en hızlı kazanç alanı da burası. Yeni üretim bu boşluklar kapandıktan sonra başlıyor.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/content"
+  title="SEO İçerik Üretimi | Akincy"
+  description="Hizmet, sektör ve şehir sayfaları. Arama niyetinin karşılığını veren, iç link yapısına oturan ve yayına hazır içerik üretimi."
+  eyebrow="Hizmet"
+  h1="İçerik Üretimi"
+  lede="Sıralanmak için aramanın karşılığını veren sayfalara ihtiyaç var. Hangi sayfaların eksik olduğunu veriyle çıkarıyor, üretiyor ve iç link yapısına oturtuyoruz."
+  serviceName="SEO İçerik Üretimi"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'On-Page SEO', href: p('services/on-page-seo') },
+    { label: 'Yerel SEO', href: p('services/local-seo') },
+    { label: 'Teknik SEO', href: p('services/technical-seo') },
+  ]}
+  ctaLabel="İçerik Boşluğumu Çıkar →"
+  ctaHref="/tr#contact"
+>
+  <h2 id="ne-uretiyoruz">Ne üretiyoruz</h2>
+
+  <p>
+    İçerik üretimini blog yazısıyla eş anlamlı kullanmıyoruz. Yerel bir işletmenin sıralanması
+    için gereken içerik çoğunlukla blog değil, eksik kalmış <strong>hizmet</strong>,
+    <strong>sektör</strong> ve <strong>lokasyon</strong> sayfaları.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Sayfa tipi</th>
+          <th>Hedeflediği arama</th>
+          <th>İşlevi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hizmet sayfası</td>
+          <td>"boşanma avukatı", "oto ekspertiz"</td>
+          <td>Doğrudan talep — dönüşümün ana kaynağı</td>
+        </tr>
+        <tr>
+          <td>Sektör sayfası</td>
+          <td>"avukatlar için seo"</td>
+          <td>Ulusal görünürlük; yakınlık sinyali gerektirmez</td>
+        </tr>
+        <tr>
+          <td>Şehir sayfası</td>
+          <td>"antalya yerel seo"</td>
+          <td>Bölgesel görünürlük — gerçek yerel veri şartıyla</td>
+        </tr>
+        <tr>
+          <td>Vaka çalışması</td>
+          <td>Marka ve karşılaştırma aramaları</td>
+          <td>Güven ve uzmanlık kanıtı</td>
+        </tr>
+        <tr>
+          <td>Rehber içerik</td>
+          <td>"boşanma davası ne kadar sürer"</td>
+          <td>Erken aşama kullanıcı; hizmet sayfalarına iç link taşır</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Sıra önemli. Hizmet sayfaları tamamlanmadan rehber içerik üretmek, ziyaretçiyi getirip
+    gidecek yer bulamadığı bir siteye bırakmak anlamına geliyor.
+  </p>
+
+  <h2 id="sektor">Sektör sayfaları</h2>
+
+  <p>
+    Yerel hizmet veren bir işletme için en değerli ama en çok atlanan sayfa tipi bu. Sebebi
+    şu: sektör sorgularında yakınlık sinyali devreye girmiyor. "Avukatlar için SEO" arayan
+    kişi bir konuma bağlı olmadığı için, bu sorguda Türkiye genelinde sıralanmak mümkün.
+  </p>
+
+  <p>
+    Bu yüzden coğrafi olarak sınırlı bir profile sahip işletmeler için sektör sayfaları,
+    ulusal görünürlüğün asıl kapısı. Sayfanın işe yaraması için o sektörün diline hâkim
+    olması gerekiyor — genel SEO tavsiyelerinin sektör adı eklenmiş hali değil, o sektörün
+    kendine özgü kısıtlarını ve müşteri davranışını bilen bir metin.
+  </p>
+
+  <h2 id="sehir">Şehir sayfaları ve doorway sınırı</h2>
+
+  <p>
+    Şehir sayfaları iki ucu keskin. Doğru yapıldığında bölgesel görünürlük açıyor; yanlış
+    yapıldığında site geneline zarar veriyor.
+  </p>
+
+  <p>
+    Google’ın "doorway page" tanımı, kullanıcıya gerçek bir değer sunmadan yalnızca farklı
+    aramalarda görünmek için üretilmiş sayfalar. Şehir adı değiştirilmiş şablon sayfalar bu
+    tanıma tam olarak uyuyor ve tespit edilmesi de zor değil.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Uyguladığımız eşik:</strong> bir şehir sayfası ancak o şehre özgü gerçek veri
+      taşıyorsa açılır — o bölgedeki
+      <a href={p('services/rank-tracking')}>rekabet yoğunluğu grid’i</a>, o şehirden bir vaka
+      ya da yerel rakip analizi. Veri üretemediğimiz şehir için sayfa açmıyoruz. On sağlam
+      şehir sayfası, elli şablon sayfadan iyi sonuç veriyor.
+    </p>
+  </div>
+
+  <h2 id="regule">Regülasyonlu sektörler</h2>
+
+  <p>
+    Avukatlık, sağlık ve finans gibi alanlarda içerik üretimi yalnızca SEO meselesi değil.
+    Türkiye’de avukatlar için <strong>TBB Reklam Yasağı Yönetmeliği</strong>, hangi ifadelerin
+    kullanılabileceğini net biçimde sınırlıyor: başarı vaadi, müvekkil sayısı, karşılaştırmalı
+    üstünlük iddiası ve teşvik edici ifadeler kullanılamıyor.
+  </p>
+
+  <p>
+    Bu sektörlerde ürettiğimiz her metin, yayına çıkmadan önce ilgili mevzuat süzgecinden
+    geçiyor. Kısıt gibi görünse de pratikte avantaja dönüşüyor: kurallara uygun, bilgilendirici
+    ve iddiasız yazılmış metinler hem yaptırım riski taşımıyor hem de Google’ın uzmanlık
+    değerlendirmesinde iyi durabiliyor.
+  </p>
+
+  <h2 id="sureç">Üretim süreci</h2>
+
+  <ol>
+    <li>
+      <strong>Boşluk analizi.</strong> Search Console’da gösterim alan ama karşılığı olmayan
+      sorgular, rakiplerde olup sizde olmayan sayfalar ve mevcut sayfaların hangi niyeti
+      karşıladığı çıkarılır.
+    </li>
+    <li>
+      <strong>Önceliklendirme.</strong> Sayfalar talep hacmi ve dönüşüm yakınlığına göre
+      sıralanır. Hizmet sayfaları rehber içeriğin önüne geçer.
+    </li>
+    <li>
+      <strong>Brief.</strong> Her sayfa için hedef sorgu, kapsanacak alt başlıklar, iç link
+      planı ve şema tipi belirlenir.
+    </li>
+    <li>
+      <strong>Yazım ve uzman kontrolü.</strong> Taslak üretilir, teknik doğruluk için sizin
+      onayınıza sunulur, regülasyonlu alanlarda mevzuat kontrolü yapılır.
+    </li>
+    <li>
+      <strong>Yayın ve bağlama.</strong> Sayfa yayınlanır, iç link yapısına oturtulur,
+      yapılandırılmış verisi eklenir ve sitemap’e girer.
+    </li>
+    <li>
+      <strong>Takip.</strong> 4–8 hafta sonra gösterim ve pozisyon verisi okunur; gerekirse
+      sayfa derinleştirilir. Yayınlanan içerik bitmiş sayılmıyor.
+    </li>
+  </ol>
+
+  <h2 id="yapay-zeka">Yapay zekâ kullanımı</h2>
+
+  <p>
+    Bu konuda açık olalım: araştırma, taslaklama ve veri işleme aşamalarında yapay zekâ
+    kullanıyoruz. Kullanmadığımız yer, metni olduğu gibi yayına almak.
+  </p>
+
+  <p>
+    Sebebi ideolojik değil pratik: üretilen ham metin, sektörün gerçek kısıtlarını
+    (TBB yönetmeliği gibi), işletmenin gerçek süreçlerini ve o şehirdeki rekabetin gerçek
+    halini bilmiyor. Bu bilgiler eklenmeden çıkan içerik, aynı sorguyu hedefleyen yüzlerce
+    benzer sayfadan ayrışmıyor. Ayrışmayan içerik de sıralanmıyor.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Hangi sayfalar <span class="highlight">eksik</span>?</h2>
+    <p>Ücretsiz analizde gösterim alıp karşılığı olmayan sorguları ve rakiplerdeki içerik farkını çıkarıyoruz.</p>
+  </Fragment>
+</ContentLayout>

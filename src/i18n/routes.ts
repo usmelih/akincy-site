@@ -13,6 +13,16 @@ import { localePrefix } from './config';
  */
 export const ROUTES = {
   home: { en: '/', tr: '/', de: '/' },
+
+  // Services. Turkish first — the EN/DE slugs land when those translations are
+  // written; until then these pages carry a tr-only hreflang set on purpose.
+  services: { tr: '/hizmetler' },
+  'services/gbp': { tr: '/hizmetler/google-isletme-profili-yonetimi' },
+  'services/local-seo': { tr: '/hizmetler/yerel-seo' },
+  'services/rank-tracking': { tr: '/hizmetler/harita-siralama-takibi' },
+  'services/technical-seo': { tr: '/hizmetler/teknik-seo' },
+  'services/on-page-seo': { tr: '/hizmetler/on-page-seo' },
+  'services/content': { tr: '/hizmetler/icerik-uretimi' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;
 
 export type RouteKey = keyof typeof ROUTES;

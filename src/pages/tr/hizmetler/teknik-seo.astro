@@ -1,0 +1,216 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'neden', label: 'Teknik SEO neden önce gelir?' },
+  { id: 'indeksleme', label: 'Taranabilirlik ve indeksleme' },
+  { id: 'hiz', label: 'Sayfa hızı ve Core Web Vitals' },
+  { id: 'schema', label: 'Yapılandırılmış veri' },
+  { id: 'coklu-dil', label: 'Çok dilli sitelerde hreflang' },
+  { id: 'denetim', label: 'Denetimde baktığımız yerler' },
+];
+
+const faq = [
+  {
+    q: 'Sitem WordPress, teknik SEO yapılabilir mi?',
+    a: 'Evet. WordPress’te en sık karşılaştığımız sorunlar eklenti kaynaklı şişkinlik, gereksiz arşiv sayfalarının indekslenmesi ve tema kaynaklı hız problemleri. Bunların büyük bölümü site yeniden yazılmadan çözülebiliyor.',
+  },
+  {
+    q: 'Site hızı sıralamamı gerçekten etkiliyor mu?',
+    a: 'Doğrudan etkisi çoğu sektörde sanıldığından küçük. Asıl etkisi dolaylı: yavaş açılan sayfa terk ediliyor, dönüşüm düşüyor ve kullanıcı davranışı sinyalleri bozuluyor. Yani hız, sıralamadan çok gelen trafiğin karşılığını almakla ilgili.',
+  },
+  {
+    q: 'Yapılandırılmış veri eklemek sıralamamı yükseltir mi?',
+    a: 'Kendi başına sıralama faktörü değil. Yaptığı şey, Google’ın sayfayı ve işletmeyi doğru anlamasını sağlamak ve arama sonucunda zengin gösterim (yıldız, SSS, fiyat) kazandırmak. Etkisi tıklama oranında görülüyor.',
+  },
+  {
+    q: 'Teknik SEO tek seferlik mi?',
+    a: 'Denetim ve düzeltme tek seferlik; ancak site her değiştiğinde yeni sorun üretme ihtimali var. Yeni sayfa eklendiğinde, tema güncellendiğinde ya da eklenti kurulduğunda kontrol tekrarlanmalı.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/technical-seo"
+  title="Teknik SEO Hizmeti | Akincy"
+  description="Taranabilirlik, indeksleme, sayfa hızı, yapılandırılmış veri ve çok dilli yapı. İçeriğin sıralanabilmesi için önce çözülmesi gereken katman."
+  eyebrow="Hizmet"
+  h1="Teknik SEO"
+  lede="İçerik ne kadar iyi olursa olsun, sayfa taranamıyor veya indekslenemiyorsa sıralanmıyor. Teknik SEO, diğer her çalışmanın üzerine kurulduğu zemini sağlamlaştırır."
+  serviceName="Teknik SEO"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'On-Page SEO', href: p('services/on-page-seo') },
+    { label: 'İçerik Üretimi', href: p('services/content') },
+    { label: 'Yerel SEO', href: p('services/local-seo') },
+  ]}
+  ctaLabel="Sitemi Ücretsiz Denetle →"
+  ctaHref="/tr#contact"
+>
+  <h2 id="neden">Teknik SEO neden önce gelir?</h2>
+
+  <p>
+    Bir sayfanın arama sonuçlarında görünmesi için üç aşamayı geçmesi gerekiyor: Google’ın onu
+    <strong>bulması</strong>, <strong>tarayabilmesi</strong> ve <strong>indeksine almaya değer
+    bulması</strong>. Bu üç aşamanın herhangi birinde tıkanan sayfa, ne kadar iyi yazılmış olursa
+    olsun sıralanmıyor.
+  </p>
+
+  <p>
+    Karşılaştığımız en pahalı hatalar da genelde burada oluyor. Aylarca içerik üretmiş bir
+    işletmenin sayfalarının yarısının indekslenmediğini, ya da site yenilenirken eski
+    adreslerden yönlendirme yapılmadığı için birikmiş tüm otoritenin kaybedildiğini görmek
+    nadir değil. Bu yüzden her programa teknik denetimle başlıyoruz.
+  </p>
+
+  <h2 id="indeksleme">Taranabilirlik ve indeksleme</h2>
+
+  <p>
+    Bu başlık altında baktığımız temel şeyler:
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>robots.txt ve meta robots.</strong> İstenmeden engellenmiş bölümler, ya da tersine
+      indekslenmemesi gereken sayfaların (teşekkür sayfaları, filtre kombinasyonları) açık kalması
+    </li>
+    <li>
+      <strong>Canonical etiketleri.</strong> Aynı içeriğin birden çok adresten erişilebilir olması
+      (www/non-www, http/https, sondaki slash) ve Google’ın hangisini asıl kabul edeceğinin
+      belirtilmemiş olması
+    </li>
+    <li>
+      <strong>Sitemap.</strong> Var mı, güncel mi, indekslenmemesi gereken sayfaları içeriyor mu,
+      robots.txt’ten işaret ediliyor mu
+    </li>
+    <li>
+      <strong>Yönlendirmeler.</strong> Kırık iç linkler, zincirleme yönlendirmeler, site
+      taşınmasından kalan kayıp adresler
+    </li>
+    <li>
+      <strong>Search Console kapsam raporu.</strong> Hangi sayfaların hangi gerekçeyle indeks
+      dışında kaldığı — teşhisin en doğrudan kaynağı
+    </li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Site yenilerken en kritik adım yönlendirme haritası.</strong> Eski adreslerin
+      yenilerine 301 ile eşlenmediği her yenileme, o adreslerde birikmiş sıralamayı sıfırlıyor.
+      Yenileme sonrası trafik düşüşü şikâyetlerinin çoğunun kaynağı bu.
+    </p>
+  </div>
+
+  <h2 id="hiz">Sayfa hızı ve Core Web Vitals</h2>
+
+  <p>
+    Google’ın kullanıcı deneyimi metrikleri üç şeyi ölçüyor: sayfanın ana içeriğinin ne kadar
+    hızlı göründüğü (LCP), etkileşime ne kadar hızlı cevap verdiği (INP) ve yüklenirken
+    içeriğin ne kadar kaydığı (CLS).
+  </p>
+
+  <p>
+    Bu metriklerin sıralamaya doğrudan etkisi genelde abartılıyor. Asıl önemi başka: yavaş
+    ve zıplayan bir sayfada kullanıcı formu doldurmadan çıkıyor. Yerel aramada gelen ziyaretçi
+    zaten karar aşamasında olduğu için, bu aşamada kaybedilen her ziyaretçi doğrudan kayıp
+    müşteri demek.
+  </p>
+
+  <p>
+    Odaklandığımız düzeltmeler pratik olanlar: görsellerin doğru formatta ve boyutta sunulması,
+    render’ı engelleyen script’lerin ertelenmesi, kullanılmayan CSS/JS’in temizlenmesi ve font
+    yükleme stratejisi. Puanı 100 yapmak hedef değil; kullanıcının ilk ekranı hızlı görmesi hedef.
+  </p>
+
+  <h2 id="schema">Yapılandırılmış veri</h2>
+
+  <p>
+    Yapılandırılmış veri (schema.org), sayfadaki bilgiyi Google’ın makine tarafından okunabilir
+    biçimde almasını sağlıyor. Yerel işletmeler için kritik olan tipler:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Tip</th>
+          <th>Ne işe yarar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>LocalBusiness</code> / alt tipleri</td>
+          <td>İşletme varlığını tanımlar; profil ile site arasındaki eşleşmeyi güçlendirir</td>
+        </tr>
+        <tr>
+          <td><code>Service</code></td>
+          <td>Hizmet sayfasının hangi hizmeti anlattığını ve kimin sunduğunu netleştirir</td>
+        </tr>
+        <tr>
+          <td><code>FAQPage</code></td>
+          <td>Sonuçlarda açılır soru-cevap gösterimi kazandırabilir</td>
+        </tr>
+        <tr>
+          <td><code>BreadcrumbList</code></td>
+          <td>Sonuçta URL yerine site hiyerarşisini gösterir, tıklama oranını artırır</td>
+        </tr>
+        <tr>
+          <td><code>Organization</code> + <code>sameAs</code></td>
+          <td>Site, işletme profili ve sosyal hesapları tek varlık olarak bağlar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Kurulumda dikkat ettiğimiz nokta, tüm şemaların sabit bir <code>@id</code> üzerinden aynı
+    işletme varlığına bağlanması. Sayfa sayfa birbirinden kopuk şema yazmak, Google’ın tek bir
+    işletme yerine birbiriyle ilgisiz varlıklar görmesine yol açıyor.
+  </p>
+
+  <h2 id="coklu-dil">Çok dilli sitelerde hreflang</h2>
+
+  <p>
+    Birden fazla dilde yayın yapan sitelerde en sık gördüğümüz hata, her sayfanın her dile
+    hreflang vermesi — çevirisi olmayan sayfalar dahil. Google, işaret edilen adreste karşılığı
+    bulamadığında hreflang kümesinin tamamını yok sayabiliyor.
+  </p>
+
+  <p>
+    Doğru kurulum, hreflang’i yalnızca gerçekten karşılığı olan sayfalar arasında kurmak ve
+    pazara özgü sayfaları (yalnızca Türkiye’ye yönelik şehir sayfaları gibi) kümenin dışında
+    bırakmak. Ayrıca her sayfanın kendine de hreflang vermesi ve <code>x-default</code>’un
+    tanımlanmış olması gerekiyor.
+  </p>
+
+  <h2 id="denetim">Denetimde baktığımız yerler</h2>
+
+  <p>
+    Ücretsiz analizde teknik tarafta çıkardığımız başlıklar: indekslenmeyen sayfalar ve
+    gerekçeleri, kırık bağlantı ve yönlendirme zincirleri, canonical çakışmaları, eksik ya da
+    hatalı yapılandırılmış veri, mobil kullanılabilirlik hataları ve ilk ekran yükleme süresi.
+    Bulguları etki sırasına göre veriyoruz — hepsini aynı anda düzeltmek gerekmiyor, sıralamayı
+    tutan bir veya iki tanesi genelde belirleyici oluyor.
+  </p>
+
+  <p>
+    Teknik düzeltmeler tek başına nadiren yeterli. Zemini sağlamlaştırdıktan sonra
+    <a href={p('services/on-page-seo')}>on-page</a> ve
+    <a href={p('services/content')}>içerik</a> tarafı devreye giriyor.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Sayfalarınız gerçekten <span class="highlight">indeksleniyor mu</span>?</h2>
+    <p>Ücretsiz analizde indeksleme, hız ve şema durumunuzu etki sırasına göre raporluyoruz.</p>
+  </Fragment>
+</ContentLayout>

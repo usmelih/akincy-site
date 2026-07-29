@@ -1,0 +1,182 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'niyet', label: 'Her sayfa tek bir niyete cevap verir' },
+  { id: 'title', label: 'Başlık ve açıklama' },
+  { id: 'yapi', label: 'Başlık hiyerarşisi ve içerik yapısı' },
+  { id: 'ic-link', label: 'İç link mimarisi' },
+  { id: 'yamyamlik', label: 'Sayfa yamyamlığı' },
+  { id: 'yerel', label: 'Yerel sinyaller' },
+];
+
+const faq = [
+  {
+    q: 'Anahtar kelimeyi kaç kez geçirmeliyim?',
+    a: 'Belirli bir oran yok ve yoğunluk kovalamak zarar veriyor. Doğru ölçüt, konuyu gerçekten kapsayıp kapsamadığınız. Bir hizmeti hakkıyla anlatan metin, o hizmetin etrafındaki ifadeleri zaten doğal olarak içerir.',
+  },
+  {
+    q: 'Title etiketini Google değiştiriyor, yazmanın anlamı var mı?',
+    a: 'Google zaman zaman kendi başlığını üretiyor, ama bunu genelde title eksik, çok uzun veya sayfa içeriğiyle uyumsuz olduğunda yapıyor. İyi yazılmış ve içerikle tutarlı bir title büyük çoğunlukla korunuyor.',
+  },
+  {
+    q: 'Uzun içerik her zaman daha mı iyi sıralanıyor?',
+    a: 'Hayır. Uzunluk bir sonuç, hedef değil. Sorunun karşılığını 400 kelimede veren bir sayfa, aynı şeyi 2000 kelimeye yayan sayfadan iyi sıralanabiliyor. Kötü olan, konuyu eksik bırakmak.',
+  },
+  {
+    q: 'Mevcut sayfalarımı düzeltmek mi, yenilerini yazmak mı?',
+    a: 'Neredeyse her zaman önce mevcutları düzeltmek. Zaten gösterim alan ama tıklanmayan ya da ikinci sayfada takılmış sayfalar, en hızlı kazanç alanı. Yeni içerik bu boşluklar kapandıktan sonra anlamlı.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/on-page-seo"
+  title="On-Page SEO Hizmeti | Akincy"
+  description="Başlık, içerik derinliği, başlık hiyerarşisi ve iç link mimarisi. Sayfanın hangi aramaya cevap verdiğini Google için netleştiren çalışma."
+  eyebrow="Hizmet"
+  h1="On-Page SEO"
+  lede="Bir sayfanın sıralanabilmesi için Google’ın onu hangi sorgunun karşılığı olarak göreceğini net anlaması gerekir. On-page çalışması tam olarak bu netliği kurar."
+  serviceName="On-Page SEO"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Teknik SEO', href: p('services/technical-seo') },
+    { label: 'İçerik Üretimi', href: p('services/content') },
+    { label: 'Yerel SEO', href: p('services/local-seo') },
+  ]}
+  ctaLabel="Sayfalarımı Analiz Et →"
+  ctaHref="/tr#contact"
+>
+  <h2 id="niyet">Her sayfa tek bir niyete cevap verir</h2>
+
+  <p>
+    On-page SEO’nun tek cümlelik özeti bu. İnsanlar arama yaparken farklı şeyler istiyor: kimi
+    bilgi arıyor ("boşanma davası ne kadar sürer"), kimi karşılaştırma yapıyor ("anlaşmalı mı
+    çekişmeli mi"), kimi doğrudan hizmet alacak ("mersin boşanma avukatı"). Bunlar üç ayrı
+    niyet ve tek bir sayfada üçünü birden karşılamaya çalışmak, hiçbirinde sıralanamamakla
+    sonuçlanıyor.
+  </p>
+
+  <p>
+    Yaptığımız ilk iş, mevcut sayfaları hedefledikleri niyete göre haritalamak. Bu haritada
+    genelde iki tür boşluk çıkıyor: karşılığı olmayan niyetler (hiç sayfa yok) ve aynı niyeti
+    hedefleyen birden fazla sayfa. İkincisi daha sinsi ve aşağıda ayrı başlık altında.
+  </p>
+
+  <h2 id="title">Başlık ve açıklama</h2>
+
+  <p>
+    Title etiketi, hâlâ sayfanın konusunu belirleyen en güçlü tek on-page sinyali. Yazarken
+    dikkat ettiklerimiz:
+  </p>
+
+  <ul class="checklist">
+    <li>Hedef sorgunun, zorlama olmadan başa yakın yer alması</li>
+    <li>Yerel hizmetlerde şehir ya da bölge adının geçmesi</li>
+    <li>Marka adının sonda ve kısa tutulması</li>
+    <li>Sonuç sayfasında kesilmeyecek uzunlukta kalması</li>
+    <li>Sitedeki her sayfanın kendine ait, tekrar etmeyen bir title taşıması</li>
+  </ul>
+
+  <p>
+    Meta açıklama sıralama faktörü değil, ama tıklama oranını belirliyor. İkinci sırada olup
+    iyi yazılmış bir açıklamayla daha çok tıklanan sayfa, zamanla birinci sıradakinin yerini
+    alabiliyor. Açıklamayı bir reklam metni gibi değil, sayfanın gerçekten ne vaat ettiğinin
+    dürüst özeti olarak yazıyoruz — beklentiyi karşılamayan açıklama, kullanıcıyı geri
+    döndürüyor ve bu geri dönüş sinyal olarak okunuyor.
+  </p>
+
+  <h2 id="yapi">Başlık hiyerarşisi ve içerik yapısı</h2>
+
+  <p>
+    Sayfada tek bir H1 olmalı ve bu H1 sayfanın ne hakkında olduğunu tek başına anlatmalı. Alt
+    başlıklar (H2, H3) konuyu mantıklı parçalara bölmeli — görsel biçimlendirme için değil,
+    yapı için kullanılmalı.
+  </p>
+
+  <p>
+    Yapının pratik faydası, konunun kapsanıp kapsanmadığını görünür kılması. Bir hizmeti
+    anlatan sayfada kullanıcıların gerçekten sorduğu alt başlıklar (süreç nasıl işliyor,
+    ne kadar sürüyor, neye göre fiyatlanıyor, hangi durumlarda gerekmez) yoksa, sayfa o
+    hizmetin karşılığı olarak zayıf kalıyor. Bu alt başlıkları tahminle değil, arama
+    verisinden ve müşteri sorularından çıkarıyoruz.
+  </p>
+
+  <h2 id="ic-link">İç link mimarisi</h2>
+
+  <p>
+    İç linkler iki iş yapıyor: Google’a sitedeki hiyerarşiyi öğretiyor ve sayfalar arasında
+    otorite taşıyor. Yerel işletme sitelerinde en sık gördüğümüz eksik, hizmet sayfalarının
+    birbirine ve üstteki hub sayfasına hiç bağlanmaması — her sayfa ada gibi duruyor.
+  </p>
+
+  <p>
+    Kurduğumuz yapı basit: <a href={p('services')}>hizmetler hub’ı</a> tüm hizmet sayfalarına
+    bağlanır, her hizmet sayfası hub’a geri döner ve konu olarak komşu olduğu 2–3 hizmete
+    bağlanır. Vaka çalışmaları ilgili hizmet sayfasına, hizmet sayfaları da ilgili vakalara
+    bağlanır. Bu sayfanın alt kısmındaki "İlgili hizmetler" bloğu aynı mantığın uygulaması.
+  </p>
+
+  <p>
+    Link metninde dikkat ettiğimiz nokta, "buraya tıklayın" gibi anlamsız ifadeler yerine hedef
+    sayfanın konusunu içeren doğal bir ifade kullanmak — ama aynı hedefe her seferinde birebir
+    aynı metinle bağlanmamak.
+  </p>
+
+  <h2 id="yamyamlik">Sayfa yamyamlığı</h2>
+
+  <p>
+    Aynı sorguyu hedefleyen birden fazla sayfanız varsa, Google hangisini göstereceğine karar
+    veremiyor ve genelde ikisini de olması gerekenden aşağıda tutuyor. Buna sayfa yamyamlığı
+    (cannibalization) deniyor ve içerik üretmeye erken başlamış sitelerde neredeyse her zaman
+    çıkıyor.
+  </p>
+
+  <p>
+    Teşhisi Search Console üzerinden yapıyoruz: aynı sorguda dönüşümlü olarak farklı adreslerin
+    gösterildiğini görmek yeterli işaret. Çözüm duruma göre değişiyor — sayfaları birleştirip
+    güçlü olana yönlendirmek, ya da ikisinin hedefini birbirinden gerçekten ayrıştırmak.
+    Birleştirme çoğu zaman toplam trafiği artırıyor, çünkü bölünmüş sinyaller tek sayfada
+    topluyor.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Yeni sayfa açmadan önce sorun:</strong> bu sorgunun karşılığı olan bir sayfam
+      zaten var mı? Varsa doğru hamle yeni sayfa açmak değil, mevcut sayfayı derinleştirmek.
+    </p>
+  </div>
+
+  <h2 id="yerel">Yerel sinyaller</h2>
+
+  <p>
+    Yerel hizmet veren işletmelerde on-page çalışmasının bir de coğrafi boyutu var. Sayfanın
+    hangi bölgeye hizmet verdiğinin metin içinde doğal olarak geçmesi, iletişim bilgilerinin
+    işletme profiliyle birebir aynı yazılması ve
+    <a href={p('services/technical-seo')}>yapılandırılmış verinin</a> işletme varlığına
+    bağlanması gerekiyor.
+  </p>
+
+  <p>
+    Burada sınır, şehir adını metne serpiştirmek ile sayfayı gerçekten o bölgeye özgü hale
+    getirmek arasında. Birincisi işe yaramıyor ve fark ediliyor; ikincisi için sayfanın o
+    bölgeye dair gerçek bir şey söylemesi gerekiyor. Şehir bazlı sayfa üretimini bu yüzden
+    <a href={p('services/content')}>içerik üretimi</a> başlığı altında, gerçek veriye bağlı
+    olarak ele alıyoruz.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Sayfalarınız hangi sorguda <span class="highlight">birbirini yiyor</span>?</h2>
+    <p>Ücretsiz analizde niyet haritanızı, title eksiklerinizi ve yamyamlık vakalarını çıkarıyoruz.</p>
+  </Fragment>
+</ContentLayout>

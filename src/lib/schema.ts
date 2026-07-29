@@ -32,6 +32,66 @@ const AREA_SERVED = [
   { '@type': 'City', name: 'Antalya' },
 ];
 
+export interface FaqEntry {
+  q: string;
+  a: string;
+}
+
+export interface Crumb {
+  label: string;
+  href: string;
+}
+
+/**
+ * Schema for a service page: the service itself, its FAQ, and the breadcrumb
+ * trail. All of it hangs off the one organisation node via `provider`.
+ */
+export function servicePageSchema(opts: {
+  locale: Locale;
+  url: string;
+  name: string;
+  description: string;
+  faq?: FaqEntry[];
+  breadcrumb: Crumb[];
+}) {
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': 'Service',
+      '@id': `${SITE}${opts.url}#service`,
+      name: opts.name,
+      description: opts.description,
+      serviceType: opts.name,
+      provider: { '@id': ORG_ID },
+      areaServed: AREA_SERVED,
+      inLanguage: opts.locale,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE}${opts.url}#breadcrumb`,
+      itemListElement: opts.breadcrumb.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.label,
+        item: `${SITE}${c.href}`,
+      })),
+    },
+  ];
+
+  if (opts.faq?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${SITE}${opts.url}#faq`,
+      mainEntity: opts.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+  }
+
+  return { '@context': 'https://schema.org', '@graph': graph };
+}
+
 export function orgSchema(locale: Locale) {
   return {
     '@context': 'https://schema.org',
