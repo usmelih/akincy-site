@@ -14,6 +14,8 @@ interface Props {
   locale: Locale;
   /** Key into the central route map; drives canonical, hreflang and the language switcher. */
   route: RouteKey;
+  /** Appended to the route path for dynamic children (e.g. a case study slug). */
+  slug?: string;
   title: string;
   description: string;
   ogImage?: string;
@@ -23,6 +25,7 @@ interface Props {
 const {
   locale,
   route,
+  slug,
   title,
   description,
   ogImage = '/images/og-image.png',
@@ -35,13 +38,15 @@ const availableIn = routeLocales(route);
 const site = Astro.site?.origin ?? 'https://akincy.com';
 const abs = (p: string) => new URL(p, site).href;
 
-const canonical = abs(routePath(locale, route));
+const withSlug = (l: Locale) => routePath(l, route) + (slug ? `/${slug}` : '');
+
+const canonical = abs(withSlug(locale));
 const alternates = availableIn.map((l) => ({
   hreflang: HREFLANG[l],
-  href: abs(routePath(l, route)),
+  href: abs(withSlug(l)),
 }));
 const xDefault = abs(
-  routePath(availableIn.includes(DEFAULT_LOCALE) ? DEFAULT_LOCALE : availableIn[0]!, route),
+  withSlug(availableIn.includes(DEFAULT_LOCALE) ? DEFAULT_LOCALE : availableIn[0]!),
 );
 
 const strings = t(locale);
@@ -55,6 +60,7 @@ const servicesHref = routeLocales('services').includes(locale) ? routePath(local
 const industriesHref = routeLocales('industries').includes(locale)
   ? routePath(locale, 'industries')
   : null;
+const casesHref = routeLocales('cases').includes(locale) ? routePath(locale, 'cases') : null;
 const toolHref = routeLocales('tools/gbp-audit').includes(locale)
   ? routePath(locale, 'tools/gbp-audit')
   : null;
@@ -130,6 +136,7 @@ const year = new Date().getFullYear();
       <nav class="nav-links" id="navLinks">
         {servicesHref && <a href={servicesHref}>{strings.nav.services}</a>}
         {industriesHref && <a href={industriesHref}>{strings.nav.industries}</a>}
+        {casesHref && <a href={casesHref}>{strings.nav.cases}</a>}
         <a href={anchor('#difference-section')}>{strings.nav.beforeAfter}</a>
         <a href={anchor('#process')}>{strings.nav.process}</a>
         <a href={anchor('#faq')}>{strings.nav.faq}</a>

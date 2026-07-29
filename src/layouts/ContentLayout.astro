@@ -7,6 +7,8 @@ import { servicePageSchema, type Crumb, type FaqEntry } from '../lib/schema';
 interface Props {
   locale: Locale;
   route: RouteKey;
+  /** Appended to the route path for dynamic children. */
+  slug?: string;
   /** <title> and meta description — written per page, not derived from the H1. */
   title: string;
   description: string;
@@ -32,6 +34,7 @@ interface Props {
 const {
   locale,
   route,
+  slug,
   title,
   description,
   eyebrow,
@@ -47,7 +50,7 @@ const {
   ctaHref,
 } = Astro.props;
 
-const url = routePath(locale, route);
+const url = routePath(locale, route) + (slug ? `/${slug}` : '');
 const trail: Crumb[] = [...breadcrumb, { label: h1, href: url }];
 
 const schema = servicePageSchema({
@@ -68,7 +71,7 @@ const relatedHeading = {
 }[locale];
 ---
 
-<BaseLayout locale={locale} route={route} title={title} description={description}>
+<BaseLayout locale={locale} route={route} slug={slug} title={title} description={description}>
   <script
     slot="schema"
     type="application/ld+json"

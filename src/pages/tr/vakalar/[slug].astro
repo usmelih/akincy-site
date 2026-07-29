@@ -1,0 +1,122 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+import { PUBLISHED_CASES, type CaseStudy } from '../../../data/cases';
+
+export function getStaticPaths() {
+  return PUBLISHED_CASES.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const SERVICE_LABELS: Record<string, string> = {
+  'services/gbp': 'Google İşletme Profili Yönetimi',
+  'services/local-seo': 'Yerel SEO',
+  'services/rank-tracking': 'Harita Sıralama Takibi',
+  'services/technical-seo': 'Teknik SEO',
+  'services/on-page-seo': 'On-Page SEO',
+  'services/content': 'İçerik Üretimi',
+  'industries/law': 'Avukatlar için SEO',
+  'industries/physio': 'Fizyoterapistler için SEO',
+  'industries/vehicle-inspection': 'Oto ekspertiz için SEO',
+  'industries/dental': 'Diş hekimleri için SEO',
+  'industries/aesthetics': 'Estetik klinikleri için SEO',
+};
+
+const related = [
+  ...study.services.map((key) => ({ label: SERVICE_LABELS[key] ?? key, href: p(key) })),
+  ...(study.industry
+    ? [{ label: SERVICE_LABELS[study.industry] ?? study.industry, href: p(study.industry) }]
+    : []),
+];
+
+const toc = [
+  { id: 'durum', label: 'Başlangıç durumu' },
+  { id: 'yapilan', label: 'Yapılan iş' },
+  { id: 'sonuc', label: 'Ne değişti' },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="cases"
+  slug={study.slug}
+  title={`${study.subject} | Vaka Çalışması | Akincy`}
+  description={study.summary}
+  eyebrow={`${study.sector} · ${study.city}`}
+  h1={study.subject}
+  lede={study.summary}
+  serviceName={`${study.sector} Sektöründe Yerel SEO`}
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Vakalar', href: p('cases') },
+  ]}
+  toc={toc}
+  related={related}
+  ctaLabel="Ücretsiz Analizimi Al →"
+  ctaHref="/tr#contact"
+>
+  <h2 id="durum">Başlangıç durumu</h2>
+  {study.situation.map((para) => <p>{para}</p>)}
+
+  <h2 id="yapilan">Yapılan iş</h2>
+  <ul class="checklist">
+    {study.work.map((item) => <li>{item}</li>)}
+  </ul>
+
+  <h2 id="sonuc">Ne değişti</h2>
+  {study.outcome.map((para) => <p>{para}</p>)}
+
+  {study.metrics.length > 0 ? (
+    <div class="table-scroll" style="margin-top:24px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Ölçüm</th>
+            <th>Öncesi</th>
+            <th>Sonrası</th>
+          </tr>
+        </thead>
+        <tbody>
+          {study.metrics.map((m) => (
+            <tr>
+              <td><strong>{m.label}</strong></td>
+              <td>{m.before}</td>
+              <td>{m.after}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div class="callout">
+      <p>
+        <strong>Bu vakada sayısal karşılaştırma paylaşmıyoruz.</strong> Paylaştığımız her
+        rakamın ölçülmüş ve doğrulanabilir olması gerekiyor; tahmini rakam yazmıyoruz. Kendi
+        işletmeniz için ölçülmüş bir başlangıç noktası isterseniz
+        <a href={p('services/rank-tracking')}>grid ölçümü</a> ücretsiz analizin içinde.
+      </p>
+    </div>
+  )}
+
+  {study.quote && (
+    <blockquote class="case-quote">
+      <p>{study.quote.text}</p>
+      <cite>{study.quote.author}</cite>
+    </blockquote>
+  )}
+
+  <Fragment slot="cta">
+    <h2>Sizin durumunuzda sorun <span class="highlight">nerede</span>?</h2>
+    <p>Ücretsiz analizde teşhisi çıkarıp hangi müdahalenin önce geldiğini söylüyoruz.</p>
+  </Fragment>
+</ContentLayout>

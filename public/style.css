@@ -2548,3 +2548,34 @@ footer {
 [hidden] {
   display: none !important;
 }
+
+/* Case study cards and pull quote */
+.case-card-meta {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.case-quote {
+  margin: 32px 0 0;
+  padding: 22px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-2);
+  border-radius: 12px;
+}
+.case-quote p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text);
+}
+.case-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  font-style: normal;
+  color: var(--muted);
+}
