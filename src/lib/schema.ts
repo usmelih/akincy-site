@@ -12,13 +12,18 @@ export const ORG_ID = `${SITE}/#organization`;
 export const WEBSITE_ID = `${SITE}/#website`;
 
 /**
- * Profiles that prove this is the same entity as the Google Business Profile.
- * TODO: replace the share.google link with the stable
- * https://www.google.com/maps?cid=<CID> URL once the CID is read off the profile.
+ * Google Business Profile identifiers, read off the profile's Maps URL.
+ * The CID is the second hex value in the `!1s0x…:0x…` block of a place URL,
+ * converted to decimal: 0x711c7c17fd95a59 -> 509407866757143129.
  */
-const SAME_AS = [
-  'https://share.google/T3PSRjjBTlHTIfHZG',
-];
+export const GBP_CID = '509407866757143129';
+export const GBP_URL = `https://www.google.com/maps?cid=${GBP_CID}`;
+
+/** Profiles that prove this is the same entity as the Google Business Profile. */
+const SAME_AS = [GBP_URL];
+
+/** Must stay byte-identical to the number on the Google Business Profile. */
+const PHONE = '+90 545 505 23 86';
 
 const DESCRIPTION: Record<Locale, string> = {
   en: 'Akincy helps local businesses rank higher on Google Maps, outrank nearby competitors, and turn visibility into real leads.',
@@ -108,6 +113,7 @@ export function orgSchema(locale: Locale) {
         },
         image: `${SITE}${locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png'}`,
         email: CONTACT_EMAIL[locale],
+        telephone: PHONE,
         description: DESCRIPTION[locale],
         serviceType: 'Local SEO & Google Maps Optimization',
         areaServed: AREA_SERVED,
