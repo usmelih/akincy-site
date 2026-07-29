@@ -14,6 +14,7 @@ export const ui = {
       services: 'Services',
       industries: 'Industries',
       cases: 'Case Studies',
+      tool: 'Free profile audit',
     },
     footer: {
       tagline: 'Local SEO & Google Maps Growth for ambitious businesses.',
@@ -32,6 +33,7 @@ export const ui = {
       services: 'Hizmetler',
       industries: 'Sektörler',
       cases: 'Vakalar',
+      tool: 'Ücretsiz profil denetimi',
     },
     footer: {
       tagline: 'Hedefi olan işletmeler için Local SEO & Google Maps büyümesi.',
@@ -50,6 +52,7 @@ export const ui = {
       services: 'Leistungen',
       industries: 'Branchen',
       cases: 'Fallstudien',
+      tool: 'Kostenlose Profilanalyse',
     },
     footer: {
       tagline: 'Lokale SEO & Google Maps Wachstum für ambitionierte Unternehmen.',

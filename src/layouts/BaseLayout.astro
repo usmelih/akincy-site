@@ -55,6 +55,9 @@ const servicesHref = routeLocales('services').includes(locale) ? routePath(local
 const industriesHref = routeLocales('industries').includes(locale)
   ? routePath(locale, 'industries')
   : null;
+const toolHref = routeLocales('tools/gbp-audit').includes(locale)
+  ? routePath(locale, 'tools/gbp-audit')
+  : null;
 const year = new Date().getFullYear();
 ---
 
@@ -172,6 +175,7 @@ const year = new Date().getFullYear();
           <a href={anchor('#difference-section')}>{strings.nav.beforeAfter}</a>
           <a href={anchor('#contact')}>{strings.nav.audit}</a>
           <a href={anchor('#faq')}>{strings.nav.faq}</a>
+          {toolHref && <a href={toolHref}>{strings.nav.tool}</a>}
         </div>
       </div>
     </div>

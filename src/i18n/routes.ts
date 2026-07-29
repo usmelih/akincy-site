@@ -56,6 +56,9 @@ export const ROUTES = {
   'industries/aesthetics': { tr: '/sektorler/estetik-klinikleri-icin-seo' },
   'industries/physio': { tr: '/sektorler/fizyoterapistler-icin-seo' },
   'industries/vehicle-inspection': { tr: '/sektorler/oto-ekspertiz-icin-seo' },
+
+  // Free tools. Link magnets — they run entirely in the browser, no API.
+  'tools/gbp-audit': { tr: '/araclar/google-isletme-profili-denetimi' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;
 
 export type RouteKey = keyof typeof ROUTES;

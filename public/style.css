@@ -2303,3 +2303,248 @@ footer {
 .wide-block--lead .service-grid {
   text-align: left;
 }
+
+/* =========================
+   GBP AUDIT TOOL
+   Client-side self-audit on /araclar/...
+========================= */
+.audit-tool {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+@media (min-width: 1000px) {
+  .audit-tool {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 40px;
+  }
+  .audit-result {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+.audit-group {
+  border: 1px solid var(--ink-border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 8px 24px 24px;
+  margin: 0 0 20px;
+}
+.audit-group legend {
+  padding: 0 10px;
+  margin-left: -10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.audit-q + .audit-q {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.audit-q-title {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.audit-q-num {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+.audit-q.is-answered .audit-q-num {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.audit-q-help {
+  margin: 0 0 12px 34px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.audit-q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 34px;
+}
+.audit-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+.audit-option:hover {
+  border-color: var(--accent-border);
+  background: rgba(217, 119, 87, 0.04);
+}
+.audit-option input {
+  accent-color: var(--accent);
+  margin: 0;
+}
+.audit-option:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Result panel */
+.audit-result {
+  border: 1px solid var(--ink-border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #FFFFFF, var(--surface-2));
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(31, 30, 29, 0.05);
+}
+.audit-score {
+  text-align: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+.audit-score-value {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  color: var(--accent);
+}
+.audit-score-value small {
+  font-size: 20px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.audit-score-progress {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.audit-bar + .audit-bar {
+  margin-top: 14px;
+}
+.audit-bar-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.audit-bar-head strong {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.audit-bar-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+.audit-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.35s ease;
+}
+.audit-bar.is-weak .audit-bar-fill {
+  background: #C0553A;
+}
+.audit-bar.is-strong .audit-bar-fill {
+  background: #22A35D;
+}
+
+.audit-verdict {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+}
+.audit-verdict strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+.audit-verdict p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.audit-cta {
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 999px;
+}
+
+/* Advice block below the tool */
+.audit-advice {
+  margin-top: 56px;
+}
+.audit-advice > h2 {
+  font-size: clamp(24px, 2.6vw, 30px);
+  letter-spacing: -0.3px;
+  margin: 0 0 20px;
+}
+.audit-advice-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+.audit-advice-item {
+  border: 1px solid var(--ink-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 20px 22px;
+}
+.audit-advice-item h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.audit-advice-item p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.audit-advice-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* `hidden` must win over the display rules above (.btn is inline-flex). */
+[hidden] {
+  display: none !important;
+}

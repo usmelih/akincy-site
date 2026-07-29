@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { routePath } from '../../../i18n/routes';
+import { QUESTIONS, GROUPS, BANDS } from '../../../data/gbp-audit';
+import { servicePageSchema } from '../../../lib/schema';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+const url = routePath(locale, 'tools/gbp-audit');
+
+const faq = [
+  {
+    q: 'Bu araç profilime bağlanıyor mu?',
+    a: 'Hayır. Hiçbir veri sunucuya gönderilmiyor, tamamı tarayıcınızda hesaplanıyor. Google hesabınıza erişim istemiyoruz ve cevaplarınızı kaydetmiyoruz.',
+  },
+  {
+    q: 'Puanım sıralamamı garanti eder mi?',
+    a: 'Hayır. Bu araç profilinizin yapısal durumunu ölçüyor, sıralamanızı değil. Sıralama ayrıca yakınlığa ve rekabete bağlı — gerçek konumunuzu görmek için şehir üstüne serilen grid ölçümü gerekiyor.',
+  },
+  {
+    q: 'Sonuçta neden e-posta istemiyorsunuz?',
+    a: 'Çünkü bu bir tuzak değil. Puanınızı ve zayıf noktalarınızı hemen görüyorsunuz. Ücretsiz analiz isteyip istememek size kalmış.',
+  },
+];
+
+const schema = servicePageSchema({
+  locale,
+  url,
+  name: 'Google İşletme Profili Denetim Aracı',
+  description:
+    'Google İşletme Profilinizin yerel sıralama açısından güçlü ve zayıf yanlarını 10 soruda ölçen ücretsiz araç.',
+  faq,
+  breadcrumb: [
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Google İşletme Profili Denetimi', href: url },
+  ],
+});
+
+const maxScore = QUESTIONS.reduce((s, q) => s + Math.max(...q.options.map((o) => o.points)), 0);
+
+/** Route keys mean nothing to the browser, so resolve them to URLs here. */
+const auditPayload = {
+  groups: GROUPS,
+  bands: BANDS,
+  questions: QUESTIONS.map((q) => ({
+    id: q.id,
+    group: q.group,
+    question: q.question,
+    max: Math.max(...q.options.map((o) => o.points)),
+    advice: q.advice,
+    href: q.link ? routePath(locale, q.link) : null,
+  })),
+};
+---
+
+<BaseLayout
+  locale={locale}
+  route="tools/gbp-audit"
+  title="Ücretsiz Google İşletme Profili Denetimi | Akincy"
+  description="Profilinizin yerel sıralama açısından nerede zayıf olduğunu 10 soruda ölçün. Kayıt yok, e-posta yok — sonuç anında tarayıcınızda."
+>
+  <script
+    slot="schema"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(schema)}
+  />
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/tr">Ana Sayfa</a></li>
+          <li><span aria-current="page">Profil Denetimi</span></li>
+        </ol>
+      </nav>
+
+      <span class="eyebrow">Ücretsiz araç</span>
+      <h1>Google İşletme Profili Denetimi</h1>
+      <p class="lede">
+        Profilinizin yerel sıralama açısından nerede güçlü, nerede zayıf olduğunu 10 soruda
+        görün. Kayıt yok, e-posta yok — hesaplama tarayıcınızda yapılıyor, hiçbir veri bize
+        gönderilmiyor.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <form id="auditTool" class="audit-tool">
+        <div class="audit-tool-questions">
+          {GROUPS.map((group) => (
+            <fieldset class="audit-group">
+              <legend>{group.label}</legend>
+              {QUESTIONS.filter((q) => q.group === group.id).map((q, i) => (
+                <div class="audit-q" data-question={q.id}>
+                  <p class="audit-q-title">
+                    <span class="audit-q-num">{QUESTIONS.indexOf(q) + 1}</span>
+                    {q.question}
+                  </p>
+                  {q.help && <p class="audit-q-help">{q.help}</p>}
+                  <div class="audit-q-options">
+                    {q.options.map((opt, oi) => (
+                      <label class="audit-option">
+                        <input type="radio" name={q.id} value={opt.points} data-index={oi} />
+                        <span>{opt.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </fieldset>
+          ))}
+        </div>
+
+        <aside class="audit-result" id="auditResult" aria-live="polite">
+          <div class="audit-score">
+            <div class="audit-score-value"><span id="auditScore">0</span><small>/{maxScore}</small></div>
+            <p class="audit-score-progress"><span id="auditAnswered">0</span>/{QUESTIONS.length} soru yanıtlandı</p>
+          </div>
+
+          <div class="audit-bars">
+            {GROUPS.map((group) => (
+              <div class="audit-bar" data-group={group.id}>
+                <div class="audit-bar-head">
+                  <span>{group.label}</span>
+                  <strong data-group-score>0/{group.max}</strong>
+                </div>
+                <div class="audit-bar-track"><div class="audit-bar-fill" style="width:0%"></div></div>
+              </div>
+            ))}
+          </div>
+
+          <div id="auditVerdict" class="audit-verdict" hidden></div>
+
+          <a href="/tr#contact" class="btn btn-primary audit-cta" id="auditCta" hidden>
+            Grid Ölçümümü İste →
+          </a>
+        </aside>
+      </form>
+
+      <div id="auditAdvice" class="audit-advice" hidden>
+        <h2>Önce şunları düzeltin</h2>
+        <div id="auditAdviceList" class="audit-advice-list"></div>
+      </div>
+
+      <div class="prose" style="margin-top:64px;">
+        <h2>Bu araç neyi ölçüyor, neyi ölçmüyor?</h2>
+        <p>
+          Ölçtüğü şey profilinizin <strong>yapısal durumu</strong>: kategori doğruluğu,
+          hizmet yapısı, değerlendirme gücü, tazelik ve site bağlantısı. Bunlar Google’ın
+          yerel sıralamada baktığı alaka ve öne çıkma sinyallerinin büyük bölümünü oluşturuyor.
+        </p>
+        <p>
+          Ölçmediği şey <strong>gerçek sıralamanız</strong>. Yerel sıralama arayanın konumuna
+          göre değişiyor; tek bir puan bunu gösteremez. Şehrinizin hangi bölgesinde kaçıncı
+          olduğunuzu görmek için
+          <a href={p('services/rank-tracking')}>49 noktalık grid ölçümü</a> gerekiyor — onu da
+          ücretsiz analizde çıkarıyoruz.
+        </p>
+
+        <h2 id="sss">Sık sorulanlar</h2>
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>
+              <span>{item.q}</span>
+              <div class="faq-icon">+</div>
+            </summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script
+    type="application/json"
+    id="auditData"
+    is:inline
+    set:html={JSON.stringify(auditPayload)}
+  />
+  <script src="/js/gbp-audit.js" defer is:inline></script>
+</BaseLayout>
