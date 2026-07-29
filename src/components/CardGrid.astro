@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+
+export interface CardItem {
+  href: string;
+  title: string;
+  text: string;
+  icon: string;
+}
+
+interface Props {
+  items: CardItem[];
+  /** Link label shown at the bottom of every card. */
+  cta: string;
+}
+
+const { items, cta } = Astro.props;
+---
+
+<div class="service-grid">
+  {items.map((item) => (
+    <a class="card service-card" href={item.href}>
+      <span class="icon-shell service-card-icon"><Icon name={item.icon} /></span>
+      <h3>{item.title}</h3>
+      <p>{item.text}</p>
+      <span class="service-card-more">{cta}<span aria-hidden="true">→</span></span>
+    </a>
+  ))}
+</div>

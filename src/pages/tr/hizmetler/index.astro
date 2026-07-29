@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+import CardGrid from '../../../components/CardGrid.astro';
 import { routePath } from '../../../i18n/routes';
 
 const locale = 'tr' as const;
@@ -8,31 +9,37 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const services = [
   {
     href: p('services/gbp'),
+    icon: 'profile',
     title: 'Google İşletme Profili Yönetimi',
     text: 'Kategori, hizmet, foto, post ve değerlendirme yönetimi. Haritalarda sıralamanızı belirleyen sinyallerin çoğu profilin içinde.',
   },
   {
     href: p('services/local-seo'),
+    icon: 'map',
     title: 'Yerel SEO',
     text: 'Profil, site ve dış kaynakları tek bir yerel görünürlük stratejisi altında birleştiren ana hizmet.',
   },
   {
     href: p('services/rank-tracking'),
+    icon: 'grid',
     title: 'Harita Sıralama Takibi',
     text: 'Tek bir ortalama değil, şehir üstüne serilmiş 7×7 grid. Hangi mahallede kaçıncı olduğunuzu nokta nokta görürsünüz.',
   },
   {
     href: p('services/technical-seo'),
+    icon: 'wrench',
     title: 'Teknik SEO',
     text: 'Taranabilirlik, indeksleme, hız ve yapılandırılmış veri. İçerik ne kadar iyi olursa olsun bunlar bozuksa sıralama gelmez.',
   },
   {
     href: p('services/on-page-seo'),
+    icon: 'document',
     title: 'On-Page SEO',
     text: 'Başlık, içerik derinliği, iç link ve arama niyeti eşleşmesi. Sayfanın hangi sorguya cevap verdiğini netleştirir.',
   },
   {
     href: p('services/content'),
+    icon: 'pen',
     title: 'İçerik Üretimi',
     text: 'Hizmet, sektör ve şehir sayfaları. Aramanın karşılığını veren, ölçülebilir ve yayına hazır içerik.',
   },
@@ -69,6 +76,7 @@ const faq = [
   serviceName="Yerel SEO ve Google Haritalar Optimizasyonu"
   breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
   faq={faq}
+  wideFirst
   related={[
     { label: 'Sektörlere göre yerel SEO', href: p('industries') },
     { label: 'Avukatlar için SEO', href: p('industries/law') },
@@ -140,17 +148,13 @@ const faq = [
     </p>
   </div>
 
-  <h2 id="hizmetler">Hizmetler</h2>
-
-  <div slot="wide" class="grid-3" style="margin-top:20px;">
-    {services.map((service) => (
-      <a class="card service-card" href={service.href}>
-        <h3>{service.title}</h3>
-        <p>{service.text}</p>
-        <span class="service-card-more">İncele →</span>
-      </a>
-    ))}
-  </div>
+  <Fragment slot="wide">
+    <h2 id="hizmetler" class="section-lead">Hizmetler</h2>
+    <p class="section-lead-sub">
+      Her biri sıralamayı belirleyen üç katmandan birine karşılık geliyor.
+    </p>
+    <CardGrid items={services} cta="İncele" />
+  </Fragment>
 
   <Fragment slot="cta">
     <h2>Hangisine ihtiyacınız olduğunu <span class="highlight">bilmiyorsanız</span></h2>
