@@ -57,9 +57,6 @@ export const ROUTES = {
   'industries/physio': { tr: '/sektorler/fizyoterapistler-icin-seo' },
   'industries/vehicle-inspection': { tr: '/sektorler/oto-ekspertiz-icin-seo' },
 
-  // Case studies. Anonymised (sector + city), so no client approval needed.
-  cases: { tr: '/vakalar' },
-
   // Free tools. Link magnets — they run entirely in the browser, no API.
   'tools/gbp-audit': { tr: '/araclar/google-isletme-profili-denetimi' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;

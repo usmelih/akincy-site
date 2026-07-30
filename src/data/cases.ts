@@ -1,7 +1,13 @@
 import type { RouteKey } from '../i18n/routes';
 
 /**
- * Case studies.
+ * Case studies — STAGED, NOT PUBLISHED.
+ *
+ * The pages were removed on purpose; this data and its layout support stay so the
+ * section can be switched back on without rewriting it. To publish:
+ *   1. add `cases: { tr: '/vakalar' }` to ROUTES in src/i18n/routes.ts
+ *   2. restore src/pages/tr/vakalar/ (see git history: the commit that removed it)
+ *   3. re-add the nav entry in BaseLayout (`strings.nav.cases` already exists)
  *
  * These are written **anonymised on purpose**: sector and city, no client name.
  * That needs no client approval and lets us describe the actual work honestly.
