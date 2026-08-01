@@ -1,0 +1,60 @@
+---
+/**
+ * Analytics layer.
+ *
+ * Vercel Web Analytics and Speed Insights are on by default: the site is hosted
+ * on Vercel, they need no account or ID, and they set no cookies — so no consent
+ * banner is required under KVKK/GDPR.
+ *
+ * GA4 stays dormant unless PUBLIC_GA_ID is set in the Vercel project. Note that
+ * GA4 *does* set cookies; enabling it means a consent banner is required.
+ *
+ * Both are reached through one helper so the rest of the code never has to know
+ * which is active:
+ *
+ *     window.akTrack('audit_request', { lang: 'tr' })
+ */
+const gaId = import.meta.env.PUBLIC_GA_ID;
+---
+
+{/* Vercel Web Analytics — cookieless page views */}
+<script is:inline>
+  window.va =
+    window.va ||
+    function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+</script>
+<script defer src="/_vercel/insights/script.js" is:inline></script>
+
+{/* Vercel Speed Insights — real-user Core Web Vitals */}
+<script defer src="/_vercel/speed-insights/script.js" is:inline></script>
+
+{gaId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} is:inline></script>
+    <script is:inline define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </>
+)}
+
+{/* One helper, whichever providers happen to be loaded. Never throws. */}
+<script is:inline>
+  window.akTrack = function (name, props) {
+    try {
+      var data = props || {};
+      data.path = window.location.pathname;
+      if (typeof window.va === 'function') window.va('event', { name: name, data: data });
+      if (typeof window.gtag === 'function') window.gtag('event', name, data);
+    } catch (e) {
+      /* tracking must never break the page */
+    }
+  };
+</script>

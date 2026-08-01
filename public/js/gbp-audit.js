@@ -41,6 +41,7 @@
 
   var scoreFrame = null;
   var scoreTarget = 0;
+  var completedOnce = false;
 
   /**
    * The count-up is decoration; the number itself is not. requestAnimationFrame
@@ -128,6 +129,13 @@
         '<strong>' + band.title + '</strong><p>' + band.text + '</p>';
       verdictEl.hidden = false;
       ctaEl.hidden = false;
+
+      // Only the first completion counts; changing answers afterwards would
+      // otherwise fire the event on every keystroke.
+      if (!completedOnce) {
+        completedOnce = true;
+        if (window.akTrack) window.akTrack('tool_completed', { score: total, band: band.title });
+      }
     } else {
       verdictEl.hidden = true;
       ctaEl.hidden = true;
@@ -164,6 +172,10 @@
   // A tab that was hidden while the user answered snaps to the real value.
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'visible') scoreEl.textContent = String(scoreTarget);
+  });
+
+  ctaEl.addEventListener('click', function () {
+    if (window.akTrack) window.akTrack('tool_cta_click', { score: scoreTarget });
   });
 
   form.addEventListener('change', function (event) {

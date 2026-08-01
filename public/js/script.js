@@ -302,6 +302,9 @@ if (applyForm) {
       });
 
       if (response.ok) {
+        // Ana dönüşüm. Yönlendirmeden önce tetikleniyor, aksi halde
+        // /success sayfası açılırken olay kaybolabilir.
+        if (window.akTrack) window.akTrack('audit_request', { lang: lang });
         window.location.href = t.base + '/success';
       } else {
         alert(t.error);
@@ -384,6 +387,7 @@ if (newsletterForm) {
           submitBtn.disabled = true;
           submitBtn.textContent = t.submit;
         }
+        if (window.akTrack) window.akTrack('newsletter_signup', { lang: lang });
         return;
       }
 
