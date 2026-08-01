@@ -1,36 +1,19 @@
+import type { AuditContent } from './index';
+
 /**
- * Questions for the free Google Business Profile self-audit.
- *
- * Scoring is deliberately transparent: every option carries visible points and
- * the maximum is 100. The tool is a diagnostic, not a lead-gate — it tells the
- * visitor what is weak even if they never contact us.
+ * Türkçe içerik. Puanlama bilerek şeffaf: her seçenek görünür puan taşıyor ve
+ * toplam 100. Araç bir teşhis, lead kapısı değil — ziyaretçi bize hiç
+ * yazmasa bile neyin zayıf olduğunu öğreniyor.
  */
 
-export interface AuditOption {
-  label: string;
-  points: number;
-}
-
-export interface AuditQuestion {
-  id: string;
-  group: string;
-  question: string;
-  help?: string;
-  options: AuditOption[];
-  /** Shown when this question scores below half its maximum. */
-  advice: string;
-  /** Route key of the service page that addresses this gap. */
-  link?: string;
-}
-
-export const GROUPS = [
+const groups = [
   { id: 'temel', label: 'Kategori ve temel bilgiler', max: 30 },
   { id: 'yorum', label: 'Değerlendirmeler', max: 30 },
   { id: 'tazelik', label: 'İçerik ve tazelik', max: 20 },
   { id: 'site', label: 'Site bağlantısı', max: 20 },
 ];
 
-export const QUESTIONS: AuditQuestion[] = [
+const questions = [
   {
     id: 'q1',
     group: 'temel',
@@ -169,7 +152,7 @@ export const QUESTIONS: AuditQuestion[] = [
   },
 ];
 
-export const BANDS = [
+const bands = [
   {
     min: 80,
     title: 'Temeliniz sağlam',
@@ -186,3 +169,15 @@ export const BANDS = [
     text: 'Profilde sıralamayı doğrudan tutan eksikler var. İyi haber şu: bu seviyedeki profillerde en büyük sıçrama genelde ilk düzeltmelerden geliyor, çünkü rakiplerin çoğu da bu alanları yönetmiyor.',
   },
 ];
+
+export const tr: AuditContent = {
+  groups,
+  questions,
+  bands,
+  ui: {
+    answered: 'soru yanıtlandı',
+    adviceHeading: 'Önce şunları düzeltin',
+    adviceLink: 'Nasıl düzeltilir →',
+    ctaLabel: 'Grid Ölçümümü İste →',
+  },
+};

@@ -150,7 +150,7 @@
       adviceList.innerHTML = weak
         .map(function (q) {
           var link = q.href
-            ? '<a class="audit-advice-link" href="' + q.href + '">Nasıl düzeltilir →</a>'
+            ? '<a class="audit-advice-link" href="' + q.href + '">' + data.ui.adviceLink + '</a>'
             : '';
           return (
             '<div class="audit-advice-item"><h3>' +

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { routePath } from '../../../i18n/routes';
+import AuditTool from '../../../components/AuditTool.astro';
+import { servicePageSchema } from '../../../lib/schema';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+const url = routePath(locale, 'tools/gbp-audit');
+
+const faq = [
+  {
+    q: 'Greift das Werkzeug auf mein Profil zu?',
+    a: 'Nein. Es werden keine Daten an einen Server gesendet — alles wird in Ihrem Browser berechnet. Wir verlangen keinen Zugriff auf Ihr Google-Konto und speichern Ihre Antworten nicht.',
+  },
+  {
+    q: 'Garantiert mein Punktwert ein Ranking?',
+    a: 'Nein. Das Werkzeug misst den strukturellen Zustand Ihres Profils, nicht Ihr Ranking. Das Ranking hängt zusätzlich von Entfernung und Wettbewerb ab — Ihre tatsächliche Position zeigt erst eine über die Stadt gelegte Rastermessung.',
+  },
+  {
+    q: 'Warum wird am Ende keine E-Mail verlangt?',
+    a: 'Weil das keine Falle ist. Sie sehen Ihren Punktwert und Ihre Schwachstellen sofort. Ob Sie danach eine kostenlose Analyse anfordern, bleibt Ihnen überlassen.',
+  },
+];
+
+const schema = servicePageSchema({
+  locale,
+  url,
+  name: 'Google Unternehmensprofil Analyse-Werkzeug',
+  description:
+    'Kostenloses Werkzeug, das Stärken und Schwächen Ihres Google Unternehmensprofils für das lokale Ranking in 10 Fragen bewertet.',
+  faq,
+  breadcrumb: [
+    { label: 'Startseite', href: '/de' },
+    { label: 'Unternehmensprofil-Analyse', href: url },
+  ],
+});
+---
+
+<BaseLayout
+  locale={locale}
+  route="tools/gbp-audit"
+  title="Kostenlose Google Unternehmensprofil Analyse | Akincy"
+  description="Bewerten Sie die Schwachstellen Ihres Profils fürs lokale Ranking in 10 Fragen. Keine Anmeldung, keine E-Mail — das Ergebnis erscheint sofort im Browser."
+>
+  <script slot="schema" type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/de">Startseite</a></li>
+          <li><span aria-current="page">Profil-Analyse</span></li>
+        </ol>
+      </nav>
+
+      <span class="eyebrow">Kostenloses Werkzeug</span>
+      <h1>Google Unternehmensprofil Analyse</h1>
+      <p class="lede">
+        Sehen Sie in 10 Fragen, wo Ihr Profil fürs lokale Ranking stark und wo es schwach
+        ist. Keine Anmeldung, keine E-Mail — die Berechnung läuft in Ihrem Browser, es
+        werden keine Daten an uns gesendet.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <AuditTool locale={locale} ctaHref="/de#contact" />
+
+      <div class="prose" style="margin-top:64px;">
+        <h2>Was hier gemessen wird — und was nicht</h2>
+        <p>
+          Gemessen wird der <strong>strukturelle Zustand</strong> Ihres Profils:
+          Kategoriegenauigkeit, Leistungsstruktur, Bewertungsstärke, Aktualität und
+          Website-Verknüpfung. Zusammen machen diese den Großteil der Relevanz- und
+          Bekanntheitssignale aus, die Google im lokalen Ranking gewichtet.
+        </p>
+        <p>
+          Nicht gemessen wird <strong>Ihr tatsächliches Ranking</strong>. Lokale Rankings
+          ändern sich mit dem Standort des Suchenden; ein einzelner Punktwert kann das nicht
+          abbilden. Wo Sie in Ihrer Stadt tatsächlich stehen, zeigt erst eine
+          <a href={p('services/rank-tracking')}>Messung an 49 Punkten</a> — die in der
+          kostenlosen Analyse enthalten ist.
+        </p>
+
+        <h2 id="faq">Häufige Fragen</h2>
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>
+              <span>{item.q}</span>
+              <div class="faq-icon">+</div>
+            </summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

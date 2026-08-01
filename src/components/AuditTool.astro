@@ -1,0 +1,93 @@
+---
+import type { Locale } from '../i18n/config';
+import { routePath } from '../i18n/routes';
+import { getAudit } from '../data/gbp-audit';
+
+interface Props {
+  locale: Locale;
+  /** Where the CTA under the score panel points. */
+  ctaHref: string;
+}
+
+const { locale, ctaHref } = Astro.props;
+const { groups, questions, bands, ui } = getAudit(locale);
+
+const maxScore = questions.reduce((s, q) => s + Math.max(...q.options.map((o) => o.points)), 0);
+
+/** Route keys mean nothing to the browser, so resolve them to URLs here. */
+const payload = {
+  groups,
+  bands,
+  ui,
+  questions: questions.map((q) => ({
+    id: q.id,
+    group: q.group,
+    question: q.question,
+    max: Math.max(...q.options.map((o) => o.points)),
+    advice: q.advice,
+    href: q.link ? routePath(locale, q.link) : null,
+  })),
+};
+---
+
+<form id="auditTool" class="audit-tool">
+  <div class="audit-tool-questions">
+    {groups.map((group) => (
+      <fieldset class="audit-group">
+        <legend>{group.label}</legend>
+        {questions
+          .filter((q) => q.group === group.id)
+          .map((q) => (
+            <div class="audit-q" data-question={q.id}>
+              <p class="audit-q-title">
+                <span class="audit-q-num">{questions.indexOf(q) + 1}</span>
+                {q.question}
+              </p>
+              {q.help && <p class="audit-q-help">{q.help}</p>}
+              <div class="audit-q-options">
+                {q.options.map((opt) => (
+                  <label class="audit-option">
+                    <input type="radio" name={q.id} value={opt.points} />
+                    <span>{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+      </fieldset>
+    ))}
+  </div>
+
+  <aside class="audit-result" id="auditResult" aria-live="polite">
+    <div class="audit-score">
+      <div class="audit-score-value"><span id="auditScore">0</span><small>/{maxScore}</small></div>
+      <p class="audit-score-progress">
+        <span id="auditAnswered">0</span>/{questions.length} {ui.answered}
+      </p>
+    </div>
+
+    <div class="audit-bars">
+      {groups.map((group) => (
+        <div class="audit-bar" data-group={group.id}>
+          <div class="audit-bar-head">
+            <span>{group.label}</span>
+            <strong data-group-score>0/{group.max}</strong>
+          </div>
+          <div class="audit-bar-track"><div class="audit-bar-fill" style="width:0%"></div></div>
+        </div>
+      ))}
+    </div>
+
+    <div id="auditVerdict" class="audit-verdict" hidden></div>
+
+    <a href={ctaHref} class="btn btn-primary audit-cta" id="auditCta" hidden>{ui.ctaLabel}</a>
+  </aside>
+</form>
+
+<div id="auditAdvice" class="audit-advice" hidden>
+  <h2>{ui.adviceHeading}</h2>
+  <div id="auditAdviceList" class="audit-advice-list"></div>
+</div>
+
+<script type="application/json" id="auditData" is:inline set:html={JSON.stringify(payload)} />
+<script src="/js/gbp-audit.js" defer is:inline></script>

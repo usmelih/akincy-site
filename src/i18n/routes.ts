@@ -67,7 +67,11 @@ export const ROUTES = {
   'guides/verification': { tr: '/rehber/isletme-profili-dogrulama-sorunlari' },
 
   // Free tools. Link magnets — they run entirely in the browser, no API.
-  'tools/gbp-audit': { tr: '/araclar/google-isletme-profili-denetimi' },
+  'tools/gbp-audit': {
+    en: '/tools/google-business-profile-audit',
+    tr: '/araclar/google-isletme-profili-denetimi',
+    de: '/tools/google-unternehmensprofil-analyse',
+  },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;
 
 export type RouteKey = keyof typeof ROUTES;
