@@ -109,12 +109,15 @@ const year = new Date().getFullYear();
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png" />
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <!-- FONTS — kendi origin'imizden; Google Fonts CDN'ine istek gitmiyor -->
+  <link
+    rel="preload"
+    href="/fonts/inter-400-800-latin.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" href="/fonts.css" />
 
   <link rel="stylesheet" href="/style.css" />
 

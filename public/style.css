@@ -828,14 +828,14 @@ h1 {
   width: 100%;
   min-height: 540px;
   border-radius: 20px;
-  background-image: url('/images/map-bg.jpg');
+  background-image: url('/images/map-bg.webp');
   background-size: cover;
   background-position: center;
 }
 
 /* Şehir bazlı harita arka planları (EN: Chicago, TR: İstanbul) */
-.map--chicago { background-image: url('/images/map-chicago.jpg'); }
-.map--istanbul { background-image: url('/images/map-istanbul.jpg'); }
+.map--chicago { background-image: url('/images/map-chicago.webp'); }
+.map--istanbul { background-image: url('/images/map-istanbul.webp'); }
 
 .map-background::before {
   content: "";
