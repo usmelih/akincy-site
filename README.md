@@ -61,3 +61,29 @@ Bu harita iki kuralı zorunlu kılar:
 
 Bir dilde çevirisi olmayan rotayı o dilde çağırmak build'i hata ile durdurur —
 sessizce kırık hreflang üretmesindense.
+
+## Cache politikası
+
+`vercel.json` statik varlıklara açık cache başlığı veriyor; Vercel'in varsayılanı
+`max-age=0, must-revalidate` ve bu her tekrar ziyarette tüm fontların/görsellerin
+yeniden doğrulanması demek.
+
+| Yol | Politika | Gerekçe |
+| --- | --- | --- |
+| `/fonts/*` | 1 yıl, `immutable` | Dosya adı değişmeden içerik değişmiyor; yeni ağırlık/subset yeni ad alıyor |
+| `/images/*` | 7 gün + 30 gün `stale-while-revalidate` | Logo ve OG görselleri ara sıra değişiyor; SWR sayesinde güncelleme birkaç günde iner ama render hiç beklemez |
+| `style.css`, `js/*` | dokunulmadı | Dosya adlarında hash yok, her deploy'da güncel kalmaları gerekiyor |
+
+`vercel.json` şemaya karşı doğrulanıyor (`npm run check:vercel`, build'in ilk adımı).
+Geçersiz bir alan deploy'u komple düşürüyor ve hata yalnızca Vercel loglarında
+görünüyor — bu kontrol onu yerelde yakalıyor.
+
+## Fontlar
+
+Google Fonts CDN'i yerine `public/fonts/` altından servis ediliyor: üçüncü taraf
+render engelleyici istek yok, ve `/de` sürümü için kullanıcı IP'si Google'a gitmiyor.
+Yalnızca `latin` ve `latin-ext` subset'leri var — Türkçe ğ/ş/İ latin-ext'te,
+Almanca ä/ß latin'de. Inter değişken font olarak alındı (400–800 tek dosya).
+
+Font eklemek/güncellemek gerekirse `public/fonts.css` elle düzenlenir ve yeni woff2
+dosyası yeni bir adla eklenir — `immutable` cache nedeniyle aynı adın üzerine yazmayın.

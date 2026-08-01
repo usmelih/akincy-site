@@ -7,12 +7,10 @@
   ],
   "headers": [
     {
-      "comment": "Fonts never change in place — a new weight or subset gets a new filename — so they can be cached hard.",
       "source": "/fonts/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "comment": "Images change occasionally (client logos, OG cards). Fresh for a week, then served stale while revalidating, so a replaced file lands within days without ever blocking a render.",
       "source": "/images/(.*)",
       "headers": [
         {
