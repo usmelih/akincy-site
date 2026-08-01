@@ -86,9 +86,10 @@ export const CONTACT_EMAIL: Record<Locale, string> = {
  * the Organization schema for every locale, because that describes one business
  * entity rather than what a given page shows.
  *
- * `href` stays in E.164 so tapping it dials correctly from any country, even
- * though the displayed form is the local one.
+ * `display` matches the Google Business Profile character for character — that
+ * is the whole point of NAP consistency. `href` stays in E.164 so tapping it
+ * dials correctly from abroad too.
  */
 export const CONTACT_PHONE: Partial<Record<Locale, { display: string; href: string }>> = {
-  tr: { display: '545 505 23 86', href: '+905455052386' },
+  tr: { display: '0545 505 23 86', href: '+905455052386' },
 };
