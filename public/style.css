@@ -2579,3 +2579,12 @@ footer {
   font-style: normal;
   color: var(--muted);
 }
+
+/* Footer phone — shown only where a locale defines one (currently TR). */
+.footer-phone {
+  font-weight: 700;
+  color: var(--text);
+}
+.footer-phone:hover {
+  color: var(--accent);
+}

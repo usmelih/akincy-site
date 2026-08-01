@@ -77,3 +77,18 @@ export const CONTACT_EMAIL: Record<Locale, string> = {
   tr: 'melih@akincy.com',
   de: 'melih@akincy.com',
 };
+
+/**
+ * Visible phone number, per locale.
+ *
+ * Only Turkish gets one: a Turkish mobile number on the English and German
+ * pages would read as a dead end for those visitors. The number still lives in
+ * the Organization schema for every locale, because that describes one business
+ * entity rather than what a given page shows.
+ *
+ * `href` stays in E.164 so tapping it dials correctly from any country, even
+ * though the displayed form is the local one.
+ */
+export const CONTACT_PHONE: Partial<Record<Locale, { display: string; href: string }>> = {
+  tr: { display: '545 505 23 86', href: '+905455052386' },
+};

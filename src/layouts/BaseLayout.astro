@@ -8,7 +8,7 @@ import {
   type Locale,
 } from '../i18n/config';
 import { routePath, routeLocales, type RouteKey } from '../i18n/routes';
-import { t, CONTACT_EMAIL } from '../i18n/ui';
+import { t, CONTACT_EMAIL, CONTACT_PHONE } from '../i18n/ui';
 import Analytics from '../components/Analytics.astro';
 
 interface Props {
@@ -66,6 +66,7 @@ const toolHref = routeLocales('tools/gbp-audit').includes(locale)
   ? routePath(locale, 'tools/gbp-audit')
   : null;
 const year = new Date().getFullYear();
+const phone = CONTACT_PHONE[locale];
 ---
 
 <!DOCTYPE html>
@@ -182,6 +183,11 @@ const year = new Date().getFullYear();
 
       <div class="footer-right" style="text-align:right;">
         <div><a href={`mailto:${CONTACT_EMAIL[locale]}`}>{CONTACT_EMAIL[locale]}</a></div>
+        {phone && (
+          <div style="margin-top:6px;">
+            <a href={`tel:${phone.href}`} class="footer-phone">{phone.display}</a>
+          </div>
+        )}
         <div style="margin-top:6px; color:#6F6C64;">{strings.footer.claim}</div>
 
         <div style="margin-top:14px; display:flex; gap:14px; justify-content:flex-end; flex-wrap:wrap; font-size:13px; color:#6F6C64;">
