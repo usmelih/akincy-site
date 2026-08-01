@@ -14,6 +14,7 @@ export const ui = {
       services: 'Services',
       industries: 'Industries',
       cases: 'Case Studies',
+      guides: 'Guides',
       tool: 'Free profile audit',
     },
     footer: {
@@ -33,6 +34,7 @@ export const ui = {
       services: 'Hizmetler',
       industries: 'Sektörler',
       cases: 'Vakalar',
+      guides: 'Rehber',
       tool: 'Ücretsiz profil denetimi',
     },
     footer: {
@@ -52,6 +54,7 @@ export const ui = {
       services: 'Leistungen',
       industries: 'Branchen',
       cases: 'Fallstudien',
+      guides: 'Ratgeber',
       tool: 'Kostenlose Profilanalyse',
     },
     footer: {

@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import type { Locale } from '../i18n/config';
 import { routePath, type RouteKey } from '../i18n/routes';
-import { servicePageSchema, type Crumb, type FaqEntry } from '../lib/schema';
+import { servicePageSchema, articlePageSchema, type Crumb, type FaqEntry } from '../lib/schema';
 
 interface Props {
   locale: Locale;
@@ -19,6 +19,11 @@ interface Props {
   breadcrumb?: Crumb[];
   /** Name used in the Service schema. Omit on pages that aren't a service. */
   serviceName?: string;
+  /** Guides are Articles, not Services. */
+  schemaType?: 'service' | 'article';
+  /** Required for schemaType="article"; kept out of the build so it stays stable. */
+  datePublished?: string;
+  dateModified?: string;
   toc?: { id: string; label: string }[];
   /**
    * Render the `wide` slot above the article instead of below it. Hub pages use
@@ -42,6 +47,9 @@ const {
   lede,
   breadcrumb = [],
   serviceName,
+  schemaType = 'service',
+  datePublished,
+  dateModified,
   toc = [],
   wideFirst = false,
   faq = [],
@@ -53,14 +61,26 @@ const {
 const url = routePath(locale, route) + (slug ? `/${slug}` : '');
 const trail: Crumb[] = [...breadcrumb, { label: h1, href: url }];
 
-const schema = servicePageSchema({
-  locale,
-  url,
-  name: serviceName ?? h1,
-  description,
-  faq,
-  breadcrumb: trail,
-});
+const schema =
+  schemaType === 'article'
+    ? articlePageSchema({
+        locale,
+        url,
+        headline: h1,
+        description,
+        datePublished: datePublished!,
+        dateModified,
+        faq,
+        breadcrumb: trail,
+      })
+    : servicePageSchema({
+        locale,
+        url,
+        name: serviceName ?? h1,
+        description,
+        faq,
+        breadcrumb: trail,
+      });
 
 const faqHeading = { tr: 'Sık sorulanlar', en: 'Frequently asked', de: 'Häufige Fragen' }[locale];
 const tocHeading = { tr: 'Bu sayfada', en: 'On this page', de: 'Auf dieser Seite' }[locale];

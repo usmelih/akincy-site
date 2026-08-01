@@ -61,6 +61,7 @@ const servicesHref = routeLocales('services').includes(locale) ? routePath(local
 const industriesHref = routeLocales('industries').includes(locale)
   ? routePath(locale, 'industries')
   : null;
+const guidesHref = routeLocales('guides').includes(locale) ? routePath(locale, 'guides') : null;
 const toolHref = routeLocales('tools/gbp-audit').includes(locale)
   ? routePath(locale, 'tools/gbp-audit')
   : null;
@@ -138,6 +139,7 @@ const year = new Date().getFullYear();
       <nav class="nav-links" id="navLinks">
         {servicesHref && <a href={servicesHref}>{strings.nav.services}</a>}
         {industriesHref && <a href={industriesHref}>{strings.nav.industries}</a>}
+        {guidesHref && <a href={guidesHref}>{strings.nav.guides}</a>}
         <a href={anchor('#difference-section')}>{strings.nav.beforeAfter}</a>
         <a href={anchor('#process')}>{strings.nav.process}</a>
         <a href={anchor('#faq')}>{strings.nav.faq}</a>

@@ -57,6 +57,15 @@ export const ROUTES = {
   'industries/physio': { tr: '/sektorler/fizyoterapistler-icin-seo' },
   'industries/vehicle-inspection': { tr: '/sektorler/oto-ekspertiz-icin-seo' },
 
+  // Guides. Informational layer — these queries carry no proximity signal, so
+  // they are the layer that reaches beyond Antalya.
+  guides: { tr: '/rehber' },
+  'guides/not-showing': { tr: '/rehber/isletmem-googleda-cikmiyor' },
+  'guides/create-profile': { tr: '/rehber/google-isletme-profili-nasil-acilir' },
+  'guides/rank-higher': { tr: '/rehber/google-haritalarda-ust-siraya-cikma' },
+  'guides/more-reviews': { tr: '/rehber/google-yorumlari-nasil-artirilir' },
+  'guides/verification': { tr: '/rehber/isletme-profili-dogrulama-sorunlari' },
+
   // Free tools. Link magnets — they run entirely in the browser, no API.
   'tools/gbp-audit': { tr: '/araclar/google-isletme-profili-denetimi' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;

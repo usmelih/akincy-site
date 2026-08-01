@@ -97,6 +97,63 @@ export function servicePageSchema(opts: {
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
+/**
+ * Schema for a guide page. Informational content is an Article, not a Service —
+ * marking a how-to guide as a Service misrepresents what the page is.
+ *
+ * Dates are passed in explicitly rather than taken from the build, so that
+ * `dateModified` does not change every time the site is redeployed.
+ */
+export function articlePageSchema(opts: {
+  locale: Locale;
+  url: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  faq?: FaqEntry[];
+  breadcrumb: Crumb[];
+}) {
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': 'Article',
+      '@id': `${SITE}${opts.url}#article`,
+      headline: opts.headline,
+      description: opts.description,
+      inLanguage: opts.locale,
+      datePublished: opts.datePublished,
+      dateModified: opts.dateModified ?? opts.datePublished,
+      author: { '@id': ORG_ID },
+      publisher: { '@id': ORG_ID },
+      mainEntityOfPage: `${SITE}${opts.url}`,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE}${opts.url}#breadcrumb`,
+      itemListElement: opts.breadcrumb.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.label,
+        item: `${SITE}${c.href}`,
+      })),
+    },
+  ];
+
+  if (opts.faq?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${SITE}${opts.url}#faq`,
+      mainEntity: opts.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+  }
+
+  return { '@context': 'https://schema.org', '@graph': graph };
+}
+
 export function orgSchema(locale: Locale) {
   return {
     '@context': 'https://schema.org',
