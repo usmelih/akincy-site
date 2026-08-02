@@ -60,6 +60,7 @@ export function servicePageSchema(opts: {
   breadcrumb: Crumb[];
 }) {
   const graph: Record<string, unknown>[] = [
+    organizationNode(opts.locale),
     {
       '@type': 'Service',
       '@id': `${SITE}${opts.url}#service`,
@@ -115,11 +116,15 @@ export function articlePageSchema(opts: {
   breadcrumb: Crumb[];
 }) {
   const graph: Record<string, unknown>[] = [
+    organizationNode(opts.locale),
     {
       '@type': 'Article',
       '@id': `${SITE}${opts.url}#article`,
       headline: opts.headline,
       description: opts.description,
+      // Article'da görsel Google'ın önerdiği alanlardan; sayfaya özel görsel
+      // olmadığı için markanın OG kartı kullanılıyor.
+      image: `${SITE}${opts.locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png'}`,
       inLanguage: opts.locale,
       datePublished: opts.datePublished,
       dateModified: opts.dateModified ?? opts.datePublished,
@@ -154,37 +159,49 @@ export function articlePageSchema(opts: {
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
+/**
+ * The organisation node itself.
+ *
+ * Every page embeds this, not just the homepage. Structured data is evaluated
+ * per page: a `provider`/`author` that points at an @id defined on some *other*
+ * page resolves to nothing, so the reference would be silently empty.
+ */
+export function organizationNode(locale: Locale) {
+  return {
+    '@type': 'ProfessionalService',
+    '@id': ORG_ID,
+    name: 'Akincy',
+    alternateName: 'Akincy Dijital Pazarlama',
+    url: `${SITE}${localeHome(locale)}`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE}/images/logo.png`,
+    },
+    image: `${SITE}${locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png'}`,
+    email: CONTACT_EMAIL[locale],
+    telephone: PHONE,
+    description: DESCRIPTION[locale],
+    serviceType: 'Local SEO & Google Maps Optimization',
+    areaServed: AREA_SERVED,
+    knowsLanguage: ['tr', 'en', 'de'],
+    sameAs: SAME_AS,
+  };
+}
+
+export function websiteNode(locale: Locale) {
+  return {
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    url: SITE,
+    name: 'Akincy',
+    inLanguage: locale,
+    publisher: { '@id': ORG_ID },
+  };
+}
+
 export function orgSchema(locale: Locale) {
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'ProfessionalService',
-        '@id': ORG_ID,
-        name: 'Akincy',
-        alternateName: 'Akincy Dijital Pazarlama',
-        url: `${SITE}${localeHome(locale)}`,
-        logo: {
-          '@type': 'ImageObject',
-          url: `${SITE}/images/logo.png`,
-        },
-        image: `${SITE}${locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png'}`,
-        email: CONTACT_EMAIL[locale],
-        telephone: PHONE,
-        description: DESCRIPTION[locale],
-        serviceType: 'Local SEO & Google Maps Optimization',
-        areaServed: AREA_SERVED,
-        knowsLanguage: ['tr', 'en', 'de'],
-        sameAs: SAME_AS,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': WEBSITE_ID,
-        url: SITE,
-        name: 'Akincy',
-        inLanguage: locale,
-        publisher: { '@id': ORG_ID },
-      },
-    ],
+    '@graph': [organizationNode(locale), websiteNode(locale)],
   };
 }
